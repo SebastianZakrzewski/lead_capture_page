@@ -1,7 +1,16 @@
+'use client';
+
 import Image from 'next/image';
 import LeadCaptureForm from '@/components/LeadCaptureForm';
+import { useEffect } from 'react';
+import { saveUtmParams } from '@/utils/tracking';
 
 export default function Home() {
+  useEffect(() => {
+    // Inicjalizuj śledzenie przy pierwszym wejściu
+    saveUtmParams();
+  }, []);
+
   return (
     <div className="min-h-screen bg-black">
       {/* Background Pattern */}

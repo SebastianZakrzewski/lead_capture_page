@@ -3,6 +3,7 @@
 import { useState, useCallback } from 'react';
 import { Mail, User, Phone, Building, CheckCircle, AlertCircle } from 'lucide-react';
 import { LeadFormData, INDUSTRY_OPTIONS } from '@/types/lead';
+import { prepareLeadSubmissionData } from '@/utils/tracking';
 
 // Przenoszę InputField poza główny komponent
 const InputField = ({ 
@@ -118,6 +119,11 @@ export default function LeadCaptureForm() {
     setIsSubmitting(true);
     
     try {
+      // Przygotuj dane z informacjami o śledzeniu
+      const leadData = prepareLeadSubmissionData(formData);
+      
+      console.log('Dane leada z trackingiem:', leadData);
+      
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1500));
       
@@ -195,17 +201,16 @@ export default function LeadCaptureForm() {
 
           {/* Contact Information */}
           <div className="space-y-6">
-            <InputField
-              label="Adres Email"
-              name="email"
-              type="email"
-              required
-              icon={Mail}
-              placeholder="Wprowadź swój adres email"
-              error={errors.email}
-              value={formData.email}
-              onChange={handleInputChange}
-            />
+                         <InputField
+               label="Adres Email"
+               name="email"
+               type="email"
+               icon={Mail}
+               placeholder="Wprowadź swój adres email"
+               error={errors.email}
+               value={formData.email}
+               onChange={handleInputChange}
+             />
 
             <InputField
               label="Numer Telefonu"
@@ -282,11 +287,11 @@ export default function LeadCaptureForm() {
 
                      {/* Submit Button */}
            <div className="pt-4">
-             <button
-               type="submit"
-               disabled={isSubmitting || !formData.firstName.trim() || !formData.email.trim() || !formData.phone.trim()}
-               className="w-full btn-primary text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-             >
+                            <button
+                 type="submit"
+                 disabled={isSubmitting || !formData.phone.trim()}
+                 className="w-full btn-primary text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+               >
                {isSubmitting ? (
                  <div className="flex items-center justify-center">
                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
