@@ -6,6 +6,7 @@ export interface LeadFormData {
   company: string;
   jobTitle: string;
   industry: string;
+  completeness: string;
   message: string;
 }
 
