@@ -1,25 +1,18 @@
 # Lead Capture Page
 
-A modern lead capture application built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui.
+A modern, responsive lead capture page built with Next.js, TypeScript, and Tailwind CSS. Features a sleek black and red theme with glassmorphism effects and smooth animations.
 
-## Features
+## ✨ Features
 
-- ⚡ Next.js 14 with App Router
-- 🎨 Tailwind CSS for styling
-- 🧩 shadcn/ui components
-- 📱 Responsive design
-- 🔒 TypeScript for type safety
-- 🚀 ESLint for code quality
+- **Modern Design**: Clean, professional interface with black and red color scheme
+- **Responsive Layout**: Optimized for all device sizes
+- **Form Validation**: Client-side validation with error handling
+- **Interactive Elements**: Hover effects, focus states, and smooth transitions
+- **Glassmorphism**: Modern backdrop blur and transparency effects
+- **TypeScript**: Full type safety and better development experience
+- **Tailwind CSS**: Utility-first CSS framework for rapid development
 
-## Tech Stack
-
-- **Framework**: Next.js 14
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: shadcn/ui
-- **Package Manager**: npm
-
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
@@ -37,42 +30,86 @@ cd lead_capture_page
 2. Install dependencies:
 ```bash
 npm install
+# or
+yarn install
 ```
 
-3. Copy environment variables:
-```bash
-cp env.example .env.local
-```
-
-4. Run the development server:
+3. Run the development server:
 ```bash
 npm run dev
+# or
+yarn dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Project Structure
+## 🛠️ Built With
+
+- **[Next.js 15](https://nextjs.org/)** - React framework
+- **[TypeScript](https://www.typescriptlang.org/)** - Type safety
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS
+- **[Lucide React](https://lucide.dev/)** - Beautiful icons
+- **[React Hook Form](https://react-hook-form.com/)** - Form handling
+
+## 📱 Form Fields
+
+The lead capture form includes:
+
+- **Personal Information**: First Name, Last Name
+- **Contact Details**: Email Address, Phone Number
+- **Company Info**: Company Name, Job Title
+- **Business Context**: Industry selection
+- **Message**: Custom message field
+
+## 🎨 Customization
+
+### Colors
+The theme uses a black and red color palette:
+- Primary: Red (#dc2626, #b91c1c)
+- Background: Black to dark gray gradients
+- Accents: Red highlights and borders
+
+### Styling
+- Glassmorphism effects with backdrop blur
+- Smooth hover animations
+- Focus states with red rings
+- Custom scrollbar styling
+
+## 📁 Project Structure
 
 ```
 src/
-├── app/           # Next.js app router pages
-├── components/    # Reusable UI components
-├── hooks/         # Custom React hooks
-├── lib/           # Third-party library configurations
-├── types/         # TypeScript type definitions
-├── utils/         # Utility functions
-└── styles/        # Additional styles
+├── app/
+│   ├── globals.css      # Global styles and theme
+│   ├── layout.tsx       # Root layout
+│   └── page.tsx         # Main page component
+├── components/
+│   └── LeadCaptureForm.tsx  # Form component
+└── types/
+    └── lead.ts          # TypeScript interfaces
 ```
 
-## Available Scripts
+## 🔧 Development
+
+### Available Scripts
 
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
-- `npm run type-check` - Run TypeScript type checking
 
-## Contributing
+### Code Style
+
+- TypeScript for type safety
+- Tailwind CSS for styling
+- Component-based architecture
+- Responsive design principles
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -80,6 +117,6 @@ src/
 4. Push to the branch
 5. Open a Pull Request
 
-## License
+## 📞 Support
 
-This project is licensed under the MIT License.
+For support and questions, please open an issue in the repository.
