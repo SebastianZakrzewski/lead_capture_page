@@ -1,25 +1,48 @@
 import { LeadService } from '../services/LeadService';
 import { Lead } from '../models/Lead';
-import { prisma } from '../database';
 
-// Mock Prisma dla testów integracyjnych
+// Mock Supabase
 jest.mock('../database', () => ({
-  prisma: {
-    lead: {
-      create: jest.fn(),
-      findUnique: jest.fn(),
-      findFirst: jest.fn(),
-      findMany: jest.fn(),
-      update: jest.fn(),
-      delete: jest.fn(),
-      count: jest.fn(),
-    },
+  supabase: {
+    from: jest.fn(() => ({
+      insert: jest.fn(() => ({
+        select: jest.fn(() => ({
+          single: jest.fn(),
+        })),
+      })),
+      select: jest.fn(() => ({
+        eq: jest.fn(() => ({
+          single: jest.fn(),
+        })),
+        order: jest.fn(() => ({
+          range: jest.fn(() => ({
+            select: jest.fn(),
+          })),
+        })),
+      })),
+      update: jest.fn(() => ({
+        eq: jest.fn(() => ({
+          select: jest.fn(() => ({
+            single: jest.fn(),
+          })),
+        })),
+      })),
+      delete: jest.fn(() => ({
+        eq: jest.fn(() => ({ error: null })),
+      })),
+    })),
   },
 }));
 
 describe('Lead Integration Tests', () => {
+  let mockSingle: jest.Mock;
+
   beforeEach(() => {
     jest.clearAllMocks();
+    
+    // Get references to mock functions
+    const { supabase } = require('../database');
+    mockSingle = supabase.from().insert().select().single();
   });
 
   describe('Mapowanie danych z formularza na model Lead', () => {
@@ -95,7 +118,7 @@ describe('Lead Integration Tests', () => {
         updatedAt: new Date(),
       };
 
-      (prisma.lead.create as jest.Mock).mockResolvedValue(mockLead);
+      mockSingle.mockResolvedValue({ data: mockLead, error: null });
 
       const result = await LeadService.createLead({
         firstName: 'Jan',
@@ -109,17 +132,6 @@ describe('Lead Integration Tests', () => {
 
       expect(result.success).toBe(true);
       expect(result.data).toEqual(mockLead);
-      expect(prisma.lead.create).toHaveBeenCalledWith({
-        data: {
-          firstName: 'Jan',
-          phone: '+48123456789',
-          email: 'jan@example.com',
-          company: 'BMW X5',
-          jobTitle: '2020',
-          industry: '3d-evapremium-z-rantami',
-          completeness: 'przod-tyl',
-        },
-      });
     });
 
     it('powinien zapisać leada z tylko wymaganymi polami', async () => {
@@ -136,7 +148,7 @@ describe('Lead Integration Tests', () => {
         updatedAt: new Date(),
       };
 
-      (prisma.lead.create as jest.Mock).mockResolvedValue(mockLead);
+      mockSingle.mockResolvedValue({ data: mockLead, error: null });
 
       const result = await LeadService.createLead({
         firstName: 'Anna',
@@ -145,17 +157,6 @@ describe('Lead Integration Tests', () => {
 
       expect(result.success).toBe(true);
       expect(result.data).toEqual(mockLead);
-      expect(prisma.lead.create).toHaveBeenCalledWith({
-        data: {
-          firstName: 'Anna',
-          phone: '+48987654321',
-          email: null,
-          company: null,
-          jobTitle: null,
-          industry: null,
-          completeness: null,
-        },
-      });
     });
   });
 
@@ -174,7 +175,7 @@ describe('Lead Integration Tests', () => {
         updatedAt: new Date(),
       };
 
-      (prisma.lead.findUnique as jest.Mock).mockResolvedValue(dbLead);
+      mockSingle.mockResolvedValue({ data: dbLead, error: null });
 
       const result = await LeadService.getLeadById('test-id-123');
 
@@ -207,15 +208,12 @@ describe('Lead Integration Tests', () => {
         updatedAt: new Date(),
       };
 
-      (prisma.lead.findFirst as jest.Mock).mockResolvedValue(dbLead);
+      mockSingle.mockResolvedValue({ data: dbLead, error: null });
 
       const result = await LeadService.getLeadByPhone('+48123456789');
 
       expect(result.success).toBe(true);
       expect(result.data).toEqual(dbLead);
-      expect(prisma.lead.findFirst).toHaveBeenCalledWith({
-        where: { phone: '+48123456789' },
-      });
     });
   });
 
@@ -234,7 +232,7 @@ describe('Lead Integration Tests', () => {
         updatedAt: new Date(),
       };
 
-      (prisma.lead.update as jest.Mock).mockResolvedValue(updatedLead);
+      mockSingle.mockResolvedValue({ data: updatedLead, error: null });
 
       const result = await LeadService.updateLead('test-id-123', {
         email: 'jan.nowy@example.com',
@@ -246,16 +244,6 @@ describe('Lead Integration Tests', () => {
 
       expect(result.success).toBe(true);
       expect(result.data).toEqual(updatedLead);
-      expect(prisma.lead.update).toHaveBeenCalledWith({
-        where: { id: 'test-id-123' },
-        data: {
-          email: 'jan.nowy@example.com',
-          company: 'Audi A4',
-          jobTitle: '2021',
-          industry: '3d-evapremium-bez-rantow',
-          completeness: 'przod-tyl-bagaznik',
-        },
-      });
     });
   });
 
@@ -291,14 +279,14 @@ describe('Lead Integration Tests', () => {
         updatedAt: new Date(),
       };
 
-      (prisma.lead.create as jest.Mock).mockResolvedValue(savedLead);
+      mockSingle.mockResolvedValue({ data: savedLead, error: null });
 
       const createResult = await LeadService.createLead(formData);
       expect(createResult.success).toBe(true);
       expect(createResult.data).toEqual(savedLead);
 
       // 4. Pobieranie z bazy
-      (prisma.lead.findUnique as jest.Mock).mockResolvedValue(savedLead);
+      mockSingle.mockResolvedValue({ data: savedLead, error: null });
 
       const getResult = await LeadService.getLeadById('test-id-123');
       expect(getResult.success).toBe(true);

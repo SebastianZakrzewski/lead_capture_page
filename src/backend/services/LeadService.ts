@@ -1,4 +1,4 @@
-import { prisma } from '../database';
+import { supabase, supabaseAdmin } from '../database';
 import { Lead } from '../models/Lead';
 
 export class LeadService {
@@ -13,8 +13,10 @@ export class LeadService {
     completeness?: string;
   }) {
     try {
-      const lead = await prisma.lead.create({
-        data: {
+      const { data, error } = await supabase
+        .from('Lead')
+        .insert({
+          id: crypto.randomUUID(),
           firstName: leadData.firstName,
           phone: leadData.phone,
           email: leadData.email || null,
@@ -22,9 +24,14 @@ export class LeadService {
           jobTitle: leadData.jobTitle || null,
           industry: leadData.industry || null,
           completeness: leadData.completeness || null,
-        },
-      });
-      return { success: true, data: lead };
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+        })
+        .select()
+        .single();
+
+      if (error) throw error;
+      return { success: true, data };
     } catch (error) {
       console.error('Błąd podczas zapisywania leada:', error);
       return { success: false, error: 'Nie udało się zapisać leada' };
@@ -34,10 +41,14 @@ export class LeadService {
   // Pobieranie leada po ID
   static async getLeadById(id: string) {
     try {
-      const lead = await prisma.lead.findUnique({
-        where: { id },
-      });
-      return { success: true, data: lead };
+      const { data, error } = await supabase
+        .from('Lead')
+        .select('*')
+        .eq('id', id)
+        .single();
+
+      if (error) throw error;
+      return { success: true, data };
     } catch (error) {
       console.error('Błąd podczas pobierania leada:', error);
       return { success: false, error: 'Nie udało się pobrać leada' };
@@ -47,10 +58,14 @@ export class LeadService {
   // Pobieranie leada po numerze telefonu
   static async getLeadByPhone(phone: string) {
     try {
-      const lead = await prisma.lead.findFirst({
-        where: { phone },
-      });
-      return { success: true, data: lead };
+      const { data, error } = await supabase
+        .from('Lead')
+        .select('*')
+        .eq('phone', phone)
+        .single();
+
+      if (error) throw error;
+      return { success: true, data };
     } catch (error) {
       console.error('Błąd podczas pobierania leada po telefonie:', error);
       return { success: false, error: 'Nie udało się pobrać leada' };
@@ -60,10 +75,13 @@ export class LeadService {
   // Pobieranie wszystkich leadów
   static async getAllLeads() {
     try {
-      const leads = await prisma.lead.findMany({
-        orderBy: { createdAt: 'desc' },
-      });
-      return { success: true, data: leads };
+      const { data, error } = await supabase
+        .from('Lead')
+        .select('*')
+        .order('createdAt', { ascending: false });
+
+      if (error) throw error;
+      return { success: true, data };
     } catch (error) {
       console.error('Błąd podczas pobierania leadów:', error);
       return { success: false, error: 'Nie udało się pobrać leadów' };
@@ -81,11 +99,15 @@ export class LeadService {
     completeness: string;
   }>) {
     try {
-      const lead = await prisma.lead.update({
-        where: { id },
-        data: updateData,
-      });
-      return { success: true, data: lead };
+      const { data, error } = await supabase
+        .from('Lead')
+        .update(updateData)
+        .eq('id', id)
+        .select()
+        .single();
+
+      if (error) throw error;
+      return { success: true, data };
     } catch (error) {
       console.error('Błąd podczas aktualizacji leada:', error);
       return { success: false, error: 'Nie udało się zaktualizować leada' };
@@ -95,9 +117,12 @@ export class LeadService {
   // Usuwanie leada
   static async deleteLead(id: string) {
     try {
-      await prisma.lead.delete({
-        where: { id },
-      });
+      const { error } = await supabase
+        .from('Lead')
+        .delete()
+        .eq('id', id);
+
+      if (error) throw error;
       return { success: true, message: 'Lead został usunięty' };
     } catch (error) {
       console.error('Błąd podczas usuwania leada:', error);
@@ -108,21 +133,22 @@ export class LeadService {
   // Pobieranie leadów z paginacją
   static async getLeadsWithPagination(page: number = 1, limit: number = 10) {
     try {
-      const skip = (page - 1) * limit;
+      const from = (page - 1) * limit;
+      const to = from + limit - 1;
       
-      const [leads, total] = await Promise.all([
-        prisma.lead.findMany({
-          skip,
-          take: limit,
-          orderBy: { createdAt: 'desc' },
-        }),
-        prisma.lead.count(),
-      ]);
+      const { data: leads, error: leadsError, count } = await supabase
+        .from('Lead')
+        .select('*', { count: 'exact' })
+        .order('createdAt', { ascending: false })
+        .range(from, to);
 
+      if (leadsError) throw leadsError;
+
+      const total = count || 0;
       return {
         success: true,
         data: {
-          leads,
+          leads: leads || [],
           pagination: {
             page,
             limit,

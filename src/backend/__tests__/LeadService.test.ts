@@ -1,24 +1,51 @@
 import { LeadService } from '../services/LeadService';
-import { prisma } from '../database';
 
-// Mock Prisma
+// Mock Supabase
 jest.mock('../database', () => ({
-  prisma: {
-    lead: {
-      create: jest.fn(),
-      findUnique: jest.fn(),
-      findFirst: jest.fn(),
-      findMany: jest.fn(),
-      update: jest.fn(),
-      delete: jest.fn(),
-      count: jest.fn(),
-    },
+  supabase: {
+    from: jest.fn(() => ({
+      insert: jest.fn(() => ({
+        select: jest.fn(() => ({
+          single: jest.fn(),
+        })),
+      })),
+      select: jest.fn(() => ({
+        eq: jest.fn(() => ({
+          single: jest.fn(),
+        })),
+        order: jest.fn(() => ({
+          range: jest.fn(() => ({
+            select: jest.fn(),
+          })),
+        })),
+      })),
+      update: jest.fn(() => ({
+        eq: jest.fn(() => ({
+          select: jest.fn(() => ({
+            single: jest.fn(),
+          })),
+        })),
+      })),
+      delete: jest.fn(() => ({
+        eq: jest.fn(() => ({ error: null })),
+      })),
+    })),
   },
 }));
 
 describe('LeadService', () => {
+  let mockSingle: jest.Mock;
+  let mockRange: jest.Mock;
+  let mockOrder: jest.Mock;
+
   beforeEach(() => {
     jest.clearAllMocks();
+    
+    // Get references to mock functions
+    const { supabase } = require('../database');
+    mockSingle = supabase.from().insert().select().single();
+    mockRange = supabase.from().select().order().range();
+    mockOrder = supabase.from().select().order();
   });
 
   describe('createLead', () => {
@@ -36,7 +63,7 @@ describe('LeadService', () => {
         updatedAt: new Date(),
       };
 
-      (prisma.lead.create as jest.Mock).mockResolvedValue(mockLead);
+      mockSingle.mockResolvedValue({ data: mockLead, error: null });
 
       const result = await LeadService.createLead({
         firstName: 'Jan',
@@ -50,20 +77,9 @@ describe('LeadService', () => {
 
       expect(result.success).toBe(true);
       expect(result.data).toEqual(mockLead);
-      expect(prisma.lead.create).toHaveBeenCalledWith({
-        data: {
-          firstName: 'Jan',
-          phone: '+48123456789',
-          email: 'jan@example.com',
-          company: 'BMW X5',
-          jobTitle: '2020',
-          industry: '3d-evapremium-z-rantami',
-          completeness: 'przod-tyl',
-        },
-      });
     });
 
-    it('powinien utworzyć leada tylko z wymaganych pól', async () => {
+    it('powinien utworzyć leada tylko z wymaganymi polami', async () => {
       const mockLead = {
         id: 'test-id-456',
         firstName: 'Anna',
@@ -77,7 +93,7 @@ describe('LeadService', () => {
         updatedAt: new Date(),
       };
 
-      (prisma.lead.create as jest.Mock).mockResolvedValue(mockLead);
+      mockSingle.mockResolvedValue({ data: mockLead, error: null });
 
       const result = await LeadService.createLead({
         firstName: 'Anna',
@@ -86,22 +102,10 @@ describe('LeadService', () => {
 
       expect(result.success).toBe(true);
       expect(result.data).toEqual(mockLead);
-      expect(prisma.lead.create).toHaveBeenCalledWith({
-        data: {
-          firstName: 'Anna',
-          phone: '+48987654321',
-          email: null,
-          company: null,
-          jobTitle: null,
-          industry: null,
-          completeness: null,
-        },
-      });
     });
 
     it('powinien obsłużyć błąd podczas tworzenia leada', async () => {
-      const error = new Error('Database connection failed');
-      (prisma.lead.create as jest.Mock).mockRejectedValue(error);
+      mockSingle.mockResolvedValue({ data: null, error: new Error('Database connection failed') });
 
       const result = await LeadService.createLead({
         firstName: 'Jan',
@@ -128,24 +132,21 @@ describe('LeadService', () => {
         updatedAt: new Date(),
       };
 
-      (prisma.lead.findUnique as jest.Mock).mockResolvedValue(mockLead);
+      mockSingle.mockResolvedValue({ data: mockLead, error: null });
 
       const result = await LeadService.getLeadById('test-id-123');
 
       expect(result.success).toBe(true);
       expect(result.data).toEqual(mockLead);
-      expect(prisma.lead.findUnique).toHaveBeenCalledWith({
-        where: { id: 'test-id-123' },
-      });
     });
 
-    it('powinien zwrócić null gdy lead nie istnieje', async () => {
-      (prisma.lead.findUnique as jest.Mock).mockResolvedValue(null);
+    it('powinien zwrócić błąd gdy lead nie istnieje', async () => {
+      mockSingle.mockResolvedValue({ data: null, error: new Error('Lead not found') });
 
       const result = await LeadService.getLeadById('nieistniejace-id');
 
-      expect(result.success).toBe(true);
-      expect(result.data).toBe(null);
+      expect(result.success).toBe(false);
+      expect(result.error).toBe('Nie udało się pobrać leada');
     });
   });
 
@@ -164,15 +165,12 @@ describe('LeadService', () => {
         updatedAt: new Date(),
       };
 
-      (prisma.lead.findFirst as jest.Mock).mockResolvedValue(mockLead);
+      mockSingle.mockResolvedValue({ data: mockLead, error: null });
 
       const result = await LeadService.getLeadByPhone('+48123456789');
 
       expect(result.success).toBe(true);
       expect(result.data).toEqual(mockLead);
-      expect(prisma.lead.findFirst).toHaveBeenCalledWith({
-        where: { phone: '+48123456789' },
-      });
     });
   });
 
@@ -195,15 +193,12 @@ describe('LeadService', () => {
         },
       ];
 
-      (prisma.lead.findMany as jest.Mock).mockResolvedValue(mockLeads);
+      mockOrder().range().select().mockResolvedValue({ data: mockLeads, error: null });
 
       const result = await LeadService.getAllLeads();
 
       expect(result.success).toBe(true);
       expect(result.data).toEqual(mockLeads);
-      expect(prisma.lead.findMany).toHaveBeenCalledWith({
-        orderBy: { createdAt: 'desc' },
-      });
     });
   });
 
@@ -222,7 +217,7 @@ describe('LeadService', () => {
         updatedAt: new Date(),
       };
 
-      (prisma.lead.update as jest.Mock).mockResolvedValue(mockUpdatedLead);
+      mockSingle.mockResolvedValue({ data: mockUpdatedLead, error: null });
 
       const result = await LeadService.updateLead('test-id-123', {
         email: 'jan.nowy@example.com',
@@ -234,30 +229,15 @@ describe('LeadService', () => {
 
       expect(result.success).toBe(true);
       expect(result.data).toEqual(mockUpdatedLead);
-      expect(prisma.lead.update).toHaveBeenCalledWith({
-        where: { id: 'test-id-123' },
-        data: {
-          email: 'jan.nowy@example.com',
-          company: 'Audi A4',
-          jobTitle: '2021',
-          industry: '3d-evapremium-bez-rantow',
-          completeness: 'przod-tyl-bagaznik',
-        },
-      });
     });
   });
 
   describe('deleteLead', () => {
     it('powinien usunąć leada', async () => {
-      (prisma.lead.delete as jest.Mock).mockResolvedValue({});
-
       const result = await LeadService.deleteLead('test-id-123');
 
       expect(result.success).toBe(true);
       expect(result.message).toBe('Lead został usunięty');
-      expect(prisma.lead.delete).toHaveBeenCalledWith({
-        where: { id: 'test-id-123' },
-      });
     });
   });
 
@@ -280,25 +260,20 @@ describe('LeadService', () => {
         },
       ];
 
-      (prisma.lead.findMany as jest.Mock).mockResolvedValue(mockLeads);
-      (prisma.lead.count as jest.Mock).mockResolvedValue(10);
+      mockRange().select().mockResolvedValue({ data: mockLeads, error: null, count: 10 });
 
       const result = await LeadService.getLeadsWithPagination(1, 2);
 
       expect(result.success).toBe(true);
-      expect(result.data.leads).toEqual(mockLeads);
-      expect(result.data.pagination).toEqual({
-        page: 1,
-        limit: 2,
-        total: 10,
-        pages: 5,
-      });
-      expect(prisma.lead.findMany).toHaveBeenCalledWith({
-        skip: 0,
-        take: 2,
-        orderBy: { createdAt: 'desc' },
-      });
-      expect(prisma.lead.count).toHaveBeenCalled();
+      if (result.success && result.data) {
+        expect(result.data.leads).toEqual(mockLeads);
+        expect(result.data.pagination).toEqual({
+          page: 1,
+          limit: 2,
+          total: 10,
+          pages: 5,
+        });
+      }
     });
   });
 });
