@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react';
 import { Mail, User, Phone, Building, CheckCircle, AlertCircle } from 'lucide-react';
 import { LeadFormData, INDUSTRY_OPTIONS } from '@/types/lead';
 import { prepareLeadSubmissionData } from '@/utils/tracking';
+import { LeadService } from '@/backend/services/LeadService';
 
 // Przenoszę InputField poza główny komponent
 const InputField = ({ 
@@ -73,23 +74,31 @@ export default function LeadCaptureForm() {
   });
 
   const [errors, setErrors] = useState<Partial<LeadFormData>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const validateForm = (): boolean => {
     const newErrors: Partial<LeadFormData> = {};
 
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = 'Imię jest wymagane';
+    }
+
     if (formData.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Wprowadź poprawny adres email';
+      console.log('Email validation failed for:', formData.email, 'Regex result:', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email));
     }
 
     if (!formData.phone.trim()) {
       newErrors.phone = 'Numer telefonu jest wymagany';
-    } else if (!/^[\+]?[1-9][\d]{0,15}$/.test(formData.phone.replace(/\s/g, ''))) {
-      newErrors.phone = 'Wprowadź poprawny numer telefonu';
+    } else if (!/^[\+]?[1-9][\d]{8,15}$/.test(formData.phone.replace(/\s/g, ''))) {
+      newErrors.phone = 'Wprowadź poprawny numer telefonu (min. 9 cyfr)';
     }
 
     setErrors(newErrors);
+    
+    // Dodaj console.log do debugowania
+    console.log('Walidacja formularza:', { newErrors, hasErrors: Object.keys(newErrors).length > 0 });
+    
     return Object.keys(newErrors).length === 0;
   };
 
@@ -116,7 +125,8 @@ export default function LeadCaptureForm() {
       return;
     }
 
-    setIsSubmitting(true);
+    // Natychmiast pokaż stronę sukcesu
+    setIsSubmitted(true);
     
     try {
       // Przygotuj dane z informacjami o śledzeniu
@@ -124,31 +134,67 @@ export default function LeadCaptureForm() {
       
       console.log('Dane leada z trackingiem:', leadData);
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Przygotuj dane do wysłania przez Beacon API
+      const leadPayload = {
+        firstName: formData.firstName,
+        phone: formData.phone,
+        email: formData.email || undefined,
+        company: formData.company || undefined,
+        jobTitle: formData.jobTitle || undefined,
+        industry: formData.industry || undefined,
+        completeness: formData.completeness || undefined,
+        // Dodaj timestamp i tracking data
+        timestamp: new Date().toISOString(),
+        sessionId: leadData.sessionId,
+        utmSource: leadData.utmSource,
+        utmMedium: leadData.utmMedium,
+        utmCampaign: leadData.utmCampaign,
+        referrer: leadData.referrer,
+        gclid: leadData.gclid,
+        fbclid: leadData.fbclid,
+      };
       
-      setIsSubmitting(false);
-      setIsSubmitted(true);
+      // ✅ Beacon API - działa nawet po zamknięciu strony!
+      const beaconSuccess = navigator.sendBeacon('/api/leads', JSON.stringify(leadPayload));
+      
+      if (beaconSuccess) {
+        console.log('✅ Dane wysłane przez Beacon API');
+      } else {
+        console.warn('⚠️ Beacon API failed, falling back to LeadService');
+        // Fallback do LeadService jeśli Beacon API nie działa
+        try {
+          await LeadService.createLead({
+            firstName: formData.firstName,
+            phone: formData.phone,
+            email: formData.email || undefined,
+            company: formData.company || undefined,
+            jobTitle: formData.jobTitle || undefined,
+            industry: formData.industry || undefined,
+            completeness: formData.completeness || undefined,
+          });
+        } catch (error) {
+          console.error('Fallback LeadService error:', error);
+        }
+      }
       
       // Reset form after 3 seconds
-               setTimeout(() => {
-           setIsSubmitted(false);
-           setFormData({
-             firstName: '',
-             lastName: '',
-             email: '',
-             phone: '',
-             company: '',
-             jobTitle: '',
-             industry: '',
-             completeness: '',
-             message: ''
-           });
-           setErrors({});
-         }, 3000);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          company: '',
+          jobTitle: '',
+          industry: '',
+          completeness: '',
+          message: ''
+        });
+        setErrors({});
+      }, 3000);
     } catch (error) {
-      setIsSubmitting(false);
-      console.error('Submission error:', error);
+      console.error('Error in handleSubmit:', error);
     }
   };
 
@@ -287,20 +333,13 @@ export default function LeadCaptureForm() {
 
                      {/* Submit Button */}
            <div className="pt-4">
-                            <button
+                                                        <button
                  type="submit"
-                 disabled={isSubmitting || !formData.phone.trim()}
+                 disabled={!formData.firstName.trim() || !formData.phone.trim()}
                  className="w-full btn-primary text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                >
-               {isSubmitting ? (
-                 <div className="flex items-center justify-center">
-                   <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                   Wysyłanie...
-                 </div>
-               ) : (
-                 'Wyślij i Otrzymaj Rabat -30%'
-               )}
-             </button>
+                Wyślij i Otrzymaj Rabat -30%
+               </button>
            </div>
 
           {/* Privacy Notice */}
