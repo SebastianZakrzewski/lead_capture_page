@@ -160,6 +160,7 @@
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
+  will-change: transform;
 }
 
 /* Gradient border pulse animation */
@@ -196,10 +197,12 @@
 
 .animate-gradient-pulse {
   animation: gradientPulse 4s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 .animate-gradient-glow {
   animation: gradientGlow 6s ease-in-out infinite;
+  will-change: opacity, filter;
 }
 
 .animate-gradient-shimmer {
@@ -212,6 +215,55 @@
   );
   background-size: 200% 100%;
   animation: gradientShimmer 8s ease-in-out infinite;
+  will-change: background-position;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optimized hover effects */
+.hover-scale {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Smooth form transitions */
+.form-input-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: border-color, box-shadow;
+}
+
+/* Optimized color selection */
+.color-circle {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, border-color, box-shadow;
+}
+
+.color-circle:hover {
+  transform: scale(1.1);
+}
+
+.color-circle.selected {
+  transform: scale(1.15);
+}
+
+/* Smooth layout transitions */
+.layout-transition {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: grid-template-columns, opacity, transform;
+}
+
+/* Optimized glass effect */
+.glass-optimized {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  will-change: backdrop-filter;
 }
 
 /* Custom scrollbar */

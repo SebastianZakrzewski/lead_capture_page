@@ -260,7 +260,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
          <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-red-600 to-red-500 rounded-3xl blur-sm opacity-25 animate-gradient-pulse"></div>
          <div className="absolute inset-0 bg-gradient-to-r from-red-400 via-red-500 to-red-400 rounded-3xl blur-md opacity-15 animate-gradient-glow" style={{ animationDelay: '1s' }}></div>
          <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-700 to-red-600 rounded-3xl blur-lg opacity-10 animate-gradient-shimmer" style={{ animationDelay: '2s' }}></div>
-         <div className="relative card-glass rounded-3xl p-8 shadow-2xl w-full">
+         <div className="relative card-glass glass-optimized rounded-3xl p-8 shadow-2xl w-full">
            {/* Form Header */}
            <div className="text-center mb-8">
              <div className="w-20 h-20 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-float">
@@ -388,7 +388,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                                                          <button
                   type="submit"
                   disabled={!formData.firstName.trim() || !formData.phone.trim()}
-                  className="w-full btn-primary text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                  className="w-full btn-primary text-white font-semibold py-4 px-6 rounded-xl hover-scale focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                 >
                  Wyślij i Otrzymaj Rabat -30%
                 </button>

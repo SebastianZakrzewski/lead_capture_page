@@ -123,7 +123,7 @@ export default function CarMatPreview({ formData, onFormDataChange }: CarMatPrev
                  <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-red-600 to-red-500 rounded-3xl blur-sm opacity-25 animate-gradient-pulse"></div>
          <div className="absolute inset-0 bg-gradient-to-r from-red-400 via-red-500 to-red-400 rounded-3xl blur-md opacity-15 animate-gradient-glow" style={{ animationDelay: '1s' }}></div>
          <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-700 to-red-600 rounded-3xl blur-lg opacity-10 animate-gradient-shimmer" style={{ animationDelay: '2s' }}></div>
-                 <div className="relative card-glass rounded-3xl p-6 shadow-2xl w-full h-full">
+                 <div className="relative card-glass glass-optimized rounded-3xl p-6 shadow-2xl w-full h-full">
         {/* Preview Header */}
         <div className="text-center mb-6">
           <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
@@ -165,16 +165,16 @@ export default function CarMatPreview({ formData, onFormDataChange }: CarMatPrev
             </div>
             <div className="grid grid-cols-6 gap-2">
               {BORDER_COLOR_OPTIONS.map((option) => (
-                <div
-                  key={option.value}
-                  onClick={() => handleBorderColorSelect(option.value)}
-                  className={`w-8 h-8 rounded-full border-2 cursor-pointer transition-all duration-200 hover:scale-110 ${
-                    previewData.borderColor === option.value
-                      ? 'border-white ring-2 ring-red-500'
-                      : 'border-gray-600 hover:border-gray-400'
-                  } ${getColorClass(option.value)}`}
-                  title={option.label}
-                />
+                                 <div
+                   key={option.value}
+                   onClick={() => handleBorderColorSelect(option.value)}
+                   className={`w-8 h-8 rounded-full border-2 cursor-pointer color-circle ${
+                     previewData.borderColor === option.value
+                       ? 'border-white ring-2 ring-red-500 selected'
+                       : 'border-gray-600 hover:border-gray-400'
+                   } ${getColorClass(option.value)}`}
+                   title={option.label}
+                 />
               ))}
             </div>
             {previewData.borderColor && (
@@ -192,16 +192,16 @@ export default function CarMatPreview({ formData, onFormDataChange }: CarMatPrev
             </div>
             <div className="grid grid-cols-6 gap-2">
               {MATERIAL_COLOR_OPTIONS.map((option) => (
-                <div
-                  key={option.value}
-                  onClick={() => handleMaterialColorSelect(option.value)}
-                  className={`w-8 h-8 rounded-full border-2 cursor-pointer transition-all duration-200 hover:scale-110 ${
-                    previewData.materialColor === option.value
-                      ? 'border-white ring-2 ring-blue-500'
-                      : 'border-gray-600 hover:border-gray-400'
-                  } ${getColorClass(option.value)}`}
-                  title={option.label}
-                />
+                                 <div
+                   key={option.value}
+                   onClick={() => handleMaterialColorSelect(option.value)}
+                   className={`w-8 h-8 rounded-full border-2 cursor-pointer color-circle ${
+                     previewData.materialColor === option.value
+                       ? 'border-white ring-2 ring-blue-500 selected'
+                       : 'border-gray-600 hover:border-gray-400'
+                   } ${getColorClass(option.value)}`}
+                   title={option.label}
+                 />
               ))}
             </div>
             {previewData.materialColor && (

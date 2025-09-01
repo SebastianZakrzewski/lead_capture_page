@@ -78,7 +78,7 @@ export default function Home() {
         {/* Main Content */}
         <main className="relative z-10 pb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className={`grid gap-8 items-start ${isFormSubmitted ? 'grid-cols-1' : 'grid-cols-1 lg:grid-cols-2'}`}>
+            <div className={`grid gap-8 items-start layout-transition ${isFormSubmitted ? 'grid-cols-1' : 'grid-cols-1 lg:grid-cols-2'}`}>
               {/* Form */}
               <div className={`${isFormSubmitted ? 'max-w-2xl mx-auto' : 'order-2 lg:order-1'}`}>
                 <LeadCaptureForm 
