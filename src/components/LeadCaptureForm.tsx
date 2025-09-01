@@ -258,7 +258,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
      <div className="max-w-2xl mx-auto w-full">
        <div className="relative">
          <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-red-600 to-red-500 rounded-3xl blur-sm opacity-50 animate-pulse"></div>
-         <div className="relative card-glass rounded-3xl p-8 shadow-2xl w-full border border-red-500/30">
+         <div className="relative card-glass rounded-3xl p-8 shadow-2xl w-full">
            {/* Form Header */}
            <div className="text-center mb-8">
              <div className="w-20 h-20 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-float">
