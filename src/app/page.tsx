@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import LeadCaptureForm from '@/components/LeadCaptureForm';
-import CarMatPreview from '@/components/CarMatPreview';
 import FacebookPixel from '@/components/FacebookPixel';
 import CountdownTimer from '@/components/CountdownTimer';
 import { useEffect, useState } from 'react';
@@ -74,7 +73,7 @@ export default function Home() {
               </p>
 
               {/* Social Proof */}
-              <div className="flex justify-center items-center gap-6 mb-6">
+              <div className="flex justify-center items-center gap-6 mb-12">
                 <div className="flex items-center gap-2">
                   <div className="flex">
                     {[...Array(5)].map((_, i) => (
@@ -94,23 +93,23 @@ export default function Home() {
               </div>
               
               {/* Countdown Timer */}
-              <div className="max-w-md mx-auto mb-8">
+              <div className="max-w-md mx-auto mb-16">
                 <CountdownTimer />
               </div>
 
               {/* Benefits */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8">
-                <div className="bg-gradient-to-r from-red-500/10 to-red-600/10 border border-red-500/20 rounded-xl p-4 text-center">
+                <div className="text-center">
                   <Shield className="w-8 h-8 text-red-400 mx-auto mb-2" />
                   <h3 className="text-white font-semibold mb-1">Gwarancja jakości</h3>
                   <p className="text-gray-300 text-sm">2 lata gwarancji na wszystkie produkty</p>
                 </div>
-                <div className="bg-gradient-to-r from-red-500/10 to-red-600/10 border border-red-500/20 rounded-xl p-4 text-center">
+                <div className="text-center">
                   <Truck className="w-8 h-8 text-red-400 mx-auto mb-2" />
                   <h3 className="text-white font-semibold mb-1">Darmowa dostawa</h3>
                   <p className="text-gray-300 text-sm">Bezpłatna wysyłka przy zamówieniach powyżej 200 zł</p>
                 </div>
-                <div className="bg-gradient-to-r from-red-500/10 to-red-600/10 border border-red-500/20 rounded-xl p-4 text-center">
+                <div className="text-center">
                   <CheckCircle className="w-8 h-8 text-red-400 mx-auto mb-2" />
                   <h3 className="text-white font-semibold mb-1">Gwarancja dopasowania</h3>
                   <p className="text-gray-300 text-sm">100% dopasowanie dywaników do Twojego auta</p>
@@ -123,22 +122,14 @@ export default function Home() {
         {/* Main Content */}
         <main className="relative z-10 pb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className={`grid gap-8 items-start layout-transition ${isFormSubmitted ? 'grid-cols-1' : 'grid-cols-1 lg:grid-cols-2'}`}>
-              {/* Form */}
-              <div className={`${isFormSubmitted ? 'max-w-2xl mx-auto' : 'order-2 lg:order-1'}`}>
+            <div className="flex justify-center">
+              <div className="max-w-2xl mx-auto w-full">
                 <LeadCaptureForm 
                   formData={formData}
                   onFormDataChange={handleFormDataChange} 
                   onFormSubmission={handleFormSubmission}
                 />
               </div>
-              
-              {/* Preview - ukryj gdy formularz jest wysłany */}
-              {!isFormSubmitted && (
-                <div className="order-1 lg:order-2">
-                  <CarMatPreview formData={formData} onFormDataChange={handleFormDataChange} />
-                </div>
-              )}
             </div>
           </div>
         </main>
