@@ -6,6 +6,8 @@ export class Lead {
     public company: string = '',
     public jobTitle: string = '',
     public industry: string = '',
-    public completeness: string = ''
+    public completeness: string = '',
+    public borderColor: string = '',
+    public materialColor: string = ''
   ) {}
 }

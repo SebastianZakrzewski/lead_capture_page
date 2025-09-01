@@ -10,6 +10,8 @@ export class LeadService {
     jobTitle?: string;
     industry?: string;
     completeness?: string;
+    borderColor?: string;
+    materialColor?: string;
   }) {
     try {
       const { data, error } = await supabase
@@ -23,6 +25,8 @@ export class LeadService {
           jobTitle: leadData.jobTitle || null,
           industry: leadData.industry || null,
           completeness: leadData.completeness || null,
+          borderColor: leadData.borderColor || null,
+          materialColor: leadData.materialColor || null,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
         })
@@ -96,6 +100,8 @@ export class LeadService {
     jobTitle: string;
     industry: string;
     completeness: string;
+    borderColor: string;
+    materialColor: string;
   }>) {
     try {
       const { data, error } = await supabase

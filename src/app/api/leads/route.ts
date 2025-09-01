@@ -39,6 +39,8 @@ export async function POST(request: NextRequest) {
       jobTitle: body.jobTitle || undefined,
       industry: body.industry || undefined,
       completeness: body.completeness || undefined,
+      borderColor: body.borderColor || undefined,
+      materialColor: body.materialColor || undefined,
     };
     
     console.log('💾 Próba zapisania leada:', leadData);
