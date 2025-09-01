@@ -5,16 +5,11 @@ import Image from 'next/image';
 import { Car, Star, Shield, Zap, Palette } from 'lucide-react';
 import { BORDER_COLOR_OPTIONS, MATERIAL_COLOR_OPTIONS } from '@/types/lead';
 
+import { LeadFormData } from '@/types/lead';
+
 interface CarMatPreviewProps {
-  formData: {
-    company?: string;
-    jobTitle?: string;
-    industry?: string;
-    completeness?: string;
-    borderColor?: string;
-    materialColor?: string;
-  };
-  onFormDataChange?: (formData: any) => void;
+  formData: LeadFormData;
+  onFormDataChange?: (formData: LeadFormData) => void;
 }
 
 export default function CarMatPreview({ formData, onFormDataChange }: CarMatPreviewProps) {
@@ -102,20 +97,24 @@ export default function CarMatPreview({ formData, onFormDataChange }: CarMatPrev
   };
 
   const handleBorderColorSelect = (colorValue: string) => {
+    console.log('🎨 Wybrano kolor obszycia:', colorValue);
     if (onFormDataChange) {
-      onFormDataChange({
+      const updatedFormData: LeadFormData = {
         ...formData,
         borderColor: colorValue
-      });
+      };
+      onFormDataChange(updatedFormData);
     }
   };
 
   const handleMaterialColorSelect = (colorValue: string) => {
+    console.log('🎨 Wybrano kolor materiału:', colorValue);
     if (onFormDataChange) {
-      onFormDataChange({
+      const updatedFormData: LeadFormData = {
         ...formData,
         materialColor: colorValue
-      });
+      };
+      onFormDataChange(updatedFormData);
     }
   };
 

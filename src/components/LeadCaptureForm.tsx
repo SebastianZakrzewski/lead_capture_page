@@ -118,6 +118,11 @@ export default function LeadCaptureForm({ onFormDataChange, onFormSubmission }: 
     };
     setFormData(newFormData);
 
+    // Log color selections
+    if (name === 'borderColor' || name === 'materialColor') {
+      console.log(`🎨 Kolor ${name}:`, value);
+    }
+
     // Notify parent component about form data changes
     if (onFormDataChange) {
       onFormDataChange(newFormData);
@@ -170,6 +175,8 @@ export default function LeadCaptureForm({ onFormDataChange, onFormSubmission }: 
         jobTitle: formData.jobTitle || undefined,
         industry: formData.industry || undefined,
         completeness: formData.completeness || undefined,
+        borderColor: formData.borderColor || undefined,
+        materialColor: formData.materialColor || undefined,
         // Dodaj timestamp i tracking data
         timestamp: new Date().toISOString(),
         sessionId: leadData.sessionId,
@@ -180,6 +187,12 @@ export default function LeadCaptureForm({ onFormDataChange, onFormSubmission }: 
         gclid: leadData.gclid,
         fbclid: leadData.fbclid,
       };
+
+      console.log('📤 Dane do wysłania:', leadPayload);
+      console.log('🎨 Kolory w formData:', { 
+        borderColor: formData.borderColor, 
+        materialColor: formData.materialColor 
+      });
       
       // ✅ Beacon API - działa nawet po zamknięciu strony!
       const beaconSuccess = navigator.sendBeacon('/api/leads', JSON.stringify(leadPayload));
@@ -198,6 +211,8 @@ export default function LeadCaptureForm({ onFormDataChange, onFormSubmission }: 
             jobTitle: formData.jobTitle || undefined,
             industry: formData.industry || undefined,
             completeness: formData.completeness || undefined,
+            borderColor: formData.borderColor || undefined,
+            materialColor: formData.materialColor || undefined,
           });
         } catch (error) {
           console.error('Fallback LeadService error:', error);
