@@ -120,7 +120,9 @@ export default function CarMatPreview({ formData, onFormDataChange }: CarMatPrev
   return (
     <div className="max-w-md mx-auto w-full">
       <div className="relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-red-600 to-red-500 rounded-3xl blur-sm opacity-50 animate-pulse"></div>
+                 <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-red-600 to-red-500 rounded-3xl blur-sm opacity-25 animate-gradient-pulse"></div>
+         <div className="absolute inset-0 bg-gradient-to-r from-red-400 via-red-500 to-red-400 rounded-3xl blur-md opacity-15 animate-gradient-glow" style={{ animationDelay: '1s' }}></div>
+         <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-700 to-red-600 rounded-3xl blur-lg opacity-10 animate-gradient-shimmer" style={{ animationDelay: '2s' }}></div>
                  <div className="relative card-glass rounded-3xl p-6 shadow-2xl w-full h-full">
         {/* Preview Header */}
         <div className="text-center mb-6">
