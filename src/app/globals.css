@@ -140,7 +140,7 @@
   }
   
   .card-glass {
-    @apply bg-gradient-to-br from-gray-900/80 to-black/80 backdrop-blur-sm border border-gray-800;
+    @apply bg-gradient-to-br from-gray-950/90 to-black/95 backdrop-blur-sm border border-gray-800;
   }
   
   .text-gradient {
