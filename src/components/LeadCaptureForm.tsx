@@ -5,7 +5,8 @@ import { LeadFormData, LeadSubmissionResponse } from '@/types/lead';
 import { LeadService } from '@/backend/services/LeadService';
 
 import { BORDER_COLOR_OPTIONS, MATERIAL_COLOR_OPTIONS } from '@/types/lead';
-import { Mail, User, Building, CheckCircle, Gift, WifiOff, Phone, AlertCircle, Package, Palette, ChevronDown, ArrowLeft, ArrowRight, Car, Shield } from 'lucide-react';
+import { Mail, User, Building, CheckCircle, Gift, WifiOff, Phone, AlertCircle, Package, Palette, ChevronDown, ArrowLeft, ArrowRight, Car, Shield, Loader2, Image } from 'lucide-react';
+import { useCarMatImage } from '@/hooks/useCarMatImage';
 
 interface LeadCaptureFormProps {
   formData: LeadFormData;
@@ -135,6 +136,9 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
   const [isCompletenessOpen, setIsCompletenessOpen] = useState(false);
   const [isStructureOpen, setIsStructureOpen] = useState(false);
 
+  // Hook do zarządzania zdjęciami dywaników
+  const { imageData, isLoading: isImageLoading, error: imageError, findImage, clearImage } = useCarMatImage();
+
   useEffect(() => {
     const handleOnlineStatus = () => {
       setIsOnline(navigator.onLine);
@@ -150,6 +154,28 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     };
   }, []);
 
+  // Automatyczne wyszukiwanie zdjęcia dywanika gdy wszystkie opcje są wybrane
+  useEffect(() => {
+    console.log('🔄 Formularz: useEffect wywołany z opcjami:', {
+      industry: formData.industry,
+      structure: formData.structure,
+      materialColor: formData.materialColor,
+      borderColor: formData.borderColor
+    });
+    
+    if (formData.industry && formData.structure && formData.materialColor && formData.borderColor) {
+      console.log('✅ Formularz: Wszystkie opcje wybrane, wyszukuję zdjęcie...');
+      findImage({
+        matType: formData.industry,
+        cellStructure: formData.structure,
+        materialColor: formData.materialColor,
+        borderColor: formData.borderColor
+      });
+    } else {
+      console.log('❌ Formularz: Brakuje opcji, czyszczę zdjęcie...');
+      clearImage();
+    }
+  }, [formData.industry, formData.structure, formData.materialColor, formData.borderColor, findImage, clearImage]);
 
 
   const getMatTypeName = (matType: string) => {
@@ -528,9 +554,9 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
               <p className="text-gray-300">Wybierz typ, komplet i kolory dywaników</p>
             </div>
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-12">
               {/* Left Column - Form Options */}
-              <div className="space-y-6">
+              <div className="xl:col-span-1 space-y-6">
               {/* Mat Type Selection */}
                 <div>
                   <div className="flex items-center gap-2 mb-3">
@@ -772,7 +798,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
               </div>
 
               {/* Right Column - Preview */}
-              <div className="bg-gray-800/30 rounded-xl p-4">
+              <div className="xl:col-span-2 bg-gray-800/30 rounded-xl p-8">
                 <div className="text-center mb-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-2">
                     <Car className="w-6 h-6 text-white" />
@@ -806,33 +832,82 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                 </div>
 
                 {/* Product Preview */}
-                <div className="bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-lg p-4 text-center">
-                  <div className="w-20 h-20 rounded-lg mx-auto mb-3 flex items-center justify-center relative overflow-hidden">
-                    {/* Background - Material Color */}
-                    <div 
-                      className={`absolute inset-0 ${getColorClass(formData.materialColor || 'black')} opacity-80`}
-                    />
-                    
-                    {/* Border - Border Color */}
-                    <div 
-                      className={`absolute inset-0 border-2 ${getColorClass(formData.borderColor || 'red')} opacity-90`}
-                      style={{ 
-                        borderRadius: 'inherit',
-                        borderWidth: '3px'
-                      }}
-                    />
-                    
-                    {/* Center Content */}
-                    <div className="relative z-10 text-center">
-                      <div className="w-10 h-10 bg-gradient-to-r from-red-500 to-red-600 rounded-md mx-auto mb-1 flex items-center justify-center">
-                        <Shield className="w-5 h-5 text-white" />
+                <div className="bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-lg p-10 text-center">
+                  <div className="w-full max-w-3xl mx-auto aspect-square rounded-lg mb-8 flex items-center justify-center relative overflow-hidden">
+                    {isImageLoading ? (
+                      // Loading state
+                      <div className="flex items-center justify-center w-full h-full">
+                        <Loader2 className="w-40 h-40 text-red-400 animate-spin" />
                       </div>
-                      <p className="text-white text-xs font-semibold drop-shadow-lg">EVAPREMIUM</p>
-                    </div>
+                    ) : imageData?.imagePath ? (
+                      <>
+                        <img
+                          src={imageData.imagePath}
+                          alt={`Dywanik ${getMatTypeName(formData.industry || '')} ${getStructureName(formData.structure || '')} ${getColorName(formData.materialColor || '', MATERIAL_COLOR_OPTIONS)} ${getColorName(formData.borderColor || '', BORDER_COLOR_OPTIONS)}`}
+                          className="w-full h-full object-cover rounded-lg"
+                          onError={(e) => {
+                            console.error('Błąd ładowania zdjęcia:', e);
+                            e.currentTarget.style.display = 'none';
+                            e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                          }}
+                        />
+                        <div className="hidden w-full h-full flex items-center justify-center relative">
+                          <div className={`absolute inset-0 ${getColorClass(formData.materialColor || 'black')} opacity-80`} />
+                          <div 
+                            className={`absolute inset-0 border-2 ${getColorClass(formData.borderColor || 'red')} opacity-90`}
+                            style={{ 
+                              borderRadius: 'inherit',
+                              borderWidth: '3px'
+                            }}
+                          />
+                          <div className="relative z-10 text-center">
+                            <div className="w-40 h-40 bg-gradient-to-r from-red-500 to-red-600 rounded-md mx-auto mb-5 flex items-center justify-center">
+                              <Shield className="w-20 h-20 text-white" />
+                            </div>
+                            <p className="text-white text-2xl font-semibold drop-shadow-lg">EVAPREMIUM</p>
+                          </div>
+                        </div>
+                      </>
+                    ) : imageError ? (
+                      <div className="flex flex-col items-center justify-center w-full h-full text-center">
+                        <AlertCircle className="w-40 h-40 text-red-400 mb-5" />
+                        <p className="text-red-400 text-2xl">Błąd zdjęcia</p>
+                      </div>
+                    ) : (
+                      <>
+                        <div className={`absolute inset-0 ${getColorClass(formData.materialColor || 'black')} opacity-80`} />
+                        <div 
+                          className={`absolute inset-0 border-2 ${getColorClass(formData.borderColor || 'red')} opacity-90`}
+                          style={{ 
+                            borderRadius: 'inherit',
+                            borderWidth: '3px'
+                          }}
+                        />
+                        <div className="relative z-10 text-center">
+                          <div className="w-40 h-40 bg-gradient-to-r from-red-500 to-red-600 rounded-md mx-auto mb-5 flex items-center justify-center">
+                            <Shield className="w-20 h-20 text-white" />
+                          </div>
+                          <p className="text-white text-2xl font-semibold drop-shadow-lg">EVAPREMIUM</p>
+                        </div>
+                      </>
+                    )}
                   </div>
-                  <p className="text-gray-300 text-xs">
-                    Najwyższa jakość • 3D Design
-                  </p>
+                  
+                  {imageData?.imagePath ? (
+                    <div className="space-y-4">
+                      <p className="text-gray-300 text-xl">
+                        Rzeczywiste zdjęcie produktu
+                      </p>
+                      <div className="flex items-center justify-center gap-4 text-green-400 text-xl">
+                        <Image className="w-8 h-8" />
+                        <span>Zdjęcie z bazy danych</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <p className="text-gray-300 text-xl">
+                      {isImageLoading ? 'Ładowanie zdjęcia...' : 'Wybierz opcje, aby zobaczyć zdjęcie'}
+                    </p>
+                  )}
                 </div>
 
                 {/* Selected Options Summary */}
@@ -867,6 +942,18 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                       <span className="text-gray-300 text-xs">Materiał: {getColorName(formData.materialColor, MATERIAL_COLOR_OPTIONS)}</span>
                     </div>
                   )}
+                  
+                  {/* Status zdjęcia dywanika */}
+                  {formData.industry && formData.structure && formData.materialColor && formData.borderColor && (
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                      <span className="text-gray-300 text-xs">
+                        {isImageLoading ? 'Ładowanie zdjęcia...' : 
+                         imageData?.imagePath ? 'Zdjęcie: Znalezione' : 
+                         imageError ? 'Zdjęcie: Błąd' : 'Zdjęcie: Sprawdzanie...'}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -879,12 +966,12 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
   };
 
   return (
-    <div className="max-w-2xl mx-auto w-full">
+    <div className="max-w-7xl mx-auto w-full">
       <div className="relative">
         <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-red-600 to-red-500 rounded-3xl blur-sm opacity-25 animate-gradient-pulse"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-red-400 via-red-500 to-red-400 rounded-3xl blur-md opacity-15 animate-gradient-glow" style={{ animationDelay: '1s' }}></div>
         <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-700 to-red-600 rounded-3xl blur-lg opacity-10 animate-gradient-shimmer" style={{ animationDelay: '2s' }}></div>
-        <div className="relative card-glass glass-optimized rounded-3xl p-8 shadow-2xl w-full">
+        <div className="relative card-glass glass-optimized rounded-3xl p-12 shadow-2xl w-full">
           {/* Progress Bar */}
           <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
 

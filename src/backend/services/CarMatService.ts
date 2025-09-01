@@ -292,4 +292,120 @@ export class CarMatService {
       };
     }
   }
+
+  // Wyszukiwanie zdjęcia dywanika na podstawie opcji formularza
+  static async findCarMatImageByOptions(options: {
+    matType: string;
+    cellStructure: string;
+    materialColor: string;
+    borderColor: string;
+  }) {
+    try {
+      console.log('🔍 CarMatService: Rozpoczynam wyszukiwanie z opcjami:', options);
+      
+      // Mapowanie typów z formularza na typy w bazie danych
+      const mapMatType = (formType: string): string => {
+        switch (formType) {
+          case '3d-evapremium-z-rantami':
+            return '3d-with-rims';
+          case '3d-evapremium-bez-rantow':
+            return '3d-without-rims';
+          default:
+            return formType;
+        }
+      };
+
+      const mapCellStructure = (formStructure: string): string => {
+        switch (formStructure) {
+          case 'romb':
+            return 'rhombus';
+          case 'plaster-miodu':
+            return 'honeycomb';
+          default:
+            return formStructure;
+        }
+      };
+
+      // Mapowanie kolorów z formularza na kolory w bazie danych
+      const mapColor = (formColor: string): string => {
+        const colorMapping: Record<string, string> = {
+          // Kolory z formularza -> kolory w bazie danych
+          'red': 'czerwony',
+          'black': 'czarny',
+          'blue': 'niebieski',
+          'yellow': 'żółty',
+          'lime': 'zielony',
+          'orange': 'pomarańczowy',
+          'purple': 'fioletowy',
+          'brown': 'brązowy',
+          'maroon': 'bordowy',
+          'pink': 'różowy',
+          'darkblue': 'ciemnoniebieski',
+          'darkgreen': 'ciemnozielony',
+          'darkgrey': 'ciemnoszary',
+          'lightgrey': 'jasnoszary',
+          'beige': 'beżowy',
+          'lightbeige': 'jasnobeżowy',
+          'white': 'biały',
+          'ivory': 'kość słoniowa'
+        };
+        return colorMapping[formColor] || formColor;
+      };
+
+      const mappedMatType = mapMatType(options.matType);
+      const mappedCellStructure = mapCellStructure(options.cellStructure);
+      const mappedMaterialColor = mapColor(options.materialColor);
+      const mappedBorderColor = mapColor(options.borderColor);
+
+      console.log('🔄 CarMatService: Zmapowane wartości:', {
+        matType: `${options.matType} -> ${mappedMatType}`,
+        cellStructure: `${options.cellStructure} -> ${mappedCellStructure}`,
+        materialColor: `${options.materialColor} -> ${mappedMaterialColor}`,
+        borderColor: `${options.borderColor} -> ${mappedBorderColor}`
+      });
+
+      // Wyszukiwanie w bazie danych
+      const { data, error } = await supabase
+        .from('CarMat')
+        .select('imagePath, matType, cellStructure, materialColor, borderColor')
+        .eq('matType', mappedMatType)
+        .eq('cellStructure', mappedCellStructure)
+        .eq('materialColor', mappedMaterialColor)
+        .eq('borderColor', mappedBorderColor)
+        .single();
+
+      console.log('📊 CarMatService: Wynik zapytania:', { data, error });
+
+      if (error) {
+        if (error.code === 'PGRST116') { // No rows returned
+          console.log('❌ CarMatService: Nie znaleziono rekordów');
+          return { 
+            success: false, 
+            error: 'Nie znaleziono zdjęcia dla wybranej kombinacji',
+            data: null
+          };
+        }
+        throw error;
+      }
+
+      console.log('✅ CarMatService: Znaleziono zdjęcie:', data);
+      return { 
+        success: true, 
+        data: {
+          imagePath: data.imagePath,
+          matType: data.matType,
+          cellStructure: data.cellStructure,
+          materialColor: data.materialColor,
+          borderColor: data.borderColor
+        }
+      };
+    } catch (error) {
+      console.error('💥 CarMatService: Błąd podczas wyszukiwania:', error);
+      return { 
+        success: false, 
+        error: 'Nie udało się wyszukać zdjęcia dywanika',
+        details: error
+      };
+    }
+  }
 }

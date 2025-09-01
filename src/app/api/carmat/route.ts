@@ -80,6 +80,7 @@ export async function POST(request: NextRequest) {
       cellStructure: body.cellStructure,
       materialColor: body.materialColor,
       borderColor: body.borderColor,
+      imagePath: body.imagePath || '', // Dodaj pole imagePath
     };
     
     console.log('💾 Próba zapisania CarMat:', carMatData);

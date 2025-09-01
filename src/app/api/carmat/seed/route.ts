@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     console.log('📊 Sprawdzanie obecnego stanu bazy danych...');
     const currentStats = await CarMatService.getCarMatStats();
     
-    if (currentStats.success && currentStats.data.total > 0) {
+    if (currentStats.success && currentStats.data && currentStats.data.total > 0) {
       console.log(`⚠️  W bazie danych znajduje się już ${currentStats.data.total} rekordów`);
       
       // Opcjonalnie wyczyść bazę danych
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
     console.log('🔍 Weryfikacja wprowadzonych danych...');
     const finalStats = await CarMatService.getCarMatStats();
     
-    if (!finalStats.success) {
+    if (!finalStats.success || !finalStats.data) {
       console.error('❌ Błąd podczas weryfikacji:', finalStats.error);
       return NextResponse.json({
         success: false,
