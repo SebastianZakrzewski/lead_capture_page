@@ -8,12 +8,12 @@ import CountdownTimer from '@/components/CountdownTimer';
 import { useEffect, useState } from 'react';
 import { saveUtmParams } from '@/utils/tracking';
 import { LeadFormData } from '@/types/lead';
+import { Star, Shield, Truck, Clock, Users, Award, CheckCircle } from 'lucide-react';
 
 export default function Home() {
   const [formData, setFormData] = useState<LeadFormData>({
     firstName: '',
     lastName: '',
-    email: '',
     phone: '',
     company: '',
     jobTitle: '',
@@ -72,10 +72,49 @@ export default function Home() {
               <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-6">
                 Wpisz dane swojego auta – przygotujemy indywidualną wycenę z rabatem ważnym tylko dziś.
               </p>
+
+              {/* Social Proof */}
+              <div className="flex justify-center items-center gap-6 mb-6">
+                <div className="flex items-center gap-2">
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                  <span className="text-gray-300 text-sm">4.9/5</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Users className="w-5 h-5 text-green-400" />
+                  <span className="text-gray-300 text-sm">15,000+ zadowolonych klientów</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Award className="w-5 h-5 text-blue-400" />
+                  <span className="text-gray-300 text-sm">Certyfikowane produkty</span>
+                </div>
+              </div>
               
               {/* Countdown Timer */}
               <div className="max-w-md mx-auto mb-8">
                 <CountdownTimer />
+              </div>
+
+              {/* Benefits */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8">
+                <div className="bg-gradient-to-r from-red-500/10 to-red-600/10 border border-red-500/20 rounded-xl p-4 text-center">
+                  <Shield className="w-8 h-8 text-red-400 mx-auto mb-2" />
+                  <h3 className="text-white font-semibold mb-1">Gwarancja jakości</h3>
+                  <p className="text-gray-300 text-sm">2 lata gwarancji na wszystkie produkty</p>
+                </div>
+                <div className="bg-gradient-to-r from-red-500/10 to-red-600/10 border border-red-500/20 rounded-xl p-4 text-center">
+                  <Truck className="w-8 h-8 text-red-400 mx-auto mb-2" />
+                  <h3 className="text-white font-semibold mb-1">Darmowa dostawa</h3>
+                  <p className="text-gray-300 text-sm">Bezpłatna wysyłka przy zamówieniach powyżej 200 zł</p>
+                </div>
+                <div className="bg-gradient-to-r from-red-500/10 to-red-600/10 border border-red-500/20 rounded-xl p-4 text-center">
+                  <CheckCircle className="w-8 h-8 text-red-400 mx-auto mb-2" />
+                  <h3 className="text-white font-semibold mb-1">Gwarancja dopasowania</h3>
+                  <p className="text-gray-300 text-sm">100% dopasowanie dywaników do Twojego auta</p>
+                </div>
               </div>
             </div>
           </div>

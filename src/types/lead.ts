@@ -1,7 +1,6 @@
 export interface LeadFormData {
   firstName: string;
   lastName: string;
-  email: string;
   phone: string;
   company: string;
   jobTitle: string;
@@ -10,6 +9,7 @@ export interface LeadFormData {
   borderColor: string;
   materialColor: string;
   message: string;
+  includeHooks?: boolean;
 }
 
 export interface LeadSubmissionResponse {

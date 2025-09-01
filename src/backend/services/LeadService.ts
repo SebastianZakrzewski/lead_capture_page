@@ -5,13 +5,13 @@ export class LeadService {
   static async createLead(leadData: {
     firstName: string;
     phone: string;
-    email?: string;
     company?: string;
     jobTitle?: string;
     industry?: string;
     completeness?: string;
     borderColor?: string;
     materialColor?: string;
+    includeHooks?: boolean;
   }) {
     try {
       const { data, error } = await supabase
@@ -20,13 +20,13 @@ export class LeadService {
           id: crypto.randomUUID(),
           firstName: leadData.firstName,
           phone: leadData.phone,
-          email: leadData.email || null,
           company: leadData.company || null,
           jobTitle: leadData.jobTitle || null,
           industry: leadData.industry || null,
           completeness: leadData.completeness || null,
           borderColor: leadData.borderColor || null,
           materialColor: leadData.materialColor || null,
+          includeHooks: leadData.includeHooks || false,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
         })
@@ -95,13 +95,13 @@ export class LeadService {
   static async updateLead(id: string, updateData: Partial<{
     firstName: string;
     phone: string;
-    email: string;
     company: string;
     jobTitle: string;
     industry: string;
     completeness: string;
     borderColor: string;
     materialColor: string;
+    includeHooks: boolean;
   }>) {
     try {
       const { data, error } = await supabase

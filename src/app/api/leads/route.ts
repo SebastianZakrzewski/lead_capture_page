@@ -34,13 +34,13 @@ export async function POST(request: NextRequest) {
     const leadData = {
       firstName: body.firstName,
       phone: body.phone,
-      email: body.email || undefined,
       company: body.company || undefined,
       jobTitle: body.jobTitle || undefined,
       industry: body.industry || undefined,
       completeness: body.completeness || undefined,
       borderColor: body.borderColor || undefined,
       materialColor: body.materialColor || undefined,
+      includeHooks: body.includeHooks || false,
     };
     
     console.log('💾 Próba zapisania leada:', leadData);
