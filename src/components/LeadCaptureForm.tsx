@@ -62,25 +62,12 @@ const InputField = ({
 );
 
 interface LeadCaptureFormProps {
+  formData: LeadFormData;
   onFormDataChange?: (formData: LeadFormData) => void;
   onFormSubmission?: (submitted: boolean) => void;
 }
 
-export default function LeadCaptureForm({ onFormDataChange, onFormSubmission }: LeadCaptureFormProps) {
-  const [formData, setFormData] = useState<LeadFormData>({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    company: '',
-    jobTitle: '',
-    industry: '',
-    completeness: '',
-    borderColor: '',
-    materialColor: '',
-    message: ''
-  });
-
+export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubmission }: LeadCaptureFormProps) {
   const [errors, setErrors] = useState<Partial<LeadFormData>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -116,7 +103,6 @@ export default function LeadCaptureForm({ onFormDataChange, onFormSubmission }: 
       ...formData,
       [name]: value
     };
-    setFormData(newFormData);
 
     // Log color selections
     if (name === 'borderColor' || name === 'materialColor') {
@@ -222,19 +208,24 @@ export default function LeadCaptureForm({ onFormDataChange, onFormSubmission }: 
       // Reset form after 3 seconds
       setTimeout(() => {
         setIsSubmitted(false);
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          phone: '',
-          company: '',
-          jobTitle: '',
-          industry: '',
-          completeness: '',
-          borderColor: '',
-          materialColor: '',
-          message: ''
-        });
+        
+        // Reset form data through parent component
+        if (onFormDataChange) {
+          onFormDataChange({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            company: '',
+            jobTitle: '',
+            industry: '',
+            completeness: '',
+            borderColor: '',
+            materialColor: '',
+            message: ''
+          });
+        }
+        
         setErrors({});
         
         // Powiadom komponent nadrzędny o zresetowaniu formularza

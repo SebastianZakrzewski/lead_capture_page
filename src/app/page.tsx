@@ -82,6 +82,7 @@ export default function Home() {
               {/* Form */}
               <div className={`${isFormSubmitted ? 'max-w-2xl mx-auto' : 'order-2 lg:order-1'}`}>
                 <LeadCaptureForm 
+                  formData={formData}
                   onFormDataChange={handleFormDataChange} 
                   onFormSubmission={handleFormSubmission}
                 />
