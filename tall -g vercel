@@ -1,0 +1,3 @@
+[33m6c84b32[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m feat: Migrate from Prisma to Supabase backend
+[33mb8a4064[m  Usunięcie plików lokalnych z Git
+[33m2bf012f[m  Przygotowanie do wdrożenia na Vercel + Supabase

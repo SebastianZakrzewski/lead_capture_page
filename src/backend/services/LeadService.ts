@@ -1,5 +1,4 @@
-import { supabase, supabaseAdmin } from '../database';
-import { Lead } from '../models/Lead';
+import { supabase } from '../database';
 
 export class LeadService {
   // Zapisywanie nowego leada do bazy danych

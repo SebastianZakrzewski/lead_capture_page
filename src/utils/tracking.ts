@@ -140,7 +140,16 @@ export function getSavedUtmParams(): Partial<TrackingData> {
 }
 
 // Przygotuj dane do wysłania z formularzem
-export function prepareLeadSubmissionData(formData: any): LeadSubmissionData {
+export function prepareLeadSubmissionData(formData: {
+  firstName: string;
+  phone: string;
+  email?: string;
+  company?: string;
+  jobTitle?: string;
+  industry?: string;
+  completeness?: string;
+  message?: string;
+}): LeadSubmissionData {
   const trackingData = getOrCreateTrackingData();
   const savedUtmParams = getSavedUtmParams();
   

@@ -16,7 +16,7 @@ export const supabaseAdmin = createClient(
 // Funkcja do sprawdzenia połączenia z bazą
 export async function checkConnection() {
   try {
-    const { data, error } = await supabase.from('Lead').select('id').limit(1);
+    const { error } = await supabase.from('Lead').select('id').limit(1);
     if (error) throw error;
     return { success: true, message: 'Połączenie z bazą danych Supabase OK' };
   } catch (error) {
