@@ -6,6 +6,7 @@ export class Lead {
     public jobTitle: string = '',
     public industry: string = '',
     public completeness: string = '',
+    public structure: string = '',
     public borderColor: string = '',
     public materialColor: string = '',
     public includeHooks: boolean = false

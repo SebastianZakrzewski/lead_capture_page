@@ -10,6 +10,7 @@ import { Mail, User, Building, CheckCircle, Gift, WifiOff, Phone, AlertCircle, P
 interface LeadCaptureFormProps {
   formData: LeadFormData;
   onFormDataChange?: (newFormData: LeadFormData) => void;
+  onFormSubmission?: (submitted: boolean) => void;
 }
 
 interface InputFieldProps {
@@ -50,11 +51,11 @@ const InputField: React.FC<InputFieldProps> = ({ label, name, icon: Icon, placeh
 };
 
 interface PhoneInputProps {
-  value: string;
-  onChange: (value: string) => void;
-  error?: string;
+  value: string; 
+  onChange: (value: string) => void; 
+  error?: string; 
 }
-
+    
 const PhoneInput: React.FC<PhoneInputProps> = ({ value, onChange, error }) => {
   const formatPhoneNumber = (input: string) => {
     const cleaned = input.replace(/\D/g, '');
@@ -80,10 +81,10 @@ const PhoneInput: React.FC<PhoneInputProps> = ({ value, onChange, error }) => {
         <Phone className="w-4 h-4 text-red-400" />
         Numer Telefonu
       </label>
-      <input
-        type="tel"
+        <input
+          type="tel"
         placeholder="123 456 789"
-        value={value}
+          value={value}
         onChange={handleChange}
         className={`w-full p-3 bg-gray-800/30 border rounded-lg text-white placeholder-gray-400 form-input-focus form-input-hover ${
           error ? 'border-red-500' : 'border-gray-600'
@@ -112,13 +113,13 @@ const ProgressBar: React.FC<{ currentStep: number; totalSteps: number }> = ({ cu
         <div 
           className="bg-gradient-to-r from-red-500 to-red-600 h-2 rounded-full transition-all duration-500 ease-out"
           style={{ width: `${progress}%` }}
-        />
-      </div>
+      />
     </div>
-  );
+  </div>
+);
 };
 
-export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCaptureFormProps) {
+export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubmission }: LeadCaptureFormProps) {
   const [errors, setErrors] = useState<Partial<LeadFormData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -132,6 +133,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
   // Dropdown states
   const [isMatTypeOpen, setIsMatTypeOpen] = useState(false);
   const [isCompletenessOpen, setIsCompletenessOpen] = useState(false);
+  const [isStructureOpen, setIsStructureOpen] = useState(false);
 
   useEffect(() => {
     const handleOnlineStatus = () => {
@@ -147,6 +149,8 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
       window.removeEventListener('offline', handleOnlineStatus);
     };
   }, []);
+
+
 
   const getMatTypeName = (matType: string) => {
     const matTypes: { [key: string]: string } = {
@@ -164,6 +168,14 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
       'przod-tyl-bagaznik': 'Przód + Tył + Bagażnik (5 szt.)'
     };
     return completenessTypes[completeness] || completeness;
+  };
+
+  const getStructureName = (structure: string) => {
+    const structureTypes: { [key: string]: string } = {
+      'romb': 'Romb',
+      'plaster-miodu': 'Plaster Miodu'
+    };
+    return structureTypes[structure] || structure;
   };
 
   const getColorName = (colorValue: string, options: { value: string; label: string }[]) => {
@@ -195,19 +207,19 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
     return colorMap[colorValue] || 'bg-gray-400';
   };
 
-  const validateCurrentStep = (): boolean => {
+    const validateCurrentStep = useCallback((): boolean => {
     const newErrors: Partial<LeadFormData> = {};
 
     if (currentStep === 1) {
-      if (!formData.firstName.trim()) {
-        newErrors.firstName = 'Imię jest wymagane';
-      }
-      if (!formData.phone.trim()) {
-        newErrors.phone = 'Numer telefonu jest wymagany';
-      } else {
-        const cleanedPhone = formData.phone.replace(/\D/g, '');
-        if (cleanedPhone.length < 9) {
-          newErrors.phone = 'Wprowadź poprawny numer telefonu (min. 9 cyfr)';
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = 'Imię jest wymagane';
+    }
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Numer telefonu jest wymagany';
+    } else {
+      const cleanedPhone = formData.phone.replace(/\D/g, '');
+      if (cleanedPhone.length < 9) {
+        newErrors.phone = 'Wprowadź poprawny numer telefonu (min. 9 cyfr)';
         }
       }
     }
@@ -221,9 +233,21 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
       }
     }
 
+    if (currentStep === 3) {
+      if (!formData.industry.trim()) {
+        newErrors.industry = 'Wybierz typ dywaników';
+      }
+      if (!formData.completeness.trim()) {
+        newErrors.completeness = 'Wybierz rodzaj kompletu';
+      }
+      if (!formData.structure.trim()) {
+        newErrors.structure = 'Wybierz strukturę komórek';
+      }
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-  };
+  }, [currentStep, formData]);
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -275,6 +299,14 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
       onFormDataChange(updatedFormData);
     }
     setIsMatTypeOpen(false);
+    
+    // Clear error if exists
+    if (errors.industry) {
+      setErrors(prev => ({
+        ...prev,
+        industry: undefined
+      }));
+    }
   };
 
   const handleCompletenessChange = (completeness: string) => {
@@ -286,6 +318,14 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
       onFormDataChange(updatedFormData);
     }
     setIsCompletenessOpen(false);
+    
+    // Clear error if exists
+    if (errors.completeness) {
+      setErrors(prev => ({
+        ...prev,
+        completeness: undefined
+      }));
+    }
   };
 
   const handleBorderColorSelect = (colorValue: string) => {
@@ -308,6 +348,25 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
     }
   };
 
+  const handleStructureChange = (structure: string) => {
+    if (onFormDataChange) {
+      const updatedFormData: LeadFormData = {
+        ...formData,
+        structure: structure
+      };
+      onFormDataChange(updatedFormData);
+    }
+    setIsStructureOpen(false);
+    
+    // Clear error if exists
+    if (errors.structure) {
+      setErrors(prev => ({
+        ...prev,
+        structure: undefined
+      }));
+    }
+  };
+
   const nextStep = () => {
     if (validateCurrentStep()) {
       if (currentStep < totalSteps) {
@@ -322,7 +381,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!validateCurrentStep()) {
@@ -339,16 +398,19 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
         jobTitle: formData.jobTitle || undefined,
         industry: formData.industry || undefined,
         completeness: formData.completeness || undefined,
+          structure: formData.structure || undefined,
         borderColor: formData.borderColor || undefined,
         materialColor: formData.materialColor || undefined,
-        includeHooks: includeHooks
-      };
+          includeHooks: includeHooks
+        };
 
       const response = await LeadService.createLead(leadPayload);
       
       if (response.success) {
-        console.log('Form submitted successfully');
         setIsSubmitted(true);
+        if (onFormSubmission) {
+          onFormSubmission(true);
+        }
       } else {
         throw new Error(response.error || 'Unknown error');
       }
@@ -358,7 +420,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }, [formData, validateCurrentStep, onFormSubmission]);
 
   if (isSubmitted) {
     return (
@@ -395,7 +457,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
   const renderStep = () => {
     switch (currentStep) {
       case 1:
-        return (
+  return (
           <div className="space-y-6">
             <div className="text-center mb-6">
               <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -404,28 +466,28 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
               <h3 className="text-xl font-bold text-white mb-2">Podaj swoje dane</h3>
               <p className="text-gray-300">Zacznijmy od podstawowych informacji</p>
             </div>
-            
-            <InputField
-              label="Imię"
-              name="firstName"
-              icon={User}
-              placeholder="Wprowadź swoje imię"
-              error={errors.firstName}
-              value={formData.firstName}
-              onChange={handleInputChange}
-            />
 
-            <PhoneInput
-              value={formData.phone}
-              onChange={handlePhoneChange}
-              error={errors.phone}
-            />
-          </div>
+                <InputField
+                  label="Imię"
+                  name="firstName"
+                  icon={User}
+                  placeholder="Wprowadź swoje imię"
+                  error={errors.firstName}
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                />
+
+                <PhoneInput
+                  value={formData.phone}
+                  onChange={handlePhoneChange}
+                  error={errors.phone}
+                />
+              </div>
         );
 
       case 2:
         return (
-          <div className="space-y-6">
+              <div className="space-y-6">
             <div className="text-center mb-6">
               <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Building className="w-8 h-8 text-white" />
@@ -434,25 +496,25 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
               <p className="text-gray-300">Pomóż nam dopasować idealne dywaniki</p>
             </div>
             
-            <InputField
-              label="Marka i Model Auta"
-              name="company"
-              icon={Building}
-              placeholder="np. BMW X5, Audi A4"
+                <InputField
+                  label="Marka i Model Auta"
+                  name="company"
+                  icon={Building}
+                  placeholder="np. BMW X5, Audi A4"
               error={errors.company}
-              value={formData.company}
-              onChange={handleInputChange}
-            />
+                  value={formData.company}
+                  onChange={handleInputChange}
+                />
 
-            <InputField
-              label="Rok Produkcji"
-              name="jobTitle"
-              placeholder="np. 2020"
+                <InputField
+                  label="Rok Produkcji"
+                  name="jobTitle"
+                  placeholder="np. 2020"
               error={errors.jobTitle}
-              value={formData.jobTitle}
-              onChange={handleInputChange}
-            />
-          </div>
+                  value={formData.jobTitle}
+                  onChange={handleInputChange}
+                />
+              </div>
         );
 
       case 3:
@@ -469,12 +531,18 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Left Column - Form Options */}
               <div className="space-y-6">
-                {/* Mat Type Selection */}
+              {/* Mat Type Selection */}
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <Package className="w-5 h-5 text-red-400" />
                     <h4 className="text-white font-semibold text-sm">Typ Dywaników</h4>
                   </div>
+                  {errors.industry && (
+                    <div className="flex items-center gap-2 text-red-400 text-sm mb-2">
+                      <AlertCircle className="w-4 h-4" />
+                      {errors.industry}
+                    </div>
+                  )}
                   
                   <div className="relative">
                     <button
@@ -517,6 +585,12 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
                     <Package className="w-5 h-5 text-green-400" />
                     <h4 className="text-white font-semibold text-sm">Rodzaj Kompletu</h4>
                   </div>
+                  {errors.completeness && (
+                    <div className="flex items-center gap-2 text-red-400 text-sm mb-2">
+                      <AlertCircle className="w-4 h-4" />
+                      {errors.completeness}
+                    </div>
+                  )}
                   
                   <div className="relative">
                     <button
@@ -569,81 +643,129 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
                   </div>
                 </div>
 
-                {/* Color Selection */}
-                <div className="space-y-4">
-                  {/* Kolor Obszycia */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <Palette className="w-5 h-5 text-red-400" />
-                      <h4 className="text-white font-semibold text-sm">Kolor Obszycia</h4>
-                    </div>
-                    <div className="grid grid-cols-6 gap-2">
-                      {BORDER_COLOR_OPTIONS.map((option) => (
-                        <div
-                          key={option.value}
-                          onClick={() => handleBorderColorSelect(option.value)}
-                          className={`w-12 h-12 rounded-full border-2 cursor-pointer color-circle shadow-lg ${
-                            formData.borderColor === option.value
-                              ? 'border-white ring-2 ring-red-500 selected'
-                              : 'border-gray-600 hover:border-gray-400'
-                          } ${getColorClass(option.value)}`}
-                          title={option.label}
-                        />
-                      ))}
-                    </div>
-                    {formData.borderColor && (
-                      <p className="text-gray-300 text-xs mt-2">
-                        Wybrane: {getColorName(formData.borderColor, BORDER_COLOR_OPTIONS)}
-                      </p>
-                    )}
-                  </div>
+                 {/* Structure Selection */}
+                 <div>
+                   <div className="flex items-center gap-2 mb-3">
+                     <Package className="w-5 h-5 text-purple-400" />
+                     <h4 className="text-white font-semibold text-sm">Struktura Komórek</h4>
+                   </div>
+                   {errors.structure && (
+                     <div className="flex items-center gap-2 text-red-400 text-sm mb-2">
+                       <AlertCircle className="w-4 h-4" />
+                       {errors.structure}
+                     </div>
+                   )}
+                   
+                   <div className="relative">
+                     <button
+                       type="button"
+                       onClick={() => setIsStructureOpen(!isStructureOpen)}
+                       className="w-full flex items-center justify-between p-3 bg-gray-800/30 border border-gray-600 rounded-lg text-white hover:border-gray-500 transition-all duration-200"
+                     >
+                       <span className={formData.structure ? 'text-white' : 'text-gray-400'}>
+                         {formData.structure ? getStructureName(formData.structure) : 'Wybierz strukturę komórek'}
+                       </span>
+                       <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isStructureOpen ? 'rotate-180' : ''}`} />
+                     </button>
+                     
+                     {isStructureOpen && (
+                       <div className="absolute top-full left-0 right-0 mt-1 bg-gray-800 border border-gray-600 rounded-lg z-10 max-h-48 overflow-y-auto">
+                         <button
+                           type="button"
+                           onClick={() => handleStructureChange('romb')}
+                           className="w-full text-left p-3 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0"
+                         >
+                           <div className="text-white font-medium">Romb</div>
+                           <div className="text-gray-400 text-xs">Klasyczna struktura rombowa</div>
+                         </button>
+                         <button
+                           type="button"
+                           onClick={() => handleStructureChange('plaster-miodu')}
+                           className="w-full text-left p-3 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0"
+                         >
+                           <div className="text-white font-medium">Plaster Miodu</div>
+                           <div className="text-gray-400 text-xs">Nowoczesna struktura sześciokątna</div>
+                         </button>
+                       </div>
+                     )}
+                   </div>
+              </div>
 
-                  {/* Kolor Materiału */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <Palette className="w-5 h-5 text-blue-400" />
-                      <h4 className="text-white font-semibold text-sm">Kolor Materiału</h4>
-                    </div>
-                    <div className="grid grid-cols-6 gap-2">
-                      {MATERIAL_COLOR_OPTIONS.map((option) => (
-                        <div
-                          key={option.value}
-                          onClick={() => handleMaterialColorSelect(option.value)}
-                          className={`w-12 h-12 rounded-full border-2 cursor-pointer color-circle shadow-lg ${
-                            formData.materialColor === option.value
-                              ? 'border-white ring-2 ring-blue-500 selected'
-                              : 'border-gray-600 hover:border-gray-400'
-                          } ${getColorClass(option.value)}`}
-                          title={option.label}
-                        />
-                      ))}
-                    </div>
-                    {formData.materialColor && (
-                      <p className="text-gray-300 text-xs mt-2">
-                        Wybrane: {getColorName(formData.materialColor, MATERIAL_COLOR_OPTIONS)}
-                      </p>
-                    )}
+              {/* Color Selection */}
+              <div className="space-y-4">
+                {/* Kolor Obszycia */}
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <Palette className="w-5 h-5 text-red-400" />
+                    <h4 className="text-white font-semibold text-sm">Kolor Obszycia</h4>
                   </div>
+                  <div className="grid grid-cols-6 gap-2">
+                    {BORDER_COLOR_OPTIONS.map((option) => (
+                      <div
+                        key={option.value}
+                        onClick={() => handleBorderColorSelect(option.value)}
+                          className={`w-12 h-12 rounded-full border-2 cursor-pointer color-circle shadow-lg ${
+                          formData.borderColor === option.value
+                            ? 'border-white ring-2 ring-red-500 selected'
+                            : 'border-gray-600 hover:border-gray-400'
+                        } ${getColorClass(option.value)}`}
+                        title={option.label}
+                      />
+                    ))}
+                  </div>
+                  {formData.borderColor && (
+                    <p className="text-gray-300 text-xs mt-2">
+                      Wybrane: {getColorName(formData.borderColor, BORDER_COLOR_OPTIONS)}
+                    </p>
+                  )}
                 </div>
 
-                {/* Podpiętka Gratis */}
-                <div className="bg-gradient-to-r from-green-500/10 to-green-600/10 border border-green-500/20 rounded-xl p-4">
-                  <div className="flex items-start gap-3">
-                    <input
-                      type="checkbox"
-                      id="includeHooks"
-                      checked={includeHooks}
-                      onChange={(e) => setIncludeHooks(e.target.checked)}
-                      className="mt-1 w-4 h-4 text-red-500 bg-gray-800 border-gray-600 rounded focus:ring-red-500 focus:ring-2"
-                    />
-                    <div>
-                      <label htmlFor="includeHooks" className="flex items-center gap-2 text-green-400 font-medium cursor-pointer">
-                        <Gift className="w-5 h-5" />
-                        Dodaj podpiętkę GRATIS do kompletu
-                      </label>
-                      <p className="text-gray-300 text-sm mt-1">
-                        Otrzymasz dodatkowo podpiętkę wartą 29 zł całkowicie za darmo!
-                      </p>
+                {/* Kolor Materiału */}
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <Palette className="w-5 h-5 text-blue-400" />
+                    <h4 className="text-white font-semibold text-sm">Kolor Materiału</h4>
+                  </div>
+                  <div className="grid grid-cols-6 gap-2">
+                    {MATERIAL_COLOR_OPTIONS.map((option) => (
+                      <div
+                        key={option.value}
+                        onClick={() => handleMaterialColorSelect(option.value)}
+                          className={`w-12 h-12 rounded-full border-2 cursor-pointer color-circle shadow-lg ${
+                          formData.materialColor === option.value
+                            ? 'border-white ring-2 ring-blue-500 selected'
+                            : 'border-gray-600 hover:border-gray-400'
+                        } ${getColorClass(option.value)}`}
+                        title={option.label}
+                      />
+                    ))}
+                  </div>
+                  {formData.materialColor && (
+                    <p className="text-gray-300 text-xs mt-2">
+                      Wybrane: {getColorName(formData.materialColor, MATERIAL_COLOR_OPTIONS)}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              {/* Podpiętka Gratis */}
+              <div className="bg-gradient-to-r from-green-500/10 to-green-600/10 border border-green-500/20 rounded-xl p-4">
+                <div className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="includeHooks"
+                    checked={includeHooks}
+                    onChange={(e) => setIncludeHooks(e.target.checked)}
+                    className="mt-1 w-4 h-4 text-red-500 bg-gray-800 border-gray-600 rounded focus:ring-red-500 focus:ring-2"
+                  />
+                  <div>
+                    <label htmlFor="includeHooks" className="flex items-center gap-2 text-green-400 font-medium cursor-pointer">
+                      <Gift className="w-5 h-5" />
+                      Dodaj podpiętkę GRATIS do kompletu
+                    </label>
+                    <p className="text-gray-300 text-sm mt-1">
+                      Otrzymasz dodatkowo podpiętkę wartą 29 zł całkowicie za darmo!
+                    </p>
                     </div>
                   </div>
                 </div>
@@ -671,11 +793,16 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
                       {getMatTypeName(formData.industry)}
                     </p>
                   )}
-                  {formData.completeness && (
-                    <p className="text-gray-300 text-xs">
-                      {getCompletenessName(formData.completeness)}
-                    </p>
-                  )}
+                                     {formData.completeness && (
+                     <p className="text-gray-300 text-xs">
+                       {getCompletenessName(formData.completeness)}
+                     </p>
+                   )}
+                   {formData.structure && (
+                     <p className="text-gray-300 text-xs">
+                       {getStructureName(formData.structure)}
+                     </p>
+                   )}
                 </div>
 
                 {/* Product Preview */}
@@ -716,12 +843,18 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
                       <span className="text-gray-300 text-xs">Typ: {getMatTypeName(formData.industry)}</span>
                     </div>
                   )}
-                  {formData.completeness && (
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      <span className="text-gray-300 text-xs">Komplet: {getCompletenessName(formData.completeness)}</span>
-                    </div>
-                  )}
+                                     {formData.completeness && (
+                     <div className="flex items-center gap-2">
+                       <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                       <span className="text-gray-300 text-xs">Komplet: {getCompletenessName(formData.completeness)}</span>
+                     </div>
+                   )}
+                   {formData.structure && (
+                     <div className="flex items-center gap-2">
+                       <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                       <span className="text-gray-300 text-xs">Struktura: {getStructureName(formData.structure)}</span>
+                     </div>
+                   )}
                   {formData.borderColor && (
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
@@ -792,15 +925,15 @@ export default function LeadCaptureForm({ formData, onFormDataChange }: LeadCapt
                   {isSubmitting ? 'Wysyłanie...' : 'Wyślij i Otrzymaj Rabat -30%'}
                 </button>
               )}
-            </div>
+              </div>
 
-            {/* Privacy Notice */}
-            <p className="text-xs text-gray-500 text-center">
-              By submitting this form, you agree to our{' '}
-              <a href="#" className="text-red-400 hover:text-red-300 underline">privacy policy</a>{' '}
-              and consent to being contacted about our services.
-            </p>
-          </form>
+              {/* Privacy Notice */}
+              <p className="text-xs text-gray-500 text-center">
+                By submitting this form, you agree to our{' '}
+                <a href="#" className="text-red-400 hover:text-red-300 underline">privacy policy</a>{' '}
+                and consent to being contacted about our services.
+              </p>
+            </form>
         </div>
       </div>
     </div>

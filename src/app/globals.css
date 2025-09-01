@@ -124,11 +124,11 @@
 /* Custom styles for lead capture page */
 @layer components {
   .form-input-focus {
-    @apply focus:ring-2 focus:ring-red-500 focus:border-transparent;
+    @apply focus:ring-2 focus:ring-white focus:border-white;
   }
   
   .form-input-hover {
-    @apply hover:border-red-500/50;
+    @apply hover:border-white;
   }
   
   .btn-primary {

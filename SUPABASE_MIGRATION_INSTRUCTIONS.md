@@ -1,7 +1,7 @@
-# 🔧 Migracja Supabase - Dodanie kolumn kolorów
+# 🔧 Migracja Supabase - Dodanie kolumn kolorów i struktury
 
 ## 📋 **Problem**
-Tabela `Lead` w Supabase nie zawiera kolumn `borderColor` i `materialColor`, które są potrzebne do zapisywania wybranych kolorów przez klientów.
+Tabela `Lead` w Supabase nie zawiera kolumn `borderColor`, `materialColor` i `structure`, które są potrzebne do zapisywania wybranych kolorów i struktury komórek przez klientów.
 
 ## 🛠️ **Rozwiązanie**
 
@@ -15,7 +15,7 @@ Tabela `Lead` w Supabase nie zawiera kolumn `borderColor` i `materialColor`, kt�
 Skopiuj i wykonaj następujący kod SQL:
 
 ```sql
--- Migration: Add borderColor and materialColor columns to Lead table
+-- Migration: Add borderColor, materialColor and structure columns to Lead table
 -- Date: 2024-12-19
 
 -- Add borderColor column
@@ -26,13 +26,19 @@ ADD COLUMN "borderColor" TEXT DEFAULT NULL;
 ALTER TABLE "Lead"
 ADD COLUMN "materialColor" TEXT DEFAULT NULL;
 
+-- Add structure column
+ALTER TABLE "Lead"
+ADD COLUMN "structure" TEXT DEFAULT NULL;
+
 -- Add comments for documentation
 COMMENT ON COLUMN "Lead"."borderColor" IS 'Kolor obszycia dywanika wybrany przez klienta';
 COMMENT ON COLUMN "Lead"."materialColor" IS 'Kolor materiału dywanika wybrany przez klienta';
+COMMENT ON COLUMN "Lead"."structure" IS 'Struktura komórek dywanika (romb/plaster miodu)';
 
 -- Create indexes for better performance (optional)
 CREATE INDEX IF NOT EXISTS "idx_lead_border_color" ON "Lead" ("borderColor");
 CREATE INDEX IF NOT EXISTS "idx_lead_material_color" ON "Lead" ("materialColor");
+CREATE INDEX IF NOT EXISTS "idx_lead_structure" ON "Lead" ("structure");
 ```
 
 ### **Krok 3: Weryfikacja**
@@ -43,7 +49,7 @@ Sprawdź czy kolumny zostały dodane:
 SELECT column_name, data_type, is_nullable 
 FROM information_schema.columns 
 WHERE table_name = 'Lead' 
-AND column_name IN ('borderColor', 'materialColor');
+AND column_name IN ('borderColor', 'materialColor', 'structure');
 ```
 
 ### **Krok 4: Test API**
@@ -57,17 +63,18 @@ curl -X POST http://localhost:3001/api/leads \
     "phone": "123456789",
     "email": "test@test.com",
     "borderColor": "czarne",
-    "materialColor": "beige"
+    "materialColor": "beige",
+    "structure": "romb"
   }'
 ```
 
 ## ✅ **Oczekiwany rezultat**
 
 Po wykonaniu migracji:
-- ✅ Kolumny `borderColor` i `materialColor` istnieją w tabeli `Lead`
+- ✅ Kolumny `borderColor`, `materialColor` i `structure` istnieją w tabeli `Lead`
 - ✅ API `/api/leads` akceptuje nowe pola
-- ✅ Leady są zapisywane z informacjami o kolorach
-- ✅ Frontend może wysyłać dane kolorów
+- ✅ Leady są zapisywane z informacjami o kolorach i strukturze
+- ✅ Frontend może wysyłać dane kolorów i struktury komórek
 
 ## 🚨 **Rozwiązywanie problemów**
 
@@ -76,7 +83,7 @@ Po wykonaniu migracji:
 -- Sprawdź czy kolumny już istnieją
 SELECT column_name FROM information_schema.columns 
 WHERE table_name = 'Lead' 
-AND column_name IN ('borderColor', 'materialColor');
+AND column_name IN ('borderColor', 'materialColor', 'structure');
 ```
 
 ### **Błąd: "permission denied"**
@@ -101,8 +108,9 @@ CREATE TABLE "Lead" (
   "jobTitle" TEXT,
   "industry" TEXT,
   "completeness" TEXT,
-  "borderColor" TEXT DEFAULT NULL,      -- NOWA KOLUMNA
-  "materialColor" TEXT DEFAULT NULL,    -- NOWA KOLUMNA
+  "structure" TEXT DEFAULT NULL,       -- NOWA KOLUMNA
+  "borderColor" TEXT DEFAULT NULL,     -- NOWA KOLUMNA
+  "materialColor" TEXT DEFAULT NULL,   -- NOWA KOLUMNA
   CONSTRAINT "Lead_pkey" PRIMARY KEY ("id")
 );
 ```
@@ -117,4 +125,4 @@ Po wykonaniu migracji:
 
 ---
 
-**✅ Po wykonaniu tej migracji, aplikacja będzie w pełni funkcjonalna z wyborem kolorów!**
+**✅ Po wykonaniu tej migracji, aplikacja będzie w pełni funkcjonalna z wyborem kolorów i struktury komórek!**

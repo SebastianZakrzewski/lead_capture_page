@@ -38,6 +38,7 @@ export async function POST(request: NextRequest) {
       jobTitle: body.jobTitle || undefined,
       industry: body.industry || undefined,
       completeness: body.completeness || undefined,
+      structure: body.structure || undefined,
       borderColor: body.borderColor || undefined,
       materialColor: body.materialColor || undefined,
       includeHooks: body.includeHooks || false,

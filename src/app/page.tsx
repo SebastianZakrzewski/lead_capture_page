@@ -18,6 +18,7 @@ export default function Home() {
     jobTitle: '',
     industry: '',
     completeness: '',
+    structure: '',
     borderColor: '',
     materialColor: '',
     message: ''

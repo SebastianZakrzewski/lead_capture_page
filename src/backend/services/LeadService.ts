@@ -9,31 +9,38 @@ export class LeadService {
     jobTitle?: string;
     industry?: string;
     completeness?: string;
+    structure?: string;
     borderColor?: string;
     materialColor?: string;
     includeHooks?: boolean;
   }) {
     try {
+      const insertData = {
+        id: `lead_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+        firstName: leadData.firstName,
+        phone: leadData.phone,
+        company: leadData.company || null,
+        jobTitle: leadData.jobTitle || null,
+        industry: leadData.industry || null,
+        completeness: leadData.completeness || null,
+        structure: leadData.structure || null,
+        borderColor: leadData.borderColor || null,
+        materialColor: leadData.materialColor || null,
+        includeHooks: leadData.includeHooks || false,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      };
+      
       const { data, error } = await supabase
         .from('Lead')
-        .insert({
-          id: crypto.randomUUID(),
-          firstName: leadData.firstName,
-          phone: leadData.phone,
-          company: leadData.company || null,
-          jobTitle: leadData.jobTitle || null,
-          industry: leadData.industry || null,
-          completeness: leadData.completeness || null,
-          borderColor: leadData.borderColor || null,
-          materialColor: leadData.materialColor || null,
-          includeHooks: leadData.includeHooks || false,
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-        })
+        .insert(insertData)
         .select()
         .single();
 
-      if (error) throw error;
+      if (error) {
+        throw error;
+      }
+      
       return { success: true, data };
     } catch (error) {
       console.error('Błąd podczas zapisywania leada:', error);
@@ -99,6 +106,7 @@ export class LeadService {
     jobTitle: string;
     industry: string;
     completeness: string;
+    structure: string;
     borderColor: string;
     materialColor: string;
     includeHooks: boolean;
