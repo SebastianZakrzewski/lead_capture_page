@@ -63,9 +63,10 @@ const InputField = ({
 
 interface LeadCaptureFormProps {
   onFormDataChange?: (formData: LeadFormData) => void;
+  onFormSubmission?: (submitted: boolean) => void;
 }
 
-export default function LeadCaptureForm({ onFormDataChange }: LeadCaptureFormProps) {
+export default function LeadCaptureForm({ onFormDataChange, onFormSubmission }: LeadCaptureFormProps) {
   const [formData, setFormData] = useState<LeadFormData>({
     firstName: '',
     lastName: '',
@@ -146,6 +147,11 @@ export default function LeadCaptureForm({ onFormDataChange }: LeadCaptureFormPro
     // Natychmiast pokaż stronę sukcesu
     setIsSubmitted(true);
     
+    // Powiadom komponent nadrzędny o wysłaniu formularza
+    if (onFormSubmission) {
+      onFormSubmission(true);
+    }
+    
     try {
       // Przygotuj dane z informacjami o śledzeniu
       const leadData = prepareLeadSubmissionData(formData);
@@ -215,6 +221,11 @@ export default function LeadCaptureForm({ onFormDataChange }: LeadCaptureFormPro
           message: ''
         });
         setErrors({});
+        
+        // Powiadom komponent nadrzędny o zresetowaniu formularza
+        if (onFormSubmission) {
+          onFormSubmission(false);
+        }
       }, 3000);
     } catch (error) {
       console.error('Error in handleSubmit:', error);

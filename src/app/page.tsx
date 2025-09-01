@@ -23,6 +23,8 @@ export default function Home() {
     message: ''
   });
 
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+
   useEffect(() => {
     // Inicjalizuj śledzenie przy pierwszym wejściu
     saveUtmParams();
@@ -30,6 +32,10 @@ export default function Home() {
 
   const handleFormDataChange = (newFormData: LeadFormData) => {
     setFormData(newFormData);
+  };
+
+  const handleFormSubmission = (submitted: boolean) => {
+    setIsFormSubmitted(submitted);
   };
 
   return (
@@ -72,16 +78,21 @@ export default function Home() {
         {/* Main Content */}
         <main className="relative z-10 pb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <div className={`grid gap-8 items-start ${isFormSubmitted ? 'grid-cols-1' : 'grid-cols-1 lg:grid-cols-2'}`}>
               {/* Form */}
-              <div className="order-2 lg:order-1">
-                <LeadCaptureForm onFormDataChange={handleFormDataChange} />
+              <div className={`${isFormSubmitted ? 'max-w-2xl mx-auto' : 'order-2 lg:order-1'}`}>
+                <LeadCaptureForm 
+                  onFormDataChange={handleFormDataChange} 
+                  onFormSubmission={handleFormSubmission}
+                />
               </div>
               
-              {/* Preview */}
-              <div className="order-1 lg:order-2">
-                <CarMatPreview formData={formData} onFormDataChange={handleFormDataChange} />
-              </div>
+              {/* Preview - ukryj gdy formularz jest wysłany */}
+              {!isFormSubmitted && (
+                <div className="order-1 lg:order-2">
+                  <CarMatPreview formData={formData} onFormDataChange={handleFormDataChange} />
+                </div>
+              )}
             </div>
           </div>
         </main>
