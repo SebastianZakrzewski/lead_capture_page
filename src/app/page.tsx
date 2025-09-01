@@ -4,6 +4,7 @@ import Image from 'next/image';
 import LeadCaptureForm from '@/components/LeadCaptureForm';
 import CarMatPreview from '@/components/CarMatPreview';
 import FacebookPixel from '@/components/FacebookPixel';
+import CountdownTimer from '@/components/CountdownTimer';
 import { useEffect, useState } from 'react';
 import { saveUtmParams } from '@/utils/tracking';
 import { LeadFormData } from '@/types/lead';
@@ -71,6 +72,11 @@ export default function Home() {
               <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-6">
                 Wpisz dane swojego auta – przygotujemy indywidualną wycenę z rabatem ważnym tylko dziś.
               </p>
+              
+              {/* Countdown Timer */}
+              <div className="max-w-md mx-auto mb-8">
+                <CountdownTimer />
+              </div>
             </div>
           </div>
         </header>
