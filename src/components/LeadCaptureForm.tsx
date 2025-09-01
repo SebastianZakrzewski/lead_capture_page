@@ -256,20 +256,22 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
 
    return (
      <div className="max-w-2xl mx-auto w-full">
-       <div className="card-glass rounded-3xl p-8 shadow-2xl w-full">
-         {/* Form Header */}
-         <div className="text-center mb-8">
-           <div className="w-20 h-20 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-float">
-             <Mail className="w-10 h-10 text-white" />
+       <div className="relative">
+         <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-red-600 to-red-500 rounded-3xl blur-sm opacity-50 animate-pulse"></div>
+         <div className="relative card-glass rounded-3xl p-8 shadow-2xl w-full border border-red-500/30">
+           {/* Form Header */}
+           <div className="text-center mb-8">
+             <div className="w-20 h-20 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-float">
+               <Mail className="w-10 h-10 text-white" />
+             </div>
+             <h2 className="text-3xl font-bold text-white mb-4">Wypełnij formularz</h2>
+             <p className="text-gray-400 text-lg">
+               Podaj dane swojego auta i otrzymaj indywidualną wycenę z rabatem -30%
+             </p>
            </div>
-           <h2 className="text-3xl font-bold text-white mb-4">Wypełnij formularz</h2>
-           <p className="text-gray-400 text-lg">
-             Podaj dane swojego auta i otrzymaj indywidualną wycenę z rabatem -30%
-           </p>
-         </div>
 
-         {/* Form */}
-         <form onSubmit={handleSubmit} className="space-y-6">
+           {/* Form */}
+           <form onSubmit={handleSubmit} className="space-y-6">
                       {/* Personal Information */}
             <div className="space-y-6">
                             <InputField
@@ -399,5 +401,6 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
          </form>
        </div>
      </div>
+   </div>
    );
  }

@@ -50,8 +50,8 @@ export async function runColorMigration() {
     if (checkError) {
       console.log('Nie można sprawdzić istniejących kolumn, kontynuuję migrację...');
     } else {
-      const hasBorderColor = existingColumns?.some((col: any) => col.column_name === 'borderColor');
-      const hasMaterialColor = existingColumns?.some((col: any) => col.column_name === 'materialColor');
+      const hasBorderColor = existingColumns?.some((col: { column_name: string }) => col.column_name === 'borderColor');
+      const hasMaterialColor = existingColumns?.some((col: { column_name: string }) => col.column_name === 'materialColor');
       
       if (hasBorderColor && hasMaterialColor) {
         return { 

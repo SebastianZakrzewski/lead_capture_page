@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { Car, Star, Shield, Zap, Palette } from 'lucide-react';
 import { BORDER_COLOR_OPTIONS, MATERIAL_COLOR_OPTIONS } from '@/types/lead';
 
@@ -120,7 +119,9 @@ export default function CarMatPreview({ formData, onFormDataChange }: CarMatPrev
 
   return (
     <div className="max-w-md mx-auto w-full">
-      <div className="card-glass rounded-3xl p-6 shadow-2xl w-full h-full">
+      <div className="relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-red-600 to-red-500 rounded-3xl blur-sm opacity-50 animate-pulse"></div>
+        <div className="relative card-glass rounded-3xl p-6 shadow-2xl w-full h-full border border-red-500/30">
         {/* Preview Header */}
         <div className="text-center mb-6">
           <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
@@ -250,5 +251,6 @@ export default function CarMatPreview({ formData, onFormDataChange }: CarMatPrev
         )}
       </div>
     </div>
+  </div>
   );
 }
