@@ -123,7 +123,7 @@ export async function GET() {
       success: true,
       current: stats.success ? stats.data : null,
       expected: expectedStats,
-      ready: stats.success && stats.data.total === expectedStats.total
+      ready: stats.success && stats.data && stats.data.total === expectedStats.total
     });
   } catch (error) {
     console.error('Błąd w seed GET API:', error);

@@ -4,6 +4,4 @@ export { useCallback, useEffect, useState, useRef, useMemo, useContext } from 'r
 
 // Custom hooks can be added here in the future
 
-export { useLocalStorage } from './useLocalStorage';
-export { useOnlineStatus } from './useOnlineStatus';
 export { useCarMatImage } from './useCarMatImage';

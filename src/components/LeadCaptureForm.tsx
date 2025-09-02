@@ -26,11 +26,11 @@ interface InputFieldProps {
 
 const InputField: React.FC<InputFieldProps> = ({ label, name, icon: Icon, placeholder, error, value, onChange }) => {
   return (
-    <div className="space-y-2">
+  <div className="space-y-2">
       <label className="flex items-center gap-2 text-white font-medium text-sm">
         {Icon && <Icon className="w-4 h-4 text-red-400" />}
         {label}
-      </label>
+    </label>
       <input
         type="text"
         name={name}
@@ -91,14 +91,14 @@ const PhoneInput: React.FC<PhoneInputProps> = ({ value, onChange, error }) => {
           error ? 'border-red-500' : 'border-gray-600'
         }`}
       />
-      {error && (
-        <div className="flex items-center gap-2 text-red-400 text-sm">
-          <AlertCircle className="w-4 h-4" />
-          {error}
-        </div>
-      )}
-    </div>
-  );
+    {error && (
+      <div className="flex items-center gap-2 text-red-400 text-sm">
+        <AlertCircle className="w-4 h-4" />
+        {error}
+      </div>
+    )}
+  </div>
+);
 };
 
 const ProgressBar: React.FC<{ currentStep: number; totalSteps: number }> = ({ currentStep, totalSteps }) => {
@@ -245,7 +245,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     } else {
       const cleanedPhone = formData.phone.replace(/\D/g, '');
       if (cleanedPhone.length < 9) {
-        newErrors.phone = 'Wprowadź poprawny numer telefonu (min. 9 cyfr)';
+      newErrors.phone = 'Wprowadź poprawny numer telefonu (min. 9 cyfr)';
         }
       }
     }
@@ -454,10 +454,10 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
           <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-float">
             <CheckCircle className="w-8 h-8 text-white" />
           </div>
-          <h3 className="text-2xl font-bold text-white mb-4">Dziękujemy!</h3>
+                      <h3 className="text-2xl font-bold text-white mb-4">Dziękujemy!</h3>
           <p className="text-gray-300 text-lg mb-4">
-            Twoje dane zostały pomyślnie wysłane. Skontaktujemy się z Tobą w ciągu 24 godzin!
-          </p>
+              Twoje dane zostały pomyślnie wysłane. Skontaktujemy się z Tobą w ciągu 24 godzin!
+            </p>
 
           {!isOnline && (
             <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-4 mt-4">
@@ -467,45 +467,45 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
               </div>
             </div>
           )}
-        </div>
-      </div>
-    );
-  }
+         </div>
+       </div>
+     );
+   }
 
   const renderStep = () => {
     switch (currentStep) {
       case 1:
-  return (
+   return (
           <div className="space-y-6">
             <div className="text-center mb-6">
               <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <User className="w-8 h-8 text-white" />
-              </div>
+           </div>
               <h3 className="text-xl font-bold text-white mb-2">Podaj swoje dane</h3>
               <p className="text-gray-300">Zacznijmy od podstawowych informacji</p>
-            </div>
+         </div>
 
-                <InputField
-                  label="Imię"
-                  name="firstName"
-                  icon={User}
-                  placeholder="Wprowadź swoje imię"
-                  error={errors.firstName}
-                  value={formData.firstName}
-                  onChange={handleInputChange}
-                />
+                            <InputField
+                 label="Imię"
+                 name="firstName"
+                 icon={User}
+                 placeholder="Wprowadź swoje imię"
+                 error={errors.firstName}
+                 value={formData.firstName}
+                 onChange={handleInputChange}
+               />
 
                 <PhoneInput
                   value={formData.phone}
                   onChange={handlePhoneChange}
-                  error={errors.phone}
-                />
-              </div>
+               error={errors.phone}
+             />
+           </div>
         );
 
       case 2:
         return (
-              <div className="space-y-6">
+           <div className="space-y-6">
             <div className="text-center mb-6">
               <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Building className="w-8 h-8 text-white" />
@@ -513,26 +513,26 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
               <h3 className="text-xl font-bold text-white mb-2">O Twoim aucie</h3>
               <p className="text-gray-300">Pomóż nam dopasować idealne dywaniki</p>
             </div>
-            
-                <InputField
-                  label="Marka i Model Auta"
-                  name="company"
-                  icon={Building}
-                  placeholder="np. BMW X5, Audi A4"
-              error={errors.company}
-                  value={formData.company}
-                  onChange={handleInputChange}
-                />
 
-                <InputField
-                  label="Rok Produkcji"
-                  name="jobTitle"
-                  placeholder="np. 2020"
+             <InputField
+               label="Marka i Model Auta"
+               name="company"
+               icon={Building}
+               placeholder="np. BMW X5, Audi A4"
+              error={errors.company}
+               value={formData.company}
+               onChange={handleInputChange}
+             />
+
+             <InputField
+               label="Rok Produkcji"
+               name="jobTitle"
+               placeholder="np. 2020"
               error={errors.jobTitle}
-                  value={formData.jobTitle}
-                  onChange={handleInputChange}
-                />
-              </div>
+               value={formData.jobTitle}
+               onChange={handleInputChange}
+             />
+           </div>
         );
 
       case 3:
@@ -545,10 +545,10 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
               <h3 className="text-xl font-bold text-white mb-2">Wybór produktu</h3>
               <p className="text-gray-300">Wybierz typ, komplet i kolory dywaników</p>
             </div>
-            
+
             <div className="max-w-4xl mx-auto">
               {/* Configuration with Preview */}
-              <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700">
+              <div className="bg-gray-800/30 rounded-xl p-4 border border-gray-700">
                 <div className="text-center mb-6">
                   <div className="flex items-center justify-center gap-2 text-white mb-2">
                     <Package className="w-6 h-6 text-red-400" />
@@ -556,262 +556,36 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                   </div>
                   <p className="text-gray-300 text-sm">Wybierz opcje i zobacz podgląd</p>
                 </div>
-                
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  {/* Left Side - Configuration Options */}
-                  <div className="space-y-6">
-                    {/* Mat Type Selection */}
-                    <div>
-                      <div className="flex items-center gap-2 mb-3">
-                        <Package className="w-5 h-5 text-red-400" />
-                        <h4 className="text-white font-semibold text-sm">Typ Dywaników</h4>
-                      </div>
-                      {errors.industry && (
-                        <div className="flex items-center gap-2 text-red-400 text-sm mb-2">
-                          <AlertCircle className="w-4 h-4" />
-                          {errors.industry}
-                        </div>
-                      )}
-                      
-                      <div className="relative">
-                        <button
-                          type="button"
-                          onClick={() => setIsMatTypeOpen(!isMatTypeOpen)}
-                          className="w-full flex items-center justify-between p-3 bg-gray-800/30 border border-gray-600 rounded-lg text-white hover:border-gray-500 transition-all duration-200"
-                        >
-                          <span className={formData.industry ? 'text-white' : 'text-gray-400'}>
-                            {formData.industry ? getMatTypeName(formData.industry) : 'Wybierz typ dywaników'}
-                          </span>
-                          <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isMatTypeOpen ? 'rotate-180' : ''}`} />
-                        </button>
-                        
-                        {isMatTypeOpen && (
-                          <div className="absolute top-full left-0 right-0 mt-1 bg-gray-800 border border-gray-600 rounded-lg z-10 max-h-48 overflow-y-auto">
-                            <button
-                              type="button"
-                              onClick={() => handleMatTypeChange('3d-evapremium-z-rantami')}
-                              className="w-full text-left p-3 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0"
-                            >
-                              <div className="text-white font-medium">3D EVAPREMIUM Z RANTAMI</div>
-                              <div className="text-gray-400 text-xs">Najwyższa jakość z dodatkowym zabezpieczeniem</div>
-                            </button>
-                            <button
-                              type="button"
-                              onClick={() => handleMatTypeChange('3d-evapremium-bez-rantow')}
-                              className="w-full text-left p-3 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0"
-                            >
-                              <div className="text-white font-medium">3D EVAPREMIUM BEZ RANTÓW</div>
-                              <div className="text-gray-400 text-xs">Klasyczny design z nowoczesną technologią</div>
-                            </button>
-                          </div>
-                        )}
-                      </div>
+                {/* Product Preview moved to top */}
+                <div className="space-y-4 mb-4">
+                  {/* Car Info */}
+                  <div className="bg-gray-700/30 rounded-lg p-3 mb-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Car className="w-4 h-4 text-red-400" />
+                      <h5 className="text-white font-medium text-sm">
+                        {formData.company || 'Twój samochód'} {formData.jobTitle && `(${formData.jobTitle})`}
+                      </h5>
                     </div>
-
-                    {/* Completeness Selection */}
-                    <div>
-                      <div className="flex items-center gap-2 mb-3">
-                        <Package className="w-5 h-5 text-green-400" />
-                        <h4 className="text-white font-semibold text-sm">Rodzaj Kompletu</h4>
-                      </div>
-                      {errors.completeness && (
-                        <div className="flex items-center gap-2 text-red-400 text-sm mb-2">
-                          <AlertCircle className="w-4 h-4" />
-                          {errors.completeness}
-                        </div>
-                      )}
-                      
-                      <div className="relative">
-                    <button
-                      type="button"
-                      onClick={() => setIsCompletenessOpen(!isCompletenessOpen)}
-                      className="w-full flex items-center justify-between p-3 bg-gray-800/30 border border-gray-600 rounded-lg text-white hover:border-gray-500 transition-all duration-200"
-                    >
-                      <span className={formData.completeness ? 'text-white' : 'text-gray-400'}>
-                        {formData.completeness ? getCompletenessName(formData.completeness) : 'Wybierz rodzaj kompletu'}
-                      </span>
-                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isCompletenessOpen ? 'rotate-180' : ''}`} />
-                    </button>
-                    
-                    {isCompletenessOpen && (
-                      <div className="absolute top-full left-0 right-0 mt-1 bg-gray-800 border border-gray-600 rounded-lg z-10 max-h-48 overflow-y-auto">
-                        <button
-                          type="button"
-                          onClick={() => handleCompletenessChange('dywanik-kierowcy')}
-                          className="w-full text-left p-3 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0"
-                        >
-                          <div className="text-white font-medium">Dywanik Kierowcy (1 szt.)</div>
-                          <div className="text-gray-400 text-xs">Podstawowa ochrona</div>
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => handleCompletenessChange('przod')}
-                          className="w-full text-left p-3 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0"
-                        >
-                          <div className="text-white font-medium">Przód (2 szt.)</div>
-                          <div className="text-gray-400 text-xs">Ochrona przednich siedzeń</div>
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => handleCompletenessChange('przod-tyl')}
-                          className="w-full text-left p-3 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0"
-                        >
-                          <div className="text-white font-medium">Przód + Tył (4 szt.)</div>
-                          <div className="text-gray-400 text-xs">Kompletna ochrona wnętrza</div>
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => handleCompletenessChange('przod-tyl-bagaznik')}
-                          className="w-full text-left p-3 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0"
-                        >
-                          <div className="text-white font-medium">Przód + Tył + Bagażnik (5 szt.)</div>
-                          <div className="text-gray-400 text-xs">Maksymalna ochrona całego auta</div>
-                        </button>
-                      </div>
+                    {formData.industry && (
+                      <p className="text-gray-300 text-xs">
+                        {getMatTypeName(formData.industry)}
+                      </p>
                     )}
-                    </div>
-                    </div>
-
-                    {/* Structure Selection */}
-                    <div>
-                      <div className="flex items-center gap-2 mb-3">
-                        <Package className="w-5 h-5 text-purple-400" />
-                        <h4 className="text-white font-semibold text-sm">Struktura Komórek</h4>
-                      </div>
-                      {errors.structure && (
-                        <div className="flex items-center gap-2 text-red-400 text-sm mb-2">
-                          <AlertCircle className="w-4 h-4" />
-                          {errors.structure}
-                        </div>
-                      )}
-                      
-                      <div className="relative">
-                        <button
-                          type="button"
-                          onClick={() => setIsStructureOpen(!isStructureOpen)}
-                          className="w-full flex items-center justify-between p-3 bg-gray-800/30 border border-gray-600 rounded-lg text-white hover:border-gray-500 transition-all duration-200"
-                        >
-                          <span className={formData.structure ? 'text-white' : 'text-gray-400'}>
-                            {formData.structure ? getStructureName(formData.structure) : 'Wybierz strukturę komórek'}
-                          </span>
-                          <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isStructureOpen ? 'rotate-180' : ''}`} />
-                        </button>
-                        
-                        {isStructureOpen && (
-                          <div className="absolute top-full left-0 right-0 mt-1 bg-gray-800 border border-gray-600 rounded-lg z-10 max-h-48 overflow-y-auto">
-                            <button
-                              type="button"
-                              onClick={() => handleStructureChange('romb')}
-                              className="w-full text-left p-3 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0"
-                            >
-                              <div className="text-white font-medium">Romb</div>
-                              <div className="text-gray-400 text-xs">Klasyczna struktura rombowa</div>
-                            </button>
-                            <button
-                              type="button"
-                              onClick={() => handleStructureChange('plaster-miodu')}
-                              className="w-full text-left p-3 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0"
-                            >
-                              <div className="text-white font-medium">Plaster Miodu</div>
-                              <div className="text-gray-400 text-xs">Nowoczesna struktura sześciokątna</div>
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Color Selection */}
-                    <div>
-                      <div className="space-y-4">
-                        {/* Kolor Obszycia */}
-                        <div>
-                          <div className="flex items-center gap-2 mb-3">
-                            <Palette className="w-5 h-5 text-red-400" />
-                            <h4 className="text-white font-semibold text-sm">Kolor Obszycia</h4>
-                          </div>
-                          <div className="grid grid-cols-6 gap-2">
-                            {BORDER_COLOR_OPTIONS.map((option) => (
-                              <div
-                                key={option.value}
-                                onClick={() => handleBorderColorSelect(option.value)}
-                                className={`w-12 h-12 rounded-full border-2 cursor-pointer color-circle shadow-lg ${
-                                  formData.borderColor === option.value
-                                    ? 'border-white ring-2 ring-red-500 selected'
-                                    : 'border-gray-600 hover:border-gray-400'
-                                } ${getColorClass(option.value)}`}
-                                title={option.label}
-                              />
-                            ))}
-                          </div>
-                          {formData.borderColor && (
-                            <p className="text-gray-300 text-xs mt-2">
-                              Wybrane: {getColorName(formData.borderColor, BORDER_COLOR_OPTIONS)}
-                            </p>
-                          )}
-                        </div>
-
-                        {/* Kolor Materiału */}
-                        <div>
-                          <div className="flex items-center gap-2 mb-3">
-                            <Palette className="w-5 h-5 text-blue-400" />
-                            <h4 className="text-white font-semibold text-sm">Kolor Materiału</h4>
-                          </div>
-                          <div className="grid grid-cols-6 gap-2">
-                            {MATERIAL_COLOR_OPTIONS.map((option) => (
-                              <div
-                                key={option.value}
-                                onClick={() => handleMaterialColorSelect(option.value)}
-                                className={`w-12 h-12 rounded-full border-2 cursor-pointer color-circle shadow-lg ${
-                                  formData.materialColor === option.value
-                                    ? 'border-white ring-2 ring-blue-500 selected'
-                                    : 'border-gray-600 hover:border-gray-400'
-                                } ${getColorClass(option.value)}`}
-                                title={option.label}
-                              />
-                            ))}
-                          </div>
-                          {formData.materialColor && (
-                            <p className="text-gray-300 text-xs mt-2">
-                              Wybrane: {getColorName(formData.materialColor, MATERIAL_COLOR_OPTIONS)}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-
-
+                    {formData.completeness && (
+                      <p className="text-gray-300 text-xs">
+                        {getCompletenessName(formData.completeness)}
+                      </p>
+                    )}
+                    {formData.structure && (
+                      <p className="text-gray-300 text-xs">
+                        {getStructureName(formData.structure)}
+                      </p>
+                    )}
                   </div>
 
-                  {/* Right Side - Product Preview */}
-                  <div className="space-y-4">
-                                        {/* Car Info */}
-                    <div className="bg-gray-700/30 rounded-lg p-3 mb-4">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Car className="w-4 h-4 text-red-400" />
-                        <h5 className="text-white font-medium text-sm">
-                          {formData.company || 'Twój samochód'} {formData.jobTitle && `(${formData.jobTitle})`}
-                        </h5>
-                      </div>
-                      {formData.industry && (
-                        <p className="text-gray-300 text-xs">
-                          {getMatTypeName(formData.industry)}
-                        </p>
-                      )}
-                      {formData.completeness && (
-                        <p className="text-gray-300 text-xs">
-                          {getCompletenessName(formData.completeness)}
-                        </p>
-                      )}
-                      {formData.structure && (
-                        <p className="text-gray-300 text-xs">
-                          {getStructureName(formData.structure)}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Product Preview */}
-                    <div className="w-full aspect-square rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
+                  {/* Product Preview */}
+                  <div className="w-full aspect-square rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
                     {isImageLoading ? (
-                      // Loading state
                       <div className="flex items-center justify-center w-full h-full">
                         <Loader2 className="w-40 h-40 text-red-400 animate-spin" />
                       </div>
@@ -868,70 +642,278 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                       </>
                     )}
                   </div>
-                      
-                      {imageData?.imagePath ? (
-                        <div className="space-y-2 mt-2">
-                          <p className="text-gray-300 text-sm text-center">
-                            Rzeczywiste zdjęcie produktu
-                          </p>
-                          <div className="flex items-center justify-center gap-2 text-green-400 text-sm">
-                            <Image className="w-4 h-4" />
-                            <span>Zdjęcie z bazy danych</span>
-                          </div>
+
+                  {/* Selected Options Summary */}
+                  <div className="space-y-2 mt-2">
+                    {formData.industry && (
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                        <span className="text-gray-300 text-xs">Typ: {getMatTypeName(formData.industry)}</span>
+                      </div>
+                    )}
+                    {formData.completeness && (
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-gray-300 text-xs">Komplet: {getCompletenessName(formData.completeness)}</span>
+                      </div>
+                    )}
+                    {formData.structure && (
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                        <span className="text-gray-300 text-xs">Struktura: {getStructureName(formData.structure)}</span>
+                      </div>
+                    )}
+                    {formData.borderColor && (
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span className="text-gray-300 text-xs">Obszycie: {getColorName(formData.borderColor, BORDER_COLOR_OPTIONS)}</span>
+                      </div>
+                    )}
+                    {formData.materialColor && (
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                        <span className="text-gray-300 text-xs">Materiał: {getColorName(formData.materialColor, MATERIAL_COLOR_OPTIONS)}</span>
+                      </div>
+                    )}
+                    {/* Status zdjęcia dywanika */}
+                    {formData.industry && formData.structure && formData.materialColor && formData.borderColor && (
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                        <span className="text-gray-300 text-xs">
+                          {isImageLoading ? 'Ładowanie zdjęcia...' : 
+                           imageData?.imagePath ? 'Zdjęcie: Znalezione' : 
+                           imageError ? 'Zdjęcie: Błąd' : 'Zdjęcie: Sprawdzanie...'}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                </div>
+                
+                <div className="grid grid-cols-1 gap-4">
+                  {/* Left Side - Configuration Options */}
+                  <div className="space-y-6">
+                    {/* Mat Type Selection */}
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <Package className="w-5 h-5 text-red-400" />
+                        <h4 className="text-white font-semibold text-sm">Typ Dywaników</h4>
+                      </div>
+                      {errors.industry && (
+                        <div className="flex items-center gap-2 text-red-400 text-sm mb-2">
+                          <AlertCircle className="w-4 h-4" />
+                          {errors.industry}
                         </div>
-                      ) : (
-                        <p className="text-gray-300 text-sm text-center mt-2">
-                          {isImageLoading ? 'Ładowanie zdjęcia...' : 'Wybierz opcje, aby zobaczyć zdjęcie'}
-                        </p>
                       )}
+                      
+                      <div className="relative">
+                        <button
+                          type="button"
+                          onClick={() => setIsMatTypeOpen(!isMatTypeOpen)}
+                          className="w-full flex items-center justify-between p-2 bg-gray-800/30 border border-gray-600 rounded-md text-white text-sm hover:border-gray-500 transition-all duration-200"
+                        >
+                          <span className={formData.industry ? 'text-white' : 'text-gray-400'}>
+                            {formData.industry ? getMatTypeName(formData.industry) : 'Wybierz typ dywaników'}
+                          </span>
+                          <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${isMatTypeOpen ? 'rotate-180' : ''}`} />
+                        </button>
+                        
+                        {isMatTypeOpen && (
+                          <div className="absolute top-full left-0 right-0 mt-1 bg-gray-800 border border-gray-600 rounded-md z-10 max-h-48 overflow-y-auto">
+                            <button
+                              type="button"
+                              onClick={() => handleMatTypeChange('3d-evapremium-z-rantami')}
+                              className="w-full text-left p-2 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0 text-sm"
+                            >
+                              <div className="text-white font-medium">3D EVAPREMIUM Z RANTAMI</div>
+                              <div className="text-gray-400 text-xs">Najwyższa jakość z dodatkowym zabezpieczeniem</div>
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => handleMatTypeChange('3d-evapremium-bez-rantow')}
+                              className="w-full text-left p-2 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0 text-sm"
+                            >
+                              <div className="text-white font-medium">3D EVAPREMIUM BEZ RANTÓW</div>
+                              <div className="text-gray-400 text-xs">Klasyczny design z nowoczesną technologią</div>
+                            </button>
+                          </div>
+                        )}
+                      </div>
                     </div>
 
-                    {/* Selected Options Summary */}
-                    <div className="space-y-2 mt-4">
-                                        {formData.industry && (
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                          <span className="text-gray-300 text-xs">Typ: {getMatTypeName(formData.industry)}</span>
-                        </div>
-                      )}
-                      {formData.completeness && (
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                          <span className="text-gray-300 text-xs">Komplet: {getCompletenessName(formData.completeness)}</span>
-                        </div>
-                      )}
-                      {formData.structure && (
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                          <span className="text-gray-300 text-xs">Struktura: {getStructureName(formData.structure)}</span>
-                        </div>
-                      )}
-                      {formData.borderColor && (
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                          <span className="text-gray-300 text-xs">Obszycie: {getColorName(formData.borderColor, BORDER_COLOR_OPTIONS)}</span>
-                        </div>
-                      )}
-                      {formData.materialColor && (
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                          <span className="text-gray-300 text-xs">Materiał: {getColorName(formData.materialColor, MATERIAL_COLOR_OPTIONS)}</span>
+                    {/* Completeness Selection */}
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <Package className="w-5 h-5 text-green-400" />
+                        <h4 className="text-white font-semibold text-sm">Rodzaj Kompletu</h4>
+                      </div>
+                      {errors.completeness && (
+                        <div className="flex items-center gap-2 text-red-400 text-sm mb-2">
+                          <AlertCircle className="w-4 h-4" />
+                          {errors.completeness}
                         </div>
                       )}
                       
-                      {/* Status zdjęcia dywanika */}
-                      {formData.industry && formData.structure && formData.materialColor && formData.borderColor && (
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                          <span className="text-gray-300 text-xs">
-                            {isImageLoading ? 'Ładowanie zdjęcia...' : 
-                             imageData?.imagePath ? 'Zdjęcie: Znalezione' : 
-                             imageError ? 'Zdjęcie: Błąd' : 'Zdjęcie: Sprawdzanie...'}
-                          </span>
+                      <div className="relative">
+                    <button
+                      type="button"
+                      onClick={() => setIsCompletenessOpen(!isCompletenessOpen)}
+                      className="w-full flex items-center justify-between p-2 bg-gray-800/30 border border-gray-600 rounded-md text-white text-sm hover:border-gray-500 transition-all duration-200"
+                    >
+                      <span className={formData.completeness ? 'text-white' : 'text-gray-400'}>
+                        {formData.completeness ? getCompletenessName(formData.completeness) : 'Wybierz rodzaj kompletu'}
+                      </span>
+                      <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${isCompletenessOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    
+                    {isCompletenessOpen && (
+                      <div className="absolute top-full left-0 right-0 mt-1 bg-gray-800 border border-gray-600 rounded-md z-10 max-h-48 overflow-y-auto">
+                        <button
+                          type="button"
+                          onClick={() => handleCompletenessChange('dywanik-kierowcy')}
+                          className="w-full text-left p-2 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0 text-sm"
+                        >
+                          <div className="text-white font-medium">Dywanik Kierowcy (1 szt.)</div>
+                          <div className="text-gray-400 text-xs">Podstawowa ochrona</div>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleCompletenessChange('przod')}
+                          className="w-full text-left p-2 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0 text-sm"
+                        >
+                          <div className="text-white font-medium">Przód (2 szt.)</div>
+                          <div className="text-gray-400 text-xs">Ochrona przednich siedzeń</div>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleCompletenessChange('przod-tyl')}
+                          className="w-full text-left p-2 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0 text-sm"
+                        >
+                          <div className="text-white font-medium">Przód + Tył (4 szt.)</div>
+                          <div className="text-gray-400 text-xs">Kompletna ochrona wnętrza</div>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleCompletenessChange('przod-tyl-bagaznik')}
+                          className="w-full text-left p-2 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0 text-sm"
+                        >
+                          <div className="text-white font-medium">Przód + Tył + Bagażnik (5 szt.)</div>
+                          <div className="text-gray-400 text-xs">Maksymalna ochrona całego auta</div>
+                        </button>
+                      </div>
+                    )}
+                    </div>
+                    </div>
+
+                    {/* Structure Selection */}
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <Package className="w-5 h-5 text-purple-400" />
+                        <h4 className="text-white font-semibold text-sm">Struktura Komórek</h4>
+                      </div>
+                      {errors.structure && (
+                        <div className="flex items-center gap-2 text-red-400 text-sm mb-2">
+                          <AlertCircle className="w-4 h-4" />
+                          {errors.structure}
                         </div>
                       )}
+                      
+                      <div className="relative">
+                        <button
+                          type="button"
+                          onClick={() => setIsStructureOpen(!isStructureOpen)}
+                          className="w-full flex items-center justify-between p-2 bg-gray-800/30 border border-gray-600 rounded-md text-white text-sm hover:border-gray-500 transition-all duration-200"
+                        >
+                          <span className={formData.structure ? 'text-white' : 'text-gray-400'}>
+                            {formData.structure ? getStructureName(formData.structure) : 'Wybierz strukturę komórek'}
+                          </span>
+                          <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${isStructureOpen ? 'rotate-180' : ''}`} />
+                        </button>
+                        
+                        {isStructureOpen && (
+                          <div className="absolute top-full left-0 right-0 mt-1 bg-gray-800 border border-gray-600 rounded-md z-10 max-h-48 overflow-y-auto">
+                            <button
+                              type="button"
+                              onClick={() => handleStructureChange('romb')}
+                              className="w-full text-left p-2 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0 text-sm"
+                            >
+                              <div className="text-white font-medium">Romb</div>
+                              <div className="text-gray-400 text-xs">Klasyczna struktura rombowa</div>
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => handleStructureChange('plaster-miodu')}
+                              className="w-full text-left p-2 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0 text-sm"
+                            >
+                              <div className="text-white font-medium">Plaster Miodu</div>
+                              <div className="text-gray-400 text-xs">Nowoczesna struktura sześciokątna</div>
+                            </button>
+                          </div>
+                        )}
+                      </div>
                     </div>
+
+                    {/* Color Selection */}
+                    <div>
+                      <div className="space-y-4">
+                        {/* Kolor Obszycia */}
+                        <div>
+                          <div className="flex items-center gap-2 mb-3">
+                            <Palette className="w-5 h-5 text-red-400" />
+                            <h4 className="text-white font-semibold text-sm">Kolor Obszycia</h4>
+                          </div>
+                          <div className="grid grid-cols-6 gap-3">
+                            {BORDER_COLOR_OPTIONS.map((option) => (
+                              <div
+                                key={option.value}
+                                onClick={() => handleBorderColorSelect(option.value)}
+                                className={`w-6 h-6 rounded-full border-2 cursor-pointer color-circle shadow-lg ${
+                                  formData.borderColor === option.value
+                                    ? 'border-white ring-2 ring-red-500 selected'
+                                    : 'border-gray-600 hover:border-gray-400'
+                                } ${getColorClass(option.value)}`}
+                                title={option.label}
+                              />
+                            ))}
+                          </div>
+                          {formData.borderColor && (
+                            <p className="text-gray-300 text-xs mt-2">
+                              Wybrane: {getColorName(formData.borderColor, BORDER_COLOR_OPTIONS)}
+                            </p>
+                          )}
+                        </div>
+
+                        {/* Kolor Materiału */}
+                        <div>
+                          <div className="flex items-center gap-2 mb-3">
+                            <Palette className="w-5 h-5 text-blue-400" />
+                            <h4 className="text-white font-semibold text-sm">Kolor Materiału</h4>
+                          </div>
+                          <div className="grid grid-cols-6 gap-3">
+                            {MATERIAL_COLOR_OPTIONS.map((option) => (
+                              <div
+                                key={option.value}
+                                onClick={() => handleMaterialColorSelect(option.value)}
+                                className={`w-6 h-6 rounded-full border-2 cursor-pointer color-circle shadow-lg ${
+                                  formData.materialColor === option.value
+                                    ? 'border-white ring-2 ring-blue-500 selected'
+                                    : 'border-gray-600 hover:border-gray-400'
+                                } ${getColorClass(option.value)}`}
+                                title={option.label}
+                              />
+                            ))}
+                          </div>
+                          {formData.materialColor && (
+                            <p className="text-gray-300 text-xs mt-2">
+                              Wybrane: {getColorName(formData.materialColor, MATERIAL_COLOR_OPTIONS)}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+
+
                   </div>
+
                 </div>
               </div>
             </div>
@@ -982,7 +964,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                   <ArrowRight className="w-4 h-4" />
                 </button>
               ) : (
-                <button
+                                                         <button
                   type="submit"
                   disabled={!formData.firstName.trim() || !formData.phone.trim() || isSubmitting}
                   className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -990,17 +972,17 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                   {isSubmitting ? 'Wysyłanie...' : 'Wyślij i Otrzymaj Rabat -30%'}
                 </button>
               )}
-              </div>
+            </div>
 
-              {/* Privacy Notice */}
-              <p className="text-xs text-gray-500 text-center">
-                By submitting this form, you agree to our{' '}
-                <a href="#" className="text-red-400 hover:text-red-300 underline">privacy policy</a>{' '}
-                and consent to being contacted about our services.
-              </p>
-            </form>
+           {/* Privacy Notice */}
+           <p className="text-xs text-gray-500 text-center">
+             By submitting this form, you agree to our{' '}
+             <a href="#" className="text-red-400 hover:text-red-300 underline">privacy policy</a>{' '}
+             and consent to being contacted about our services.
+           </p>
+         </form>
         </div>
-      </div>
-    </div>
-  );
-}
+       </div>
+     </div>
+   );
+ }
