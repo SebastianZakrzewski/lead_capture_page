@@ -25,7 +25,6 @@ export type BorderColorOption =
   | 'black'
   | 'blue'
   | 'yellow'
-  | 'lime'
   | 'orange'
   | 'purple'
   | 'brown'
@@ -67,7 +66,6 @@ export const BORDER_COLOR_OPTIONS: { value: BorderColorOption; label: string }[]
   { value: 'black', label: 'Czarne' },
   { value: 'blue', label: 'Niebieskie' },
   { value: 'yellow', label: 'Żółte' },
-  { value: 'lime', label: 'Zielone' },
   { value: 'orange', label: 'Pomarańczowe' },
   { value: 'purple', label: 'Fioletowe' },
   { value: 'brown', label: 'Brązowe' },
