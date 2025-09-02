@@ -7,6 +7,8 @@ import { LeadService } from '@/backend/services/LeadService';
 import { BORDER_COLOR_OPTIONS, MATERIAL_COLOR_OPTIONS } from '@/types/lead';
 import { Mail, User, Building, CheckCircle, WifiOff, Phone, AlertCircle, Package, Palette, ChevronDown, ArrowLeft, ArrowRight, Car, Shield, Loader2, Image } from 'lucide-react';
 import { useCarMatImage } from '@/hooks/useCarMatImage';
+import { generateImagePath } from '@/utils/carmatMapper';
+import { CarMatData } from '@/types/carMat';
 
 interface LeadCaptureFormProps {
   formData: LeadFormData;
@@ -125,6 +127,10 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isOnline, setIsOnline] = useState(true);
+  const [showStep3Errors, setShowStep3Errors] = useState(false);
+  const [touchedMatType, setTouchedMatType] = useState(false);
+  const [touchedCompleteness, setTouchedCompleteness] = useState(false);
+  const [touchedStructure, setTouchedStructure] = useState(false);
 
   
   // Step management
@@ -138,6 +144,46 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
 
   // Hook do zarządzania zdjęciami dywaników
   const { imageData, isLoading: isImageLoading, error: imageError, findImage, clearImage } = useCarMatImage();
+
+  const mapUiColorToPl = useCallback((formColor: string): string => {
+    const colorMapping: Record<string, string> = {
+      red: 'czerwony',
+      black: 'czarny',
+      blue: 'niebieski',
+      yellow: 'żółty',
+      lime: 'zielony',
+      orange: 'pomarańczowy',
+      purple: 'fioletowy',
+      brown: 'brązowy',
+      maroon: 'bordowy',
+      pink: 'różowy',
+      darkblue: 'ciemnoniebieski',
+      darkgreen: 'ciemnozielony',
+      darkgrey: 'ciemnoszary',
+      lightgrey: 'jasnoszary',
+      beige: 'beżowy',
+      lightbeige: 'jasnobeżowy',
+      white: 'biały',
+      ivory: 'kość słoniowa',
+    };
+    return colorMapping[formColor] || formColor;
+  }, []);
+
+  const fallbackImagePath = React.useMemo(() => {
+    if (!formData.industry || !formData.structure || !formData.materialColor || !formData.borderColor) {
+      return '';
+    }
+    const matType = formData.industry === '3d-evapremium-z-rantami' ? '3d-with-rims' : '3d-without-rims';
+    const cellStructure = formData.structure === 'romb' ? 'rhombus' : 'honeycomb';
+    const materialColorPl = mapUiColorToPl(formData.materialColor);
+    const borderColorPl = mapUiColorToPl(formData.borderColor);
+    return generateImagePath({
+      matType,
+      cellStructure,
+      materialColor: materialColorPl,
+      borderColor: borderColorPl,
+    } as Omit<CarMatData, 'imagePath'>);
+  }, [formData.industry, formData.structure, formData.materialColor, formData.borderColor, mapUiColorToPl]);
 
   useEffect(() => {
     const handleOnlineStatus = () => {
@@ -153,6 +199,16 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
       window.removeEventListener('offline', handleOnlineStatus);
     };
   }, []);
+
+  // Hide step 3 errors until the user interacts or attempts submit
+  useEffect(() => {
+    if (currentStep === 3) {
+      setShowStep3Errors(false);
+      setTouchedMatType(false);
+      setTouchedCompleteness(false);
+      setTouchedStructure(false);
+    }
+  }, [currentStep]);
 
   // Automatyczne wyszukiwanie zdjęcia dywanika gdy wszystkie opcje są wybrane
   useEffect(() => {
@@ -409,6 +465,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
+    setShowStep3Errors(true);
     
     if (!validateCurrentStep()) {
       return;
@@ -566,10 +623,11 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                       <div className="flex items-center justify-center w-full h-full">
                         <Loader2 className="w-40 h-40 text-red-400 animate-spin" />
                       </div>
-                    ) : imageData?.imagePath ? (
+                    ) : (imageData?.imagePath || fallbackImagePath) ? (
                       <>
+                        {fallbackImagePath && console && console.log && console.log('Fallback image path:', fallbackImagePath)}
                         <img
-                          src={imageData.imagePath}
+                          src={(imageData?.imagePath || fallbackImagePath).replace(/ /g, '%20')}
                           alt={`Dywanik ${getMatTypeName(formData.industry || '')} ${getStructureName(formData.structure || '')} ${getColorName(formData.materialColor || '', MATERIAL_COLOR_OPTIONS)} ${getColorName(formData.borderColor || '', BORDER_COLOR_OPTIONS)}`}
                           className="w-full h-full object-cover rounded-lg"
                           onError={(e) => {
@@ -633,7 +691,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                         <Package className="w-5 h-5 text-red-400" />
                         <h4 className="text-white font-semibold text-sm">Typ Dywaników</h4>
                       </div>
-                      {errors.industry && (
+                      {errors.industry && (showStep3Errors || touchedMatType) && (
                         <div className="flex items-center gap-2 text-red-400 text-sm mb-2">
                           <AlertCircle className="w-4 h-4" />
                           {errors.industry}
@@ -643,7 +701,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                       <div className="relative">
                         <button
                           type="button"
-                          onClick={() => setIsMatTypeOpen(!isMatTypeOpen)}
+                          onClick={() => { setIsMatTypeOpen(!isMatTypeOpen); setTouchedMatType(true); }}
                           className="w-full flex items-center justify-between p-2 bg-gray-800/30 border border-gray-600 rounded-md text-white text-sm hover:border-gray-500 transition-all duration-200"
                         >
                           <span className={formData.industry ? 'text-white' : 'text-gray-400'}>
@@ -681,7 +739,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                         <Package className="w-5 h-5 text-green-400" />
                         <h4 className="text-white font-semibold text-sm">Rodzaj Kompletu</h4>
                       </div>
-                      {errors.completeness && (
+                      {errors.completeness && (showStep3Errors || touchedCompleteness) && (
                         <div className="flex items-center gap-2 text-red-400 text-sm mb-2">
                           <AlertCircle className="w-4 h-4" />
                           {errors.completeness}
@@ -691,7 +749,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                       <div className="relative">
                     <button
                       type="button"
-                      onClick={() => setIsCompletenessOpen(!isCompletenessOpen)}
+                      onClick={() => { setIsCompletenessOpen(!isCompletenessOpen); setTouchedCompleteness(true); }}
                       className="w-full flex items-center justify-between p-2 bg-gray-800/30 border border-gray-600 rounded-md text-white text-sm hover:border-gray-500 transition-all duration-200"
                     >
                       <span className={formData.completeness ? 'text-white' : 'text-gray-400'}>
@@ -745,7 +803,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                         <Package className="w-5 h-5 text-purple-400" />
                         <h4 className="text-white font-semibold text-sm">Struktura Komórek</h4>
                       </div>
-                      {errors.structure && (
+                      {errors.structure && (showStep3Errors || touchedStructure) && (
                         <div className="flex items-center gap-2 text-red-400 text-sm mb-2">
                           <AlertCircle className="w-4 h-4" />
                           {errors.structure}
@@ -755,7 +813,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                       <div className="relative">
                         <button
                           type="button"
-                          onClick={() => setIsStructureOpen(!isStructureOpen)}
+                          onClick={() => { setIsStructureOpen(!isStructureOpen); setTouchedStructure(true); }}
                           className="w-full flex items-center justify-between p-2 bg-gray-800/30 border border-gray-600 rounded-md text-white text-sm hover:border-gray-500 transition-all duration-200"
                         >
                           <span className={formData.structure ? 'text-white' : 'text-gray-400'}>
