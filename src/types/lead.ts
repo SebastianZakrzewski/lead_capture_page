@@ -54,7 +54,6 @@ export type MaterialColorOption =
   | 'darkblue'
   | 'darkgreen'
   | 'darkgrey'
-  | 'lightgrey'
   | 'beige'
   | 'lightbeige'
   | 'white'
@@ -96,7 +95,6 @@ export const MATERIAL_COLOR_OPTIONS: { value: MaterialColorOption; label: string
   { value: 'darkblue', label: 'Granatowe' },
   { value: 'darkgreen', label: 'Ciemnozielone' },
   { value: 'darkgrey', label: 'Ciemnoszare' },
-  { value: 'lightgrey', label: 'Jasnoszare' },
   { value: 'beige', label: 'Beżowe' },
   { value: 'lightbeige', label: 'Jasnobeżowe' },
   { value: 'white', label: 'Białe' },
