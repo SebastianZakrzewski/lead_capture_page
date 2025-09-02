@@ -558,30 +558,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                 </div>
                 {/* Product Preview moved to top */}
                 <div className="space-y-4 mb-4">
-                  {/* Car Info */}
-                  <div className="bg-gray-700/30 rounded-lg p-3 mb-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Car className="w-4 h-4 text-red-400" />
-                      <h5 className="text-white font-medium text-sm">
-                        {formData.company || 'Twój samochód'} {formData.jobTitle && `(${formData.jobTitle})`}
-                      </h5>
-                    </div>
-                    {formData.industry && (
-                      <p className="text-gray-300 text-xs">
-                        {getMatTypeName(formData.industry)}
-                      </p>
-                    )}
-                    {formData.completeness && (
-                      <p className="text-gray-300 text-xs">
-                        {getCompletenessName(formData.completeness)}
-                      </p>
-                    )}
-                    {formData.structure && (
-                      <p className="text-gray-300 text-xs">
-                        {getStructureName(formData.structure)}
-                      </p>
-                    )}
-                  </div>
+                  {/* Car Info removed per request */}
 
                   {/* Product Preview */}
                   <div className="w-full aspect-square rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
@@ -643,50 +620,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                     )}
                   </div>
 
-                  {/* Selected Options Summary */}
-                  <div className="space-y-2 mt-2">
-                    {formData.industry && (
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                        <span className="text-gray-300 text-xs">Typ: {getMatTypeName(formData.industry)}</span>
-                      </div>
-                    )}
-                    {formData.completeness && (
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                        <span className="text-gray-300 text-xs">Komplet: {getCompletenessName(formData.completeness)}</span>
-                      </div>
-                    )}
-                    {formData.structure && (
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                        <span className="text-gray-300 text-xs">Struktura: {getStructureName(formData.structure)}</span>
-                      </div>
-                    )}
-                    {formData.borderColor && (
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                        <span className="text-gray-300 text-xs">Obszycie: {getColorName(formData.borderColor, BORDER_COLOR_OPTIONS)}</span>
-                      </div>
-                    )}
-                    {formData.materialColor && (
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                        <span className="text-gray-300 text-xs">Materiał: {getColorName(formData.materialColor, MATERIAL_COLOR_OPTIONS)}</span>
-                      </div>
-                    )}
-                    {/* Status zdjęcia dywanika */}
-                    {formData.industry && formData.structure && formData.materialColor && formData.borderColor && (
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                        <span className="text-gray-300 text-xs">
-                          {isImageLoading ? 'Ładowanie zdjęcia...' : 
-                           imageData?.imagePath ? 'Zdjęcie: Znalezione' : 
-                           imageError ? 'Zdjęcie: Błąd' : 'Zdjęcie: Sprawdzanie...'}
-                        </span>
-                      </div>
-                    )}
-                  </div>
+                  {/* Summary removed per request */}
                 </div>
                 </div>
                 
