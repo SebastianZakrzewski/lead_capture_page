@@ -171,8 +171,11 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
   }, []);
 
   const fallbackImagePath = React.useMemo(() => {
+    // Placeholder zdjęcie - czarny dywanik z czerwonym obszyciem z rantami
+    const placeholderImage = '/konfigurator/dywaniki/3d/plaster/czerwone/5os-3d-honey-black-red.webp';
+    
     if (!formData.industry || !formData.structure || !formData.materialColor || !formData.borderColor) {
-      return '';
+      return placeholderImage;
     }
     const matType = formData.industry === '3d-evapremium-z-rantami' ? '3d-with-rims' : '3d-without-rims';
     const cellStructure = formData.structure === 'romb' ? 'rhombus' : 'honeycomb';

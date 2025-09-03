@@ -130,7 +130,7 @@ export function generateAllCarMatCombinations(): CarMatData[] {
 
   // 2. Dywaniki klasyczne - plaster miodu
   const honeycombBorderColors = [
-    'beżowy', 'bordowy', 'brązowy', 'ciemnoszary', 'czerwony', 
+    'beżowy', 'bordowy', 'brązowy', 'ciemnoszary', 'czarny', 'czerwony', 
     'fioletowy', 'ciemnoniebieski', 'jasnoszary', 'niebieski', 
     'pomarańczowy', 'różowy', 'zielony', 'żółty'
   ];
@@ -278,7 +278,11 @@ export function generateImagePath(carMatData: Omit<CarMatData, 'imagePath'>): st
     const borderFolder = Object.keys(BORDER_COLOR_MAPPING).find(
       key => BORDER_COLOR_MAPPING[key] === borderColor
     ) || borderColor.toLowerCase();
-    return `/konfigurator/dywaniki/klasyczne/plaster miodu/plaster ${borderFolder} obszycie/5os-classic-honey-${materialColorKey}-${borderColorKey}.webp`;
+    
+    // Specjalne mapowanie dla katalogu "plaster czarne" (bez "obszycie")
+    const folderName = borderColor === 'czarny' ? 'plaster czarne' : `plaster ${borderFolder} obszycie`;
+    
+    return `/konfigurator/dywaniki/klasyczne/plaster miodu/${folderName}/5os-classic-honey-${materialColorKey}-${borderColorKey}.webp`;
   }
   
   if (matType === '3d-without-rims' && cellStructure === 'rhombus') {

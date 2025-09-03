@@ -1,0 +1,72 @@
+[
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "czarny",
+    "borderColor": "czarny",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne/5os-classic-honey-black-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "niebieski",
+    "borderColor": "czarny",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne/5os-classic-honey-blue-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brązowy",
+    "borderColor": "czarny",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne/5os-classic-honey-brown-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ciemnoniebieski",
+    "borderColor": "czarny",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne/5os-classic-honey-darkblue-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ciemnozielony",
+    "borderColor": "czarny",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne/5os-classic-honey-darkgreen-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ciemnoszary",
+    "borderColor": "czarny",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne/5os-classic-honey-darkgrey-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "kość słoniowa",
+    "borderColor": "czarny",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne/5os-classic-honey-ivory-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "jasnobeżowy",
+    "borderColor": "czarny",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne/5os-classic-honey-lightbeige-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "bordowy",
+    "borderColor": "czarny",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne/5os-classic-honey-maroon-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "czerwony",
+    "borderColor": "czarny",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne/5os-classic-honey-red-black.webp"
+  }
+]
