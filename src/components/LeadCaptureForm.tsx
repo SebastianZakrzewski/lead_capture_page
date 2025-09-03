@@ -767,7 +767,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                     {/* Completeness Selection */}
                     <div>
                       <div className="flex items-center gap-2 mb-3">
-                        <Package className="w-5 h-5 text-green-400" />
+                        <Package className="w-5 h-5 text-red-400" />
                         <h4 className="text-white font-semibold text-sm">Rodzaj Kompletu</h4>
                       </div>
                       
