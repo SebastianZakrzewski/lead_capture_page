@@ -1,16 +1,16 @@
 'use client';
 
 import React, { useState, useCallback, useEffect } from 'react';
-import { LeadFormData, LeadSubmissionResponse } from '@/types/lead';
+import { LeadFormData } from '@/types/lead';
 import { LeadService } from '@/backend/services/LeadService';
 import { prepareLeadSubmissionData } from '@/utils/tracking';
 
 import { BORDER_COLOR_OPTIONS, MATERIAL_COLOR_OPTIONS } from '@/types/lead';
-import { Mail, User, Building, CheckCircle, WifiOff, Phone, AlertCircle, Package, Palette, ChevronDown, ArrowLeft, ArrowRight, Car, Shield, Loader2, Image } from 'lucide-react';
+import { User, Building, CheckCircle, WifiOff, Phone, AlertCircle, Package, Palette, ChevronDown, ArrowLeft, ArrowRight, Shield, Loader2 } from 'lucide-react';
 import { useCarMatImage } from '@/hooks/useCarMatImage';
 import { generateImagePath, getAvailableMaterialColors } from '@/utils/carmatMapper';
 import { CarMatData } from '@/types/carMat';
-import { trackLeadSubmission, trackFormView, trackFormStart, trackLeadSubmissionWithData } from './FacebookPixel';
+import { trackFormView, trackFormStart, trackLeadSubmissionWithData } from './FacebookPixel';
 
 interface LeadCaptureFormProps {
   formData: LeadFormData;
@@ -129,10 +129,10 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isOnline, setIsOnline] = useState(true);
-  const [showStep3Errors, setShowStep3Errors] = useState(false);
-  const [touchedMatType, setTouchedMatType] = useState(false);
-  const [touchedCompleteness, setTouchedCompleteness] = useState(false);
-  const [touchedStructure, setTouchedStructure] = useState(false);
+  // const [showStep3Errors, setShowStep3Errors] = useState(false);
+  // const [touchedMatType, setTouchedMatType] = useState(false);
+  // const [touchedCompleteness, setTouchedCompleteness] = useState(false);
+  // const [touchedStructure, setTouchedStructure] = useState(false);
 
   // Ankieta feedbackowa
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
@@ -220,10 +220,10 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
   // Hide step 3 errors until the user interacts or attempts submit
   useEffect(() => {
     if (currentStep === 3) {
-      setShowStep3Errors(false);
-      setTouchedMatType(false);
-      setTouchedCompleteness(false);
-      setTouchedStructure(false);
+      // setShowStep3Errors(false);
+      // setTouchedMatType(false);
+      // setTouchedCompleteness(false);
+      // setTouchedStructure(false);
     }
   }, [currentStep]);
 
@@ -546,7 +546,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
-    setShowStep3Errors(true);
+    // setShowStep3Errors(true);
     
     if (!validateCurrentStep()) {
       return;
@@ -586,7 +586,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
         }, 100);
         
         // Śledź pomyślne wysłanie formularza z danymi trackingowymi
-        trackLeadSubmissionWithData(leadPayload);
+        trackLeadSubmissionWithData(leadPayload as unknown as Record<string, unknown>);
         
         console.log('🎉 Ustawiam isSubmitted na true');
         setIsSubmitted(true);
@@ -613,7 +613,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
   }, [formData, validateCurrentStep, onFormSubmission]);
 
   // Obsługa ankiety feedbackowej
-  const handleFeedbackSubmit = async (feedbackData: any, isCompleted: boolean = false) => {
+  const handleFeedbackSubmit = async (feedbackData: Record<string, unknown>, isCompleted: boolean = false) => {
     try {
       console.log('🔄 Rozpoczynam aktualizację feedbacku...', { feedbackData, isCompleted, leadId });
       console.log('🔍 Stan leadId:', leadId);
@@ -650,12 +650,12 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
           includeHooks: formData.includeHooks || false,
           
           // Dane feedbackowe
-          feedbackEaseOfChoice: feedbackData?.easeOfChoice,
-          feedbackFormClarity: feedbackData?.formClarity,
-          feedbackLoadingSpeed: feedbackData?.loadingSpeed,
-          feedbackOverallExperience: feedbackData?.overallExperience,
-          feedbackWouldRecommend: feedbackData?.wouldRecommend,
-          feedbackAdditionalComments: feedbackData?.additionalComments
+          feedbackEaseOfChoice: feedbackData?.easeOfChoice as number | undefined,
+          feedbackFormClarity: feedbackData?.formClarity as number | undefined,
+          feedbackLoadingSpeed: feedbackData?.loadingSpeed as number | undefined,
+          feedbackOverallExperience: feedbackData?.overallExperience as number | undefined,
+          feedbackWouldRecommend: feedbackData?.wouldRecommend as number | undefined,
+          feedbackAdditionalComments: feedbackData?.additionalComments as string | undefined
         });
 
         const response = await LeadService.createLead(leadPayloadWithFeedback);
@@ -673,12 +673,12 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
 
       // Przygotuj dane feedbacku
       const feedbackPayload = {
-        feedbackEaseOfChoice: feedbackData?.easeOfChoice,
-        feedbackFormClarity: feedbackData?.formClarity,
-        feedbackLoadingSpeed: feedbackData?.loadingSpeed,
-        feedbackOverallExperience: feedbackData?.overallExperience,
-        feedbackWouldRecommend: feedbackData?.wouldRecommend,
-        feedbackAdditionalComments: feedbackData?.additionalComments
+        feedbackEaseOfChoice: feedbackData?.easeOfChoice as number | undefined,
+        feedbackFormClarity: feedbackData?.formClarity as number | undefined,
+        feedbackLoadingSpeed: feedbackData?.loadingSpeed as number | undefined,
+        feedbackOverallExperience: feedbackData?.overallExperience as number | undefined,
+        feedbackWouldRecommend: feedbackData?.wouldRecommend as number | undefined,
+        feedbackAdditionalComments: feedbackData?.additionalComments as string | undefined
       };
 
       console.log('📦 Przygotowane dane feedbacku:', feedbackPayload);
@@ -707,7 +707,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     setShowFeedbackModal(false);
     console.log('🔄 Modal feedbacku zamknięty');
     // Wyślij null do bazy danych (pominięta ankieta)
-    handleFeedbackSubmit(null, false);
+    handleFeedbackSubmit({} as Record<string, unknown>, false);
   };
 
 
@@ -724,17 +724,12 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
             Twoje dane zostały pomyślnie wysłane.
             {feedbackCompleted && (
               <span className="block mt-2 text-green-400 font-medium">
-                Otrzymasz podpietkę gratis wraz z dywanikami!
+                Otrzymasz podpietkę gratis przy zakupie dywaników!
               </span>
             )}
           </p>
           <p className="text-gray-300 text-lg mb-6">
             Skontaktujemy się z Tobą w ciągu 24 godzin.
-            {feedbackCompleted && (
-              <span className="block mt-1 text-sm text-gray-400">
-                W sprawie odbioru podpietki i dywaników.
-              </span>
-            )}
           </p>
 
           {!isOnline && (
@@ -959,7 +954,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                       <div className="relative">
                         <button
                           type="button"
-                          onClick={() => { setIsMatTypeOpen(!isMatTypeOpen); setTouchedMatType(true); }}
+                          onClick={() => { setIsMatTypeOpen(!isMatTypeOpen); /* setTouchedMatType(true); */ }}
                           className="w-full flex items-center justify-between p-2 bg-gray-800/30 border border-gray-600 rounded-md text-white text-sm hover:border-gray-500 transition-all duration-200"
                         >
                           <span className={formData.industry ? 'text-white' : 'text-gray-400'}>
@@ -1001,7 +996,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                       <div className="relative">
                     <button
                       type="button"
-                      onClick={() => { setIsCompletenessOpen(!isCompletenessOpen); setTouchedCompleteness(true); }}
+                      onClick={() => { setIsCompletenessOpen(!isCompletenessOpen); /* setTouchedCompleteness(true); */ }}
                       className="w-full flex items-center justify-between p-2 bg-gray-800/30 border border-gray-600 rounded-md text-white text-sm hover:border-gray-500 transition-all duration-200"
                     >
                       <span className={formData.completeness ? 'text-white' : 'text-gray-400'}>
@@ -1059,7 +1054,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                       <div className="relative">
                         <button
                           type="button"
-                          onClick={() => { setIsStructureOpen(!isStructureOpen); setTouchedStructure(true); }}
+                          onClick={() => { setIsStructureOpen(!isStructureOpen); /* setTouchedStructure(true); */ }}
                           className="w-full flex items-center justify-between p-2 bg-gray-800/30 border border-gray-600 rounded-md text-white text-sm hover:border-gray-500 transition-all duration-200"
                         >
                           <span className={formData.structure ? 'text-white' : 'text-gray-400'}>
@@ -1307,7 +1302,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                   </div>
                   <div>
                     <h4 className="text-white font-semibold">Podpietka gratis!</h4>
-                    <p className="text-gray-300 text-sm">Wartość: 30 zł - otrzymasz ją wraz z dywanikami</p>
+                    <p className="text-gray-300 text-sm">Wartość: 30 zł - otrzymasz ją przy zakupie dywaników</p>
                   </div>
                 </div>
               </div>
@@ -1403,7 +1398,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                </div>
                <h3 className="text-2xl font-bold text-white mb-2">Podpietka gratis!</h3>
                <p className="text-gray-300">
-                 Wypełnij krótką ankietę i odbierz podpietkę o wartości 30 zł wraz z dywanikami!
+                 Wypełnij krótką ankietę i odbierz podpietkę o wartości 30 zł przy zakupie dywaników!
                </p>
              </div>
              
