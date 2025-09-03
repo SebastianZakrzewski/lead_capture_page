@@ -784,7 +784,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
               });
               setErrors({});
             }}
-            className="px-8 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200"
+            className="px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200"
           >
             Wypełnij ponownie
           </button>
@@ -1335,12 +1335,12 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
             {renderStep()}
 
             {/* Navigation Buttons */}
-            <div className="flex justify-between items-center pt-6">
-              {currentStep > 1 && (
+            <div className="flex justify-center items-center pt-6">
+              {currentStep > 1 && currentStep < 4 && (
                 <button
                   type="button"
                   onClick={prevStep}
-                  className="flex items-center gap-2 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-xl transition-all duration-200"
+                  className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-xl transition-all duration-200"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   Wstecz
@@ -1353,18 +1353,18 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                 <button
                   type="button"
                   onClick={nextStep}
-                  className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200"
+                  className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200"
                 >
                   Dalej
                   <ArrowRight className="w-4 h-4" />
                 </button>
               ) : currentStep === 4 ? (
-                <div className="flex gap-3">
+                <div className="flex flex-col items-center justify-center gap-4 w-full">
                   <button
                     type="button"
                     onClick={() => handleFeedbackSubmit(feedbackData, true)}
                     disabled={feedbackData.easeOfChoice === 0 || feedbackData.formClarity === 0}
-                    className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Package className="w-4 h-4" />
                     Wyślij i Odbierz Podpietkę Gratis!
@@ -1372,7 +1372,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                   <button
                     type="button"
                     onClick={handleFeedbackDecline}
-                    className="flex items-center gap-2 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-xl transition-all duration-200"
+                    className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-xl transition-all duration-200"
                   >
                     Wyślij bez podpietki
                   </button>
@@ -1381,7 +1381,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                 <button
                   type="submit"
                   disabled={!formData.firstName.trim() || !formData.phone.trim() || isSubmitting}
-                  className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Wysyłanie...' : 'Wyślij i Otrzymaj Rabat -30%'}
                 </button>
@@ -1410,13 +1410,13 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
              <div className="flex gap-3">
                <button
                  onClick={() => setCurrentStep(4)}
-                 className="flex-1 px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200"
+                 className="flex-1 px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200"
                >
                  Tak, chcę ankietę!
                </button>
                <button
                  onClick={handleFeedbackDecline}
-                 className="flex-1 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-xl transition-all duration-200"
+                 className="flex-1 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-xl transition-all duration-200"
                >
                  Nie, dziękuję
                </button>
