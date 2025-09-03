@@ -206,9 +206,15 @@ export function generateImagePath(carMatData: Omit<CarMatData, 'imagePath'>): st
   const { matType, cellStructure, materialColor, borderColor } = carMatData;
   
   // Mapowanie kolorów z powrotem na nazwy plików
-  const materialColorKey = Object.keys(COLOR_MAPPING).find(
-    key => COLOR_MAPPING[key] === materialColor
-  ) || materialColor.toLowerCase();
+  // Dodatkowe aliasy dla polskich nazw materiału → token plikowy
+  const POLISH_TO_FILE_TOKEN: Record<string, string> = {
+    'zielony': 'lime',
+    'jasnozielony': 'lime',
+  };
+
+  const materialColorKey = POLISH_TO_FILE_TOKEN[materialColor]
+    || Object.keys(COLOR_MAPPING).find(key => COLOR_MAPPING[key] === materialColor)
+    || materialColor.toLowerCase();
   
   const borderColorKey = Object.keys(COLOR_MAPPING).find(
     key => COLOR_MAPPING[key] === borderColor
