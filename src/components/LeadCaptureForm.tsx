@@ -1052,7 +1052,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                     {/* Structure Selection */}
                     <div>
                       <div className="flex items-center gap-2 mb-3">
-                        <Package className="w-5 h-5 text-purple-400" />
+                        <Package className="w-5 h-5 text-red-400" />
                         <h4 className="text-white font-semibold text-sm">Struktura Komórek</h4>
                       </div>
                       
@@ -1124,7 +1124,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                         {/* Kolor Materiału */}
                         <div>
                           <div className="flex items-center gap-2 mb-3">
-                            <Palette className="w-5 h-5 text-blue-400" />
+                            <Palette className="w-5 h-5 text-red-400" />
                             <h4 className="text-white font-semibold text-sm">Kolor Materiału</h4>
                           </div>
                           <div className="grid grid-cols-6 gap-3">
@@ -1166,7 +1166,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                 <CheckCircle className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-bold text-white mb-2">Ankieta feedbackowa</h3>
-              <p className="text-gray-300">Pomóż nam się poprawić i odbierz podpietkę gratis!</p>
+              <p className="text-gray-300">Pomóż nam się poprawić i odbierz podpietkę pod pedał gazu która wzmocni Twój dywanik gratis!</p>
             </div>
 
             <div className="space-y-6">
@@ -1374,7 +1374,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                     onClick={handleFeedbackDecline}
                     className="flex items-center gap-2 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-xl transition-all duration-200"
                   >
-                    Pomiń
+                    Wyślij bez podpietki
                   </button>
                 </div>
               ) : (
@@ -1388,12 +1388,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
               )}
             </div>
 
-           {/* Privacy Notice */}
-           <p className="text-xs text-gray-500 text-center">
-             By submitting this form, you agree to our{' '}
-             <a href="#" className="text-red-400 hover:text-red-300 underline">privacy policy</a>{' '}
-             and consent to being contacted about our services.
-           </p>
+
          </form>
         </div>
        </div>

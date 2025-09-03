@@ -27,6 +27,14 @@ export interface LeadSubmissionData extends TrackingData {
   borderColor?: string;
   materialColor?: string;
   includeHooks?: boolean;
+  
+  // Dane feedbackowe
+  feedbackEaseOfChoice?: number;
+  feedbackFormClarity?: number;
+  feedbackLoadingSpeed?: number;
+  feedbackOverallExperience?: number;
+  feedbackWouldRecommend?: number;
+  feedbackAdditionalComments?: string;
 }
 
 // Pobierz UTM-y z URL
@@ -157,6 +165,14 @@ export function prepareLeadSubmissionData(formData: {
   materialColor?: string;
   includeHooks?: boolean;
   message?: string;
+  
+  // Dane feedbackowe
+  feedbackEaseOfChoice?: number;
+  feedbackFormClarity?: number;
+  feedbackLoadingSpeed?: number;
+  feedbackOverallExperience?: number;
+  feedbackWouldRecommend?: number;
+  feedbackAdditionalComments?: string;
 }): LeadSubmissionData {
   const trackingData = getOrCreateTrackingData();
   const savedUtmParams = getSavedUtmParams();

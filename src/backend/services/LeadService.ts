@@ -1,14 +1,17 @@
 import { supabase } from '../database';
 import { LeadSubmissionData } from '@/utils/tracking';
+import { v4 as uuidv4 } from 'uuid';
 
 // Funkcje do zarządzania leadami
 export class LeadService {
   // Utwórz nowy lead
   static async createLead(leadData: LeadSubmissionData) {
     try {
+      console.log('🔍 LeadService.createLead - dane wejściowe:', leadData);
       const { data: lead, error } = await supabase
         .from('Lead')
         .insert({
+          id: uuidv4(),
           firstName: leadData.firstName,
           phone: leadData.phone,
           email: leadData.email,
@@ -21,16 +24,41 @@ export class LeadService {
           materialColor: leadData.materialColor,
           includeHooks: leadData.includeHooks,
           
-          // Domyślne wartości
-          status: 'PENDING',
-          priority: 'MEDIUM',
-          contactAttempts: 0,
+          // Dane trackingowe - UTM-y
+          utmSource: leadData.utmSource,
+          utmMedium: leadData.utmMedium,
+          utmCampaign: leadData.utmCampaign,
+          utmTerm: leadData.utmTerm,
+          utmContent: leadData.utmContent,
+          
+          // Identyfikatory reklam
+          gclid: leadData.gclid,
+          fbclid: leadData.fbclid,
+          
+          // Dodatkowe dane trackingowe
+          sessionId: leadData.sessionId,
+          firstVisit: leadData.firstVisit?.toISOString(),
+          currentUrl: leadData.currentUrl,
+          userAgent: leadData.userAgent,
+          referrer: leadData.referrer,
+          
+          // Dane feedbackowe
+          feedbackEaseOfChoice: leadData.feedbackEaseOfChoice,
+          feedbackFormClarity: leadData.feedbackFormClarity,
+          feedbackLoadingSpeed: leadData.feedbackLoadingSpeed,
+          feedbackOverallExperience: leadData.feedbackOverallExperience,
+          feedbackWouldRecommend: leadData.feedbackWouldRecommend,
+          feedbackAdditionalComments: leadData.feedbackAdditionalComments,
+          
+          // Timestamps
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
         })
         .select()
         .single();
 
       if (error) {
-        console.error('Supabase error creating lead:', error);
+        console.log('🔍 Błąd podczas tworzenia leada:', error); 
         return { success: false, error: 'Błąd podczas tworzenia leada' };
       }
 
@@ -187,6 +215,46 @@ export class LeadService {
     } catch (error) {
       console.error('Error updating lead status:', error);
       return { success: false, error: 'Błąd podczas aktualizacji statusu' };
+    }
+  }
+
+  // Zaktualizuj lead z danymi feedbacku
+  static async updateLeadFeedback(id: string, feedbackData: {
+    feedbackEaseOfChoice?: number;
+    feedbackFormClarity?: number;
+    feedbackLoadingSpeed?: number;
+    feedbackOverallExperience?: number;
+    feedbackWouldRecommend?: number;
+    feedbackAdditionalComments?: string;
+  }) {
+    try {
+      console.log('🔄 LeadService.updateLeadFeedback - aktualizuję lead:', id, feedbackData);
+      
+      const { data: lead, error } = await supabase
+        .from('Lead')
+        .update({
+          feedbackEaseOfChoice: feedbackData.feedbackEaseOfChoice,
+          feedbackFormClarity: feedbackData.feedbackFormClarity,
+          feedbackLoadingSpeed: feedbackData.feedbackLoadingSpeed,
+          feedbackOverallExperience: feedbackData.feedbackOverallExperience,
+          feedbackWouldRecommend: feedbackData.feedbackWouldRecommend,
+          feedbackAdditionalComments: feedbackData.feedbackAdditionalComments,
+          updatedAt: new Date().toISOString(),
+        })
+        .eq('id', id)
+        .select()
+        .single();
+
+      if (error) {
+        console.error('Supabase error updating lead feedback:', error);
+        return { success: false, error: 'Błąd podczas aktualizacji feedbacku' };
+      }
+
+      console.log('✅ Lead feedback zaktualizowany pomyślnie:', lead);
+      return { success: true, data: lead };
+    } catch (error) {
+      console.error('Error updating lead feedback:', error);
+      return { success: false, error: 'Błąd podczas aktualizacji feedbacku' };
     }
   }
 

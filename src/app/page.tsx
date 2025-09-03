@@ -85,7 +85,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Users className="w-5 h-5 text-green-400" />
-                  <span className="text-gray-300 text-sm">15,000+ zadowolonych klientów</span>
+                  <span className="text-gray-300 text-sm">6000+ zadowolonych klientów</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Award className="w-5 h-5 text-blue-400" />
