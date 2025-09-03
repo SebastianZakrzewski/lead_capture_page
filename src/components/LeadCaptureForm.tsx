@@ -8,7 +8,7 @@ import { prepareLeadSubmissionData } from '@/utils/tracking';
 import { BORDER_COLOR_OPTIONS, MATERIAL_COLOR_OPTIONS } from '@/types/lead';
 import { Mail, User, Building, CheckCircle, WifiOff, Phone, AlertCircle, Package, Palette, ChevronDown, ArrowLeft, ArrowRight, Car, Shield, Loader2, Image } from 'lucide-react';
 import { useCarMatImage } from '@/hooks/useCarMatImage';
-import { generateImagePath } from '@/utils/carmatMapper';
+import { generateImagePath, getAvailableMaterialColors } from '@/utils/carmatMapper';
 import { CarMatData } from '@/types/carMat';
 
 interface LeadCaptureFormProps {
@@ -260,6 +260,38 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     };
     return structureTypes[structure] || structure;
   };
+
+  // Pobiera dostępne kolory materiału na podstawie wybranego typu i struktury
+  const getFilteredMaterialColorOptions = () => {
+    if (!formData.industry || !formData.structure) {
+      return MATERIAL_COLOR_OPTIONS;
+    }
+
+    const matType = formData.industry === '3d-evapremium-z-rantami' ? '3d-with-rims' : '3d-without-rims';
+    const cellStructure = formData.structure === 'romb' ? 'rhombus' : 'honeycomb';
+    
+    const availableColors = getAvailableMaterialColors(matType, cellStructure);
+    
+    return MATERIAL_COLOR_OPTIONS.filter(option => 
+      availableColors.includes(option.value)
+    );
+  };
+
+  // Sprawdza czy wybrany kolor materiału jest nadal dostępny i czyści go jeśli nie
+  useEffect(() => {
+    if (formData.materialColor && formData.industry && formData.structure) {
+      const filteredOptions = getFilteredMaterialColorOptions();
+      const isColorAvailable = filteredOptions.some(option => option.value === formData.materialColor);
+      
+      if (!isColorAvailable && onFormDataChange) {
+        console.log(`🔄 Kolor materiału ${formData.materialColor} nie jest dostępny dla ${formData.industry}/${formData.structure}, czyszczę wybór`);
+        onFormDataChange({
+          ...formData,
+          materialColor: ''
+        });
+      }
+    }
+  }, [formData.industry, formData.structure, formData.materialColor, onFormDataChange]);
 
   const getColorName = (colorValue: string, options: { value: string; label: string }[]) => {
     const option = options.find(opt => opt.value === colorValue);
@@ -884,7 +916,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                             <h4 className="text-white font-semibold text-sm">Kolor Materiału</h4>
                           </div>
                           <div className="grid grid-cols-6 gap-3">
-                            {MATERIAL_COLOR_OPTIONS.map((option) => (
+                            {getFilteredMaterialColorOptions().map((option) => (
                               <div
                                 key={option.value}
                                 onClick={() => handleMaterialColorSelect(option.value)}
