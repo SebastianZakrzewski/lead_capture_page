@@ -18,7 +18,8 @@ const COLOR_MAPPING: Record<string, string> = {
   'purple': 'fioletowy',
   'red': 'czerwony',
   'white': 'biały',
-  'yellow': 'żółty'
+  'yellow': 'żółty',
+  'green': 'zielony'
 };
 
 // Mapowanie kolorów obszycia z polskich nazw na standardowe
@@ -35,6 +36,7 @@ const BORDER_COLOR_MAPPING: Record<string, string> = {
   'pomaranczowe': 'pomarańczowy',
   'rozowe': 'różowy',
   'zielone': 'zielony',
+  'ciemnozielone': 'zielony',
   'zolte': 'żółty',
   'czarne': 'czarny'
 };

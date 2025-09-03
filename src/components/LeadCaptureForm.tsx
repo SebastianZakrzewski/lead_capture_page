@@ -159,7 +159,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
       maroon: 'bordowy',
       pink: 'różowy',
       darkblue: 'ciemnoniebieski',
-      darkgreen: 'ciemnozielony',
+      darkgreen: 'zielony',
       darkgrey: 'ciemnoszary',
       lightgrey: 'jasnoszary',
       beige: 'beżowy',

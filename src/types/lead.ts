@@ -71,7 +71,7 @@ export const BORDER_COLOR_OPTIONS: { value: BorderColorOption; label: string }[]
   { value: 'maroon', label: 'Bordowe' },
   { value: 'pink', label: 'Różowe' },
   { value: 'darkblue', label: 'Granatowe' },
-  { value: 'darkgreen', label: 'Ciemnozielone' },
+  { value: 'darkgreen', label: 'Zielone' },
   { value: 'darkgrey', label: 'Ciemnoszare' },
   { value: 'lightgrey', label: 'Jasnoszare' },
   { value: 'beige', label: 'Beżowe' },
