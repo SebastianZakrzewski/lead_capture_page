@@ -1,102 +1,89 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { CarMatService } from '@/backend/services/CarMatService';
-import { generateAllCarMatCombinations } from '@/utils/carmatMapper';
+import { supabase } from '@/backend/database';
 
 export async function POST(request: NextRequest) {
   try {
-    const { action } = await request.json();
+    const body = await request.json();
+    const { carMatData } = body;
 
-    if (action === 'generate-and-insert') {
-      // Generuj wszystkie kombinacje
-      const combinations = generateAllCarMatCombinations();
-      
-      console.log(`Generowanie ${combinations.length} kombinacji dywaników...`);
-      
-      // Wprowadź wszystkie kombinacje do bazy danych
-      const result = await CarMatService.bulkInsertCarMats(combinations);
-      
-      if (result.success) {
-        return NextResponse.json({
-          success: true,
-          message: result.message,
-          insertedCount: result.insertedCount,
-          totalCombinations: combinations.length
-        });
-      } else {
-        return NextResponse.json({
-          success: false,
-          error: result.error,
-          details: result.details
-        }, { status: 500 });
-      }
+    if (!carMatData || !Array.isArray(carMatData)) {
+      return NextResponse.json(
+        { error: 'Brak danych CarMat lub nieprawidłowy format' },
+        { status: 400 }
+      );
     }
 
-    if (action === 'clear-all') {
-      // Wyczyść wszystkie dane
-      const result = await CarMatService.clearAllCarMats();
-      
-      if (result.success) {
-        return NextResponse.json({
-          success: true,
-          message: result.message
-        });
-      } else {
-        return NextResponse.json({
-          success: false,
-          error: result.error
-        }, { status: 500 });
-      }
+    console.log(`🔄 Dodawanie ${carMatData.length} rekordów CarMat do bazy danych...`);
+
+    // Sprawdź czy rekordy już istnieją
+    const existingRecords = await supabase
+      .from('CarMat')
+      .select('imagePath')
+      .in('imagePath', carMatData.map(item => item.imagePath));
+
+    if (existingRecords.error) {
+      console.error('Błąd podczas sprawdzania istniejących rekordów:', existingRecords.error);
+      return NextResponse.json(
+        { error: 'Błąd podczas sprawdzania istniejących rekordów' },
+        { status: 500 }
+      );
     }
 
-    if (action === 'generate-only') {
-      // Tylko generuj kombinacje bez wprowadzania do bazy
-      const combinations = generateAllCarMatCombinations();
-      
+    const existingPaths = new Set(existingRecords.data?.map(record => record.imagePath) || []);
+    const newRecords = carMatData.filter(record => !existingPaths.has(record.imagePath));
+
+    if (newRecords.length === 0) {
       return NextResponse.json({
         success: true,
-        combinations,
-        totalCount: combinations.length,
-        message: `Wygenerowano ${combinations.length} kombinacji dywaników`
+        message: 'Wszystkie rekordy już istnieją w bazie danych',
+        inserted: 0,
+        skipped: carMatData.length
       });
     }
 
+    console.log(`📊 Znaleziono ${newRecords.length} nowych rekordów do dodania`);
+
+    // Dodaj nowe rekordy
+    const { data, error } = await supabase
+      .from('CarMat')
+      .insert(newRecords)
+      .select();
+
+    if (error) {
+      console.error('Błąd podczas dodawania rekordów CarMat:', error);
+      return NextResponse.json(
+        { error: `Błąd podczas dodawania rekordów: ${error.message}` },
+        { status: 500 }
+      );
+    }
+
+    console.log(`✅ Pomyślnie dodano ${data?.length || 0} rekordów CarMat`);
+
     return NextResponse.json({
-      success: false,
-      error: 'Nieprawidłowa akcja. Dostępne akcje: generate-and-insert, clear-all, generate-only'
-    }, { status: 400 });
+      success: true,
+      message: `Pomyślnie dodano ${data?.length || 0} rekordów CarMat`,
+      inserted: data?.length || 0,
+      skipped: carMatData.length - (data?.length || 0),
+      data: data
+    });
 
   } catch (error) {
-    console.error('Błąd w bulk-insert API:', error);
-    return NextResponse.json({
-      success: false,
-      error: 'Wewnętrzny błąd serwera',
-      details: error instanceof Error ? error.message : 'Nieznany błąd'
-    }, { status: 500 });
+    console.error('❌ Błąd w API /api/carmat/bulk-insert:', error);
+    return NextResponse.json(
+      { error: 'Wewnętrzny błąd serwera' },
+      { status: 500 }
+    );
   }
 }
 
-export async function GET() {
-  try {
-    // Pobierz statystyki z bazy danych
-    const statsResult = await CarMatService.getCarMatStats();
-    
-    if (statsResult.success) {
-      return NextResponse.json({
-        success: true,
-        stats: statsResult.data
-      });
-    } else {
-      return NextResponse.json({
-        success: false,
-        error: statsResult.error
-      }, { status: 500 });
-    }
-  } catch (error) {
-    console.error('Błąd w bulk-insert GET API:', error);
-    return NextResponse.json({
-      success: false,
-      error: 'Wewnętrzny błąd serwera',
-      details: error instanceof Error ? error.message : 'Nieznany błąd'
-    }, { status: 500 });
-  }
+// Obsługa OPTIONS request (CORS preflight)
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  });
 }

@@ -23,8 +23,10 @@ export interface LeadSubmissionData extends TrackingData {
   jobTitle?: string;
   industry?: string;
   completeness?: string;
+  structure?: string;
   borderColor?: string;
   materialColor?: string;
+  includeHooks?: boolean;
 }
 
 // Pobierz UTM-y z URL
@@ -150,8 +152,10 @@ export function prepareLeadSubmissionData(formData: {
   jobTitle?: string;
   industry?: string;
   completeness?: string;
+  structure?: string;
   borderColor?: string;
   materialColor?: string;
+  includeHooks?: boolean;
   message?: string;
 }): LeadSubmissionData {
   const trackingData = getOrCreateTrackingData();

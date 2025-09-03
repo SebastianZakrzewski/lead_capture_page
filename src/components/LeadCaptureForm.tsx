@@ -3,6 +3,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { LeadFormData, LeadSubmissionResponse } from '@/types/lead';
 import { LeadService } from '@/backend/services/LeadService';
+import { prepareLeadSubmissionData } from '@/utils/tracking';
 
 import { BORDER_COLOR_OPTIONS, MATERIAL_COLOR_OPTIONS } from '@/types/lead';
 import { Mail, User, Building, CheckCircle, WifiOff, Phone, AlertCircle, Package, Palette, ChevronDown, ArrowLeft, ArrowRight, Car, Shield, Loader2, Image } from 'lucide-react';
@@ -474,17 +475,18 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     setIsSubmitting(true);
 
     try {
-      const leadPayload = {
+      const leadPayload = prepareLeadSubmissionData({
         firstName: formData.firstName,
         phone: formData.phone,
         company: formData.company || undefined,
         jobTitle: formData.jobTitle || undefined,
         industry: formData.industry || undefined,
         completeness: formData.completeness || undefined,
-          structure: formData.structure || undefined,
+        structure: formData.structure || undefined,
         borderColor: formData.borderColor || undefined,
-        materialColor: formData.materialColor || undefined
-        };
+        materialColor: formData.materialColor || undefined,
+        includeHooks: formData.includeHooks || false
+      });
 
       const response = await LeadService.createLead(leadPayload);
       

@@ -215,7 +215,26 @@ export function generateImagePath(carMatData: Omit<CarMatData, 'imagePath'>): st
   ) || borderColor.toLowerCase();
 
   if (matType === '3d-with-rims' && cellStructure === 'rhombus') {
-    return `/konfigurator/dywaniki/3d/romby/czarne/5os-3d-diamonds-${materialColorKey}-${borderColorKey}.webp`;
+    // Mapowanie kolorów obszycia na nazwy katalogów
+    const borderFolderMapping: Record<string, string> = {
+      'czarny': 'czarne',
+      'beżowy': 'bezowy',
+      'bordowy': 'bordowe',
+      'brązowy': 'brazowy',
+      'ciemnoszary': 'ciemnoszare',
+      'czerwony': 'czerwone',
+      'fioletowy': 'fioletowy',
+      'ciemnoniebieski': 'granatowe',
+      'jasnoszary': 'jasnoszary',
+      'niebieski': 'niebieskie',
+      'pomarańczowy': 'pomaranczowe',
+      'różowy': 'rozowy',
+      'zielony': 'zielone',
+      'żółty': 'zolte'
+    };
+    
+    const borderFolder = borderFolderMapping[borderColor] || 'czarne';
+    return `/konfigurator/dywaniki/3d/romby/${borderFolder}/5os-3d-diamonds-${materialColorKey}-${borderColorKey}.webp`;
   }
   
   if (matType === '3d-without-rims' && cellStructure === 'honeycomb') {

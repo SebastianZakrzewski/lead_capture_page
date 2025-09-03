@@ -42,6 +42,23 @@ export async function POST(request: NextRequest) {
       borderColor: body.borderColor || undefined,
       materialColor: body.materialColor || undefined,
       includeHooks: body.includeHooks || false,
+
+      
+      // Wymagane pola śledzenia - ustaw domyślne wartości
+      sessionId: body.sessionId || 'api-generated',
+      firstVisit: body.firstVisit ? new Date(body.firstVisit) : new Date(),
+      currentUrl: body.currentUrl || 'api-request',
+      userAgent: body.userAgent || 'api-client',
+      
+      // Opcjonalne pola śledzenia
+      utmSource: body.utmSource || undefined,
+      utmMedium: body.utmMedium || undefined,
+      utmCampaign: body.utmCampaign || undefined,
+      utmTerm: body.utmTerm || undefined,
+      utmContent: body.utmContent || undefined,
+      referrer: body.referrer || undefined,
+      gclid: body.gclid || undefined,
+      fbclid: body.fbclid || undefined,
     };
     
     console.log('💾 Próba zapisania leada:', leadData);
