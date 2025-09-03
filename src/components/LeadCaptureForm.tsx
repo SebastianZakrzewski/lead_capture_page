@@ -728,12 +728,6 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                         <Package className="w-5 h-5 text-red-400" />
                         <h4 className="text-white font-semibold text-sm">Typ Dywaników</h4>
                       </div>
-                      {errors.industry && (showStep3Errors || touchedMatType) && (
-                        <div className="flex items-center gap-2 text-red-400 text-sm mb-2">
-                          <AlertCircle className="w-4 h-4" />
-                          {errors.industry}
-                        </div>
-                      )}
                       
                       <div className="relative">
                         <button
@@ -776,12 +770,6 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                         <Package className="w-5 h-5 text-green-400" />
                         <h4 className="text-white font-semibold text-sm">Rodzaj Kompletu</h4>
                       </div>
-                      {errors.completeness && (showStep3Errors || touchedCompleteness) && (
-                        <div className="flex items-center gap-2 text-red-400 text-sm mb-2">
-                          <AlertCircle className="w-4 h-4" />
-                          {errors.completeness}
-                        </div>
-                      )}
                       
                       <div className="relative">
                     <button
@@ -840,12 +828,6 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                         <Package className="w-5 h-5 text-purple-400" />
                         <h4 className="text-white font-semibold text-sm">Struktura Komórek</h4>
                       </div>
-                      {errors.structure && (showStep3Errors || touchedStructure) && (
-                        <div className="flex items-center gap-2 text-red-400 text-sm mb-2">
-                          <AlertCircle className="w-4 h-4" />
-                          {errors.structure}
-                        </div>
-                      )}
                       
                       <div className="relative">
                         <button
