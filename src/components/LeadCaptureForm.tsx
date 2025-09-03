@@ -10,6 +10,7 @@ import { Mail, User, Building, CheckCircle, WifiOff, Phone, AlertCircle, Package
 import { useCarMatImage } from '@/hooks/useCarMatImage';
 import { generateImagePath, getAvailableMaterialColors } from '@/utils/carmatMapper';
 import { CarMatData } from '@/types/carMat';
+import { trackLeadSubmission, trackFormView, trackFormStart, trackLeadSubmissionWithData } from './FacebookPixel';
 
 interface LeadCaptureFormProps {
   formData: LeadFormData;
@@ -133,10 +134,22 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
   const [touchedCompleteness, setTouchedCompleteness] = useState(false);
   const [touchedStructure, setTouchedStructure] = useState(false);
 
+  // Ankieta feedbackowa
+  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
+  const [feedbackCompleted, setFeedbackCompleted] = useState(false); // true = wypełniona ankieta, false = pominięta
+  const [leadId, setLeadId] = useState<string | null>(null); // ID leada po pierwszym wysłaniu
+  const [feedbackData, setFeedbackData] = useState({
+    easeOfChoice: 0,
+    formClarity: 0,
+    loadingSpeed: 0,
+    overallExperience: 0,
+    wouldRecommend: 0,
+    additionalComments: ''
+  });
   
   // Step management
   const [currentStep, setCurrentStep] = useState(1);
-  const totalSteps = 3;
+  const totalSteps = 4;
   
   // Dropdown states
   const [isMatTypeOpen, setIsMatTypeOpen] = useState(false);
@@ -214,8 +227,38 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     }
   }, [currentStep]);
 
+  // Śledzenie zmian leadId
+  useEffect(() => {
+    console.log('🔍 leadId zmieniło się na:', leadId);
+    
+    // Zapisz leadId do localStorage jako backup
+    if (leadId) {
+      localStorage.setItem('currentLeadId', leadId);
+      console.log('💾 Zapisano leadId do localStorage:', leadId);
+    }
+  }, [leadId]);
+
+  // Śledzenie zmian isSubmitted
+  useEffect(() => {
+    console.log('🔍 isSubmitted zmieniło się na:', isSubmitted);
+    console.log('🔍 currentStep:', currentStep);
+    console.log('🔍 Warunek wyświetlania ekranu sukcesu:', isSubmitted && !showFeedbackModal);
+  }, [isSubmitted, currentStep, showFeedbackModal]);
+
+  // Przywróć leadId z localStorage przy inicjalizacji
+  useEffect(() => {
+    const savedLeadId = localStorage.getItem('currentLeadId');
+    if (savedLeadId && !leadId) {
+      console.log('🔄 Przywracam leadId z localStorage:', savedLeadId);
+      setLeadId(savedLeadId);
+    }
+  }, []);
+
   // Automatyczne wyszukiwanie zdjęcia dywanika gdy wszystkie opcje są wybrane
   useEffect(() => {
+    // Śledź wyświetlenie formularza
+    trackFormView();
+    
     console.log('🔄 Formularz: useEffect wywołany z opcjami:', {
       industry: formData.industry,
       structure: formData.structure,
@@ -387,6 +430,8 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
 
     if (name === 'firstName' && value.trim() && !formData.firstName.trim()) {
       console.log('Form started');
+      // Śledź rozpoczęcie wypełniania formularza
+      trackFormStart();
     }
   }, [errors, formData, onFormDataChange]);
 
@@ -523,13 +568,39 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
         includeHooks: formData.includeHooks || false
       });
 
+      console.log('🔍 Próba utworzenia leada:', leadPayload);   
       const response = await LeadService.createLead(leadPayload);
       
       if (response.success) {
+        console.log('✅ Lead utworzony pomyślnie:', response.data);
+        console.log('🔍 ID leada:', response.data?.id);
+        
+        // Zapisz ID leada
+        const newLeadId = response.data?.id || null;
+        console.log('🔧 Ustawiam leadId na:', newLeadId);
+        setLeadId(newLeadId);
+        
+        // Sprawdź czy leadId zostało ustawione
+        setTimeout(() => {
+          console.log('🔍 Sprawdzenie leadId po 100ms:', leadId);
+        }, 100);
+        
+        // Śledź pomyślne wysłanie formularza z danymi trackingowymi
+        trackLeadSubmissionWithData(leadPayload);
+        
+        console.log('🎉 Ustawiam isSubmitted na true');
         setIsSubmitted(true);
+        console.log('🔍 Stan po setIsSubmitted:', { isSubmitted: true, currentStep });
+        
         if (onFormSubmission) {
           onFormSubmission(true);
         }
+        
+        // Pokaż modal z ankietą po 2 sekundach
+        setTimeout(() => {
+          console.log('🔄 Pokazuję modal feedbacku, leadId:', leadId);
+          setShowFeedbackModal(true);
+        }, 2000);
       } else {
         throw new Error(response.error || 'Unknown error');
       }
@@ -541,30 +612,186 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     }
   }, [formData, validateCurrentStep, onFormSubmission]);
 
-  if (isSubmitted) {
+  // Obsługa ankiety feedbackowej
+  const handleFeedbackSubmit = async (feedbackData: any, isCompleted: boolean = false) => {
+    try {
+      console.log('🔄 Rozpoczynam aktualizację feedbacku...', { feedbackData, isCompleted, leadId });
+      console.log('🔍 Stan leadId:', leadId);
+      console.log('🔍 Typ leadId:', typeof leadId);
+      console.log('🔍 Wszystkie stany komponentu:', {
+        leadId,
+        isSubmitted,
+        showFeedbackModal,
+        feedbackCompleted,
+        currentStep
+      });
+      
+      // Sprawdź localStorage jako fallback
+      const fallbackLeadId = localStorage.getItem('currentLeadId');
+      const effectiveLeadId = leadId || fallbackLeadId;
+      
+      if (!effectiveLeadId) {
+        console.error('❌ Brak ID leada - nie można zaktualizować feedbacku');
+        console.error('❌ leadId jest:', leadId);
+        console.error('❌ fallbackLeadId jest:', fallbackLeadId);
+        console.error('❌ Próba ponownego utworzenia leada z feedbackiem...');
+        
+        // Fallback: jeśli nie ma leadId, spróbuj wysłać dane ponownie
+        const leadPayloadWithFeedback = prepareLeadSubmissionData({
+          firstName: formData.firstName,
+          phone: formData.phone,
+          company: formData.company || undefined,
+          jobTitle: formData.jobTitle || undefined,
+          industry: formData.industry || undefined,
+          completeness: formData.completeness || undefined,
+          structure: formData.structure || undefined,
+          borderColor: formData.borderColor || undefined,
+          materialColor: formData.materialColor || undefined,
+          includeHooks: formData.includeHooks || false,
+          
+          // Dane feedbackowe
+          feedbackEaseOfChoice: feedbackData?.easeOfChoice,
+          feedbackFormClarity: feedbackData?.formClarity,
+          feedbackLoadingSpeed: feedbackData?.loadingSpeed,
+          feedbackOverallExperience: feedbackData?.overallExperience,
+          feedbackWouldRecommend: feedbackData?.wouldRecommend,
+          feedbackAdditionalComments: feedbackData?.additionalComments
+        });
+
+        const response = await LeadService.createLead(leadPayloadWithFeedback);
+        
+        if (response.success) {
+          console.log('✅ Lead z feedbackiem utworzony pomyślnie (fallback)');
+          setFeedbackCompleted(isCompleted);
+          setShowFeedbackModal(false);
+          setIsSubmitted(true);
+        } else {
+          console.error('❌ Błąd w fallback createLead:', response);
+        }
+        return;
+      }
+
+      // Przygotuj dane feedbacku
+      const feedbackPayload = {
+        feedbackEaseOfChoice: feedbackData?.easeOfChoice,
+        feedbackFormClarity: feedbackData?.formClarity,
+        feedbackLoadingSpeed: feedbackData?.loadingSpeed,
+        feedbackOverallExperience: feedbackData?.overallExperience,
+        feedbackWouldRecommend: feedbackData?.wouldRecommend,
+        feedbackAdditionalComments: feedbackData?.additionalComments
+      };
+
+      console.log('📦 Przygotowane dane feedbacku:', feedbackPayload);
+
+      // Zaktualizuj istniejący lead z danymi feedbacku
+      console.log('🔧 Używam effectiveLeadId:', effectiveLeadId);
+      const response = await LeadService.updateLeadFeedback(effectiveLeadId, feedbackPayload);
+      
+      console.log('📡 Odpowiedź z serwera:', response);
+      
+      if (response.success) {
+        console.log('✅ Feedback zaktualizowany pomyślnie');
+        setFeedbackCompleted(isCompleted);
+        setShowFeedbackModal(false);
+        setIsSubmitted(true);
+      } else {
+        console.error('❌ Błąd w odpowiedzi serwera:', response);
+      }
+    } catch (error) {
+      console.error('❌ Błąd aktualizacji feedbacku:', error);
+    }
+  };
+
+  const handleFeedbackDecline = () => {
+    console.log('🚫 Użytkownik odrzucił ankietę, leadId:', leadId);
+    setShowFeedbackModal(false);
+    console.log('🔄 Modal feedbacku zamknięty');
+    // Wyślij null do bazy danych (pominięta ankieta)
+    handleFeedbackSubmit(null, false);
+  };
+
+
+
+  if (isSubmitted && !showFeedbackModal) {
     return (
       <div className="max-w-2xl mx-auto">
         <div className="card-glass rounded-2xl p-8 text-center">
-          <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-float">
+          <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-float">
             <CheckCircle className="w-8 h-8 text-white" />
           </div>
-                      <h3 className="text-2xl font-bold text-white mb-4">Dziękujemy!</h3>
+          <h3 className="text-2xl font-bold text-white mb-4">Dziękujemy!</h3>
           <p className="text-gray-300 text-lg mb-4">
-              Twoje dane zostały pomyślnie wysłane. Skontaktujemy się z Tobą w ciągu 24 godzin!
-            </p>
+            Twoje dane zostały pomyślnie wysłane.
+            {feedbackCompleted && (
+              <span className="block mt-2 text-green-400 font-medium">
+                Otrzymasz podpietkę gratis wraz z dywanikami!
+              </span>
+            )}
+          </p>
+          <p className="text-gray-300 text-lg mb-6">
+            Skontaktujemy się z Tobą w ciągu 24 godzin.
+            {feedbackCompleted && (
+              <span className="block mt-1 text-sm text-gray-400">
+                W sprawie odbioru podpietki i dywaników.
+              </span>
+            )}
+          </p>
 
           {!isOnline && (
-            <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-4 mt-4">
+            <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-4 mb-6">
               <div className="flex items-center gap-2">
                 <WifiOff className="w-5 h-5 text-yellow-400" />
                 <span className="text-yellow-400 font-medium">Dane zapisane offline - wyślemy gdy wróci internet</span>
               </div>
             </div>
           )}
-         </div>
-       </div>
-     );
-   }
+
+          <button
+            onClick={() => {
+              // Reset formularza
+              const resetFormData = {
+                firstName: '',
+                lastName: '',
+                phone: '',
+                company: '',
+                jobTitle: '',
+                industry: '',
+                completeness: '',
+                structure: '',
+                borderColor: '',
+                materialColor: '',
+                message: '',
+                includeHooks: false
+              };
+              
+              if (onFormDataChange) {
+                onFormDataChange(resetFormData);
+              }
+              
+              setCurrentStep(1);
+              setIsSubmitted(false);
+              setFeedbackCompleted(false);
+              console.log('🔄 Resetuję leadId z:', leadId, 'na null');
+              setLeadId(null);
+              localStorage.removeItem('currentLeadId');
+              setFeedbackData({
+                easeOfChoice: 0,
+                formClarity: 0,
+                loadingSpeed: 0,
+                overallExperience: 0,
+                wouldRecommend: 0,
+                additionalComments: ''
+              });
+              setErrors({});
+            }}
+            className="px-8 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200"
+          >
+            Wypełnij ponownie
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   const renderStep = () => {
     switch (currentStep) {
@@ -931,6 +1158,163 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
           </div>
         );
 
+      case 4:
+        return (
+          <div className="space-y-6">
+            <div className="text-center mb-6">
+              <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Ankieta feedbackowa</h3>
+              <p className="text-gray-300">Pomóż nam się poprawić i odbierz podpietkę gratis!</p>
+            </div>
+
+            <div className="space-y-6">
+              {/* Pytanie 1: Łatwość wyboru */}
+              <div>
+                <label className="block text-white font-medium text-sm mb-3">
+                  1. Jak oceniasz łatwość wyboru dywaników?
+                </label>
+                <div className="flex gap-2">
+                  {[1, 2, 3, 4, 5].map((rating) => (
+                    <button
+                      key={rating}
+                      type="button"
+                      onClick={() => setFeedbackData(prev => ({ ...prev, easeOfChoice: rating }))}
+                      className={`w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-all ${
+                        feedbackData.easeOfChoice >= rating
+                          ? 'bg-red-500 border-red-500 text-white'
+                          : 'border-gray-600 text-gray-400 hover:border-gray-400'
+                      }`}
+                    >
+                      {rating}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Pytanie 2: Przejrzystość formularza */}
+              <div>
+                <label className="block text-white font-medium text-sm mb-3">
+                  2. Czy formularz był przejrzysty i zrozumiały?
+                </label>
+                <div className="flex gap-2">
+                  {[1, 2, 3, 4, 5].map((rating) => (
+                    <button
+                      key={rating}
+                      type="button"
+                      onClick={() => setFeedbackData(prev => ({ ...prev, formClarity: rating }))}
+                      className={`w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-all ${
+                        feedbackData.formClarity >= rating
+                          ? 'bg-red-500 border-red-500 text-white'
+                          : 'border-gray-600 text-gray-400 hover:border-gray-400'
+                      }`}
+                    >
+                      {rating}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Pytanie 3: Szybkość ładowania */}
+              <div>
+                <label className="block text-white font-medium text-sm mb-3">
+                  3. Jak oceniasz szybkość ładowania strony?
+                </label>
+                <div className="flex gap-2">
+                  {[1, 2, 3, 4, 5].map((rating) => (
+                    <button
+                      key={rating}
+                      type="button"
+                      onClick={() => setFeedbackData(prev => ({ ...prev, loadingSpeed: rating }))}
+                      className={`w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-all ${
+                        feedbackData.loadingSpeed >= rating
+                          ? 'bg-red-500 border-red-500 text-white'
+                          : 'border-gray-600 text-gray-400 hover:border-gray-400'
+                      }`}
+                    >
+                      {rating}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Pytanie 4: Ogólne wrażenie */}
+              <div>
+                <label className="block text-white font-medium text-sm mb-3">
+                  4. Jak oceniasz ogólne wrażenie z korzystania z formularza?
+                </label>
+                <div className="flex gap-2">
+                  {[1, 2, 3, 4, 5].map((rating) => (
+                    <button
+                      key={rating}
+                      type="button"
+                      onClick={() => setFeedbackData(prev => ({ ...prev, overallExperience: rating }))}
+                      className={`w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-all ${
+                        feedbackData.overallExperience >= rating
+                          ? 'bg-red-500 border-red-500 text-white'
+                          : 'border-gray-600 text-gray-400 hover:border-gray-400'
+                      }`}
+                    >
+                      {rating}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Pytanie 5: Polecenie */}
+              <div>
+                <label className="block text-white font-medium text-sm mb-3">
+                  5. Czy poleciłbyś naszą stronę znajomym? (1-10)
+                </label>
+                <div className="flex gap-2 flex-wrap">
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((rating) => (
+                    <button
+                      key={rating}
+                      type="button"
+                      onClick={() => setFeedbackData(prev => ({ ...prev, wouldRecommend: rating }))}
+                      className={`w-8 h-8 rounded-full border-2 flex items-center justify-center text-xs font-medium transition-all ${
+                        feedbackData.wouldRecommend >= rating
+                          ? 'bg-red-500 border-red-500 text-white'
+                          : 'border-gray-600 text-gray-400 hover:border-gray-400'
+                      }`}
+                    >
+                      {rating}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Pytanie 6: Uwagi dodatkowe */}
+              <div>
+                <label className="block text-white font-medium text-sm mb-3">
+                  6. Uwagi dodatkowe (opcjonalne)
+                </label>
+                <textarea
+                  value={feedbackData.additionalComments}
+                  onChange={(e) => setFeedbackData(prev => ({ ...prev, additionalComments: e.target.value }))}
+                  placeholder="Podziel się swoimi uwagami..."
+                  className="w-full p-3 bg-gray-800/30 border border-gray-600 rounded-lg text-white placeholder-gray-400 form-input-focus form-input-hover"
+                  rows={3}
+                />
+              </div>
+
+              {/* Nagroda */}
+              <div className="bg-gradient-to-r from-red-500/10 to-red-600/10 border border-red-500/20 rounded-xl p-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center">
+                    <Package className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold">Podpietka gratis!</h4>
+                    <p className="text-gray-300 text-sm">Wartość: 30 zł - otrzymasz ją wraz z dywanikami</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
       default:
         return null;
     }
@@ -974,8 +1358,27 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                   Dalej
                   <ArrowRight className="w-4 h-4" />
                 </button>
+              ) : currentStep === 4 ? (
+                <div className="flex gap-3">
+                  <button
+                    type="button"
+                    onClick={() => handleFeedbackSubmit(feedbackData, true)}
+                    disabled={feedbackData.easeOfChoice === 0 || feedbackData.formClarity === 0}
+                    className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <Package className="w-4 h-4" />
+                    Wyślij i Odbierz Podpietkę Gratis!
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleFeedbackDecline}
+                    className="flex items-center gap-2 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-xl transition-all duration-200"
+                  >
+                    Pomiń
+                  </button>
+                </div>
               ) : (
-                                                         <button
+                <button
                   type="submit"
                   disabled={!formData.firstName.trim() || !formData.phone.trim() || isSubmitting}
                   className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -994,6 +1397,40 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
          </form>
         </div>
        </div>
+
+       {/* Modal z ankietą feedbackową */}
+       {showFeedbackModal && (
+         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+           <div className="bg-gray-900 rounded-2xl p-8 max-w-md w-full border border-gray-700">
+             <div className="text-center mb-6">
+               <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                 <Package className="w-8 h-8 text-white" />
+               </div>
+               <h3 className="text-2xl font-bold text-white mb-2">Podpietka gratis!</h3>
+               <p className="text-gray-300">
+                 Wypełnij krótką ankietę i odbierz podpietkę o wartości 30 zł wraz z dywanikami!
+               </p>
+             </div>
+             
+             <div className="flex gap-3">
+               <button
+                 onClick={() => setCurrentStep(4)}
+                 className="flex-1 px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200"
+               >
+                 Tak, chcę ankietę!
+               </button>
+               <button
+                 onClick={handleFeedbackDecline}
+                 className="flex-1 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-xl transition-all duration-200"
+               >
+                 Nie, dziękuję
+               </button>
+             </div>
+           </div>
+         </div>
+       )}
+
+
      </div>
    );
- }
+}
