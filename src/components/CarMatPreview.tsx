@@ -55,9 +55,9 @@ export default function CarMatPreview({ formData }: CarMatPreviewProps) {
       case 'przod':
         return 'Przód (2 szt.)';
       case 'przod-tyl':
-        return 'Przód + Tył (4 szt.)';
+        return 'Przód + Tył (5 szt.)';
       case 'przod-tyl-bagaznik':
-        return 'Przód + Tył + Bagażnik (5 szt.)';
+        return 'Przód + Tył + Bagażnik (6 szt.)';
       default:
         return '';
     }

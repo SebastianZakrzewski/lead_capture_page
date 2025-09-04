@@ -293,8 +293,8 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     const completenessTypes: { [key: string]: string } = {
       'dywanik-kierowcy': 'Dywanik Kierowcy (1 szt.)',
       'przod': 'Przód (2 szt.)',
-      'przod-tyl': 'Przód + Tył (4 szt.)',
-      'przod-tyl-bagaznik': 'Przód + Tył + Bagażnik (5 szt.)'
+      'przod-tyl': 'Przód + Tył (5 szt.)',
+      'przod-tyl-bagaznik': 'Przód + Tył + Bagażnik (6 szt.)'
     };
     return completenessTypes[completeness] || completeness;
   };
@@ -1057,7 +1057,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                           onClick={() => handleCompletenessChange('przod-tyl')}
                           className="w-full text-left p-2 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0 text-sm"
                         >
-                          <div className="text-white font-medium">Przód + Tył (4 szt.)</div>
+                          <div className="text-white font-medium">Przód + Tył (5 szt.)</div>
                           <div className="text-gray-400 text-xs">Kompletna ochrona wnętrza</div>
                         </button>
                         <button
@@ -1065,7 +1065,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                           onClick={() => handleCompletenessChange('przod-tyl-bagaznik')}
                           className="w-full text-left p-2 hover:bg-gray-700 transition-colors duration-200 border-b border-gray-600 last:border-b-0 text-sm"
                         >
-                          <div className="text-white font-medium">Przód + Tył + Bagażnik (5 szt.)</div>
+                          <div className="text-white font-medium">Przód + Tył + Bagażnik (6 szt.)</div>
                           <div className="text-gray-400 text-xs">Maksymalna ochrona całego auta</div>
                         </button>
                       </div>
@@ -1118,33 +1118,6 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                     {/* Color Selection */}
                     <div>
                       <div className="space-y-4">
-                        {/* Kolor Obszycia */}
-                        <div>
-                          <div className="flex items-center gap-2 mb-3">
-                            <Palette className="w-5 h-5 text-red-400" />
-                            <h4 className="text-white font-semibold text-sm">Kolor Obszycia</h4>
-                          </div>
-                          <div className="grid grid-cols-6 gap-3">
-                            {BORDER_COLOR_OPTIONS.map((option) => (
-                              <div
-                                key={option.value}
-                                onClick={() => handleBorderColorSelect(option.value)}
-                                className={`w-6 h-6 rounded-full border-2 cursor-pointer color-circle shadow-lg ${
-                                  formData.borderColor === option.value
-                                    ? 'border-white ring-2 ring-red-500 selected'
-                                    : 'border-gray-600 hover:border-gray-400'
-                                } ${getColorClass(option.value)}`}
-                                title={option.label}
-                              />
-                            ))}
-                          </div>
-                          {formData.borderColor && (
-                            <p className="text-gray-300 text-xs mt-2">
-                              Wybrane: {getColorName(formData.borderColor, BORDER_COLOR_OPTIONS)}
-                            </p>
-                          )}
-                        </div>
-
                         {/* Kolor Materiału */}
                         <div>
                           <div className="flex items-center gap-2 mb-3">
@@ -1165,11 +1138,28 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                               />
                             ))}
                           </div>
-                          {formData.materialColor && (
-                            <p className="text-gray-300 text-xs mt-2">
-                              Wybrane: {getColorName(formData.materialColor, MATERIAL_COLOR_OPTIONS)}
-                            </p>
-                          )}
+                        </div>
+
+                        {/* Kolor Obszycia */}
+                        <div>
+                          <div className="flex items-center gap-2 mb-3">
+                            <Palette className="w-5 h-5 text-red-400" />
+                            <h4 className="text-white font-semibold text-sm">Kolor Obszycia</h4>
+                          </div>
+                          <div className="grid grid-cols-6 gap-3">
+                            {BORDER_COLOR_OPTIONS.map((option) => (
+                              <div
+                                key={option.value}
+                                onClick={() => handleBorderColorSelect(option.value)}
+                                className={`w-6 h-6 rounded-full border-2 cursor-pointer color-circle shadow-lg ${
+                                  formData.borderColor === option.value
+                                    ? 'border-white ring-2 ring-red-500 selected'
+                                    : 'border-gray-600 hover:border-gray-400'
+                                } ${getColorClass(option.value)}`}
+                                title={option.label}
+                              />
+                            ))}
+                          </div>
                         </div>
                       </div>
 
@@ -1191,7 +1181,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                 <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Ankieta feedbackowa</h3>
+                <h3 className="text-xl font-bold text-white mb-2">Ankieta EVAPREMIUM</h3>
                 <p className="text-gray-300">Pomóż nam się poprawić i odbierz podpietkę pod pedał gazu która wzmocni Twój dywanik gratis!</p>
               </div>
 

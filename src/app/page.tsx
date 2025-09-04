@@ -67,7 +67,7 @@ export default function Home() {
               
               {/* Tytuł */}
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Dobierz dywaniki <span className="text-red-500">EVAPREMIUM</span> do swojego auta i odbierz -30% rabatu
+                Dobierz dywaniki <span className="text-red-500">EVAPREMIUM</span> do swojego auta i odbierz do 30% rabatu
               </h1>
               
               <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-6">
