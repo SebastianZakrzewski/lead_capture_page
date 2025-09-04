@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { CarMatService } from '@/backend/services/CarMatService';
 
 // GET - pobierz statystyki konfiguracji dywaników

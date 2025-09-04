@@ -97,7 +97,7 @@ export const trackFormStart = () => {
 };
 
 // Oblicz wartość leada na podstawie wyboru
-const calculateLeadValue = (leadData: any): number => {
+const calculateLeadValue = (leadData: Record<string, unknown>): number => {
   let baseValue = 0;
   
   // Wartość na podstawie kompletności
@@ -132,7 +132,7 @@ const calculateLeadValue = (leadData: any): number => {
 };
 
 // Śledź wysłanie formularza z danymi trackingowymi
-export const trackLeadSubmissionWithData = (leadData: any) => {
+export const trackLeadSubmissionWithData = (leadData: Record<string, unknown>) => {
   if (typeof window !== 'undefined' && window.fbq) {
     // Oblicz wartość leada na podstawie wyboru
     const leadValue = calculateLeadValue(leadData);

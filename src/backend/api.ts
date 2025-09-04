@@ -1,7 +1,7 @@
 import { LeadSubmissionData } from '@/utils/tracking';
 
 // Typy dla odpowiedzi API
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   success: boolean;
   data?: T;
   error?: string;
@@ -16,6 +16,7 @@ export interface LeadResponse {
 }
 
 // Konfiguracja API
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const API_CONFIG = {
   baseUrl: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api',
   timeout: 10000,
@@ -131,7 +132,7 @@ async function simulateApiCall(leadData: LeadSubmissionData): Promise<ApiRespons
   };
 }
 
-async function simulateGetLeads(filters?: any): Promise<ApiResponse<LeadSubmissionData[]>> {
+async function simulateGetLeads(filters?: Record<string, unknown>): Promise<ApiResponse<LeadSubmissionData[]>> {
   await new Promise(resolve => setTimeout(resolve, 500));
   
   // Symulacja danych
@@ -178,7 +179,13 @@ async function simulateUpdateLeadStatus(leadId: string, status: string): Promise
   };
 }
 
-async function simulateGetAnalytics(dateFrom: Date, dateTo: Date): Promise<ApiResponse<any>> {
+async function simulateGetAnalytics(dateFrom: Date, dateTo: Date): Promise<ApiResponse<{
+  totalLeads: number;
+  bySource: Record<string, number>;
+  byCampaign: Record<string, number>;
+  conversionRate: number;
+  averageResponseTime: number;
+}>> {
   await new Promise(resolve => setTimeout(resolve, 800));
   
   const analytics = {
@@ -238,7 +245,7 @@ export function sanitizeLeadData(leadData: LeadSubmissionData): Partial<LeadSubm
   // Zostawiamy tylko ostatnie 4 cyfry telefonu
   if (phone) {
     const cleanPhone = phone.replace(/\D/g, '');
-    (sanitizedData as any).phone = `***${cleanPhone.slice(-4)}`;
+    (sanitizedData as Record<string, unknown>).phone = `***${cleanPhone.slice(-4)}`;
   }
   
   // Ukrywamy część emaila
@@ -247,7 +254,7 @@ export function sanitizeLeadData(leadData: LeadSubmissionData): Partial<LeadSubm
     const hiddenUsername = username.length > 2 
       ? `${username.slice(0, 2)}***` 
       : '***';
-    (sanitizedData as any).email = `${hiddenUsername}@${domain}`;
+    (sanitizedData as Record<string, unknown>).email = `${hiddenUsername}@${domain}`;
   }
   
   return sanitizedData;

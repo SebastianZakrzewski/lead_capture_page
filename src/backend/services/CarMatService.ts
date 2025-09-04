@@ -1,5 +1,5 @@
 import { supabase } from '../database';
-import { CarMat } from '../models/CarMat';
+// import { CarMat } from '../models/CarMat';
 import { CarMatData } from '@/types/carMat';
 
 export class CarMatService {

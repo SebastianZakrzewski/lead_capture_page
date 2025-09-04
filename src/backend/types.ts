@@ -131,11 +131,11 @@ export interface LeadAutomation {
   conditions: {
     field: string;
     operator: 'equals' | 'not_equals' | 'contains' | 'greater_than' | 'less_than';
-    value: any;
+    value: unknown;
   }[];
   actions: {
     type: 'send_email' | 'assign_to' | 'change_status' | 'create_task' | 'send_notification';
-    config: Record<string, any>;
+    config: Record<string, unknown>;
   }[];
   isActive: boolean;
   createdAt: Date;
@@ -178,7 +178,7 @@ export interface Notification {
   type: 'lead_assigned' | 'lead_status_changed' | 'task_due' | 'report_ready' | 'system';
   title: string;
   message: string;
-  data?: Record<string, any>;
+  data?: Record<string, unknown>;
   isRead: boolean;
   createdAt: Date;
   readAt?: Date;
@@ -205,8 +205,8 @@ export interface AuditLog {
   action: string;
   entityType: 'lead' | 'user' | 'automation' | 'template';
   entityId: string;
-  oldValues?: Record<string, any>;
-  newValues?: Record<string, any>;
+  oldValues?: Record<string, unknown>;
+  newValues?: Record<string, unknown>;
   ipAddress?: string;
   userAgent?: string;
   createdAt: Date;
@@ -216,7 +216,7 @@ export interface AuditLog {
 export interface SystemConfig {
   id: string;
   key: string;
-  value: any;
+  value: unknown;
   description?: string;
   isPublic: boolean;
   updatedAt: Date;
@@ -239,7 +239,7 @@ export interface PaginatedResponse<T> {
 export interface ApiError {
   code: string;
   message: string;
-  details?: Record<string, any>;
+  details?: Record<string, unknown>;
   timestamp: Date;
 }
 
@@ -247,7 +247,7 @@ export interface ApiError {
 export interface WebhookPayload {
   event: string;
   timestamp: Date;
-  data: any;
+  data: unknown;
   signature?: string;
 }
 

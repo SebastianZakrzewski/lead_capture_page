@@ -1,6 +1,7 @@
 import { supabase } from '../database';
 import { LeadSubmissionData } from '@/utils/tracking';
 import { v4 as uuidv4 } from 'uuid';
+import { Bitrix24Service, Bitrix24ContactData, Bitrix24DealData } from './Bitrix24Service';
 
 // Funkcje do zarządzania leadami
 export class LeadService {
@@ -185,7 +186,7 @@ export class LeadService {
   }
 
   // Zaktualizuj status leada
-  static async updateLeadStatus(id: string, status: string, userId?: string) {
+  static async updateLeadStatus(id: string, status: string, _userId?: string) {
     try {
       // Get the old lead first
       const { data: oldLead, error: fetchError } = await supabase
@@ -259,7 +260,7 @@ export class LeadService {
   }
 
   // Przypisz lead do agenta
-  static async assignLead(id: string, assignedTo: string, userId?: string) {
+  static async assignLead(id: string, assignedTo: string, _userId?: string) {
     try {
       const { data: lead, error } = await supabase
         .from('Lead')
@@ -452,6 +453,241 @@ export class LeadService {
     } catch (error) {
       console.error('Error fetching lead stats:', error);
       return { success: false, error: 'Błąd podczas pobierania statystyk' };
+    }
+  }
+
+  /**
+   * Mapuje dane z formularza na dane kontaktu Bitrix24
+   */
+  private static mapToBitrix24Contact(leadData: LeadSubmissionData): Bitrix24ContactData {
+    return {
+      NAME: leadData.firstName,
+      LAST_NAME: '',
+      PHONE: leadData.phone ? [{
+        VALUE: leadData.phone,
+        VALUE_TYPE: "WORK"
+      }] : undefined,
+      EMAIL: leadData.email ? [{
+        VALUE: leadData.email,
+        VALUE_TYPE: "WORK"
+      }] : undefined,
+      COMMENTS: this.formatContactComments(leadData),
+      SOURCE_ID: this.mapUtmSource(leadData.utmSource),
+      SOURCE_DESCRIPTION: leadData.utmCampaign
+    };
+  }
+
+  /**
+   * Mapuje dane z formularza na dane deala Bitrix24
+   */
+  private static mapToBitrix24Deal(leadData: LeadSubmissionData): Omit<Bitrix24DealData, 'CONTACT_ID'> {
+    return {
+      TITLE: `Dywaniki EVAPREMIUM - ${leadData.company}`,
+      CATEGORY_ID: 2, // "Leady z Reklam"
+      STAGE_ID: "NEW",
+      STAGE_SEMANTIC_ID: "P",
+      CURRENCY_ID: "PLN",
+      OPPORTUNITY: this.calculateOpportunity(leadData),
+      COMMENTS: this.formatDealComments(leadData),
+      SOURCE_ID: this.mapUtmSource(leadData.utmSource),
+      SOURCE_DESCRIPTION: leadData.utmCampaign,
+      TYPE_ID: "SALE",
+      
+      // Pola niestandardowe
+      UTM_SOURCE: leadData.utmSource,
+      UTM_MEDIUM: leadData.utmMedium,
+      UTM_CAMPAIGN: leadData.utmCampaign,
+      UTM_TERM: leadData.utmTerm,
+      UTM_CONTENT: leadData.utmContent,
+      AUTO_ROK: leadData.jobTitle,
+      TYP_DYWANIKOW: leadData.industry,
+      STRUKTURA: leadData.structure,
+      KOLOR_MATERIALU: leadData.materialColor,
+      KOLOR_OBSZYCIA: leadData.borderColor,
+      FEEDBACK_EASE: leadData.feedbackEaseOfChoice,
+      FEEDBACK_CLARITY: leadData.feedbackFormClarity,
+      FEEDBACK_SPEED: leadData.feedbackLoadingSpeed,
+      FEEDBACK_EXPERIENCE: leadData.feedbackOverallExperience,
+      FEEDBACK_RECOMMEND: leadData.feedbackWouldRecommend,
+      FEEDBACK_COMMENTS: leadData.feedbackAdditionalComments
+    };
+  }
+
+  /**
+   * Mapuje UTM source na ID źródła w Bitrix24
+   */
+  private static mapUtmSource(utmSource?: string): string {
+    const sourceMap = {
+      'google': 'WEB',
+      'facebook': 'WEB',
+      'instagram': 'WEB',
+      'direct': 'WEB',
+      'email': 'EMAIL',
+      'sms': 'SMS',
+      'phone': 'PHONE'
+    };
+    return sourceMap[utmSource as keyof typeof sourceMap] || 'WEB';
+  }
+
+  /**
+   * Formatuje komentarze kontaktu
+   */
+  private static formatContactComments(leadData: LeadSubmissionData): string {
+    return `
+AUTO: ${leadData.company} (${leadData.jobTitle})
+KONFIGURACJA:
+- Typ: ${leadData.industry}
+- Komplet: ${leadData.completeness}
+- Struktura: ${leadData.structure}
+- Kolor materiału: ${leadData.materialColor}
+- Kolor obszycia: ${leadData.borderColor}
+- Haczyki: ${leadData.includeHooks ? 'Tak' : 'Nie'}
+
+TRACKING:
+- Źródło: ${leadData.utmSource || 'Brak'}
+- Kampania: ${leadData.utmCampaign || 'Brak'}
+- Medium: ${leadData.utmMedium || 'Brak'}
+    `.trim();
+  }
+
+  /**
+   * Formatuje komentarze deala
+   */
+  private static formatDealComments(leadData: LeadSubmissionData): string {
+    return `
+SZCZEGÓŁY ZAMÓWIENIA:
+- Auto: ${leadData.company} (${leadData.jobTitle})
+- Typ dywaników: ${leadData.industry}
+- Komplet: ${leadData.completeness}
+- Struktura: ${leadData.structure}
+- Kolor materiału: ${leadData.materialColor}
+- Kolor obszycia: ${leadData.borderColor}
+- Haczyki: ${leadData.includeHooks ? 'Tak' : 'Nie'}
+
+DANE TRACKINGOWE:
+- Źródło: ${leadData.utmSource || 'Brak'}
+- Kampania: ${leadData.utmCampaign || 'Brak'}
+- Medium: ${leadData.utmMedium || 'Brak'}
+    `.trim();
+  }
+
+  /**
+   * Oblicza szacowaną wartość deala
+   */
+  private static calculateOpportunity(leadData: LeadSubmissionData): number {
+    const basePrice = 200;
+    const completenessMultiplier = {
+      'dywanik-kierowcy': 1,
+      'przod': 2,
+      'przod-tyl': 4,
+      'przod-tyl-bagaznik': 5
+    };
+    
+    const multiplier = completenessMultiplier[leadData.completeness as keyof typeof completenessMultiplier] || 1;
+    const totalPrice = basePrice * multiplier;
+    
+    // 30% rabatu jeśli wypełniono feedback
+    if (leadData.feedbackEaseOfChoice && leadData.feedbackFormClarity) {
+      return Math.round(totalPrice * 0.7);
+    }
+    
+    return totalPrice;
+  }
+
+  /**
+   * Tworzy lead z integracją Bitrix24
+   */
+  static async createLeadWithBitrix24(leadData: LeadSubmissionData) {
+    try {
+      console.log('🚀 LeadService: Rozpoczynam tworzenie leada z integracją Bitrix24');
+      
+      // 1. Najpierw zapisz w Supabase (backup)
+      const leadResult = await this.createLead(leadData);
+      
+      if (!leadResult.success) {
+        return leadResult;
+      }
+
+      console.log('✅ Lead zapisany w Supabase:', leadResult.data.id);
+
+      // 2. Wyślij do Bitrix24
+      try {
+        const contactData = this.mapToBitrix24Contact(leadData);
+        const dealData = this.mapToBitrix24Deal(leadData);
+        
+        const bitrixResult = await Bitrix24Service.createDealWithContact(contactData, dealData);
+        
+        if (bitrixResult.success) {
+          // 3. Zaktualizuj lead w Supabase z ID z Bitrix24
+          await supabase
+            .from('Lead')
+            .update({
+              bitrix24ContactId: bitrixResult.contactId,
+              bitrix24DealId: bitrixResult.dealId,
+              bitrix24Synced: true,
+              updatedAt: new Date().toISOString()
+            })
+            .eq('id', leadResult.data.id);
+
+          console.log('✅ Lead zsynchronizowany z Bitrix24');
+
+          return {
+            success: true,
+            data: {
+              ...leadResult.data,
+              bitrix24ContactId: bitrixResult.contactId,
+              bitrix24DealId: bitrixResult.dealId
+            },
+            message: 'Lead utworzony i zsynchronizowany z Bitrix24'
+          };
+        } else {
+          throw new Error(bitrixResult.error || 'Bitrix24 sync failed');
+        }
+      } catch (bitrixError) {
+        console.error('❌ Błąd synchronizacji z Bitrix24:', bitrixError);
+        
+        // Lead został zapisany w Supabase, ale nie w Bitrix24
+        return {
+          success: true,
+          data: leadResult.data,
+          warning: 'Lead zapisany lokalnie, ale nie udało się zsynchronizować z Bitrix24',
+          error: bitrixError instanceof Error ? bitrixError.message : String(bitrixError)
+        };
+      }
+    } catch (error) {
+      console.error('❌ Błąd tworzenia leada:', error);
+      return { success: false, error: 'Błąd podczas tworzenia leada' };
+    }
+  }
+
+  /**
+   * Tworzy pusty lead w Bitrix24 (do testów)
+   */
+  static async createEmptyLeadInBitrix24() {
+    try {
+      console.log('🚀 LeadService: Tworzę pusty lead w Bitrix24 do testów');
+      
+      const result = await Bitrix24Service.createEmptyDeal();
+      
+      if (result.success) {
+        console.log('✅ Pusty lead utworzony w Bitrix24 z ID:', result.dealId);
+        return {
+          success: true,
+          dealId: result.dealId,
+          message: 'Pusty lead utworzony w Bitrix24'
+        };
+      } else {
+        return {
+          success: false,
+          error: result.error
+        };
+      }
+    } catch (error) {
+      console.error('❌ Błąd tworzenia pustego leada w Bitrix24:', error);
+      return { 
+        success: false, 
+        error: `Error creating empty lead in Bitrix24: ${error instanceof Error ? error.message : String(error)}` 
+      };
     }
   }
 }

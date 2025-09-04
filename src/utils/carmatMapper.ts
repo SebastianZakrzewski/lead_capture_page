@@ -50,6 +50,7 @@ const MATERIAL_COLORS = [
 ];
 
 // Kolory obszycia dostępne dla różnych struktur
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const BORDER_COLORS = [
   'beżowy', 'bordowy', 'brązowy', 'ciemnoszary', 'czerwony', 
   'fioletowy', 'ciemnoniebieski', 'jasnoszary', 'niebieski', 

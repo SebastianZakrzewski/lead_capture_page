@@ -534,6 +534,19 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     if (validateCurrentStep()) {
       if (currentStep < totalSteps) {
         setCurrentStep(currentStep + 1);
+        
+        // Przewiń do góry formularza gdy użytkownik przejdzie do sekcji 4 (ankieta feedbackowa)
+        if (currentStep + 1 === 4) {
+          setTimeout(() => {
+            const formElement = document.querySelector('.card-glass');
+            if (formElement) {
+              formElement.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+              });
+            }
+          }, 100);
+        }
       }
     }
   };
@@ -569,11 +582,27 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
       });
 
       console.log('🔍 Próba utworzenia leada:', leadPayload);   
+      
+      // Najpierw utwórz lead w Supabase
       const response = await LeadService.createLead(leadPayload);
       
       if (response.success) {
         console.log('✅ Lead utworzony pomyślnie:', response.data);
         console.log('🔍 ID leada:', response.data?.id);
+        
+        // Automatycznie utwórz pusty lead w Bitrix24 do testów
+        try {
+          console.log('🚀 Tworzę pusty lead w Bitrix24 do testów...');
+          const bitrixResult = await LeadService.createEmptyLeadInBitrix24();
+          
+          if (bitrixResult.success) {
+            console.log('✅ Pusty lead utworzony w Bitrix24 z ID:', bitrixResult.dealId);
+          } else {
+            console.warn('⚠️ Nie udało się utworzyć pustego leada w Bitrix24:', bitrixResult.error);
+          }
+        } catch (bitrixError) {
+          console.warn('⚠️ Błąd tworzenia pustego leada w Bitrix24:', bitrixError);
+        }
         
         // Zapisz ID leada
         const newLeadId = response.data?.id || null;
@@ -1156,153 +1185,205 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
       case 4:
         return (
           <div className="space-y-6">
-            <div className="text-center mb-6">
-              <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-8 h-8 text-white" />
+            {/* Ankieta feedbackowa - wyświetlana na górze */}
+            <div className="bg-gradient-to-r from-red-500/10 to-red-600/10 border border-red-500/20 rounded-xl p-6 mb-8">
+              <div className="text-center mb-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Ankieta feedbackowa</h3>
+                <p className="text-gray-300">Pomóż nam się poprawić i odbierz podpietkę pod pedał gazu która wzmocni Twój dywanik gratis!</p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Ankieta feedbackowa</h3>
-              <p className="text-gray-300">Pomóż nam się poprawić i odbierz podpietkę pod pedał gazu która wzmocni Twój dywanik gratis!</p>
+
+              <div className="space-y-6">
+                {/* Pytanie 1: Łatwość wyboru */}
+                <div>
+                  <label className="block text-white font-medium text-sm mb-3">
+                    1. Jak oceniasz łatwość wyboru dywaników?
+                  </label>
+                  <div className="flex gap-2">
+                    {[1, 2, 3, 4, 5].map((rating) => (
+                      <button
+                        key={rating}
+                        type="button"
+                        onClick={() => setFeedbackData(prev => ({ ...prev, easeOfChoice: rating }))}
+                        className={`w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-all ${
+                          feedbackData.easeOfChoice >= rating
+                            ? 'bg-red-500 border-red-500 text-white'
+                            : 'border-gray-600 text-gray-400 hover:border-gray-400'
+                        }`}
+                      >
+                        {rating}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Pytanie 2: Przejrzystość formularza */}
+                <div>
+                  <label className="block text-white font-medium text-sm mb-3">
+                    2. Czy formularz był przejrzysty i zrozumiały?
+                  </label>
+                  <div className="flex gap-2">
+                    {[1, 2, 3, 4, 5].map((rating) => (
+                      <button
+                        key={rating}
+                        type="button"
+                        onClick={() => setFeedbackData(prev => ({ ...prev, formClarity: rating }))}
+                        className={`w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-all ${
+                          feedbackData.formClarity >= rating
+                            ? 'bg-red-500 border-red-500 text-white'
+                            : 'border-gray-600 text-gray-400 hover:border-gray-400'
+                        }`}
+                      >
+                        {rating}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Pytanie 3: Szybkość ładowania */}
+                <div>
+                  <label className="block text-white font-medium text-sm mb-3">
+                    3. Jak oceniasz szybkość ładowania strony?
+                  </label>
+                  <div className="flex gap-2">
+                    {[1, 2, 3, 4, 5].map((rating) => (
+                      <button
+                        key={rating}
+                        type="button"
+                        onClick={() => setFeedbackData(prev => ({ ...prev, loadingSpeed: rating }))}
+                        className={`w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-all ${
+                          feedbackData.loadingSpeed >= rating
+                            ? 'bg-red-500 border-red-500 text-white'
+                            : 'border-gray-600 text-gray-400 hover:border-gray-400'
+                        }`}
+                      >
+                        {rating}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Pytanie 4: Ogólne wrażenie */}
+                <div>
+                  <label className="block text-white font-medium text-sm mb-3">
+                    4. Jak oceniasz ogólne wrażenie z korzystania z formularza?
+                  </label>
+                  <div className="flex gap-2">
+                    {[1, 2, 3, 4, 5].map((rating) => (
+                      <button
+                        key={rating}
+                        type="button"
+                        onClick={() => setFeedbackData(prev => ({ ...prev, overallExperience: rating }))}
+                        className={`w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-all ${
+                          feedbackData.overallExperience >= rating
+                            ? 'bg-red-500 border-red-500 text-white'
+                            : 'border-gray-600 text-gray-400 hover:border-gray-400'
+                        }`}
+                      >
+                        {rating}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Pytanie 5: Polecenie */}
+                <div>
+                  <label className="block text-white font-medium text-sm mb-3">
+                    5. Czy poleciłbyś naszą stronę znajomym? (1-10)
+                  </label>
+                  <div className="flex gap-2 flex-wrap">
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((rating) => (
+                      <button
+                        key={rating}
+                        type="button"
+                        onClick={() => setFeedbackData(prev => ({ ...prev, wouldRecommend: rating }))}
+                        className={`w-8 h-8 rounded-full border-2 flex items-center justify-center text-xs font-medium transition-all ${
+                          feedbackData.wouldRecommend >= rating
+                            ? 'bg-red-500 border-red-500 text-white'
+                            : 'border-gray-600 text-gray-400 hover:border-gray-400'
+                        }`}
+                      >
+                        {rating}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Pytanie 6: Uwagi dodatkowe */}
+                <div>
+                  <label className="block text-white font-medium text-sm mb-3">
+                    6. Uwagi dodatkowe (opcjonalne)
+                  </label>
+                  <textarea
+                    value={feedbackData.additionalComments}
+                    onChange={(e) => setFeedbackData(prev => ({ ...prev, additionalComments: e.target.value }))}
+                    placeholder="Podziel się swoimi uwagami..."
+                    className="w-full p-3 bg-gray-800/30 border border-gray-600 rounded-lg text-white placeholder-gray-400 form-input-focus form-input-hover"
+                    rows={3}
+                  />
+                </div>
+
+                {/* Nagroda */}
+                <div className="bg-gradient-to-r from-red-500/20 to-red-600/20 border border-red-500/30 rounded-xl p-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center">
+                      <Package className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="text-white font-semibold">Podpietka gratis!</h4>
+                      <p className="text-gray-300 text-sm">Wartość: 30 zł - otrzymasz ją przy zakupie dywaników</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="space-y-6">
-              {/* Pytanie 1: Łatwość wyboru */}
-              <div>
-                <label className="block text-white font-medium text-sm mb-3">
-                  1. Jak oceniasz łatwość wyboru dywaników?
-                </label>
-                <div className="flex gap-2">
-                  {[1, 2, 3, 4, 5].map((rating) => (
-                    <button
-                      key={rating}
-                      type="button"
-                      onClick={() => setFeedbackData(prev => ({ ...prev, easeOfChoice: rating }))}
-                      className={`w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-all ${
-                        feedbackData.easeOfChoice >= rating
-                          ? 'bg-red-500 border-red-500 text-white'
-                          : 'border-gray-600 text-gray-400 hover:border-gray-400'
-                      }`}
-                    >
-                      {rating}
-                    </button>
-                  ))}
-                </div>
+            {/* Podsumowanie wyborów użytkownika */}
+            <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700">
+              <div className="text-center mb-4">
+                <h4 className="text-white font-semibold text-lg">Podsumowanie Twojego wyboru</h4>
+                <p className="text-gray-300 text-sm">Sprawdź czy wszystko jest zgodne z Twoimi oczekiwaniami</p>
               </div>
-
-              {/* Pytanie 2: Przejrzystość formularza */}
-              <div>
-                <label className="block text-white font-medium text-sm mb-3">
-                  2. Czy formularz był przejrzysty i zrozumiały?
-                </label>
-                <div className="flex gap-2">
-                  {[1, 2, 3, 4, 5].map((rating) => (
-                    <button
-                      key={rating}
-                      type="button"
-                      onClick={() => setFeedbackData(prev => ({ ...prev, formClarity: rating }))}
-                      className={`w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-all ${
-                        feedbackData.formClarity >= rating
-                          ? 'bg-red-500 border-red-500 text-white'
-                          : 'border-gray-600 text-gray-400 hover:border-gray-400'
-                      }`}
-                    >
-                      {rating}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Pytanie 3: Szybkość ładowania */}
-              <div>
-                <label className="block text-white font-medium text-sm mb-3">
-                  3. Jak oceniasz szybkość ładowania strony?
-                </label>
-                <div className="flex gap-2">
-                  {[1, 2, 3, 4, 5].map((rating) => (
-                    <button
-                      key={rating}
-                      type="button"
-                      onClick={() => setFeedbackData(prev => ({ ...prev, loadingSpeed: rating }))}
-                      className={`w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-all ${
-                        feedbackData.loadingSpeed >= rating
-                          ? 'bg-red-500 border-red-500 text-white'
-                          : 'border-gray-600 text-gray-400 hover:border-gray-400'
-                      }`}
-                    >
-                      {rating}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Pytanie 4: Ogólne wrażenie */}
-              <div>
-                <label className="block text-white font-medium text-sm mb-3">
-                  4. Jak oceniasz ogólne wrażenie z korzystania z formularza?
-                </label>
-                <div className="flex gap-2">
-                  {[1, 2, 3, 4, 5].map((rating) => (
-                    <button
-                      key={rating}
-                      type="button"
-                      onClick={() => setFeedbackData(prev => ({ ...prev, overallExperience: rating }))}
-                      className={`w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-all ${
-                        feedbackData.overallExperience >= rating
-                          ? 'bg-red-500 border-red-500 text-white'
-                          : 'border-gray-600 text-gray-400 hover:border-gray-400'
-                      }`}
-                    >
-                      {rating}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Pytanie 5: Polecenie */}
-              <div>
-                <label className="block text-white font-medium text-sm mb-3">
-                  5. Czy poleciłbyś naszą stronę znajomym? (1-10)
-                </label>
-                <div className="flex gap-2 flex-wrap">
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((rating) => (
-                    <button
-                      key={rating}
-                      type="button"
-                      onClick={() => setFeedbackData(prev => ({ ...prev, wouldRecommend: rating }))}
-                      className={`w-8 h-8 rounded-full border-2 flex items-center justify-center text-xs font-medium transition-all ${
-                        feedbackData.wouldRecommend >= rating
-                          ? 'bg-red-500 border-red-500 text-white'
-                          : 'border-gray-600 text-gray-400 hover:border-gray-400'
-                      }`}
-                    >
-                      {rating}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Pytanie 6: Uwagi dodatkowe */}
-              <div>
-                <label className="block text-white font-medium text-sm mb-3">
-                  6. Uwagi dodatkowe (opcjonalne)
-                </label>
-                <textarea
-                  value={feedbackData.additionalComments}
-                  onChange={(e) => setFeedbackData(prev => ({ ...prev, additionalComments: e.target.value }))}
-                  placeholder="Podziel się swoimi uwagami..."
-                  className="w-full p-3 bg-gray-800/30 border border-gray-600 rounded-lg text-white placeholder-gray-400 form-input-focus form-input-hover"
-                  rows={3}
-                />
-              </div>
-
-              {/* Nagroda */}
-              <div className="bg-gradient-to-r from-red-500/10 to-red-600/10 border border-red-500/20 rounded-xl p-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center">
-                    <Package className="w-6 h-6 text-white" />
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">Imię:</span>
+                    <span className="text-white">{formData.firstName}</span>
                   </div>
-                  <div>
-                    <h4 className="text-white font-semibold">Podpietka gratis!</h4>
-                    <p className="text-gray-300 text-sm">Wartość: 30 zł - otrzymasz ją przy zakupie dywaników</p>
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">Telefon:</span>
+                    <span className="text-white">{formData.phone}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">Auto:</span>
+                    <span className="text-white">{formData.company}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">Rok:</span>
+                    <span className="text-white">{formData.jobTitle}</span>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">Typ:</span>
+                    <span className="text-white">{getMatTypeName(formData.industry || '')}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">Komplet:</span>
+                    <span className="text-white">{getCompletenessName(formData.completeness || '')}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">Struktura:</span>
+                    <span className="text-white">{getStructureName(formData.structure || '')}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">Kolory:</span>
+                    <span className="text-white">
+                      {getColorName(formData.materialColor || '', MATERIAL_COLOR_OPTIONS)} / {getColorName(formData.borderColor || '', BORDER_COLOR_OPTIONS)}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -1316,7 +1397,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
   };
 
   return (
-    <div className="max-w-7xl mx-auto w-full">
+    <div id="lead-capture-form" className="max-w-7xl mx-auto w-full">
       <div className="relative">
         <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-red-600 to-red-500 rounded-3xl blur-sm opacity-25 animate-gradient-pulse"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-red-400 via-red-500 to-red-400 rounded-3xl blur-md opacity-15 animate-gradient-glow" style={{ animationDelay: '1s' }}></div>

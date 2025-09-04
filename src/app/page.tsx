@@ -7,7 +7,7 @@ import CountdownTimer from '@/components/CountdownTimer';
 import { useEffect, useState } from 'react';
 import { saveUtmParams } from '@/utils/tracking';
 import { LeadFormData } from '@/types/lead';
-import { Star, Shield, Truck, Clock, Users, Award, CheckCircle } from 'lucide-react';
+import { Star, Shield, Truck, Users, Award, CheckCircle } from 'lucide-react';
 
 export default function Home() {
   const [formData, setFormData] = useState<LeadFormData>({
@@ -24,7 +24,7 @@ export default function Home() {
     message: ''
   });
 
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  // const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
   useEffect(() => {
     // Inicjalizuj śledzenie przy pierwszym wejściu
@@ -36,7 +36,8 @@ export default function Home() {
   };
 
   const handleFormSubmission = (submitted: boolean) => {
-    setIsFormSubmitted(submitted);
+    // setIsFormSubmitted(submitted);
+    console.log('Form submitted:', submitted);
   };
 
   return (
