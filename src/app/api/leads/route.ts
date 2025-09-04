@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { LeadService } from '@/backend/services/LeadService';
+import { Bitrix24Service } from '@/backend/services/Bitrix24Service';
 import { checkConnection } from '@/backend/database';
 
 export async function POST(request: NextRequest) {
@@ -68,6 +69,21 @@ export async function POST(request: NextRequest) {
     
     if (result.success) {
       console.log('✅ Lead zapisany w bazie:', result.data.id);
+      
+      // Automatycznie utwórz pusty lead w Bitrix24
+      console.log('🚀 Rozpoczynam tworzenie pustego leada w Bitrix24...');
+      try {
+        const bitrixResult = await Bitrix24Service.createEmptyLeadAfterFormSubmission();
+        console.log('📋 Wynik Bitrix24:', bitrixResult);
+        
+        if (bitrixResult.success) {
+          console.log('✅ Pusty lead utworzony w Bitrix24 z ID:', bitrixResult.dealId);
+        } else {
+          console.error('❌ Nie udało się utworzyć pustego leada w Bitrix24:', bitrixResult.error);
+        }
+      } catch (bitrixError) {
+        console.error('❌ Błąd tworzenia pustego leada w Bitrix24:', bitrixError);
+      }
       
       // Zwróć sukces - Beacon API automatycznie obsłuży odpowiedź
       return NextResponse.json(

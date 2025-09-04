@@ -23,8 +23,8 @@ export async function GET(request: NextRequest) {
     // Test pustego deala
     const emptyDealResult = await Bitrix24Service.createEmptyDeal();
     
-    // Test pustego leada przez LeadService
-    const emptyLeadResult = await LeadService.createEmptyLeadInBitrix24();
+    // Test pustego leada przez Bitrix24Service
+    const emptyLeadResult = await Bitrix24Service.createEmptyLeadAfterFormSubmission();
 
     return NextResponse.json({
       success: true,
@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(emptyDealResult);
 
       case 'create-empty-lead':
-        const emptyLeadResult = await LeadService.createEmptyLeadInBitrix24();
+        const emptyLeadResult = await Bitrix24Service.createEmptyLeadAfterFormSubmission();
         return NextResponse.json(emptyLeadResult);
 
       case 'get-deals':

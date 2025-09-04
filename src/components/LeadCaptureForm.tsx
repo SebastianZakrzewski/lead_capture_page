@@ -559,15 +559,29 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
+    alert('🔥 FUNKCJA handleSubmit ZOSTAŁA WYWOŁANA!');
+    console.log('🔥 FUNKCJA handleSubmit ZOSTAŁA WYWOŁANA!');
     // setShowStep3Errors(true);
     
+    alert('🔍 Sprawdzam walidację...');
+    console.log('🔍 Sprawdzam walidację...');
+    console.log('📋 Dane formularza:', formData);
+    console.log('🔢 Aktualny krok:', currentStep);
+    
     if (!validateCurrentStep()) {
+      alert('❌ Walidacja nie przeszła! Sprawdź czy wszystkie pola są wypełnione.');
+      console.log('❌ Walidacja nie przeszła!');
+      console.log('📋 Błędy walidacji:', errors);
       return;
     }
+    alert('✅ Walidacja przeszła!');
+    console.log('✅ Walidacja przeszła!');
 
     setIsSubmitting(true);
 
     try {
+      console.log('🚀 Rozpoczynam wysyłanie formularza...');
+      alert('🚀 Rozpoczynam wysyłanie formularza...');
       const leadPayload = prepareLeadSubmissionData({
         firstName: formData.firstName,
         phone: formData.phone,
@@ -583,29 +597,25 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
 
       console.log('🔍 Próba utworzenia leada:', leadPayload);   
       
-      // Najpierw utwórz lead w Supabase
-      const response = await LeadService.createLead(leadPayload);
+      // Wyślij dane przez API endpoint (który automatycznie utworzy lead w Bitrix24)
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(leadPayload)
+      });
       
-      if (response.success) {
-        console.log('✅ Lead utworzony pomyślnie:', response.data);
-        console.log('🔍 ID leada:', response.data?.id);
+      const result = await response.json();
+      
+      if (result.success) {
+        console.log('✅ Lead utworzony pomyślnie:', result);
+        console.log('🔍 ID leada:', result.leadId);
         
-        // Automatycznie utwórz pusty lead w Bitrix24 do testów
-        try {
-          console.log('🚀 Tworzę pusty lead w Bitrix24 do testów...');
-          const bitrixResult = await LeadService.createEmptyLeadInBitrix24();
-          
-          if (bitrixResult.success) {
-            console.log('✅ Pusty lead utworzony w Bitrix24 z ID:', bitrixResult.dealId);
-          } else {
-            console.warn('⚠️ Nie udało się utworzyć pustego leada w Bitrix24:', bitrixResult.error);
-          }
-        } catch (bitrixError) {
-          console.warn('⚠️ Błąd tworzenia pustego leada w Bitrix24:', bitrixError);
-        }
+        // Integracja z Bitrix24 jest teraz obsługiwana po stronie serwera w API endpoint
         
         // Zapisz ID leada
-        const newLeadId = response.data?.id || null;
+        const newLeadId = result.leadId || null;
         console.log('🔧 Ustawiam leadId na:', newLeadId);
         setLeadId(newLeadId);
         
@@ -631,7 +641,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
           setShowFeedbackModal(true);
         }, 2000);
       } else {
-        throw new Error(response.error || 'Unknown error');
+        throw new Error(result.error || 'Unknown error');
       }
     } catch (error) {
       console.error('❌ Błąd wysyłania formularza:', error);

@@ -89,7 +89,7 @@ export class Bitrix24Service {
   }
 
   /**
-   * Tworzy pusty deal w kategorii "Leady z Reklam"
+   * Tworzy pusty deal w kategorii "Leady z Reklam" (do testów)
    */
   static async createEmptyDeal(): Promise<{ success: boolean; dealId?: number; error?: string }> {
     try {
@@ -140,7 +140,64 @@ export class Bitrix24Service {
       console.error('❌ Błąd tworzenia pustego deala:', error);
       return { 
         success: false, 
-        error: `Error creating empty deal: ${error.message}` 
+        error: `Error creating empty deal: ${error instanceof Error ? error.message : String(error)}` 
+      };
+    }
+  }
+
+  /**
+   * Tworzy pusty lead w Bitrix24 po wysłaniu formularza
+   */
+  static async createEmptyLeadAfterFormSubmission(): Promise<{ success: boolean; dealId?: number; error?: string }> {
+    try {
+      console.log('🚀 Bitrix24Service: Tworzę pusty lead po wysłaniu formularza');
+
+      const dealData: Bitrix24DealData = {
+        TITLE: "Nowy Lead - Formularz",
+        CATEGORY_ID: this.BITRIX24_DEAL_CATEGORY_ID,
+        STAGE_ID: "NEW",
+        STAGE_SEMANTIC_ID: "P",
+        CURRENCY_ID: "PLN",
+        OPPORTUNITY: 0,
+        COMMENTS: "Lead utworzony automatycznie po wysłaniu formularza",
+        TYPE_ID: "SALE"
+      };
+
+      console.log('📋 Dane leada:', dealData);
+
+      const response = await fetch(`${this.BITRIX24_URL}crm.deal.add`, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'User-Agent': 'LeadCaptureForm/1.0'
+        },
+        body: JSON.stringify({
+          fields: dealData
+        })
+      });
+
+      const result: Bitrix24Response = await response.json();
+      
+      if (result.error) {
+        console.error('❌ Błąd tworzenia leada:', result.error);
+        return { 
+          success: false, 
+          error: `Bitrix24 lead creation failed: ${result.error.error_description}` 
+        };
+      }
+
+      const dealId = result.result as number;
+      console.log('✅ Pusty lead utworzony z ID:', dealId);
+
+      return { 
+        success: true, 
+        dealId: dealId 
+      };
+    } catch (error) {
+      console.error('❌ Błąd tworzenia pustego leada:', error);
+      return { 
+        success: false, 
+        error: `Error creating empty lead: ${error instanceof Error ? error.message : String(error)}` 
       };
     }
   }
@@ -186,7 +243,7 @@ export class Bitrix24Service {
       console.error('❌ Błąd tworzenia kontaktu:', error);
       return { 
         success: false, 
-        error: `Error creating contact: ${error.message}` 
+        error: `Error creating contact: ${error instanceof Error ? error.message : String(error)}` 
       };
     }
   }
@@ -238,7 +295,7 @@ export class Bitrix24Service {
       console.error('❌ Błąd tworzenia deala:', error);
       return { 
         success: false, 
-        error: `Error creating deal: ${error.message}` 
+        error: `Error creating deal: ${error instanceof Error ? error.message : String(error)}` 
       };
     }
   }
@@ -292,7 +349,7 @@ export class Bitrix24Service {
       console.error('❌ Błąd tworzenia deala z kontaktem:', error);
       return { 
         success: false, 
-        error: `Error creating deal with contact: ${error.message}` 
+        error: `Error creating deal with contact: ${error instanceof Error ? error.message : String(error)}` 
       };
     }
   }
@@ -330,7 +387,7 @@ export class Bitrix24Service {
         };
       }
 
-      const deals = result.result as any[];
+      const deals = Array.isArray(result.result) ? result.result : [];
       console.log('✅ Pobrano deali z kategorii "Leady z Reklam":', deals.length);
 
       return { 
@@ -341,7 +398,7 @@ export class Bitrix24Service {
       console.error('❌ Błąd pobierania deali:', error);
       return { 
         success: false, 
-        error: `Error fetching deals: ${error.message}` 
+        error: `Error fetching deals: ${error instanceof Error ? error.message : String(error)}` 
       };
     }
   }
@@ -385,7 +442,7 @@ export class Bitrix24Service {
       console.error('❌ Błąd pobierania deala:', error);
       return { 
         success: false, 
-        error: `Error fetching deal: ${error.message}` 
+        error: `Error fetching deal: ${error instanceof Error ? error.message : String(error)}` 
       };
     }
   }

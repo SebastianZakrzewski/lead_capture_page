@@ -660,34 +660,4 @@ DANE TRACKINGOWE:
     }
   }
 
-  /**
-   * Tworzy pusty lead w Bitrix24 (do testów)
-   */
-  static async createEmptyLeadInBitrix24() {
-    try {
-      console.log('🚀 LeadService: Tworzę pusty lead w Bitrix24 do testów');
-      
-      const result = await Bitrix24Service.createEmptyDeal();
-      
-      if (result.success) {
-        console.log('✅ Pusty lead utworzony w Bitrix24 z ID:', result.dealId);
-        return {
-          success: true,
-          dealId: result.dealId,
-          message: 'Pusty lead utworzony w Bitrix24'
-        };
-      } else {
-        return {
-          success: false,
-          error: result.error
-        };
-      }
-    } catch (error) {
-      console.error('❌ Błąd tworzenia pustego leada w Bitrix24:', error);
-      return { 
-        success: false, 
-        error: `Error creating empty lead in Bitrix24: ${error instanceof Error ? error.message : String(error)}` 
-      };
-    }
-  }
 }
