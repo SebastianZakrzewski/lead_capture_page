@@ -203,7 +203,7 @@ export function mapToBitrix24Deal(leadData: LeadSubmissionData) {
     STAGE_ID: "NEW",
     STAGE_SEMANTIC_ID: "P",
     CURRENCY_ID: "PLN",
-    OPPORTUNITY: calculateOpportunity(leadData),
+    OPPORTUNITY: 0,
     COMMENTS: formatDealComments(leadData),
     SOURCE_ID: mapUtmSource(leadData.utmSource),
     SOURCE_DESCRIPTION: leadData.utmCampaign,
@@ -268,40 +268,3 @@ function mapUtmSource(utmSource?: string): string {
   return sourceMap[utmSource || ''] || 'WEB';
 }
 
-/**
- * Oblicza wartość deala na podstawie wyboru
- */
-function calculateOpportunity(leadData: LeadSubmissionData): number {
-  let baseValue = 0;
-  
-  // Wartość bazowa na podstawie rodzaju kompletu
-  switch (leadData.industry) {
-    case '3d-evapremium-z-rantami':
-      baseValue = 200;
-      break;
-    case '3d-evapremium-bez-rantow':
-    case 'klasyczne-evapremium':
-      baseValue = 150;
-      break;
-    default:
-      baseValue = 100;
-  }
-  
-  // Mnożnik na podstawie wariantu
-  switch (leadData.completeness) {
-    case 'dywanik-kierowcy':
-      baseValue *= 0.2;
-      break;
-    case 'przod':
-      baseValue *= 0.4;
-      break;
-    case 'przod-tyl':
-      baseValue *= 0.8;
-      break;
-    case 'przod-tyl-bagaznik':
-      baseValue *= 1.0;
-      break;
-  }
-  
-  return Math.round(baseValue);
-}
