@@ -357,7 +357,7 @@ export class Bitrix24Service {
   /**
    * Pobiera listę deali z kategorii "Leady z Reklam"
    */
-  static async getDeals(limit: number = 10): Promise<{ success: boolean; deals?: any[]; error?: string }> {
+  static async getDeals(_limit: number = 10): Promise<{ success: boolean; deals?: unknown[]; error?: string }> {
     try {
       console.log('🔍 Pobieranie listy deali z kategorii "Leady z Reklam"...');
 
@@ -406,7 +406,7 @@ export class Bitrix24Service {
   /**
    * Pobiera szczegóły deala po ID
    */
-  static async getDealById(dealId: number): Promise<{ success: boolean; deal?: any; error?: string }> {
+  static async getDealById(dealId: number): Promise<{ success: boolean; deal?: unknown; error?: string }> {
     try {
       console.log('🔍 Pobieranie deala z ID:', dealId);
 
