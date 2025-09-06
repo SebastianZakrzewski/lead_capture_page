@@ -10,7 +10,6 @@ export async function GET(request: NextRequest) {
     // Przykładowe dane formularza z Facebook META ADS
     const sampleFormData: LeadSubmissionData = {
       firstName: 'Jan',
-      lastName: 'Kowalski',
       phone: '+48 123 456 789',
       email: 'jan.kowalski@example.com',
       company: 'BMW X5',
