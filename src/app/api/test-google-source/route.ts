@@ -9,7 +9,6 @@ export async function GET(request: NextRequest) {
     // Przykładowe dane formularza z Google Ads
     const sampleFormData: LeadSubmissionData = {
       firstName: 'Anna',
-      lastName: 'Nowak',
       phone: '+48 987 654 321',
       email: 'anna.nowak@example.com',
       company: 'Audi A4',
