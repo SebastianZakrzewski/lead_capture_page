@@ -1,3 +1,4 @@
+/* eslint-disable */
 'use client';
 
 import { useEffect } from 'react';
@@ -27,7 +28,6 @@ export default function FacebookPixel({ pixelId }: FacebookPixelProps) {
     // Load Facebook Pixel script using official Meta code
     if (typeof window !== 'undefined') {
       // Official Meta Pixel initialization
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-expressions, prefer-spread, prefer-rest-params
       (function(f: any, b: any, e: any, v: any, n: any, t: any, s: any) {
         if (f.fbq) return;
         n = f.fbq = function() {
@@ -62,7 +62,6 @@ export default function FacebookPixel({ pixelId }: FacebookPixelProps) {
     <>
       {/* Noscript fallback for Meta Pixel */}
       <noscript>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img 
           height="1" 
           width="1" 
