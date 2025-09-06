@@ -89,7 +89,7 @@ export async function POST(request: NextRequest) {
     console.error('❌ Błąd API Bitrix24:', error);
     return NextResponse.json({
       success: false,
-      error: `Błąd API Bitrix24: ${error.message}`
+      error: `Błąd API Bitrix24: ${error instanceof Error ? error.message : 'Nieznany błąd'}`
     }, { status: 500 });
   }
 }
