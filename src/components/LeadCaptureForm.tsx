@@ -597,32 +597,17 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
 
       console.log('🔍 Próba utworzenia leada:', leadPayload);   
       
-      // Wyślij dane przez API endpoint (który automatycznie utworzy lead w Bitrix24)
-      const response = await fetch('/api/leads', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(leadPayload)
-      });
+      // Wyślij dane przez Beacon API (który automatycznie utworzy lead w Bitrix24)
+      const beaconData = JSON.stringify(leadPayload);
+      const beaconSent = navigator.sendBeacon('/api/leads', beaconData);
       
-      const result = await response.json();
-      
-      if (result.success) {
-        console.log('✅ Lead utworzony pomyślnie:', result);
-        console.log('🔍 ID leada:', result.leadId);
+      if (beaconSent) {
+        console.log('✅ Lead wysłany przez Beacon API');
         
-        // Integracja z Bitrix24 jest teraz obsługiwana po stronie serwera w API endpoint
-        
-        // Zapisz ID leada
-        const newLeadId = result.leadId || null;
-        console.log('🔧 Ustawiam leadId na:', newLeadId);
-        setLeadId(newLeadId);
-        
-        // Sprawdź czy leadId zostało ustawione
-        setTimeout(() => {
-          console.log('🔍 Sprawdzenie leadId po 100ms:', leadId);
-        }, 100);
+        // Generuj tymczasowe ID leada dla UI
+        const tempLeadId = `temp_${Date.now()}`;
+        console.log('🔧 Ustawiam tymczasowe leadId na:', tempLeadId);
+        setLeadId(tempLeadId);
         
         // Śledź pomyślne wysłanie formularza z danymi trackingowymi
         trackLeadSubmissionWithData(leadPayload as unknown as Record<string, unknown>);
@@ -637,11 +622,11 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
         
         // Pokaż modal z ankietą po 2 sekundach
         setTimeout(() => {
-          console.log('🔄 Pokazuję modal feedbacku, leadId:', leadId);
+          console.log('🔄 Pokazuję modal feedbacku, leadId:', tempLeadId);
           setShowFeedbackModal(true);
         }, 2000);
       } else {
-        throw new Error(result.error || 'Unknown error');
+        throw new Error('Beacon API failed to send data');
       }
     } catch (error) {
       console.error('❌ Błąd wysyłania formularza:', error);
@@ -675,7 +660,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
         console.error('❌ fallbackLeadId jest:', fallbackLeadId);
         console.error('❌ Próba ponownego utworzenia leada z feedbackiem...');
         
-        // Fallback: jeśli nie ma leadId, spróbuj wysłać dane ponownie
+        // Fallback: jeśli nie ma leadId, spróbuj wysłać dane ponownie przez Beacon API
         const leadPayloadWithFeedback = prepareLeadSubmissionData({
           firstName: formData.firstName,
           phone: formData.phone,
@@ -697,15 +682,16 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
           feedbackAdditionalComments: feedbackData?.additionalComments as string | undefined
         });
 
-        const response = await LeadService.createLead(leadPayloadWithFeedback);
+        const beaconData = JSON.stringify(leadPayloadWithFeedback);
+        const beaconSent = navigator.sendBeacon('/api/leads', beaconData);
         
-        if (response.success) {
-          console.log('✅ Lead z feedbackiem utworzony pomyślnie (fallback)');
+        if (beaconSent) {
+          console.log('✅ Lead z feedbackiem wysłany przez Beacon API (fallback)');
           setFeedbackCompleted(isCompleted);
           setShowFeedbackModal(false);
           setIsSubmitted(true);
         } else {
-          console.error('❌ Błąd w fallback createLead:', response);
+          console.error('❌ Błąd w fallback Beacon API');
         }
         return;
       }
