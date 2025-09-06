@@ -2,6 +2,7 @@ import { supabase } from '../database';
 import { LeadSubmissionData } from '@/utils/tracking';
 import { v4 as uuidv4 } from 'uuid';
 import { Bitrix24Service, Bitrix24ContactData, Bitrix24DealData } from './Bitrix24Service';
+import { mapToBitrix24Contact, mapToBitrix24Deal } from '@/utils/bitrixFieldMapper';
 
 // Funkcje do zarządzania leadami
 export class LeadService {
@@ -460,139 +461,16 @@ export class LeadService {
    * Mapuje dane z formularza na dane kontaktu Bitrix24
    */
   private static mapToBitrix24Contact(leadData: LeadSubmissionData): Bitrix24ContactData {
-    return {
-      NAME: leadData.firstName,
-      LAST_NAME: '',
-      PHONE: leadData.phone ? [{
-        VALUE: leadData.phone,
-        VALUE_TYPE: "WORK"
-      }] : undefined,
-      EMAIL: leadData.email ? [{
-        VALUE: leadData.email,
-        VALUE_TYPE: "WORK"
-      }] : undefined,
-      COMMENTS: this.formatContactComments(leadData),
-      SOURCE_ID: this.mapUtmSource(leadData.utmSource),
-      SOURCE_DESCRIPTION: leadData.utmCampaign
-    };
+    return mapToBitrix24Contact(leadData);
   }
 
   /**
    * Mapuje dane z formularza na dane deala Bitrix24
    */
   private static mapToBitrix24Deal(leadData: LeadSubmissionData): Omit<Bitrix24DealData, 'CONTACT_ID'> {
-    return {
-      TITLE: `Dywaniki EVAPREMIUM - ${leadData.company}`,
-      CATEGORY_ID: 2, // "Leady z Reklam"
-      STAGE_ID: "NEW",
-      STAGE_SEMANTIC_ID: "P",
-      CURRENCY_ID: "PLN",
-      OPPORTUNITY: this.calculateOpportunity(leadData),
-      COMMENTS: this.formatDealComments(leadData),
-      SOURCE_ID: this.mapUtmSource(leadData.utmSource),
-      SOURCE_DESCRIPTION: leadData.utmCampaign,
-      TYPE_ID: "SALE",
-      
-      // Pola niestandardowe
-      UTM_SOURCE: leadData.utmSource,
-      UTM_MEDIUM: leadData.utmMedium,
-      UTM_CAMPAIGN: leadData.utmCampaign,
-      UTM_TERM: leadData.utmTerm,
-      UTM_CONTENT: leadData.utmContent,
-      AUTO_ROK: leadData.jobTitle,
-      TYP_DYWANIKOW: leadData.industry,
-      STRUKTURA: leadData.structure,
-      KOLOR_MATERIALU: leadData.materialColor,
-      KOLOR_OBSZYCIA: leadData.borderColor,
-      FEEDBACK_EASE: leadData.feedbackEaseOfChoice,
-      FEEDBACK_CLARITY: leadData.feedbackFormClarity,
-      FEEDBACK_SPEED: leadData.feedbackLoadingSpeed,
-      FEEDBACK_EXPERIENCE: leadData.feedbackOverallExperience,
-      FEEDBACK_RECOMMEND: leadData.feedbackWouldRecommend,
-      FEEDBACK_COMMENTS: leadData.feedbackAdditionalComments
-    };
+    return mapToBitrix24Deal(leadData);
   }
 
-  /**
-   * Mapuje UTM source na ID źródła w Bitrix24
-   */
-  private static mapUtmSource(utmSource?: string): string {
-    const sourceMap = {
-      'google': 'WEB',
-      'facebook': 'WEB',
-      'instagram': 'WEB',
-      'direct': 'WEB',
-      'email': 'EMAIL',
-      'sms': 'SMS',
-      'phone': 'PHONE'
-    };
-    return sourceMap[utmSource as keyof typeof sourceMap] || 'WEB';
-  }
-
-  /**
-   * Formatuje komentarze kontaktu
-   */
-  private static formatContactComments(leadData: LeadSubmissionData): string {
-    return `
-AUTO: ${leadData.company} (${leadData.jobTitle})
-KONFIGURACJA:
-- Typ: ${leadData.industry}
-- Komplet: ${leadData.completeness}
-- Struktura: ${leadData.structure}
-- Kolor materiału: ${leadData.materialColor}
-- Kolor obszycia: ${leadData.borderColor}
-- Haczyki: ${leadData.includeHooks ? 'Tak' : 'Nie'}
-
-TRACKING:
-- Źródło: ${leadData.utmSource || 'Brak'}
-- Kampania: ${leadData.utmCampaign || 'Brak'}
-- Medium: ${leadData.utmMedium || 'Brak'}
-    `.trim();
-  }
-
-  /**
-   * Formatuje komentarze deala
-   */
-  private static formatDealComments(leadData: LeadSubmissionData): string {
-    return `
-SZCZEGÓŁY ZAMÓWIENIA:
-- Auto: ${leadData.company} (${leadData.jobTitle})
-- Typ dywaników: ${leadData.industry}
-- Komplet: ${leadData.completeness}
-- Struktura: ${leadData.structure}
-- Kolor materiału: ${leadData.materialColor}
-- Kolor obszycia: ${leadData.borderColor}
-- Haczyki: ${leadData.includeHooks ? 'Tak' : 'Nie'}
-
-DANE TRACKINGOWE:
-- Źródło: ${leadData.utmSource || 'Brak'}
-- Kampania: ${leadData.utmCampaign || 'Brak'}
-- Medium: ${leadData.utmMedium || 'Brak'}
-    `.trim();
-  }
-
-  /**
-   * Oblicza szacowaną wartość deala
-   */
-  private static calculateOpportunity(leadData: LeadSubmissionData): number {
-    const basePrice = 200;
-    const completenessMultiplier = {
-      'dywanik-kierowcy': 1,
-      'przod': 2,
-      'przod-tyl': 4,
-      'przod-tyl-bagaznik': 5
-    };
-    
-    const multiplier = completenessMultiplier[leadData.completeness as keyof typeof completenessMultiplier] || 1;
-    const totalPrice = basePrice * multiplier;
-    
-    // 30% rabatu jeśli wypełniono feedback
-    if (leadData.feedbackEaseOfChoice && leadData.feedbackFormClarity) {
-      return Math.round(totalPrice * 0.7);
-    }
-    
-    return totalPrice;
-  }
 
   /**
    * Tworzy lead z integracją Bitrix24

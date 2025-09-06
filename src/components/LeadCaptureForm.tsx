@@ -492,21 +492,25 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
   };
 
   const handleBorderColorSelect = (colorValue: string) => {
+    console.log('🎨 Wybrano kolor obszycia:', colorValue);
     if (onFormDataChange) {
       const updatedFormData: LeadFormData = {
         ...formData,
         borderColor: colorValue
       };
+      console.log('🔄 Aktualizuję formData z kolorem obszycia:', updatedFormData);
       onFormDataChange(updatedFormData);
     }
   };
 
   const handleMaterialColorSelect = (colorValue: string) => {
+    console.log('🎨 Wybrano kolor materiału:', colorValue);
     if (onFormDataChange) {
       const updatedFormData: LeadFormData = {
         ...formData,
         materialColor: colorValue
       };
+      console.log('🔄 Aktualizuję formData z kolorem materiału:', updatedFormData);
       onFormDataChange(updatedFormData);
     }
   };
@@ -582,6 +586,12 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     try {
       console.log('🚀 Rozpoczynam wysyłanie formularza...');
       alert('🚀 Rozpoczynam wysyłanie formularza...');
+      console.log('🔍 Dane formularza przed prepareLeadSubmissionData:', formData);
+      console.log('🎨 Kolory w formData:', {
+        materialColor: formData.materialColor,
+        borderColor: formData.borderColor
+      });
+      
       const leadPayload = prepareLeadSubmissionData({
         firstName: formData.firstName,
         phone: formData.phone,

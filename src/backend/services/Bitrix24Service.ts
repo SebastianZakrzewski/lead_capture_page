@@ -18,23 +18,27 @@ export interface Bitrix24DealData {
   SOURCE_ID?: string;
   SOURCE_DESCRIPTION?: string;
   TYPE_ID: string;
-  // Pola niestandardowe
+  // Pola UTM tracking
   UTM_SOURCE?: string;
   UTM_MEDIUM?: string;
   UTM_CAMPAIGN?: string;
   UTM_TERM?: string;
   UTM_CONTENT?: string;
-  AUTO_ROK?: string;
-  TYP_DYWANIKOW?: string;
-  STRUKTURA?: string;
-  KOLOR_MATERIALU?: string;
-  KOLOR_OBSZYCIA?: string;
-  FEEDBACK_EASE?: number;
-  FEEDBACK_CLARITY?: number;
-  FEEDBACK_SPEED?: number;
-  FEEDBACK_EXPERIENCE?: number;
-  FEEDBACK_RECOMMEND?: number;
-  FEEDBACK_COMMENTS?: string;
+  
+  // Nowe pola z kolumny "Leady z Reklam"
+  UF_CRM_1757024093869?: string; // Imie
+  UF_CRM_1757024079437?: string; // Nazwisko
+  UF_CRM_1757024121436?: number; // Telefon
+  UF_CRM_1757024023213?: string; // Źródło
+  UF_CRM_1757024835301?: string; // Rodzaj kompletu
+  UF_CRM_1757024931236?: string; // Wariant kompletu
+  UF_CRM_1757025126670?: string; // Kolor materiału
+  UF_CRM_1757177134448?: string; // Kształt komórek
+  UF_CRM_1757177281489?: string; // Kolor obszycia
+  UF_CRM_1757178018809?: string; // Marka i Model
+  UF_CRM_1757178102552?: string; // Rok Produkcji
+  UF_CRM_1757178178553?: string; // Dodatkowe uwagi dział produkcji
+  UF_CRM_1757177926352?: string; // Wypełnił Ankiete
 }
 
 export interface Bitrix24ContactData {

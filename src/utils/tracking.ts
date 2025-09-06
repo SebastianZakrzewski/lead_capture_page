@@ -177,11 +177,20 @@ export function prepareLeadSubmissionData(formData: {
   const trackingData = getOrCreateTrackingData();
   const savedUtmParams = getSavedUtmParams();
   
-  return {
+  const result = {
     ...formData,
     ...trackingData,
     ...savedUtmParams, // UTM-y z pierwszego wejścia
   };
+  
+  console.log('🔍 prepareLeadSubmissionData - dane wejściowe:', formData);
+  console.log('🎨 Kolory w danych:', {
+    materialColor: formData.materialColor,
+    borderColor: formData.borderColor
+  });
+  console.log('📦 Wynik prepareLeadSubmissionData:', result);
+  
+  return result;
 }
 
 // Wyczyść dane śledzenia (opcjonalne)

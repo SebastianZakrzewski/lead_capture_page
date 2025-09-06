@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { LeadService } from '@/backend/services/LeadService';
 import { Bitrix24Service } from '@/backend/services/Bitrix24Service';
 import { checkConnection } from '@/backend/database';
+import { prepareLeadSubmissionData } from '@/utils/tracking';
 
 export async function POST(request: NextRequest) {
   try {
@@ -31,8 +32,8 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // Przygotuj dane do zapisania w bazie
-    const leadData = {
+    // Przygotuj dane do zapisania w bazie używając funkcji prepareLeadSubmissionData
+    const leadData = prepareLeadSubmissionData({
       firstName: body.firstName,
       phone: body.phone,
       company: body.company || undefined,
@@ -43,65 +44,50 @@ export async function POST(request: NextRequest) {
       borderColor: body.borderColor || undefined,
       materialColor: body.materialColor || undefined,
       includeHooks: body.includeHooks || false,
-
       
-      // Wymagane pola śledzenia - ustaw domyślne wartości
-      sessionId: body.sessionId || 'api-generated',
-      firstVisit: body.firstVisit ? new Date(body.firstVisit) : new Date(),
-      currentUrl: body.currentUrl || 'api-request',
-      userAgent: body.userAgent || 'api-client',
-      
-      // Opcjonalne pola śledzenia
-      utmSource: body.utmSource || undefined,
-      utmMedium: body.utmMedium || undefined,
-      utmCampaign: body.utmCampaign || undefined,
-      utmTerm: body.utmTerm || undefined,
-      utmContent: body.utmContent || undefined,
-      referrer: body.referrer || undefined,
-      gclid: body.gclid || undefined,
-      fbclid: body.fbclid || undefined,
-    };
+      // Dane feedbackowe
+      feedbackEaseOfChoice: body.feedbackEaseOfChoice || undefined,
+      feedbackFormClarity: body.feedbackFormClarity || undefined,
+      feedbackLoadingSpeed: body.feedbackLoadingSpeed || undefined,
+      feedbackOverallExperience: body.feedbackOverallExperience || undefined,
+      feedbackWouldRecommend: body.feedbackWouldRecommend || undefined,
+      feedbackAdditionalComments: body.feedbackAdditionalComments || undefined,
+    });
     
     console.log('💾 Próba zapisania leada:', leadData);
     
-    // Zapisz lead w bazie danych
-    const result = await LeadService.createLead(leadData);
+    // Utwórz lead z pełną integracją Bitrix24 (z mapowaniem danych)
+    console.log('🚀 Rozpoczynam tworzenie leada z integracją Bitrix24...');
+    const result = await LeadService.createLeadWithBitrix24(leadData);
     
     if (result.success) {
-      console.log('✅ Lead zapisany w bazie:', result.data.id);
-      
-      // Automatycznie utwórz pusty lead w Bitrix24
-      console.log('🚀 Rozpoczynam tworzenie pustego leada w Bitrix24...');
-      try {
-        const bitrixResult = await Bitrix24Service.createEmptyLeadAfterFormSubmission();
-        console.log('📋 Wynik Bitrix24:', bitrixResult);
-        
-        if (bitrixResult.success) {
-          console.log('✅ Pusty lead utworzony w Bitrix24 z ID:', bitrixResult.dealId);
-        } else {
-          console.error('❌ Nie udało się utworzyć pustego leada w Bitrix24:', bitrixResult.error);
-        }
-      } catch (bitrixError) {
-        console.error('❌ Błąd tworzenia pustego leada w Bitrix24:', bitrixError);
+      console.log('✅ Lead utworzony i zsynchronizowany z Bitrix24:', result.data.id);
+      if (result.data.bitrix24DealId) {
+        console.log('✅ Deal Bitrix24 utworzony z ID:', result.data.bitrix24DealId);
       }
-      
-      // Zwróć sukces - Beacon API automatycznie obsłuży odpowiedź
-      return NextResponse.json(
-        { 
-          success: true, 
-          message: 'Lead został pomyślnie zapisany',
-          leadId: result.data.id,
-          timestamp: body.timestamp || new Date().toISOString()
-        },
-        { status: 200 }
-      );
+      if (result.data.bitrix24ContactId) {
+        console.log('✅ Kontakt Bitrix24 utworzony z ID:', result.data.bitrix24ContactId);
+      }
     } else {
-      console.error('❌ Błąd podczas zapisywania leada:', result.error);
+      console.error('❌ Błąd tworzenia leada z integracją Bitrix24:', result.error);
       return NextResponse.json(
         { error: 'Nie udało się zapisać leada w bazie danych' },
         { status: 500 }
       );
     }
+    
+    // Zwróć sukces - Beacon API automatycznie obsłuży odpowiedź
+    return NextResponse.json(
+      { 
+        success: true, 
+        message: 'Lead został pomyślnie zapisany i zsynchronizowany z Bitrix24',
+        leadId: result.data.id,
+        bitrix24DealId: result.data.bitrix24DealId,
+        bitrix24ContactId: result.data.bitrix24ContactId,
+        timestamp: body.timestamp || new Date().toISOString()
+      },
+      { status: 200 }
+    );
     
   } catch (error) {
     console.error('❌ Błąd w API /api/leads:', error);
