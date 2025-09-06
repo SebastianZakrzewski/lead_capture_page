@@ -19,8 +19,6 @@ export async function GET(request: NextRequest) {
       borderColor: 'blue',
       materialColor: 'white',
       includeHooks: false,
-      message: 'Test z Google Ads',
-      feedbackCompleted: false,
       utmSource: 'google', // Źródło Google - NIE powinno ustawić META
       utmMedium: 'cpc',
       utmCampaign: 'google-campaign-2024',
