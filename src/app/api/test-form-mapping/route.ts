@@ -20,7 +20,6 @@ export async function GET(request: NextRequest) {
       borderColor: 'red',
       materialColor: 'black',
       includeHooks: true,
-      feedbackCompleted: true,
       utmSource: 'facebook', // Źródło Facebook - powinno ustawić META
       utmMedium: 'social',
       utmCampaign: 'test-campaign-2024',
