@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <>
       {/* Facebook Pixel */}
-      <FacebookPixel pixelId="YOUR_FACEBOOK_PIXEL_ID" />
+      <FacebookPixel pixelId="1928901661372863" />
       
       <div className="min-h-screen bg-black">
         {/* Background Pattern */}
