@@ -157,8 +157,15 @@ export function mapFormDataToBitrix24Fields(leadData: LeadSubmissionData): Bitri
     fields.UF_CRM_1757178178553 = leadData.message; // Dodatkowe uwagi dział produkcji
   }
 
-  // Flaga wypełnienia ankiety
-  fields.UF_CRM_1757177926352 = leadData.feedbackCompleted ? 'TAK' : 'NIE'; // Wypełnił Ankiete
+  // Flaga wypełnienia ankiety - TAK jeśli jakiekolwiek pole feedback ma wartość
+  const hasFeedback = leadData.feedbackEaseOfChoice !== null && leadData.feedbackEaseOfChoice !== undefined ||
+                     leadData.feedbackFormClarity !== null && leadData.feedbackFormClarity !== undefined ||
+                     leadData.feedbackLoadingSpeed !== null && leadData.feedbackLoadingSpeed !== undefined ||
+                     leadData.feedbackOverallExperience !== null && leadData.feedbackOverallExperience !== undefined ||
+                     leadData.feedbackWouldRecommend !== null && leadData.feedbackWouldRecommend !== undefined ||
+                     (leadData.feedbackAdditionalComments && leadData.feedbackAdditionalComments.trim() !== '');
+  
+  fields.UF_CRM_1757177926352 = hasFeedback ? 'TAK' : 'NIE'; // Wypełnił Ankiete
 
   return fields;
 }
