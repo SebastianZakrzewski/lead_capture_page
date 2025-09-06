@@ -44,7 +44,7 @@ export async function GET(request: NextRequest) {
     console.error('❌ Błąd testowania Bitrix24:', error);
     return NextResponse.json({
       success: false,
-      error: `Błąd testowania Bitrix24: ${error.message}`,
+      error: `Błąd testowania Bitrix24: ${error instanceof Error ? error.message : 'Nieznany błąd'}`,
       tests: {
         connection: false,
         emptyDeal: false,
