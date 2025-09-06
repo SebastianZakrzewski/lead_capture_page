@@ -17,6 +17,7 @@ export interface TrackingData {
 
 export interface LeadSubmissionData extends TrackingData {
   firstName: string;
+  lastName?: string;
   phone: string;
   email?: string;
   company?: string;
@@ -27,6 +28,7 @@ export interface LeadSubmissionData extends TrackingData {
   borderColor?: string;
   materialColor?: string;
   includeHooks?: boolean;
+  message?: string;
   
   // Dane feedbackowe
   feedbackEaseOfChoice?: number;
@@ -154,6 +156,7 @@ export function getSavedUtmParams(): Partial<TrackingData> {
 // Przygotuj dane do wysłania z formularzem
 export function prepareLeadSubmissionData(formData: {
   firstName: string;
+  lastName?: string;
   phone: string;
   email?: string;
   company?: string;
