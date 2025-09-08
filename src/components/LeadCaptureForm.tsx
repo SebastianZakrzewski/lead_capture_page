@@ -1072,8 +1072,6 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                 </button>
               )}
               
-              <div className="flex-1" />
-              
               {currentStep < totalSteps ? (
                 <button
                   type="button"
