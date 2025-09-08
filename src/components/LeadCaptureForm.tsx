@@ -1089,7 +1089,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                   disabled={!formData.firstName.trim() || !formData.phone.trim() || isSubmitting}
                   className="flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? 'Wysyłanie...' : 'Zostaw numer – oddzwonimy w 5 minut'}
+                  {isSubmitting ? 'Wysyłanie...' : 'sprawdź wycenę'}
                 </button>
               )}
             </div>
