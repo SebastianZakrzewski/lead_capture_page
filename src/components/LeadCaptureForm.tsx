@@ -134,22 +134,12 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
   // const [touchedCompleteness, setTouchedCompleteness] = useState(false);
   // const [touchedStructure, setTouchedStructure] = useState(false);
 
-  // Ankieta feedbackowa
-  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
-  const [feedbackCompleted, setFeedbackCompleted] = useState(false); // true = wypełniona ankieta, false = pominięta
-  const [leadId, setLeadId] = useState<string | null>(null); // ID leada po pierwszym wysłaniu
-  const [feedbackData, setFeedbackData] = useState({
-    easeOfChoice: 0,
-    formClarity: 0,
-    loadingSpeed: 0,
-    overallExperience: 0,
-    wouldRecommend: 0,
-    additionalComments: ''
-  });
+  // Lead state
+  const [leadId, setLeadId] = useState<string | null>(null);
   
   // Step management
   const [currentStep, setCurrentStep] = useState(1);
-  const totalSteps = 4;
+  const totalSteps = 3;
   
   // Dropdown states
   const [isMatTypeOpen, setIsMatTypeOpen] = useState(false);
@@ -217,9 +207,9 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     };
   }, []);
 
-  // Hide step 3 errors until the user interacts or attempts submit
+  // Hide configuration errors until the user interacts or attempts submit
   useEffect(() => {
-    if (currentStep === 3) {
+    if (currentStep === 2) {
       // setShowStep3Errors(false);
       // setTouchedMatType(false);
       // setTouchedCompleteness(false);
@@ -242,8 +232,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
   useEffect(() => {
     console.log('🔍 isSubmitted zmieniło się na:', isSubmitted);
     console.log('🔍 currentStep:', currentStep);
-    console.log('🔍 Warunek wyświetlania ekranu sukcesu:', isSubmitted && !showFeedbackModal);
-  }, [isSubmitted, currentStep, showFeedbackModal]);
+  }, [isSubmitted, currentStep]);
 
   // Przywróć leadId z localStorage przy inicjalizacji
   useEffect(() => {
@@ -372,20 +361,6 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     const newErrors: Partial<LeadFormData> = {};
 
     if (currentStep === 1) {
-    if (!formData.firstName.trim()) {
-      newErrors.firstName = 'Imię jest wymagane';
-    }
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Numer telefonu jest wymagany';
-    } else {
-      const cleanedPhone = formData.phone.replace(/\D/g, '');
-      if (cleanedPhone.length < 9) {
-      newErrors.phone = 'Wprowadź poprawny numer telefonu (min. 9 cyfr)';
-        }
-      }
-    }
-
-    if (currentStep === 2) {
       if (!formData.company.trim()) {
         newErrors.company = 'Marka i model auta są wymagane';
       }
@@ -394,7 +369,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
       }
     }
 
-    if (currentStep === 3) {
+    if (currentStep === 2) {
       if (!formData.industry.trim()) {
         newErrors.industry = 'Wybierz typ dywaników';
       }
@@ -403,6 +378,20 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
       }
       if (!formData.structure.trim()) {
         newErrors.structure = 'Wybierz strukturę komórek';
+      }
+    }
+
+    if (currentStep === 3) {
+      if (!formData.firstName.trim()) {
+        newErrors.firstName = 'Imię jest wymagane';
+      }
+      if (!formData.phone.trim()) {
+        newErrors.phone = 'Numer telefonu jest wymagany';
+      } else {
+        const cleanedPhone = formData.phone.replace(/\D/g, '');
+        if (cleanedPhone.length < 9) {
+          newErrors.phone = 'Wprowadź poprawny numer telefonu (min. 9 cyfr)';
+        }
       }
     }
 
@@ -538,19 +527,6 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     if (validateCurrentStep()) {
       if (currentStep < totalSteps) {
         setCurrentStep(currentStep + 1);
-        
-        // Przewiń do góry formularza gdy użytkownik przejdzie do sekcji 4 (ankieta feedbackowa)
-        if (currentStep + 1 === 4) {
-          setTimeout(() => {
-            const formElement = document.querySelector('.card-glass');
-            if (formElement) {
-              formElement.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start' 
-              });
-            }
-          }, 100);
-        }
       }
     }
   };
@@ -563,29 +539,24 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
-    alert('🔥 FUNKCJA handleSubmit ZOSTAŁA WYWOŁANA!');
     console.log('🔥 FUNKCJA handleSubmit ZOSTAŁA WYWOŁANA!');
     // setShowStep3Errors(true);
     
-    alert('🔍 Sprawdzam walidację...');
     console.log('🔍 Sprawdzam walidację...');
     console.log('📋 Dane formularza:', formData);
     console.log('🔢 Aktualny krok:', currentStep);
     
     if (!validateCurrentStep()) {
-      alert('❌ Walidacja nie przeszła! Sprawdź czy wszystkie pola są wypełnione.');
       console.log('❌ Walidacja nie przeszła!');
       console.log('📋 Błędy walidacji:', errors);
       return;
     }
-    alert('✅ Walidacja przeszła!');
     console.log('✅ Walidacja przeszła!');
 
     setIsSubmitting(true);
 
     try {
       console.log('🚀 Rozpoczynam wysyłanie formularza...');
-      alert('🚀 Rozpoczynam wysyłanie formularza...');
       console.log('🔍 Dane formularza przed prepareLeadSubmissionData:', formData);
       console.log('🎨 Kolory w formData:', {
         materialColor: formData.materialColor,
@@ -595,6 +566,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
       const leadPayload = prepareLeadSubmissionData({
         firstName: formData.firstName,
         phone: formData.phone,
+        lastName: formData.lastName,
         company: formData.company || undefined,
         jobTitle: formData.jobTitle || undefined,
         industry: formData.industry || undefined,
@@ -625,16 +597,9 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
         console.log('🎉 Ustawiam isSubmitted na true');
         setIsSubmitted(true);
         console.log('🔍 Stan po setIsSubmitted:', { isSubmitted: true, currentStep });
-        
         if (onFormSubmission) {
           onFormSubmission(true);
         }
-        
-        // Pokaż modal z ankietą po 2 sekundach
-        setTimeout(() => {
-          console.log('🔄 Pokazuję modal feedbacku, leadId:', tempLeadId);
-          setShowFeedbackModal(true);
-        }, 2000);
       } else {
         throw new Error('Beacon API failed to send data');
       }
@@ -646,108 +611,11 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     }
   }, [formData, validateCurrentStep, onFormSubmission]);
 
-  // Obsługa ankiety feedbackowej
-  const handleFeedbackSubmit = async (feedbackData: Record<string, unknown>, isCompleted: boolean = false) => {
-    try {
-      console.log('🔄 Rozpoczynam aktualizację feedbacku...', { feedbackData, isCompleted, leadId });
-      console.log('🔍 Stan leadId:', leadId);
-      console.log('🔍 Typ leadId:', typeof leadId);
-      console.log('🔍 Wszystkie stany komponentu:', {
-        leadId,
-        isSubmitted,
-        showFeedbackModal,
-        feedbackCompleted,
-        currentStep
-      });
-      
-      // Sprawdź localStorage jako fallback
-      const fallbackLeadId = localStorage.getItem('currentLeadId');
-      const effectiveLeadId = leadId || fallbackLeadId;
-      
-      if (!effectiveLeadId) {
-        console.error('❌ Brak ID leada - nie można zaktualizować feedbacku');
-        console.error('❌ leadId jest:', leadId);
-        console.error('❌ fallbackLeadId jest:', fallbackLeadId);
-        console.error('❌ Próba ponownego utworzenia leada z feedbackiem...');
-        
-        // Fallback: jeśli nie ma leadId, spróbuj wysłać dane ponownie przez Beacon API
-        const leadPayloadWithFeedback = prepareLeadSubmissionData({
-          firstName: formData.firstName,
-          phone: formData.phone,
-          company: formData.company || undefined,
-          jobTitle: formData.jobTitle || undefined,
-          industry: formData.industry || undefined,
-          completeness: formData.completeness || undefined,
-          structure: formData.structure || undefined,
-          borderColor: formData.borderColor || undefined,
-          materialColor: formData.materialColor || undefined,
-          includeHooks: formData.includeHooks || false,
-          
-          // Dane feedbackowe
-          feedbackEaseOfChoice: feedbackData?.easeOfChoice as number | undefined,
-          feedbackFormClarity: feedbackData?.formClarity as number | undefined,
-          feedbackLoadingSpeed: feedbackData?.loadingSpeed as number | undefined,
-          feedbackOverallExperience: feedbackData?.overallExperience as number | undefined,
-          feedbackWouldRecommend: feedbackData?.wouldRecommend as number | undefined,
-          feedbackAdditionalComments: feedbackData?.additionalComments as string | undefined
-        });
-
-        const beaconData = JSON.stringify(leadPayloadWithFeedback);
-        const beaconSent = navigator.sendBeacon('/api/leads', beaconData);
-        
-        if (beaconSent) {
-          console.log('✅ Lead z feedbackiem wysłany przez Beacon API (fallback)');
-          setFeedbackCompleted(isCompleted);
-          setShowFeedbackModal(false);
-          setIsSubmitted(true);
-        } else {
-          console.error('❌ Błąd w fallback Beacon API');
-        }
-        return;
-      }
-
-      // Przygotuj dane feedbacku
-      const feedbackPayload = {
-        feedbackEaseOfChoice: feedbackData?.easeOfChoice as number | undefined,
-        feedbackFormClarity: feedbackData?.formClarity as number | undefined,
-        feedbackLoadingSpeed: feedbackData?.loadingSpeed as number | undefined,
-        feedbackOverallExperience: feedbackData?.overallExperience as number | undefined,
-        feedbackWouldRecommend: feedbackData?.wouldRecommend as number | undefined,
-        feedbackAdditionalComments: feedbackData?.additionalComments as string | undefined
-      };
-
-      console.log('📦 Przygotowane dane feedbacku:', feedbackPayload);
-
-      // Zaktualizuj istniejący lead z danymi feedbacku
-      console.log('🔧 Używam effectiveLeadId:', effectiveLeadId);
-      const response = await LeadService.updateLeadFeedback(effectiveLeadId, feedbackPayload);
-      
-      console.log('📡 Odpowiedź z serwera:', response);
-      
-      if (response.success) {
-        console.log('✅ Feedback zaktualizowany pomyślnie');
-        setFeedbackCompleted(isCompleted);
-        setShowFeedbackModal(false);
-        setIsSubmitted(true);
-      } else {
-        console.error('❌ Błąd w odpowiedzi serwera:', response);
-      }
-    } catch (error) {
-      console.error('❌ Błąd aktualizacji feedbacku:', error);
-    }
-  };
-
-  const handleFeedbackDecline = () => {
-    console.log('🚫 Użytkownik odrzucił ankietę, leadId:', leadId);
-    setShowFeedbackModal(false);
-    console.log('🔄 Modal feedbacku zamknięty');
-    // Wyślij null do bazy danych (pominięta ankieta)
-    handleFeedbackSubmit({} as Record<string, unknown>, false);
-  };
+  // Usunięto ankietę feedbackową i powiązaną logikę
 
 
 
-  if (isSubmitted && !showFeedbackModal) {
+  if (isSubmitted) {
     return (
       <div className="max-w-2xl mx-auto">
         <div className="card-glass rounded-2xl p-8 text-center">
@@ -757,11 +625,6 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
           <h3 className="text-2xl font-bold text-white mb-4">Dziękujemy!</h3>
           <p className="text-gray-300 text-lg mb-4">
             Twoje dane zostały pomyślnie wysłane.
-            {feedbackCompleted && (
-              <span className="block mt-2 text-green-400 font-medium">
-                Otrzymasz podpietkę gratis przy zakupie dywaników!
-              </span>
-            )}
           </p>
           <p className="text-gray-300 text-lg mb-6">
             Skontaktujemy się z Tobą w ciągu 24 godzin.
@@ -800,18 +663,9 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
               
               setCurrentStep(1);
               setIsSubmitted(false);
-              setFeedbackCompleted(false);
               console.log('🔄 Resetuję leadId z:', leadId, 'na null');
               setLeadId(null);
               localStorage.removeItem('currentLeadId');
-              setFeedbackData({
-                easeOfChoice: 0,
-                formClarity: 0,
-                loadingSpeed: 0,
-                overallExperience: 0,
-                wouldRecommend: 0,
-                additionalComments: ''
-              });
               setErrors({});
             }}
             className="px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200"
@@ -826,35 +680,6 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
   const renderStep = () => {
     switch (currentStep) {
       case 1:
-   return (
-          <div className="space-y-6">
-            <div className="text-center mb-6">
-              <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <User className="w-8 h-8 text-white" />
-           </div>
-              <h3 className="text-xl font-bold text-white mb-2">Podaj swoje dane</h3>
-              <p className="text-gray-300">Zacznijmy od podstawowych informacji</p>
-         </div>
-
-                            <InputField
-                 label="Imię"
-                 name="firstName"
-                 icon={User}
-                 placeholder="Wprowadź swoje imię"
-                 error={errors.firstName}
-                 value={formData.firstName}
-                 onChange={handleInputChange}
-               />
-
-                <PhoneInput
-                  value={formData.phone}
-                  onChange={handlePhoneChange}
-               error={errors.phone}
-             />
-           </div>
-        );
-
-      case 2:
         return (
            <div className="space-y-6">
             <div className="text-center mb-6">
@@ -886,7 +711,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
            </div>
         );
 
-      case 3:
+      case 2:
         return (
           <div className="space-y-6">
             <div className="text-center mb-6">
@@ -1178,212 +1003,40 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
           </div>
         );
 
-      case 4:
+      case 3:
         return (
           <div className="space-y-6">
-            {/* Ankieta feedbackowa - wyświetlana na górze */}
-            <div className="bg-gradient-to-r from-red-500/10 to-red-600/10 border border-red-500/20 rounded-xl p-6 mb-8">
-              <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Ankieta EVAPREMIUM</h3>
-                <p className="text-gray-300">Pomóż nam się poprawić i odbierz podpietkę pod pedał gazu która wzmocni Twój dywanik gratis!</p>
+            <div className="text-center mb-6">
+              <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <User className="w-8 h-8 text-white" />
               </div>
-
-              <div className="space-y-6">
-                {/* Pytanie 1: Łatwość wyboru */}
-                <div>
-                  <label className="block text-white font-medium text-sm mb-3">
-                    1. Jak oceniasz łatwość wyboru dywaników?
-                  </label>
-                  <div className="flex gap-2">
-                    {[1, 2, 3, 4, 5].map((rating) => (
-                      <button
-                        key={rating}
-                        type="button"
-                        onClick={() => setFeedbackData(prev => ({ ...prev, easeOfChoice: rating }))}
-                        className={`w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-all ${
-                          feedbackData.easeOfChoice >= rating
-                            ? 'bg-red-500 border-red-500 text-white'
-                            : 'border-gray-600 text-gray-400 hover:border-gray-400'
-                        }`}
-                      >
-                        {rating}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Pytanie 2: Przejrzystość formularza */}
-                <div>
-                  <label className="block text-white font-medium text-sm mb-3">
-                    2. Czy formularz był przejrzysty i zrozumiały?
-                  </label>
-                  <div className="flex gap-2">
-                    {[1, 2, 3, 4, 5].map((rating) => (
-                      <button
-                        key={rating}
-                        type="button"
-                        onClick={() => setFeedbackData(prev => ({ ...prev, formClarity: rating }))}
-                        className={`w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-all ${
-                          feedbackData.formClarity >= rating
-                            ? 'bg-red-500 border-red-500 text-white'
-                            : 'border-gray-600 text-gray-400 hover:border-gray-400'
-                        }`}
-                      >
-                        {rating}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Pytanie 3: Szybkość ładowania */}
-                <div>
-                  <label className="block text-white font-medium text-sm mb-3">
-                    3. Jak oceniasz szybkość ładowania strony?
-                  </label>
-                  <div className="flex gap-2">
-                    {[1, 2, 3, 4, 5].map((rating) => (
-                      <button
-                        key={rating}
-                        type="button"
-                        onClick={() => setFeedbackData(prev => ({ ...prev, loadingSpeed: rating }))}
-                        className={`w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-all ${
-                          feedbackData.loadingSpeed >= rating
-                            ? 'bg-red-500 border-red-500 text-white'
-                            : 'border-gray-600 text-gray-400 hover:border-gray-400'
-                        }`}
-                      >
-                        {rating}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Pytanie 4: Ogólne wrażenie */}
-                <div>
-                  <label className="block text-white font-medium text-sm mb-3">
-                    4. Jak oceniasz ogólne wrażenie z korzystania z formularza?
-                  </label>
-                  <div className="flex gap-2">
-                    {[1, 2, 3, 4, 5].map((rating) => (
-                      <button
-                        key={rating}
-                        type="button"
-                        onClick={() => setFeedbackData(prev => ({ ...prev, overallExperience: rating }))}
-                        className={`w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-all ${
-                          feedbackData.overallExperience >= rating
-                            ? 'bg-red-500 border-red-500 text-white'
-                            : 'border-gray-600 text-gray-400 hover:border-gray-400'
-                        }`}
-                      >
-                        {rating}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Pytanie 5: Polecenie */}
-                <div>
-                  <label className="block text-white font-medium text-sm mb-3">
-                    5. Czy poleciłbyś naszą stronę znajomym? (1-10)
-                  </label>
-                  <div className="flex gap-2 flex-wrap">
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((rating) => (
-                      <button
-                        key={rating}
-                        type="button"
-                        onClick={() => setFeedbackData(prev => ({ ...prev, wouldRecommend: rating }))}
-                        className={`w-8 h-8 rounded-full border-2 flex items-center justify-center text-xs font-medium transition-all ${
-                          feedbackData.wouldRecommend >= rating
-                            ? 'bg-red-500 border-red-500 text-white'
-                            : 'border-gray-600 text-gray-400 hover:border-gray-400'
-                        }`}
-                      >
-                        {rating}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Pytanie 6: Uwagi dodatkowe */}
-                <div>
-                  <label className="block text-white font-medium text-sm mb-3">
-                    6. Uwagi dodatkowe (opcjonalne)
-                  </label>
-                  <textarea
-                    value={feedbackData.additionalComments}
-                    onChange={(e) => setFeedbackData(prev => ({ ...prev, additionalComments: e.target.value }))}
-                    placeholder="Podziel się swoimi uwagami..."
-                    className="w-full p-3 bg-gray-800/30 border border-gray-600 rounded-lg text-white placeholder-gray-400 form-input-focus form-input-hover"
-                    rows={3}
-                  />
-                </div>
-
-                {/* Nagroda */}
-                <div className="bg-gradient-to-r from-red-500/20 to-red-600/20 border border-red-500/30 rounded-xl p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center">
-                      <Package className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="text-white font-semibold">Podpietka gratis!</h4>
-                      <p className="text-gray-300 text-sm">Wartość: 30 zł - otrzymasz ją przy zakupie dywaników</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Dane kontaktowe</h3>
+              <p className="text-gray-300">Podaj imię, nazwisko i numer telefonu</p>
             </div>
 
-            {/* Podsumowanie wyborów użytkownika */}
-            <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700">
-              <div className="text-center mb-4">
-                <h4 className="text-white font-semibold text-lg">Podsumowanie Twojego wyboru</h4>
-                <p className="text-gray-300 text-sm">Sprawdź czy wszystko jest zgodne z Twoimi oczekiwaniami</p>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Imię:</span>
-                    <span className="text-white">{formData.firstName}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Telefon:</span>
-                    <span className="text-white">{formData.phone}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Auto:</span>
-                    <span className="text-white">{formData.company}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Rok:</span>
-                    <span className="text-white">{formData.jobTitle}</span>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Typ:</span>
-                    <span className="text-white">{getMatTypeName(formData.industry || '')}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Komplet:</span>
-                    <span className="text-white">{getCompletenessName(formData.completeness || '')}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Struktura:</span>
-                    <span className="text-white">{getStructureName(formData.structure || '')}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Kolory:</span>
-                    <span className="text-white">
-                      {getColorName(formData.materialColor || '', MATERIAL_COLOR_OPTIONS)} / {getColorName(formData.borderColor || '', BORDER_COLOR_OPTIONS)}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <InputField
+              label="Imię"
+              name="firstName"
+              icon={User}
+              placeholder="Wprowadź swoje imię"
+              error={errors.firstName}
+              value={formData.firstName}
+              onChange={handleInputChange}
+            />
+
+            <InputField
+              label="Nazwisko (opcjonalnie)"
+              name="lastName"
+              placeholder="Wprowadź swoje nazwisko"
+              value={formData.lastName}
+              onChange={handleInputChange}
+            />
+
+            <PhoneInput
+              value={formData.phone}
+              onChange={handlePhoneChange}
+              error={errors.phone}
+            />
           </div>
         );
 
@@ -1408,7 +1061,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
 
             {/* Navigation Buttons */}
             <div className="flex justify-center items-center pt-6">
-              {currentStep > 1 && currentStep < 4 && (
+              {currentStep > 1 && currentStep < 3 && (
                 <button
                   type="button"
                   onClick={prevStep}
@@ -1430,25 +1083,6 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                   Dalej
                   <ArrowRight className="w-4 h-4" />
                 </button>
-              ) : currentStep === 4 ? (
-                <div className="flex flex-col items-center justify-center gap-4 w-full">
-                  <button
-                    type="button"
-                    onClick={() => handleFeedbackSubmit(feedbackData, true)}
-                    disabled={feedbackData.easeOfChoice === 0 || feedbackData.formClarity === 0}
-                    className="flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    <Package className="w-4 h-4" />
-                    Wyślij i Odbierz Podpietkę Gratis!
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleFeedbackDecline}
-                    className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-xl transition-all duration-200"
-                  >
-                    Wyślij bez podpietki
-                  </button>
-                </div>
               ) : (
                 <button
                   type="submit"
@@ -1465,37 +1099,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
         </div>
        </div>
 
-       {/* Modal z ankietą feedbackową */}
-       {showFeedbackModal && (
-         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-           <div className="bg-gray-900 rounded-2xl p-8 max-w-md w-full border border-gray-700">
-             <div className="text-center mb-6">
-               <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                 <Package className="w-8 h-8 text-white" />
-               </div>
-               <h3 className="text-2xl font-bold text-white mb-2">Podpietka gratis!</h3>
-               <p className="text-gray-300">
-                 Wypełnij krótką ankietę i odbierz podpietkę o wartości 30 zł przy zakupie dywaników!
-               </p>
-             </div>
-             
-             <div className="flex gap-3">
-               <button
-                 onClick={() => setCurrentStep(4)}
-                 className="flex-1 px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200"
-               >
-                 Tak, chcę ankietę!
-               </button>
-               <button
-                 onClick={handleFeedbackDecline}
-                 className="flex-1 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-xl transition-all duration-200"
-               >
-                 Nie, dziękuję
-               </button>
-             </div>
-           </div>
-         </div>
-       )}
+       {/* Usunięto modal ankiety feedbackowej */}
 
 
      </div>

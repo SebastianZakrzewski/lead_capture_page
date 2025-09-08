@@ -76,34 +76,55 @@ export default function FacebookPixel({ pixelId }: FacebookPixelProps) {
 
 // Utility functions for tracking events
 export const trackLeadSubmission = (value?: number, currency = 'PLN') => {
-  if (typeof window !== 'undefined' && window.fbq) {
-    window.fbq('track', 'Lead', {
-      value: value || 0,
-      currency: currency,
-      content_name: 'Lead Capture Form',
-      content_category: 'Car Mats',
-      content_type: 'product'
-    });
+  if (typeof window !== 'undefined' && window.fbq && window.fbq.loaded) {
+    try {
+      window.fbq('track', 'Lead', {
+        value: value || 0,
+        currency: currency,
+        content_name: 'Lead Capture Form',
+        content_category: 'Car Mats',
+        content_type: 'product'
+      });
+      console.log('📊 Pixel: Lead event sent');
+    } catch (error) {
+      console.error('❌ Pixel: Error sending Lead event:', error);
+    }
+  } else {
+    console.warn('⚠️ Pixel: fbq not available or not loaded');
   }
 };
 
 export const trackFormView = () => {
-  if (typeof window !== 'undefined' && window.fbq) {
-    window.fbq('track', 'ViewContent', {
-      content_name: 'Lead Capture Form',
-      content_category: 'Car Mats',
-      content_type: 'product'
-    });
+  if (typeof window !== 'undefined' && window.fbq && window.fbq.loaded) {
+    try {
+      window.fbq('track', 'ViewContent', {
+        content_name: 'Lead Capture Form',
+        content_category: 'Car Mats',
+        content_type: 'product'
+      });
+      console.log('📊 Pixel: ViewContent event sent');
+    } catch (error) {
+      console.error('❌ Pixel: Error sending ViewContent event:', error);
+    }
+  } else {
+    console.warn('⚠️ Pixel: fbq not available or not loaded');
   }
 };
 
 export const trackFormStart = () => {
-  if (typeof window !== 'undefined' && window.fbq) {
-    window.fbq('track', 'InitiateCheckout', {
-      content_name: 'Lead Capture Form',
-      content_category: 'Car Mats',
-      content_type: 'product'
-    });
+  if (typeof window !== 'undefined' && window.fbq && window.fbq.loaded) {
+    try {
+      window.fbq('track', 'InitiateCheckout', {
+        content_name: 'Lead Capture Form',
+        content_category: 'Car Mats',
+        content_type: 'product'
+      });
+      console.log('📊 Pixel: InitiateCheckout event sent');
+    } catch (error) {
+      console.error('❌ Pixel: Error sending InitiateCheckout event:', error);
+    }
+  } else {
+    console.warn('⚠️ Pixel: fbq not available or not loaded');
   }
 };
 
@@ -144,89 +165,109 @@ const calculateLeadValue = (leadData: Record<string, unknown>): number => {
 
 // Śledź wysłanie formularza z danymi trackingowymi
 export const trackLeadSubmissionWithData = (leadData: Record<string, unknown>) => {
-  if (typeof window !== 'undefined' && window.fbq) {
-    // Oblicz wartość leada na podstawie wyboru
-    const leadValue = calculateLeadValue(leadData);
-    
-    // Podstawowe dane Lead
-    window.fbq('track', 'Lead', {
-      value: leadValue,
-      currency: 'PLN',
-      content_name: 'Lead Capture Form',
-      content_category: 'Car Mats',
-      content_type: 'product',
+  if (typeof window !== 'undefined' && window.fbq && window.fbq.loaded) {
+    try {
+      // Oblicz wartość leada na podstawie wyboru
+      const leadValue = calculateLeadValue(leadData);
       
-      // Dodatkowe dane trackingowe
-      custom_data: {
+      // Podstawowe dane Lead
+      window.fbq('track', 'Lead', {
+        value: leadValue,
+        currency: 'PLN',
+        content_name: 'Lead Capture Form',
+        content_category: 'Car Mats',
+        content_type: 'product',
+        
+        // Dodatkowe dane trackingowe
+        custom_data: {
+          utm_source: leadData.utmSource,
+          utm_medium: leadData.utmMedium,
+          utm_campaign: leadData.utmCampaign,
+          utm_term: leadData.utmTerm,
+          utm_content: leadData.utmContent,
+          gclid: leadData.gclid,
+          fbclid: leadData.fbclid,
+          session_id: leadData.sessionId,
+          first_visit: leadData.firstVisit,
+          current_url: leadData.currentUrl,
+          referrer: leadData.referrer,
+          user_agent: leadData.userAgent,
+          
+          // Dane produktu
+          product_type: leadData.industry,
+          completeness: leadData.completeness,
+          structure: leadData.structure,
+          border_color: leadData.borderColor,
+          material_color: leadData.materialColor,
+          include_hooks: leadData.includeHooks,
+          
+          // Dane użytkownika
+          car_model: leadData.company,
+          car_year: leadData.jobTitle,
+          phone: leadData.phone,
+          email: leadData.email
+        }
+      });
+      
+      // Dodatkowe zdarzenie - CompleteRegistration
+      window.fbq('track', 'CompleteRegistration', {
+        value: leadValue,
+        currency: 'PLN',
+        content_name: 'Lead Registration Complete',
+        content_category: 'Car Mats',
+        registration_method: 'form_submission'
+      });
+      
+      console.log('📊 Pixel: Wysłano dane trackingowe do Facebook:', {
         utm_source: leadData.utmSource,
-        utm_medium: leadData.utmMedium,
         utm_campaign: leadData.utmCampaign,
-        utm_term: leadData.utmTerm,
-        utm_content: leadData.utmContent,
-        gclid: leadData.gclid,
-        fbclid: leadData.fbclid,
         session_id: leadData.sessionId,
-        first_visit: leadData.firstVisit,
-        current_url: leadData.currentUrl,
-        referrer: leadData.referrer,
-        user_agent: leadData.userAgent,
-        
-        // Dane produktu
-        product_type: leadData.industry,
-        completeness: leadData.completeness,
-        structure: leadData.structure,
-        border_color: leadData.borderColor,
-        material_color: leadData.materialColor,
-        include_hooks: leadData.includeHooks,
-        
-        // Dane użytkownika
-        car_model: leadData.company,
-        car_year: leadData.jobTitle,
-        phone: leadData.phone,
-        email: leadData.email
-      }
-    });
-    
-    // Dodatkowe zdarzenie - CompleteRegistration
-    window.fbq('track', 'CompleteRegistration', {
-      value: leadValue,
-      currency: 'PLN',
-      content_name: 'Lead Registration Complete',
-      content_category: 'Car Mats',
-      registration_method: 'form_submission'
-    });
-    
-    console.log('📊 Pixel: Wysłano dane trackingowe do Facebook:', {
-      utm_source: leadData.utmSource,
-      utm_campaign: leadData.utmCampaign,
-      session_id: leadData.sessionId,
-      lead_value: leadValue
-    });
+        lead_value: leadValue
+      });
+    } catch (error) {
+      console.error('❌ Pixel: Error sending Lead data:', error);
+    }
+  } else {
+    console.warn('⚠️ Pixel: fbq not available or not loaded');
   }
 };
 
 // Nowa funkcja dla formularza lead capture
 export const trackLeadCaptureFormView = () => {
-  if (typeof window !== 'undefined' && window.fbq) {
-    window.fbq('track', 'ViewContent', {
-      content_name: 'Lead Capture Form - Car Mats',
-      content_category: 'Lead Generation',
-      content_type: 'form',
-      value: 0,
-      currency: 'PLN'
-    });
+  if (typeof window !== 'undefined' && window.fbq && window.fbq.loaded) {
+    try {
+      window.fbq('track', 'ViewContent', {
+        content_name: 'Lead Capture Form - Car Mats',
+        content_category: 'Lead Generation',
+        content_type: 'form',
+        value: 0,
+        currency: 'PLN'
+      });
+      console.log('📊 Pixel: LeadCaptureFormView event sent');
+    } catch (error) {
+      console.error('❌ Pixel: Error sending LeadCaptureFormView event:', error);
+    }
+  } else {
+    console.warn('⚠️ Pixel: fbq not available or not loaded');
   }
 };
 
 // Funkcja dla rozpoczęcia wypełniania formularza
 export const trackFormInteraction = () => {
-  if (typeof window !== 'undefined' && window.fbq) {
-    window.fbq('track', 'InitiateCheckout', {
-      content_name: 'Lead Capture Form - Car Mats',
-      content_category: 'Lead Generation',
-      content_type: 'form',
-      value: 0,
-      currency: 'PLN'
-    });
+  if (typeof window !== 'undefined' && window.fbq && window.fbq.loaded) {
+    try {
+      window.fbq('track', 'InitiateCheckout', {
+        content_name: 'Lead Capture Form - Car Mats',
+        content_category: 'Lead Generation',
+        content_type: 'form',
+        value: 0,
+        currency: 'PLN'
+      });
+      console.log('📊 Pixel: FormInteraction event sent');
+    } catch (error) {
+      console.error('❌ Pixel: Error sending FormInteraction event:', error);
+    }
+  } else {
+    console.warn('⚠️ Pixel: fbq not available or not loaded');
   }
 };
