@@ -473,6 +473,33 @@ export class LeadService {
 
 
   /**
+   * Tworzy częściowy lead (bez integracji Bitrix24)
+   */
+  static async createPartialLead(leadData: LeadSubmissionData) {
+    try {
+      console.log('🔄 LeadService: Rozpoczynam tworzenie częściowego leada');
+      
+      // Zapisz tylko w Supabase bez integracji Bitrix24
+      const leadResult = await this.createLead(leadData);
+      
+      if (!leadResult.success) {
+        return leadResult;
+      }
+
+      console.log('✅ Częściowy lead zapisany w Supabase:', leadResult.data.id);
+
+      return {
+        success: true,
+        data: leadResult.data,
+        message: 'Częściowy lead zapisany. Klient może dokończyć konfigurację później.'
+      };
+    } catch (error) {
+      console.error('❌ Błąd tworzenia częściowego leada:', error);
+      return { success: false, error: 'Błąd podczas tworzenia częściowego leada' };
+    }
+  }
+
+  /**
    * Tworzy lead z integracją Bitrix24
    */
   static async createLeadWithBitrix24(leadData: LeadSubmissionData) {

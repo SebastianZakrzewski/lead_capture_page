@@ -37,6 +37,12 @@ export interface LeadSubmissionData extends TrackingData {
   feedbackOverallExperience?: number;
   feedbackWouldRecommend?: number;
   feedbackAdditionalComments?: string;
+  
+  // Dodatkowe pola dla częściowego/pełnego zapisu
+  status?: string;
+  step?: number;
+  leadId?: string;
+  timestamp?: string;
 }
 
 // Pobierz UTM-y z URL

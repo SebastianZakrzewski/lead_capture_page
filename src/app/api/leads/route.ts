@@ -22,6 +22,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     
     console.log('📨 Otrzymano dane przez Beacon API:', body);
+    console.log('🔍 Status leada:', body.status, 'Krok:', body.step);
     
     // Walidacja wymaganych pól
     if (!body.firstName || !body.phone) {
@@ -32,8 +33,14 @@ export async function POST(request: NextRequest) {
       );
     }
     
+    // Sprawdź czy to częściowy czy pełny zapis
+    const isPartialSave = body.status === 'partial';
+    const isCompleteSave = body.status === 'complete';
+    
+    console.log('📊 Typ zapisu:', isPartialSave ? 'Częściowy' : isCompleteSave ? 'Pełny' : 'Nieznany');
+    
     // Przygotuj dane do zapisania w bazie używając funkcji prepareLeadSubmissionData
-    const leadData = prepareLeadSubmissionData({
+    const baseLeadData = prepareLeadSubmissionData({
       firstName: body.firstName,
       phone: body.phone,
       company: body.company || undefined,
@@ -54,22 +61,54 @@ export async function POST(request: NextRequest) {
       feedbackAdditionalComments: body.feedbackAdditionalComments || undefined,
     });
     
+    // Dodaj dodatkowe pola dla częściowego/pełnego zapisu
+    const leadData = {
+      ...baseLeadData,
+      status: body.status || 'unknown',
+      step: body.step || 0,
+      leadId: body.leadId || undefined,
+      timestamp: body.timestamp || new Date().toISOString()
+    };
+    
     console.log('💾 Próba zapisania leada:', leadData);
     
-    // Utwórz lead z pełną integracją Bitrix24 (z mapowaniem danych)
-    console.log('🚀 Rozpoczynam tworzenie leada z integracją Bitrix24...');
-    const result = await LeadService.createLeadWithBitrix24(leadData);
+    let result;
+    
+    if (isPartialSave) {
+      // Częściowy zapis - podstawowe dane + integracja Bitrix24 z flagą niepełności
+      console.log('🔄 Rozpoczynam częściowy zapis leada z integracją Bitrix24...');
+      result = await LeadService.createLeadWithBitrix24(leadData);
+    } else if (isCompleteSave) {
+      // Pełny zapis - wszystkie dane + integracja Bitrix24
+      console.log('🚀 Rozpoczynam pełny zapis leada z integracją Bitrix24...');
+      result = await LeadService.createLeadWithBitrix24(leadData);
+    } else {
+      // Fallback - traktuj jako pełny zapis
+      console.log('⚠️ Nieznany status, traktuję jako pełny zapis...');
+      result = await LeadService.createLeadWithBitrix24(leadData);
+    }
     
     if (result.success) {
-      console.log('✅ Lead utworzony i zsynchronizowany z Bitrix24:', result.data.id);
-      if (result.data.bitrix24DealId) {
-        console.log('✅ Deal Bitrix24 utworzony z ID:', result.data.bitrix24DealId);
-      }
-      if (result.data.bitrix24ContactId) {
-        console.log('✅ Kontakt Bitrix24 utworzony z ID:', result.data.bitrix24ContactId);
+      if (isPartialSave) {
+        console.log('✅ Częściowy lead zapisany i zsynchronizowany z Bitrix24:', result.data.id);
+        if (result.data.bitrix24DealId) {
+          console.log('✅ Deal Bitrix24 utworzony z ID:', result.data.bitrix24DealId);
+        }
+        if (result.data.bitrix24ContactId) {
+          console.log('✅ Kontakt Bitrix24 utworzony z ID:', result.data.bitrix24ContactId);
+        }
+      } else {
+        console.log('✅ Pełny lead utworzony i zsynchronizowany z Bitrix24:', result.data.id);
+        if (result.data.bitrix24DealId) {
+          console.log('✅ Deal Bitrix24 utworzony z ID:', result.data.bitrix24DealId);
+        }
+        if (result.data.bitrix24ContactId) {
+          console.log('✅ Kontakt Bitrix24 utworzony z ID:', result.data.bitrix24ContactId);
+        }
       }
     } else {
-      console.error('❌ Błąd tworzenia leada z integracją Bitrix24:', result.error);
+      const errorMessage = 'error' in result ? result.error : 'Nieznany błąd';
+      console.error('❌ Błąd tworzenia leada:', errorMessage);
       return NextResponse.json(
         { error: 'Nie udało się zapisać leada w bazie danych' },
         { status: 500 }
@@ -77,11 +116,17 @@ export async function POST(request: NextRequest) {
     }
     
     // Zwróć sukces - Beacon API automatycznie obsłuży odpowiedź
+    const message = isPartialSave 
+      ? 'Częściowe dane zostały zapisane i zsynchronizowane z Bitrix24. Klient może dokończyć konfigurację później.'
+      : 'Lead został pomyślnie zapisany i zsynchronizowany z Bitrix24';
+      
     return NextResponse.json(
       { 
         success: true, 
-        message: 'Lead został pomyślnie zapisany i zsynchronizowany z Bitrix24',
+        message,
         leadId: result.data.id,
+        status: body.status,
+        step: body.step,
         bitrix24DealId: result.data.bitrix24DealId,
         bitrix24ContactId: result.data.bitrix24ContactId,
         timestamp: body.timestamp || new Date().toISOString()
