@@ -370,18 +370,6 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     }
 
     if (currentStep === 2) {
-      if (!formData.industry.trim()) {
-        newErrors.industry = 'Wybierz typ dywaników';
-      }
-      if (!formData.completeness.trim()) {
-        newErrors.completeness = 'Wybierz rodzaj kompletu';
-      }
-      if (!formData.structure.trim()) {
-        newErrors.structure = 'Wybierz strukturę komórek';
-      }
-    }
-
-    if (currentStep === 3) {
       if (!formData.firstName.trim()) {
         newErrors.firstName = 'Imię jest wymagane';
       }
@@ -392,6 +380,18 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
         if (cleanedPhone.length < 9) {
           newErrors.phone = 'Wprowadź poprawny numer telefonu (min. 9 cyfr)';
         }
+      }
+    }
+
+    if (currentStep === 3) {
+      if (!formData.industry.trim()) {
+        newErrors.industry = 'Wybierz typ dywaników';
+      }
+      if (!formData.completeness.trim()) {
+        newErrors.completeness = 'Wybierz rodzaj kompletu';
+      }
+      if (!formData.structure.trim()) {
+        newErrors.structure = 'Wybierz strukturę komórek';
       }
     }
 
@@ -716,6 +716,35 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
           <div className="space-y-6">
             <div className="text-center mb-6">
               <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <User className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Dane kontaktowe</h3>
+              <p className="text-gray-300">Podaj imię i numer telefonu</p>
+            </div>
+
+            <InputField
+              label="Imię"
+              name="firstName"
+              icon={User}
+              placeholder="Wprowadź swoje imię"
+              error={errors.firstName}
+              value={formData.firstName}
+              onChange={handleInputChange}
+            />
+
+            <PhoneInput
+              value={formData.phone}
+              onChange={handlePhoneChange}
+              error={errors.phone}
+            />
+          </div>
+        );
+
+      case 3:
+        return (
+          <div className="space-y-6">
+            <div className="text-center mb-6">
+              <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Package className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-bold text-white mb-2">Wybór produktu</h3>
@@ -1003,42 +1032,6 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
           </div>
         );
 
-      case 3:
-        return (
-          <div className="space-y-6">
-            <div className="text-center mb-6">
-              <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <User className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Dane kontaktowe</h3>
-              <p className="text-gray-300">Podaj imię, nazwisko i numer telefonu</p>
-            </div>
-
-            <InputField
-              label="Imię"
-              name="firstName"
-              icon={User}
-              placeholder="Wprowadź swoje imię"
-              error={errors.firstName}
-              value={formData.firstName}
-              onChange={handleInputChange}
-            />
-
-            <InputField
-              label="Nazwisko (opcjonalnie)"
-              name="lastName"
-              placeholder="Wprowadź swoje nazwisko"
-              value={formData.lastName}
-              onChange={handleInputChange}
-            />
-
-            <PhoneInput
-              value={formData.phone}
-              onChange={handlePhoneChange}
-              error={errors.phone}
-            />
-          </div>
-        );
 
       default:
         return null;
@@ -1060,7 +1053,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
             {renderStep()}
 
             {/* Navigation Buttons */}
-            <div className="flex justify-center items-center pt-6">
+            <div className="flex justify-center items-center gap-4 pt-6">
               {currentStep > 1 && currentStep < 3 && (
                 <button
                   type="button"
@@ -1078,7 +1071,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                   onClick={nextStep}
                   className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200"
                 >
-                  Dalej
+                  {currentStep === 2 ? 'Skonfiguruj i pobierz wycenę' : 'Dalej'}
                   <ArrowRight className="w-4 h-4" />
                 </button>
               ) : (
@@ -1087,7 +1080,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                   disabled={!formData.firstName.trim() || !formData.phone.trim() || isSubmitting}
                   className="flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? 'Wysyłanie...' : 'sprawdź wycenę'}
+                  {isSubmitting ? 'Wysyłanie...' : `Sprawdź Wycenę dla swojego ${formData.company || 'auta'}`}
                 </button>
               )}
             </div>
