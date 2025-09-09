@@ -10,7 +10,19 @@ import { User, Building, CheckCircle, WifiOff, Phone, AlertCircle, Package, Pale
 import { useCarMatImage } from '@/hooks/useCarMatImage';
 import { generateImagePath, getAvailableMaterialColors } from '@/utils/carmatMapper';
 import { CarMatData } from '@/types/carMat';
-import { trackFormView, trackFormStart, trackLeadSubmissionWithData } from './FacebookPixel';
+import { 
+  trackFormView, 
+  trackFormStart, 
+  trackLeadSubmissionWithData,
+  trackStep1View,
+  trackStep1Complete,
+  trackStep2View,
+  trackStep2PartialLead,
+  trackStep2Complete,
+  trackStep3View,
+  trackStep3Configuration,
+  trackStep3CompleteLead
+} from './FacebookPixel';
 
 interface LeadCaptureFormProps {
   formData: LeadFormData;
@@ -270,6 +282,20 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     }
   }, [formData.industry, formData.structure, formData.materialColor, formData.borderColor, findImage, clearImage]);
 
+  // Śledzenie wyświetlenia kroków
+  useEffect(() => {
+    switch (currentStep) {
+      case 1:
+        trackStep1View();
+        break;
+      case 2:
+        trackStep2View();
+        break;
+      case 3:
+        trackStep3View();
+        break;
+    }
+  }, [currentStep]);
 
   const getMatTypeName = (matType: string) => {
     const matTypes: { [key: string]: string } = {
@@ -418,6 +444,18 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
       }));
     }
 
+    // Śledź konfigurację produktu w kroku 3
+    if (currentStep === 3 && ['industry', 'completeness', 'structure', 'materialColor', 'borderColor', 'includeHooks'].includes(name)) {
+      trackStep3Configuration({
+        industry: name === 'industry' ? value : formData.industry,
+        completeness: name === 'completeness' ? value : formData.completeness,
+        structure: name === 'structure' ? value : formData.structure,
+        materialColor: name === 'materialColor' ? value : formData.materialColor,
+        borderColor: name === 'borderColor' ? value : formData.borderColor,
+        includeHooks: name === 'includeHooks' ? (value === 'true' || value === 'on') : formData.includeHooks
+      });
+    }
+
     if (name === 'firstName' && value.trim() && !formData.firstName.trim()) {
       console.log('Form started');
       // Śledź rozpoczęcie wypełniania formularza
@@ -550,6 +588,12 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
       if (beaconSent) {
         console.log('✅ Częściowy lead wysłany przez Beacon API i zsynchronizowany z Bitrix24');
         
+        // Śledź częściowy lead
+        trackStep2PartialLead({
+          firstName: formData.firstName,
+          phone: formData.phone
+        });
+        
         // Generuj tymczasowe ID leada dla UI
         const tempLeadId = `partial_${Date.now()}`;
         console.log('🔧 Ustawiam tymczasowe leadId na:', tempLeadId);
@@ -571,9 +615,19 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
   const nextStep = () => {
     if (validateCurrentStep()) {
       if (currentStep < totalSteps) {
+        // Śledź ukończenie kroku 1
+        if (currentStep === 1) {
+          trackStep1Complete({
+            brand: formData.company?.split(' ')[0],
+            model: formData.company?.split(' ').slice(1).join(' '),
+            year: formData.jobTitle
+          });
+        }
         // Jeśli przechodzimy z kroku 2 do 3, wykonaj częściowy zapis
         if (currentStep === 2) {
           handlePartialSave();
+          // Śledź ukończenie kroku 2
+          trackStep2Complete();
         }
         setCurrentStep(currentStep + 1);
       }
@@ -650,6 +704,9 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
         
         // Śledź pomyślne wysłanie formularza z danymi trackingowymi
         trackLeadSubmissionWithData(leadPayload as unknown as Record<string, unknown>);
+        
+        // Śledź pełny lead w kroku 3
+        trackStep3CompleteLead(leadPayload as unknown as Record<string, unknown>);
         
         console.log('🎉 Ustawiam isSubmitted na true');
         setIsSubmitted(true);

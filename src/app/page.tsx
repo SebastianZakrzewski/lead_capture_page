@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <>
       {/* Facebook Pixel */}
-      <FacebookPixel pixelId="803871402216781" />
+      <FacebookPixel pixelId="760993850243315" />
       
       <div className="min-h-screen bg-black">
         {/* Background Pattern */}
@@ -54,15 +54,18 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               {/* Logo */}
-              <div className="flex justify-center mb-8">
+              <div className="flex flex-col items-center mb-8">
                 <Image
                   src="/evapremium.png"
-                  alt="Eva Premium Logo"
+                  alt="EVAPREMIUM Logo"
                   width={400}
                   height={160}
                   className="h-40 w-auto object-contain"
                   priority
                 />
+                <p className="text-lg text-gray-300 mt-4 font-medium">
+                  Polski Producent Dywaników Samochodowych EVAPREMIUM
+                </p>
               </div>
               
               {/* Tytuł */}
@@ -152,6 +155,7 @@ export default function Home() {
                   />
                 </div>
                 <p className="text-gray-300 text-sm leading-relaxed max-w-md mx-auto">
+                  Polski Producent Dywaników Samochodowych EVAPREMIUM. 
                   Profesjonalne dywaniki samochodowe najwyższej jakości. 
                   Ochrona i styl dla Twojego pojazdu.
                 </p>
