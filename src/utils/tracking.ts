@@ -43,6 +43,7 @@ export interface LeadSubmissionData extends TrackingData {
   step?: number;
   leadId?: string;
   timestamp?: string;
+  isUpdate?: boolean;
 }
 
 // Pobierz UTM-y z URL
@@ -182,6 +183,13 @@ export function prepareLeadSubmissionData(formData: {
   feedbackOverallExperience?: number;
   feedbackWouldRecommend?: number;
   feedbackAdditionalComments?: string;
+  
+  // Dodatkowe pola dla częściowego/pełnego zapisu
+  status?: string;
+  step?: number;
+  leadId?: string;
+  timestamp?: string;
+  isUpdate?: boolean;
 }): LeadSubmissionData {
   const trackingData = getOrCreateTrackingData();
   const savedUtmParams = getSavedUtmParams();
@@ -190,6 +198,12 @@ export function prepareLeadSubmissionData(formData: {
     ...formData,
     ...trackingData,
     ...savedUtmParams, // UTM-y z pierwszego wejścia
+    // Zachowaj dodatkowe pola z formData
+    status: formData.status,
+    step: formData.step,
+    leadId: formData.leadId,
+    timestamp: formData.timestamp,
+    isUpdate: formData.isUpdate,
   };
   
   console.log('🔍 prepareLeadSubmissionData - dane wejściowe:', formData);

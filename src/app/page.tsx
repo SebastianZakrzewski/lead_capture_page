@@ -63,9 +63,6 @@ export default function Home() {
                   className="h-40 w-auto object-contain"
                   priority
                 />
-                <p className="text-lg text-gray-300 mt-4 font-medium">
-                  Polski Producent Dywaników Samochodowych EVAPREMIUM
-                </p>
               </div>
               
               {/* Tytuł */}
@@ -155,7 +152,6 @@ export default function Home() {
                   />
                 </div>
                 <p className="text-gray-300 text-sm leading-relaxed max-w-md mx-auto">
-                  Polski Producent Dywaników Samochodowych EVAPREMIUM. 
                   Profesjonalne dywaniki samochodowe najwyższej jakości. 
                   Ochrona i styl dla Twojego pojazdu.
                 </p>

@@ -565,4 +565,137 @@ export class LeadService {
     }
   }
 
+  /**
+   * Aktualizuje istniejący lead z integracją Bitrix24
+   */
+  static async updateLeadWithBitrix24(leadId: string, leadData: LeadSubmissionData) {
+    try {
+      console.log('🔄 LeadService: Rozpoczynam aktualizację leada z integracją Bitrix24, ID:', leadId);
+      
+      // 1. Najpierw pobierz istniejący lead
+      const existingLeadResult = await this.getLeadById(leadId);
+      
+      if (!existingLeadResult.success) {
+        console.log('❌ Nie znaleziono leada do aktualizacji, tworzę nowy...');
+        return await this.createLeadWithBitrix24(leadData);
+      }
+
+      const existingLead = existingLeadResult.data;
+      console.log('✅ Znaleziono istniejący lead:', existingLead.id);
+
+      // 2. Zaktualizuj lead w Supabase używając ID z bazy danych
+      const { data: updatedLead, error: updateError } = await supabase
+        .from('Lead')
+        .update({
+          firstName: leadData.firstName,
+          phone: leadData.phone,
+          email: leadData.email,
+          company: leadData.company,
+          jobTitle: leadData.jobTitle,
+          industry: leadData.industry,
+          completeness: leadData.completeness,
+          structure: leadData.structure,
+          borderColor: leadData.borderColor,
+          materialColor: leadData.materialColor,
+          includeHooks: leadData.includeHooks,
+          
+          // Dane trackingowe - UTM-y
+          utmSource: leadData.utmSource,
+          utmMedium: leadData.utmMedium,
+          utmCampaign: leadData.utmCampaign,
+          utmTerm: leadData.utmTerm,
+          utmContent: leadData.utmContent,
+          
+          // Identyfikatory reklam
+          gclid: leadData.gclid,
+          fbclid: leadData.fbclid,
+          
+          // Dodatkowe dane trackingowe
+          sessionId: leadData.sessionId,
+          firstVisit: leadData.firstVisit?.toISOString(),
+          currentUrl: leadData.currentUrl,
+          userAgent: leadData.userAgent,
+          referrer: leadData.referrer,
+          
+          // Dane feedbackowe
+          feedbackEaseOfChoice: leadData.feedbackEaseOfChoice,
+          feedbackFormClarity: leadData.feedbackFormClarity,
+          feedbackLoadingSpeed: leadData.feedbackLoadingSpeed,
+          feedbackOverallExperience: leadData.feedbackOverallExperience,
+          feedbackWouldRecommend: leadData.feedbackWouldRecommend,
+          feedbackAdditionalComments: leadData.feedbackAdditionalComments,
+          
+          // Timestamps
+          updatedAt: new Date().toISOString(),
+        })
+        .eq('id', existingLead.id)  // Użyj ID z bazy danych, nie z parametru
+        .select()
+        .single();
+
+      if (updateError) {
+        console.error('❌ Błąd aktualizacji leada w Supabase:', updateError);
+        return { success: false, error: 'Błąd podczas aktualizacji leada' };
+      }
+
+      console.log('✅ Lead zaktualizowany w Supabase:', updatedLead.id);
+
+      // 3. Zaktualizuj w Bitrix24 jeśli istnieje deal
+      if (existingLead.bitrix24DealId) {
+        try {
+          const contactData = this.mapToBitrix24Contact(leadData);
+          const dealData = this.mapToBitrix24Deal(leadData);
+          
+          // Aktualizuj kontakt
+          const contactUpdateResult = await Bitrix24Service.updateContact(existingLead.bitrix24ContactId, contactData);
+          
+          // Aktualizuj deal
+          const dealUpdateResult = await Bitrix24Service.updateDeal(existingLead.bitrix24DealId, dealData);
+          
+          if (contactUpdateResult.success && dealUpdateResult.success) {
+            console.log('✅ Lead zaktualizowany w Bitrix24');
+          } else {
+            console.warn('⚠️ Częściowy błąd aktualizacji w Bitrix24');
+          }
+        } catch (bitrixError) {
+          console.error('❌ Błąd aktualizacji w Bitrix24:', bitrixError);
+          // Nie przerywamy procesu, lead został zaktualizowany w Supabase
+        }
+      } else {
+        // Jeśli nie ma deala w Bitrix24, utwórz nowy
+        try {
+          const contactData = this.mapToBitrix24Contact(leadData);
+          const dealData = this.mapToBitrix24Deal(leadData);
+          
+          const bitrixResult = await Bitrix24Service.createDealWithContact(contactData, dealData);
+          
+          if (bitrixResult.success) {
+            // Zaktualizuj lead w Supabase z ID z Bitrix24
+            await supabase
+              .from('Lead')
+              .update({
+                bitrix24ContactId: bitrixResult.contactId,
+                bitrix24DealId: bitrixResult.dealId,
+                bitrix24Synced: true,
+                updatedAt: new Date().toISOString()
+              })
+              .eq('id', existingLead.id);
+
+            console.log('✅ Nowy deal utworzony w Bitrix24');
+          }
+        } catch (bitrixError) {
+          console.error('❌ Błąd tworzenia nowego deala w Bitrix24:', bitrixError);
+        }
+      }
+
+      return {
+        success: true,
+        data: updatedLead,
+        message: 'Lead zaktualizowany i zsynchronizowany z Bitrix24'
+      };
+    } catch (error) {
+      console.error('❌ Błąd aktualizacji leada:', error);
+      return { success: false, error: 'Błąd podczas aktualizacji leada' };
+    }
+  }
+
 }

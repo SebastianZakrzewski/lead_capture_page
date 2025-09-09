@@ -148,7 +148,6 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
 
   // Lead state
   const [leadId, setLeadId] = useState<string | null>(null);
-  const [isPartiallySaved, setIsPartiallySaved] = useState(false);
   
   // Step management
   const [currentStep, setCurrentStep] = useState(1);
@@ -240,6 +239,38 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
       console.log('💾 Zapisano leadId do localStorage:', leadId);
     }
   }, [leadId]);
+
+  // Częściowy zapis gdy użytkownik opuszcza stronę (tylko jeśli wypełnił kroki 1-2)
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      // Zapisz częściowo tylko jeśli użytkownik wypełnił kroki 1-2 ale nie 3
+      if (currentStep >= 2 && !isSubmitted && formData.firstName.trim() && formData.phone.trim()) {
+        console.log('🔄 Użytkownik opuszcza stronę - wykonuję częściowy zapis...');
+        
+        const partialData = {
+          firstName: formData.firstName,
+          phone: formData.phone,
+          company: formData.company || undefined,
+          jobTitle: formData.jobTitle || undefined,
+          status: 'partial',
+          step: currentStep,
+          timestamp: new Date().toISOString()
+        };
+
+        try {
+          const leadPayload = prepareLeadSubmissionData(partialData);
+          const beaconData = JSON.stringify(leadPayload);
+          navigator.sendBeacon('/api/leads', beaconData);
+          console.log('✅ Częściowy lead wysłany przed opuszczeniem strony');
+        } catch (error) {
+          console.error('❌ Błąd częściowego zapisu przed opuszczeniem:', error);
+        }
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [currentStep, isSubmitted, formData.firstName, formData.phone, formData.company, formData.jobTitle]);
 
   // Śledzenie zmian isSubmitted
   useEffect(() => {
@@ -565,6 +596,12 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
   const handlePartialSave = useCallback(async () => {
     console.log('🔄 Rozpoczynam częściowy zapis danych...');
     
+    // Dodatkowe zabezpieczenie - sprawdź czy dane są wystarczające
+    if (!formData.firstName.trim() || !formData.phone.trim()) {
+      console.log('⚠️ Brak wymaganych danych do częściowego zapisu - pomijam!');
+      return;
+    }
+    
     const partialData = {
       firstName: formData.firstName,
       phone: formData.phone,
@@ -583,6 +620,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
       
       // Wyślij dane przez Beacon API
       const beaconData = JSON.stringify(leadPayload);
+      console.log('📤 Wysyłam częściowe dane przez Beacon API:', beaconData);
       const beaconSent = navigator.sendBeacon('/api/leads', beaconData);
       
       if (beaconSent) {
@@ -598,7 +636,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
         const tempLeadId = `partial_${Date.now()}`;
         console.log('🔧 Ustawiam tymczasowe leadId na:', tempLeadId);
         setLeadId(tempLeadId);
-        setIsPartiallySaved(true);
+        localStorage.setItem('currentLeadId', tempLeadId);
         
         // Śledź częściowe wysłanie formularza
         trackLeadSubmissionWithData(leadPayload as unknown as Record<string, unknown>);
@@ -612,7 +650,9 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     }
   }, [formData]);
 
-  const nextStep = () => {
+  const nextStep = useCallback(async () => {
+    console.log('🔄 nextStep wywołany, currentStep:', currentStep);
+    
     if (validateCurrentStep()) {
       if (currentStep < totalSteps) {
         // Śledź ukończenie kroku 1
@@ -623,16 +663,15 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
             year: formData.jobTitle
           });
         }
-        // Jeśli przechodzimy z kroku 2 do 3, wykonaj częściowy zapis
+        // Śledź ukończenie kroku 2 (bez częściowego zapisu)
         if (currentStep === 2) {
-          handlePartialSave();
-          // Śledź ukończenie kroku 2
           trackStep2Complete();
         }
+        console.log('🔄 Przechodzę z kroku', currentStep, 'do', currentStep + 1);
         setCurrentStep(currentStep + 1);
       }
     }
-  };
+  }, [currentStep, formData, validateCurrentStep]);
 
   const prevStep = () => {
     if (currentStep > 1) {
@@ -643,6 +682,13 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('🔥 FUNKCJA handleSubmit ZOSTAŁA WYWOŁANA!');
+    console.log('🔍 Stan przed wysłaniem:', { isSubmitting, isSubmitted, currentStep });
+    
+    // Zabezpieczenie przed podwójnym wysyłaniem
+    if (isSubmitting || isSubmitted) {
+      console.log('⚠️ Próba podwójnego wysłania - blokuję!');
+      return;
+    }
     
     console.log('🔍 Sprawdzam walidację...');
     console.log('📋 Dane formularza:', formData);
@@ -665,6 +711,10 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
         borderColor: formData.borderColor
       });
       
+      // Sprawdź czy istnieje częściowy lead w localStorage
+      const savedLeadId = localStorage.getItem('currentLeadId');
+      const hasPartialLead = savedLeadId && savedLeadId.startsWith('partial_');
+      
       const fullData = {
         firstName: formData.firstName,
         phone: formData.phone,
@@ -680,26 +730,28 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
         status: 'complete',
         step: 3,
         timestamp: new Date().toISOString(),
-        leadId: leadId // Przekaż ID z częściowego zapisu
+        leadId: savedLeadId || undefined, // Przekaż ID z localStorage
+        isUpdate: hasPartialLead || false // Oznacz jako aktualizację jeśli istnieje częściowy lead
       };
 
       const leadPayload = prepareLeadSubmissionData(fullData);
-      console.log('🔍 Próba utworzenia pełnego leada:', leadPayload);   
+      console.log('🔍 Próba utworzenia/aktualizacji leada:', leadPayload);   
       
-      // Wyślij dane przez Beacon API (który automatycznie utworzy lead w Bitrix24)
+      // Wyślij dane przez Beacon API
       const beaconData = JSON.stringify(leadPayload);
+      console.log('📤 Wysyłam dane przez Beacon API:', beaconData);
       const beaconSent = navigator.sendBeacon('/api/leads', beaconData);
       
       if (beaconSent) {
         console.log('✅ Pełny lead wysłany przez Beacon API');
         
-        // Aktualizuj ID leada jeśli to był częściowy zapis
-        if (isPartiallySaved && leadId) {
-          console.log('🔄 Aktualizuję istniejący lead:', leadId);
-        } else {
+        // Jeśli to był częściowy zapis, nie zmieniaj leadId
+        if (!hasPartialLead || !savedLeadId) {
           const tempLeadId = `complete_${Date.now()}`;
           console.log('🔧 Ustawiam nowe leadId na:', tempLeadId);
           setLeadId(tempLeadId);
+        } else {
+          console.log('🔄 Zachowuję istniejący leadId:', savedLeadId);
         }
         
         // Śledź pomyślne wysłanie formularza z danymi trackingowymi
@@ -723,7 +775,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     } finally {
       setIsSubmitting(false);
     }
-  }, [formData, validateCurrentStep, onFormSubmission, leadId, isPartiallySaved]);
+  }, [formData, validateCurrentStep, onFormSubmission, leadId, currentStep]);
 
   // Usunięto ankietę feedbackową i powiązaną logikę
 
@@ -777,7 +829,6 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
               
               setCurrentStep(1);
               setIsSubmitted(false);
-              setIsPartiallySaved(false);
               console.log('🔄 Resetuję leadId z:', leadId, 'na null');
               setLeadId(null);
               localStorage.removeItem('currentLeadId');

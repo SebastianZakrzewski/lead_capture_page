@@ -450,4 +450,100 @@ export class Bitrix24Service {
       };
     }
   }
+
+  /**
+   * Aktualizuje kontakt w Bitrix24
+   */
+  static async updateContact(contactId: number, contactData: Bitrix24ContactData): Promise<{ success: boolean; error?: string }> {
+    try {
+      console.log('🔄 Bitrix24Service: Aktualizuję kontakt z ID:', contactId);
+
+      console.log('📋 Dane kontaktu do aktualizacji:', contactData);
+
+      const response = await fetch(`${this.BITRIX24_URL}crm.contact.update`, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'User-Agent': 'LeadCaptureForm/1.0'
+        },
+        body: JSON.stringify({
+          id: contactId,
+          fields: contactData
+        })
+      });
+
+      const result: Bitrix24Response = await response.json();
+      
+      if (result.error) {
+        console.error('❌ Błąd aktualizacji kontaktu:', result.error);
+        return { 
+          success: false, 
+          error: `Bitrix24 contact update failed: ${result.error.error_description}` 
+        };
+      }
+
+      console.log('✅ Kontakt zaktualizowany pomyślnie');
+
+      return { 
+        success: true
+      };
+    } catch (error) {
+      console.error('❌ Błąd aktualizacji kontaktu:', error);
+      return { 
+        success: false, 
+        error: `Error updating contact: ${error instanceof Error ? error.message : String(error)}` 
+      };
+    }
+  }
+
+  /**
+   * Aktualizuje deal w Bitrix24
+   */
+  static async updateDeal(dealId: number, dealData: Bitrix24DealData): Promise<{ success: boolean; error?: string }> {
+    try {
+      console.log('🔄 Bitrix24Service: Aktualizuję deal z ID:', dealId);
+
+      // Ustaw kategorię na "Leady z Reklam"
+      const dealDataWithCategory = {
+        ...dealData,
+        CATEGORY_ID: this.BITRIX24_DEAL_CATEGORY_ID
+      };
+
+      console.log('📋 Dane deala do aktualizacji:', dealDataWithCategory);
+
+      const response = await fetch(`${this.BITRIX24_URL}crm.deal.update`, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'User-Agent': 'LeadCaptureForm/1.0'
+        },
+        body: JSON.stringify({
+          id: dealId,
+          fields: dealDataWithCategory
+        })
+      });
+
+      const result: Bitrix24Response = await response.json();
+      
+      if (result.error) {
+        console.error('❌ Błąd aktualizacji deala:', result.error);
+        return { 
+          success: false, 
+          error: `Bitrix24 deal update failed: ${result.error.error_description}` 
+        };
+      }
+
+      console.log('✅ Deal zaktualizowany pomyślnie');
+
+      return { 
+        success: true
+      };
+    } catch (error) {
+      console.error('❌ Błąd aktualizacji deala:', error);
+      return { 
+        success: false, 
+        error: `Error updating deal: ${error instanceof Error ? error.message : String(error)}` 
+      };
+    }
+  }
 }

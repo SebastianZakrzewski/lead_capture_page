@@ -38,6 +38,20 @@ export async function POST(request: NextRequest) {
     const isCompleteSave = body.status === 'complete';
     
     console.log('📊 Typ zapisu:', isPartialSave ? 'Częściowy' : isCompleteSave ? 'Pełny' : 'Nieznany');
+    console.log('🆔 LeadId z request:', body.leadId);
+    console.log('🔄 Czy aktualizacja:', body.isUpdate);
+    console.log('📋 Wszystkie dane z request:', JSON.stringify(body, null, 2));
+    
+    // Debug: sprawdź czy leadId istnieje w bazie
+    if (body.leadId) {
+      console.log('🔍 Sprawdzam czy leadId istnieje w bazie:', body.leadId);
+      try {
+        const testLead = await LeadService.getLeadById(body.leadId);
+        console.log('🔍 Wynik sprawdzenia leadId:', testLead);
+      } catch (error) {
+        console.error('❌ Błąd sprawdzania leadId:', error);
+      }
+    }
     
     // Przygotuj dane do zapisania w bazie używając funkcji prepareLeadSubmissionData
     const baseLeadData = prepareLeadSubmissionData({
@@ -67,10 +81,13 @@ export async function POST(request: NextRequest) {
       status: body.status || 'unknown',
       step: body.step || 0,
       leadId: body.leadId || undefined,
-      timestamp: body.timestamp || new Date().toISOString()
+      timestamp: body.timestamp || new Date().toISOString(),
+      isUpdate: body.isUpdate || false
     };
     
     console.log('💾 Próba zapisania leada:', leadData);
+    console.log('🔍 leadData.isUpdate:', leadData.isUpdate);
+    console.log('🔍 body.leadId:', body.leadId);
     
     let result;
     
@@ -78,6 +95,10 @@ export async function POST(request: NextRequest) {
       // Częściowy zapis - podstawowe dane + integracja Bitrix24 z flagą niepełności
       console.log('🔄 Rozpoczynam częściowy zapis leada z integracją Bitrix24...');
       result = await LeadService.createLeadWithBitrix24(leadData);
+    } else if (isCompleteSave && leadData.isUpdate && body.leadId) {
+      // Pełny zapis jako aktualizacja - zaktualizuj istniejący lead
+      console.log('🔄 Rozpoczynam aktualizację istniejącego leada z integracją Bitrix24...');
+      result = await LeadService.updateLeadWithBitrix24(body.leadId, leadData);
     } else if (isCompleteSave) {
       // Pełny zapis - wszystkie dane + integracja Bitrix24
       console.log('🚀 Rozpoczynam pełny zapis leada z integracją Bitrix24...');
