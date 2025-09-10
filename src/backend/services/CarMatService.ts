@@ -326,36 +326,122 @@ export class CarMatService {
         }
       };
 
-      // Mapowanie kolorów z formularza na kolory w bazie danych
-      const mapColor = (formColor: string): string => {
-        const colorMapping: Record<string, string> = {
-          // Kolory z formularza -> kolory w bazie danych
-          'red': 'czerwony',
-          'black': 'czarny',
+      // Mapowanie kolorów materiału z formularza na kolory w bazie danych (angielskie)
+      const mapMaterialColor = (formColor: string): string => {
+        const materialColorMapping: Record<string, string> = {
+          'red': 'red',
+          'black': 'black',
+          'blue': 'blue',
+          'yellow': 'yellow',
+          'lime': 'darkgreen',
+          'orange': 'orange',
+          'purple': 'purple',
+          'brown': 'brown',
+          'maroon': 'maroon',
+          'pink': 'pink',
+          'darkblue': 'darkblue',
+          'darkgreen': 'darkgreen',
+          'darkgrey': 'darkgrey',
+          'lightgrey': 'darkgrey',
+          'beige': 'lightbeige',
+          'lightbeige': 'lightbeige',
+          'white': 'ivory',
+          'ivory': 'ivory'
+        };
+        return materialColorMapping[formColor] || formColor;
+      };
+
+      // Mapowanie kolorów obszycia z formularza na kolory w bazie danych (polskie)
+      const mapBorderColor = (formColor: string): string => {
+        const borderColorMapping: Record<string, string> = {
+          'red': 'czerwone',
+          'black': 'czarne',
           'blue': 'niebieski',
-          'yellow': 'żółty',
+          'yellow': 'zolte',
           'lime': 'zielony',
-          'orange': 'pomarańczowy',
-          'purple': 'fioletowy',
-          'brown': 'brązowy',
-          'maroon': 'bordowy',
-          'pink': 'różowy',
-          'darkblue': 'ciemnoniebieski',
+          'orange': 'pomaranczowe',
+          'purple': 'fioletowe',
+          'brown': 'brazowy',
+          'maroon': 'bordowe',
+          'pink': 'rozowe',
+          'darkblue': 'granatowy',
           'darkgreen': 'zielony',
           'darkgrey': 'ciemnoszary',
           'lightgrey': 'jasnoszary',
-          'beige': 'beżowy',
-          'lightbeige': 'jasnobeżowy',
-          'white': 'biały',
-          'ivory': 'kość słoniowa'
+          'beige': 'bezowy',
+          'lightbeige': 'bezowy',
+          'white': 'bezowy',
+          'ivory': 'bezowy'
         };
-        return colorMapping[formColor] || formColor;
+        return borderColorMapping[formColor] || formColor;
+      };
+
+      // Pomocnicze: zamiana EN->PL dla materialColor tylko dla 3D romby (zgodnie z danymi w bazie)
+      const mapMaterialEnToPlFor3DRhombus = (en: string): string => {
+        const mapping: Record<string, string> = {
+          'black': 'czarny',
+          'blue': 'niebieski',
+          'brown': 'brązowy',
+          'darkblue': 'ciemnoniebieski',
+          'darkgreen': 'ciemnozielony',
+          'darkgrey': 'ciemnoszary',
+          'ivory': 'kość słoniowa',
+          'lightbeige': 'beżowy',
+          'maroon': 'bordowy',
+          'red': 'czerwony'
+        };
+        return mapping[en] || en;
+      };
+
+      // Pomocnicze: warianty z/bez ogonków dla borderColor
+      const toggleDiacritics = (pl: string): string => {
+        const mapNoToYes: Record<string, string> = {
+          'bezowy': 'beżowy',
+          'brazowy': 'brązowy',
+          'rozowe': 'różowe',
+          'pomaranczowe': 'pomarańczowe',
+          'zolte': 'żółte'
+        };
+        const mapYesToNo: Record<string, string> = {
+          'beżowy': 'bezowy',
+          'brązowy': 'brazowy',
+          'różowe': 'rozowe',
+          'pomarańczowe': 'pomaranczowe',
+          'żółte': 'zolte'
+        };
+        if (mapNoToYes[pl]) return mapNoToYes[pl];
+        if (mapYesToNo[pl]) return mapYesToNo[pl];
+        return pl;
+      };
+
+      // Pomocnicze: warianty singular/plural dla borderColor
+      const toggleNumberVariant = (pl: string): string => {
+        const toPlural: Record<string, string> = {
+          'bezowy': 'bezowe',
+          'beżowy': 'bezowe',
+          'brazowy': 'brazowe',
+          'brązowy': 'brazowe',
+          'granatowy': 'granatowe',
+          'niebieski': 'niebieskie',
+          'zielony': 'zielone'
+        };
+        const toSingular: Record<string, string> = {
+          'bezowe': 'bezowy',
+          'brazowe': 'brazowy',
+          'granatowe': 'granatowy',
+          'niebieskie': 'niebieski',
+          'zielone': 'zielony'
+        };
+        if (toPlural[pl]) return toPlural[pl];
+        if (toSingular[pl]) return toSingular[pl];
+        // Dla kolorów już w liczbie mnogiej niezmienionych w mapie powyżej zwracamy bez zmian
+        return pl;
       };
 
       const mappedMatType = mapMatType(options.matType);
       const mappedCellStructure = mapCellStructure(options.cellStructure);
-      const mappedMaterialColor = mapColor(options.materialColor);
-      const mappedBorderColor = mapColor(options.borderColor);
+      const mappedMaterialColor = mapMaterialColor(options.materialColor);
+      const mappedBorderColor = mapBorderColor(options.borderColor);
 
       console.log('🔄 CarMatService: Zmapowane wartości:', {
         matType: `${options.matType} -> ${mappedMatType}`,
@@ -364,7 +450,7 @@ export class CarMatService {
         borderColor: `${options.borderColor} -> ${mappedBorderColor}`
       });
 
-      // Wyszukiwanie w bazie danych
+      // 1) Wyszukiwanie w bazie danych - dopasowanie ścisłe
       const { data, error } = await supabase
         .from('CarMat')
         .select('imagePath, matType, cellStructure, materialColor, borderColor')
@@ -377,15 +463,68 @@ export class CarMatService {
       console.log('📊 CarMatService: Wynik zapytania:', { data, error });
 
       if (error) {
-        if (error.code === 'PGRST116') { // No rows returned
-          console.log('❌ CarMatService: Nie znaleziono rekordów');
-          return { 
-            success: false, 
+        if (error.code !== 'PGRST116') {
+          throw error;
+        }
+
+        // 2) Fallback: rozbudowane warianty mapowania
+        const candidateMaterialColors: string[] = [mappedMaterialColor];
+        // Dla 3D + romby spróbuj EN -> PL
+        if (mappedMatType === '3d-with-rims' && mappedCellStructure === 'rhombus') {
+          const plVariant = mapMaterialEnToPlFor3DRhombus(mappedMaterialColor);
+          if (!candidateMaterialColors.includes(plVariant)) candidateMaterialColors.push(plVariant);
+        }
+
+        // Zbuduj warianty borderColor: oryginalny, z/bez ogonków, i singular/plural
+        const candidateBorderColorsSet = new Set<string>();
+        const addBorderVariant = (v: string) => { if (v) candidateBorderColorsSet.add(v); };
+        addBorderVariant(mappedBorderColor);
+        addBorderVariant(toggleDiacritics(mappedBorderColor));
+        addBorderVariant(toggleNumberVariant(mappedBorderColor));
+        // Dodaj kombinację obu transformacji
+        addBorderVariant(toggleNumberVariant(toggleDiacritics(mappedBorderColor)));
+
+        const candidateBorderColors = Array.from(candidateBorderColorsSet);
+
+        console.log('🧭 CarMatService: Fallback warianty', {
+          candidateMaterialColors,
+          candidateBorderColors
+        });
+
+        const { data: fallbackData, error: fallbackError } = await supabase
+          .from('CarMat')
+          .select('imagePath, matType, cellStructure, materialColor, borderColor')
+          .eq('matType', mappedMatType)
+          .eq('cellStructure', mappedCellStructure)
+          .in('materialColor', candidateMaterialColors)
+          .in('borderColor', candidateBorderColors)
+          .limit(1);
+
+        if (fallbackError) {
+          throw fallbackError;
+        }
+
+        const chosen = Array.isArray(fallbackData) && fallbackData.length > 0 ? fallbackData[0] : null;
+        if (!chosen) {
+          console.log('❌ CarMatService: Nie znaleziono rekordów (fallback)');
+          return {
+            success: false,
             error: 'Nie znaleziono zdjęcia dla wybranej kombinacji',
             data: null
           };
         }
-        throw error;
+
+        console.log('✅ CarMatService: Znaleziono zdjęcie (fallback):', chosen);
+        return {
+          success: true,
+          data: {
+            imagePath: chosen.imagePath,
+            matType: chosen.matType,
+            cellStructure: chosen.cellStructure,
+            materialColor: chosen.materialColor,
+            borderColor: chosen.borderColor
+          }
+        };
       }
 
       console.log('✅ CarMatService: Znaleziono zdjęcie:', data);

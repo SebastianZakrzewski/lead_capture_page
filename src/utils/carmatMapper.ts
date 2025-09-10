@@ -57,34 +57,34 @@ const BORDER_COLORS = [
   'pomarańczowy', 'różowy', 'zielony', 'żółty', 'czarny'
 ];
 
-// Kolory materiału dostępne dla plaster miodu (klasyczne)
+// Kolory materiału dostępne dla plaster miodu (klasyczne) - angielskie nazwy
 const HONEYCOMB_MATERIAL_COLORS = [
-  'czarny', 'niebieski', 'brązowy', 'ciemnoniebieski', 
-  'ciemnozielony', 'ciemnoszary', 'kość słoniowa', 
-  'jasnobeżowy', 'bordowy', 'czerwony'
+  'black', 'blue', 'brown', 'darkblue', 
+  'darkgreen', 'darkgrey', 'ivory', 
+  'lightbeige', 'maroon', 'red'
 ];
 
-// Kolory materiału dostępne dla plaster miodu 3D (z rantami)
+// Kolory materiału dostępne dla plaster miodu 3D (z rantami) - angielskie nazwy
 const HONEYCOMB_3D_MATERIAL_COLORS = [
-  'czarny', 'niebieski', 'brązowy', 'ciemnoniebieski', 
-  'ciemnozielony', 'ciemnoszary', 'kość słoniowa', 
-  'jasnobeżowy', 'bordowy', 'czerwony'
+  'black', 'blue', 'brown', 'darkblue', 
+  'darkgreen', 'darkgrey', 'ivory', 
+  'lightbeige', 'maroon', 'red'
 ];
 
-// Kolory materiału dostępne dla rombów (klasyczne)
+// Kolory materiału dostępne dla rombów (klasyczne) - angielskie nazwy
 const RHOMBUS_MATERIAL_COLORS = [
-  'beżowy', 'czarny', 'niebieski', 'brązowy', 'ciemnoniebieski', 
-  'ciemnozielony', 'ciemnoszary', 'kość słoniowa', 'jasnobeżowy', 
-  'lime', 'bordowy', 'pomarańczowy', 'różowy', 'fioletowy', 
-  'czerwony', 'biały', 'żółty'
+  'beige', 'black', 'blue', 'brown', 'darkblue', 
+  'darkgreen', 'darkgrey', 'ivory', 'lightbeige', 
+  'lime', 'maroon', 'orange', 'pink', 'purple', 
+  'red', 'white', 'yellow'
 ];
 
-// Kolory materiału dostępne dla rombów 3D
+// Kolory materiału dostępne dla rombów 3D - angielskie nazwy
 const RHOMBUS_3D_MATERIAL_COLORS = [
-  'beżowy', 'czarny', 'niebieski', 'brązowy', 'ciemnoniebieski', 
-  'ciemnozielony', 'ciemnoszary', 'kość słoniowa', 'jasnobeżowy', 
-  'lime', 'bordowy', 'pomarańczowy', 'różowy', 'fioletowy', 
-  'czerwony', 'biały', 'żółty'
+  'beige', 'black', 'blue', 'brown', 'darkblue', 
+  'darkgreen', 'darkgrey', 'ivory', 'lightbeige', 
+  'lime', 'maroon', 'orange', 'pink', 'purple', 
+  'red', 'white', 'yellow'
 ];
 
 /**
@@ -93,25 +93,33 @@ const RHOMBUS_3D_MATERIAL_COLORS = [
 export function generateAllCarMatCombinations(): CarMatData[] {
   const combinations: CarMatData[] = [];
 
-  // 1. Dywaniki 3D - romby z czarnym obszyciem
-  RHOMBUS_3D_MATERIAL_COLORS.forEach(materialColor => {
-    const carMatData = {
-      matType: '3d-with-rims',
-      cellStructure: 'rhombus',
-      materialColor,
-      borderColor: 'czarny'
-    };
-    combinations.push({
-      ...carMatData,
-      imagePath: generateImagePath(carMatData)
+  // 1. Dywaniki 3D - romby z różnymi obszyciami
+  const rhombus3dBorderColors = [
+    'fioletowe', 'bezowe', 'bordowe', 'brazowe', 'ciemnoszare', 
+    'czarne', 'czerwone', 'granatowe', 'jasnoszary', 
+    'niebieskie', 'pomaranczowe', 'rozowe', 'zielone', 'zolte'
+  ];
+
+  rhombus3dBorderColors.forEach(borderColor => {
+    RHOMBUS_3D_MATERIAL_COLORS.forEach(materialColor => {
+      const carMatData = {
+        matType: '3d-with-rims',
+        cellStructure: 'rhombus',
+        materialColor,
+        borderColor
+      };
+      combinations.push({
+        ...carMatData,
+        imagePath: generateImagePath(carMatData)
+      });
     });
   });
 
   // 1b. Dywaniki 3D - plaster miodu z różnymi obszyciami
   const honeycomb3dBorderColors = [
-    'beżowy', 'bordowy', 'brązowy', 'ciemnoszary', 'czarny', 'czerwony', 
-    'fioletowy', 'ciemnoniebieski', 'jasnoszary', 'niebieski', 
-    'pomarańczowy', 'różowy', 'zielony', 'żółty'
+    'bezowy', 'bordowe', 'brazowy', 'ciemnoszary', 'czarne', 'czerwone', 
+    'fioletowe', 'granatowy', 'jasnoszary', 'niebieski', 
+    'pomaranczowe', 'rozowe', 'zielony', 'zolte'
   ];
 
   honeycomb3dBorderColors.forEach(borderColor => {
@@ -131,9 +139,9 @@ export function generateAllCarMatCombinations(): CarMatData[] {
 
   // 2. Dywaniki klasyczne - plaster miodu
   const honeycombBorderColors = [
-    'beżowy', 'bordowy', 'brązowy', 'ciemnoszary', 'czarny', 'czerwony', 
-    'fioletowy', 'ciemnoniebieski', 'jasnoszary', 'niebieski', 
-    'pomarańczowy', 'różowy', 'zielony', 'żółty'
+    'bezowy', 'bordowe', 'brazowy', 'ciemnoszary', 'czarne', 'czerwone', 
+    'fioletowe', 'granatowy', 'jasnoszary', 'niebieski', 
+    'pomaranczowe', 'rozowe', 'zielony', 'zolte'
   ];
 
   honeycombBorderColors.forEach(borderColor => {
@@ -153,9 +161,9 @@ export function generateAllCarMatCombinations(): CarMatData[] {
 
   // 3. Dywaniki klasyczne - romby
   const rhombusBorderColors = [
-    'fioletowy', 'beżowy', 'bordowy', 'brązowy', 'ciemnoszary', 
-    'czarny', 'czerwony', 'ciemnoniebieski', 'jasnoszary', 
-    'niebieski', 'pomarańczowy', 'różowy', 'zielony', 'żółty'
+    'fioletowe', 'bezowe', 'bordowe', 'brazowe', 'ciemnoszare', 
+    'czarne', 'czerwone', 'granatowe', 'jasnoszary', 
+    'niebieskie', 'pomaranczowe', 'rozowe', 'zielone', 'zolte'
   ];
 
   rhombusBorderColors.forEach(borderColor => {
@@ -237,59 +245,119 @@ export function mapFileNameToCarMatData(fileName: string): CarMatData | null {
 export function generateImagePath(carMatData: Omit<CarMatData, 'imagePath'>): string {
   const { matType, cellStructure, materialColor, borderColor } = carMatData;
   
-  // Mapowanie kolorów z powrotem na nazwy plików
-  // Dodatkowe aliasy dla polskich nazw materiału → token plikowy
-  const POLISH_TO_FILE_TOKEN: Record<string, string> = {
-    'zielony': 'lime',
-    'jasnozielony': 'lime',
-  };
-
-  const materialColorKey = POLISH_TO_FILE_TOKEN[materialColor]
-    || Object.keys(COLOR_MAPPING).find(key => COLOR_MAPPING[key] === materialColor)
-    || materialColor.toLowerCase();
+  // Kolory materiału są już w języku angielskim w bazie danych
+  const materialColorKey = materialColor.toLowerCase();
   
-  const borderColorKey = Object.keys(COLOR_MAPPING).find(
-    key => COLOR_MAPPING[key] === borderColor
-  ) || borderColor.toLowerCase();
+  // Mapowanie kolorów obszycia z polskich nazw na angielskie nazwy plików
+  const BORDER_TO_FILE_TOKEN: Record<string, string> = {
+    'czarne': 'black',
+    'bezowy': 'beige',
+    'bordowe': 'maroon',
+    'brazowy': 'brown',
+    'ciemnoszary': 'darkgrey',
+    'czerwone': 'red',
+    'fioletowe': 'purple',
+    'granatowy': 'darkblue',
+    'jasnoszary': 'lightgrey',
+    'niebieski': 'blue',
+    'pomaranczowe': 'orange',
+    'rozowe': 'pink',
+    'zielony': 'lime',
+    'zolte': 'yellow'
+  };
+  
+  const borderColorKey = BORDER_TO_FILE_TOKEN[borderColor] || borderColor.toLowerCase();
 
   if (matType === '3d-with-rims' && cellStructure === 'rhombus') {
     // Mapowanie kolorów obszycia na nazwy katalogów
     const borderFolderMapping: Record<string, string> = {
-      'czarny': 'czarne',
-      'beżowy': 'bezowy',
-      'bordowy': 'bordowe',
-      'brązowy': 'brazowy',
-      'ciemnoszary': 'ciemnoszare',
-      'czerwony': 'czerwone',
-      'fioletowy': 'fioletowy',
-      'ciemnoniebieski': 'granatowe',
+      'czarne': 'czarne',
+      'bezowe': 'bezowy',
+      'bordowe': 'bordowe',
+      'brazowe': 'brazowy',
+      'ciemnoszare': 'ciemnoszare',
+      'czerwone': 'czerwone',
+      'fioletowe': 'fioletowy',
+      'granatowe': 'granatowe',
       'jasnoszary': 'jasnoszary',
-      'niebieski': 'niebieskie',
-      'pomarańczowy': 'pomaranczowe',
-      'różowy': 'rozowy',
-      'zielony': 'zielone',
-      'żółty': 'zolte'
+      'niebieskie': 'niebieskie',
+      'pomaranczowe': 'pomaranczowe',
+      'rozowe': 'rozowy',
+      'zielone': 'zielone',
+      'zolte': 'zolte'
     };
     
     const borderFolder = borderFolderMapping[borderColor] || 'czarne';
     return `/konfigurator/dywaniki/3d/romby/${borderFolder}/5os-3d-diamonds-${materialColorKey}-${borderColorKey}.webp`;
   }
   
-  if (matType === '3d-without-rims' && cellStructure === 'honeycomb') {
-    const borderFolder = Object.keys(BORDER_COLOR_MAPPING).find(
-      key => BORDER_COLOR_MAPPING[key] === borderColor
-    ) || borderColor.toLowerCase();
+  if (matType === '3d-with-rims' && cellStructure === 'honeycomb') {
+    // Mapowanie kolorów obszycia na nazwy katalogów dla 3D plaster miodu
+    const borderFolderMapping: Record<string, string> = {
+      'czarne': 'czarne',
+      'bezowy': 'bezowy',
+      'bordowe': 'bordowe',
+      'brazowy': 'brazowy',
+      'ciemnoszary': 'ciemnoszary',
+      'czerwone': 'czerwone',
+      'fioletowe': 'fioletowe',
+      'granatowy': 'granatowy',
+      'jasnoszary': 'jasnoszary',
+      'niebieski': 'niebieski',
+      'pomaranczowe': 'pomaranczowe',
+      'rozowe': 'rozowe',
+      'zielony': 'zielony',
+      'zolte': 'zolte'
+    };
     
-    // Specjalne mapowanie dla katalogu "plaster czarne" (bez "obszycie")
-    const folderName = borderColor === 'czarny' ? 'plaster czarne' : `plaster ${borderFolder} obszycie`;
+    const borderFolder = borderFolderMapping[borderColor] || 'czarne';
+    return `/konfigurator/dywaniki/3d/plaster/${borderFolder}/5os-3d-honey-${materialColorKey}-${borderColorKey}.webp`;
+  }
+  
+  if (matType === '3d-without-rims' && cellStructure === 'honeycomb') {
+    // Mapowanie kolorów obszycia na nazwy katalogów dla klasycznych plaster miodu
+    const borderFolderMapping: Record<string, string> = {
+      'czarne': 'plaster czarne',
+      'bezowy': 'plaster bezowe obszycie',
+      'bordowe': 'plaster bordowe obszycie',
+      'brazowy': 'plaster brazowe obszycie',
+      'ciemnoszary': 'plaster ciemnoszare obszycie',
+      'czerwone': 'plaster czerwone obszycie',
+      'fioletowe': 'plaster fioletowe obszycie',
+      'granatowy': 'plaster granatowe obszycie',
+      'jasnoszary': 'plaster jasnoszare obszycie',
+      'niebieski': 'plaster niebieskie obszycie',
+      'pomaranczowe': 'plaster pomaranczowe obszycie',
+      'rozowe': 'plaster rozowe obszycie',
+      'zielony': 'plaster zielone obszycie',
+      'zolte': 'plaster zolte obszycie'
+    };
+    
+    const folderName = borderFolderMapping[borderColor] || 'plaster czarne';
     
     return `/konfigurator/dywaniki/klasyczne/plaster miodu/${folderName}/5os-classic-honey-${materialColorKey}-${borderColorKey}.webp`;
   }
   
   if (matType === '3d-without-rims' && cellStructure === 'rhombus') {
-    const borderFolder = Object.keys(BORDER_COLOR_MAPPING).find(
-      key => BORDER_COLOR_MAPPING[key] === borderColor
-    ) || borderColor.toLowerCase();
+    // Mapowanie kolorów obszycia na nazwy katalogów dla klasycznych rombów
+    const borderFolderMapping: Record<string, string> = {
+      'fioletowe': 'fioletowe',
+      'bezowe': 'bezowe',
+      'bordowe': 'bordowe',
+      'brazowe': 'brazowe',
+      'ciemnoszare': 'ciemnoszare',
+      'czarne': 'czarne',
+      'czerwone': 'czerwone',
+      'granatowe': 'granatowe',
+      'jasnoszary': 'jasnoszary',
+      'niebieskie': 'niebieskie',
+      'pomaranczowe': 'pomaranczowe',
+      'rozowe': 'rozowe',
+      'zielone': 'zielone',
+      'zolte': 'zolte'
+    };
+    
+    const borderFolder = borderFolderMapping[borderColor] || 'czarne';
     return `/konfigurator/dywaniki/klasyczne/romby/romby ${borderFolder}/5os-classic-diamonds-${materialColorKey}-${borderColorKey}.webp`;
   }
 
@@ -351,18 +419,18 @@ const POLISH_TO_FILE_TOKEN: Record<string, string> = {
 export function getAvailableMaterialColors(matType: string, cellStructure: string): string[] {
   if (matType === '3d-with-rims' && cellStructure === 'honeycomb') {
     // Dla 3D plaster miodu - tylko kolory dostępne w plikach
-    return HONEYCOMB_3D_MATERIAL_COLORS.map(color => POLISH_TO_FILE_TOKEN[color] || color);
+    return HONEYCOMB_3D_MATERIAL_COLORS;
   } else if (matType === '3d-with-rims' && cellStructure === 'rhombus') {
     // Dla 3D romby - wszystkie kolory
-    return RHOMBUS_3D_MATERIAL_COLORS.map(color => POLISH_TO_FILE_TOKEN[color] || color);
+    return RHOMBUS_3D_MATERIAL_COLORS;
   } else if (matType === '3d-without-rims' && cellStructure === 'honeycomb') {
     // Dla klasycznych plaster miodu
-    return HONEYCOMB_MATERIAL_COLORS.map(color => POLISH_TO_FILE_TOKEN[color] || color);
+    return HONEYCOMB_MATERIAL_COLORS;
   } else if (matType === '3d-without-rims' && cellStructure === 'rhombus') {
     // Dla klasycznych rombów - wszystkie kolory
-    return RHOMBUS_MATERIAL_COLORS.map(color => POLISH_TO_FILE_TOKEN[color] || color);
+    return RHOMBUS_MATERIAL_COLORS;
   }
   
   // Fallback - wszystkie kolory
-  return MATERIAL_COLORS.map(color => POLISH_TO_FILE_TOKEN[color] || color);
+  return ['black', 'blue', 'brown', 'darkblue', 'darkgreen', 'darkgrey', 'ivory', 'lightbeige', 'maroon', 'red', 'beige', 'lime', 'orange', 'pink', 'purple', 'white', 'yellow'];
 }

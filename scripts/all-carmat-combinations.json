@@ -1,0 +1,5287 @@
+[
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bezowy/5os-3d-honey-black-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bezowy/5os-3d-honey-blue-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bezowy/5os-3d-honey-brown-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bezowy/5os-3d-honey-darkblue-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bezowy/5os-3d-honey-darkgreen-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bezowy/5os-3d-honey-darkgrey-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bezowy/5os-3d-honey-ivory-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bezowy/5os-3d-honey-lightbeige-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bezowy/5os-3d-honey-maroon-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bezowy/5os-3d-honey-red-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bordowe/5os-3d-honey-black-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bordowe/5os-3d-honey-blue-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bordowe/5os-3d-honey-brown-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bordowe/5os-3d-honey-darkblue-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bordowe/5os-3d-honey-darkgreen-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bordowe/5os-3d-honey-darkgrey-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bordowe/5os-3d-honey-ivory-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bordowe/5os-3d-honey-lightbeige-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bordowe/5os-3d-honey-maroon-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/bordowe/5os-3d-honey-red-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/brazowy/5os-3d-honey-black-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/brazowy/5os-3d-honey-blue-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/brazowy/5os-3d-honey-brown-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/brazowy/5os-3d-honey-darkblue-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/brazowy/5os-3d-honey-darkgreen-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/brazowy/5os-3d-honey-darkgrey-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/brazowy/5os-3d-honey-ivory-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/brazowy/5os-3d-honey-lightbeige-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/brazowy/5os-3d-honey-maroon-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/brazowy/5os-3d-honey-red-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/ciemnoszary/5os-3d-honey-black-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/ciemnoszary/5os-3d-honey-blue-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/ciemnoszary/5os-3d-honey-brown-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/ciemnoszary/5os-3d-honey-darkblue-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/ciemnoszary/5os-3d-honey-darkgreen-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/ciemnoszary/5os-3d-honey-darkgrey-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/ciemnoszary/5os-3d-honey-ivory-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/ciemnoszary/5os-3d-honey-lightbeige-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/ciemnoszary/5os-3d-honey-maroon-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/ciemnoszary/5os-3d-honey-red-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czarne/5os-3d-honey-black-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czarne/5os-3d-honey-blue-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czarne/5os-3d-honey-brown-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czarne/5os-3d-honey-darkblue-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czarne/5os-3d-honey-darkgreen-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czarne/5os-3d-honey-darkgrey-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czarne/5os-3d-honey-ivory-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czarne/5os-3d-honey-lightbeige-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czarne/5os-3d-honey-maroon-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czarne/5os-3d-honey-red-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czerwone/5os-3d-honey-black-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czerwone/5os-3d-honey-blue-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czerwone/5os-3d-honey-brown-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czerwone/5os-3d-honey-darkblue-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czerwone/5os-3d-honey-darkgreen-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czerwone/5os-3d-honey-darkgrey-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czerwone/5os-3d-honey-ivory-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czerwone/5os-3d-honey-lightbeige-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czerwone/5os-3d-honey-maroon-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/czerwone/5os-3d-honey-red-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/fioletowe/5os-3d-honey-black-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/fioletowe/5os-3d-honey-blue-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/fioletowe/5os-3d-honey-brown-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/fioletowe/5os-3d-honey-darkblue-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/fioletowe/5os-3d-honey-darkgreen-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/fioletowe/5os-3d-honey-darkgrey-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/fioletowe/5os-3d-honey-ivory-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/fioletowe/5os-3d-honey-lightbeige-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/fioletowe/5os-3d-honey-maroon-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/fioletowe/5os-3d-honey-red-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/granatowy/5os-3d-honey-black-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/granatowy/5os-3d-honey-blue-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/granatowy/5os-3d-honey-brown-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/granatowy/5os-3d-honey-darkblue-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/granatowy/5os-3d-honey-darkgreen-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/granatowy/5os-3d-honey-darkgrey-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/granatowy/5os-3d-honey-ivory-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/granatowy/5os-3d-honey-lightbeige-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/granatowy/5os-3d-honey-maroon-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/granatowy/5os-3d-honey-red-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/jasnoszary/5os-3d-honey-black-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/jasnoszary/5os-3d-honey-blue-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/jasnoszary/5os-3d-honey-brown-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/jasnoszary/5os-3d-honey-darkblue-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/jasnoszary/5os-3d-honey-darkgreen-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/jasnoszary/5os-3d-honey-darkgrey-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/jasnoszary/5os-3d-honey-ivory-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/jasnoszary/5os-3d-honey-lightbeige-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/jasnoszary/5os-3d-honey-maroon-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/jasnoszary/5os-3d-honey-red-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/niebieski/5os-3d-honey-black-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/niebieski/5os-3d-honey-blue-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/niebieski/5os-3d-honey-brown-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/niebieski/5os-3d-honey-darkblue-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/niebieski/5os-3d-honey-darkgreen-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/niebieski/5os-3d-honey-darkgrey-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/niebieski/5os-3d-honey-ivory-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/niebieski/5os-3d-honey-lightbeige-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/niebieski/5os-3d-honey-maroon-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/niebieski/5os-3d-honey-red-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/pomaranczowe/5os-3d-honey-black-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/pomaranczowe/5os-3d-honey-blue-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/pomaranczowe/5os-3d-honey-brown-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/pomaranczowe/5os-3d-honey-darkblue-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/pomaranczowe/5os-3d-honey-darkgreen-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/pomaranczowe/5os-3d-honey-darkgrey-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/pomaranczowe/5os-3d-honey-ivory-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/pomaranczowe/5os-3d-honey-lightbeige-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/pomaranczowe/5os-3d-honey-maroon-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/pomaranczowe/5os-3d-honey-red-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/rozowe/5os-3d-honey-black-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/rozowe/5os-3d-honey-blue-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/rozowe/5os-3d-honey-brown-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/rozowe/5os-3d-honey-darkblue-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/rozowe/5os-3d-honey-darkgreen-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/rozowe/5os-3d-honey-darkgrey-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/rozowe/5os-3d-honey-ivory-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/rozowe/5os-3d-honey-lightbeige-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/rozowe/5os-3d-honey-maroon-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/rozowe/5os-3d-honey-red-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zielony/5os-3d-honey-black-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zielony/5os-3d-honey-blue-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zielony/5os-3d-honey-brown-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zielony/5os-3d-honey-darkblue-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zielony/5os-3d-honey-darkgreen-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zielony/5os-3d-honey-darkgrey-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zielony/5os-3d-honey-ivory-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zielony/5os-3d-honey-lightbeige-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zielony/5os-3d-honey-maroon-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zielony/5os-3d-honey-red-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zolte/5os-3d-honey-black-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zolte/5os-3d-honey-blue-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zolte/5os-3d-honey-brown-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zolte/5os-3d-honey-darkblue-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zolte/5os-3d-honey-darkgreen-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zolte/5os-3d-honey-darkgrey-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zolte/5os-3d-honey-ivory-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zolte/5os-3d-honey-lightbeige-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zolte/5os-3d-honey-maroon-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/zolte/5os-3d-honey-red-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/plaster/granatowy/5os-3d-honey-black-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bezowy/5os-3d-diamonds-black-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bezowy/5os-3d-diamonds-blue-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bezowy/5os-3d-diamonds-brown-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bezowy/5os-3d-diamonds-darkblue-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bezowy/5os-3d-diamonds-darkgreen-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bezowy/5os-3d-diamonds-darkgrey-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bezowy/5os-3d-diamonds-ivory-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bezowy/5os-3d-diamonds-lightbeige-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bezowy/5os-3d-diamonds-maroon-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bezowy/5os-3d-diamonds-red-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bezowy/5os-3d-diamonds-black-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bezowy/5os-3d-diamonds-blue-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bezowy/5os-3d-diamonds-brown-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bezowy/5os-3d-diamonds-darkblue-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bezowy/5os-3d-diamonds-darkgreen-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bezowy/5os-3d-diamonds-darkgrey-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bezowy/5os-3d-diamonds-ivory-beige.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bordowe/5os-3d-diamonds-black-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bordowe/5os-3d-diamonds-blue-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bordowe/5os-3d-diamonds-brown-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bordowe/5os-3d-diamonds-darkblue-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bordowe/5os-3d-diamonds-darkgreen-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bordowe/5os-3d-diamonds-darkgrey-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bordowe/5os-3d-diamonds-ivory-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bordowe/5os-3d-diamonds-lightbeige-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bordowe/5os-3d-diamonds-maroon-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bordowe/5os-3d-diamonds-red-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bordowe/5os-3d-diamonds-black-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bordowe/5os-3d-diamonds-blue-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bordowe/5os-3d-diamonds-brown-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bordowe/5os-3d-diamonds-darkblue-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bordowe/5os-3d-diamonds-darkgreen-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bordowe/5os-3d-diamonds-darkgrey-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/bordowe/5os-3d-diamonds-ivory-maroon.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/brazowy/5os-3d-diamonds-black-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/brazowy/5os-3d-diamonds-blue-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/brazowy/5os-3d-diamonds-brown-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/brazowy/5os-3d-diamonds-darkblue-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/brazowy/5os-3d-diamonds-darkgreen-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/brazowy/5os-3d-diamonds-darkgrey-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/brazowy/5os-3d-diamonds-ivory-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/brazowy/5os-3d-diamonds-lightbeige-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/brazowy/5os-3d-diamonds-maroon-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/brazowy/5os-3d-diamonds-red-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/brazowy/5os-3d-diamonds-black-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/brazowy/5os-3d-diamonds-blue-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/brazowy/5os-3d-diamonds-brown-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/brazowy/5os-3d-diamonds-darkblue-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/brazowy/5os-3d-diamonds-darkgreen-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/brazowy/5os-3d-diamonds-darkgrey-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/brazowy/5os-3d-diamonds-ivory-brown.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/ciemnoszary/5os-3d-diamonds-black-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/ciemnoszary/5os-3d-diamonds-blue-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/ciemnoszary/5os-3d-diamonds-brown-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/ciemnoszary/5os-3d-diamonds-darkblue-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/ciemnoszary/5os-3d-diamonds-darkgreen-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/ciemnoszary/5os-3d-diamonds-darkgrey-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/ciemnoszary/5os-3d-diamonds-ivory-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/ciemnoszary/5os-3d-diamonds-lightbeige-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/ciemnoszary/5os-3d-diamonds-maroon-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/ciemnoszary/5os-3d-diamonds-red-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/ciemnoszary/5os-3d-diamonds-black-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/ciemnoszary/5os-3d-diamonds-blue-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/ciemnoszary/5os-3d-diamonds-brown-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/ciemnoszary/5os-3d-diamonds-darkblue-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/ciemnoszary/5os-3d-diamonds-darkgreen-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/ciemnoszary/5os-3d-diamonds-darkgrey-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/ciemnoszary/5os-3d-diamonds-ivory-darkgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czarne/5os-3d-diamonds-black-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czarne/5os-3d-diamonds-blue-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czarne/5os-3d-diamonds-brown-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czarne/5os-3d-diamonds-darkblue-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czarne/5os-3d-diamonds-darkgreen-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czarne/5os-3d-diamonds-darkgrey-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czarne/5os-3d-diamonds-ivory-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czarne/5os-3d-diamonds-lightbeige-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czarne/5os-3d-diamonds-maroon-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czarne/5os-3d-diamonds-red-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czarne/5os-3d-diamonds-black-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czarne/5os-3d-diamonds-blue-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czarne/5os-3d-diamonds-brown-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czarne/5os-3d-diamonds-darkblue-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czarne/5os-3d-diamonds-darkgreen-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czarne/5os-3d-diamonds-darkgrey-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czarne/5os-3d-diamonds-ivory-black.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czerwone/5os-3d-diamonds-black-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czerwone/5os-3d-diamonds-blue-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czerwone/5os-3d-diamonds-brown-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czerwone/5os-3d-diamonds-darkblue-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czerwone/5os-3d-diamonds-darkgreen-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czerwone/5os-3d-diamonds-darkgrey-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czerwone/5os-3d-diamonds-ivory-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czerwone/5os-3d-diamonds-lightbeige-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czerwone/5os-3d-diamonds-maroon-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czerwone/5os-3d-diamonds-red-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czerwone/5os-3d-diamonds-black-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czerwone/5os-3d-diamonds-blue-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czerwone/5os-3d-diamonds-brown-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czerwone/5os-3d-diamonds-darkblue-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czerwone/5os-3d-diamonds-darkgreen-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czerwone/5os-3d-diamonds-darkgrey-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/czerwone/5os-3d-diamonds-ivory-red.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/fioletowe/5os-3d-diamonds-black-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/fioletowe/5os-3d-diamonds-blue-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/fioletowe/5os-3d-diamonds-brown-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/fioletowe/5os-3d-diamonds-darkblue-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/fioletowe/5os-3d-diamonds-darkgreen-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/fioletowe/5os-3d-diamonds-darkgrey-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/fioletowe/5os-3d-diamonds-ivory-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/fioletowe/5os-3d-diamonds-lightbeige-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/fioletowe/5os-3d-diamonds-maroon-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/fioletowe/5os-3d-diamonds-red-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/fioletowe/5os-3d-diamonds-black-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/fioletowe/5os-3d-diamonds-blue-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/fioletowe/5os-3d-diamonds-brown-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/fioletowe/5os-3d-diamonds-darkblue-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/fioletowe/5os-3d-diamonds-darkgreen-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/fioletowe/5os-3d-diamonds-darkgrey-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/fioletowe/5os-3d-diamonds-ivory-purple.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/granatowy/5os-3d-diamonds-black-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/granatowy/5os-3d-diamonds-blue-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/granatowy/5os-3d-diamonds-brown-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/granatowy/5os-3d-diamonds-darkblue-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/granatowy/5os-3d-diamonds-darkgreen-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/granatowy/5os-3d-diamonds-darkgrey-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/granatowy/5os-3d-diamonds-ivory-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/granatowy/5os-3d-diamonds-lightbeige-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/granatowy/5os-3d-diamonds-maroon-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/granatowy/5os-3d-diamonds-red-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/granatowy/5os-3d-diamonds-black-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/granatowy/5os-3d-diamonds-blue-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/granatowy/5os-3d-diamonds-brown-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/granatowy/5os-3d-diamonds-darkblue-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/granatowy/5os-3d-diamonds-darkgreen-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/granatowy/5os-3d-diamonds-darkgrey-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/granatowy/5os-3d-diamonds-ivory-darkblue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/jasnoszary/5os-3d-diamonds-black-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/jasnoszary/5os-3d-diamonds-blue-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/jasnoszary/5os-3d-diamonds-brown-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/jasnoszary/5os-3d-diamonds-darkblue-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/jasnoszary/5os-3d-diamonds-darkgreen-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/jasnoszary/5os-3d-diamonds-darkgrey-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/jasnoszary/5os-3d-diamonds-ivory-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/jasnoszary/5os-3d-diamonds-lightbeige-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/jasnoszary/5os-3d-diamonds-maroon-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/jasnoszary/5os-3d-diamonds-red-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/jasnoszary/5os-3d-diamonds-black-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/jasnoszary/5os-3d-diamonds-blue-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/jasnoszary/5os-3d-diamonds-brown-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/jasnoszary/5os-3d-diamonds-darkblue-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/jasnoszary/5os-3d-diamonds-darkgreen-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/jasnoszary/5os-3d-diamonds-darkgrey-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/jasnoszary/5os-3d-diamonds-ivory-lightgrey.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/niebieski/5os-3d-diamonds-black-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/niebieski/5os-3d-diamonds-blue-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/niebieski/5os-3d-diamonds-brown-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/niebieski/5os-3d-diamonds-darkblue-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/niebieski/5os-3d-diamonds-darkgreen-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/niebieski/5os-3d-diamonds-darkgrey-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/niebieski/5os-3d-diamonds-ivory-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/niebieski/5os-3d-diamonds-lightbeige-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/niebieski/5os-3d-diamonds-maroon-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/niebieski/5os-3d-diamonds-red-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/niebieski/5os-3d-diamonds-black-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/niebieski/5os-3d-diamonds-blue-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/niebieski/5os-3d-diamonds-brown-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/niebieski/5os-3d-diamonds-darkblue-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/niebieski/5os-3d-diamonds-darkgreen-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/niebieski/5os-3d-diamonds-darkgrey-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/niebieski/5os-3d-diamonds-ivory-blue.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/pomaranczowe/5os-3d-diamonds-black-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/pomaranczowe/5os-3d-diamonds-blue-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/pomaranczowe/5os-3d-diamonds-brown-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/pomaranczowe/5os-3d-diamonds-darkblue-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/pomaranczowe/5os-3d-diamonds-darkgreen-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/pomaranczowe/5os-3d-diamonds-darkgrey-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/pomaranczowe/5os-3d-diamonds-ivory-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/pomaranczowe/5os-3d-diamonds-lightbeige-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/pomaranczowe/5os-3d-diamonds-maroon-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/pomaranczowe/5os-3d-diamonds-red-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/pomaranczowe/5os-3d-diamonds-black-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/pomaranczowe/5os-3d-diamonds-blue-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/pomaranczowe/5os-3d-diamonds-brown-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/pomaranczowe/5os-3d-diamonds-darkblue-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/pomaranczowe/5os-3d-diamonds-darkgreen-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/pomaranczowe/5os-3d-diamonds-darkgrey-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/pomaranczowe/5os-3d-diamonds-ivory-orange.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/rozowe/5os-3d-diamonds-black-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/rozowe/5os-3d-diamonds-blue-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/rozowe/5os-3d-diamonds-brown-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/rozowe/5os-3d-diamonds-darkblue-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/rozowe/5os-3d-diamonds-darkgreen-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/rozowe/5os-3d-diamonds-darkgrey-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/rozowe/5os-3d-diamonds-ivory-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/rozowe/5os-3d-diamonds-lightbeige-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/rozowe/5os-3d-diamonds-maroon-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/rozowe/5os-3d-diamonds-red-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/rozowe/5os-3d-diamonds-black-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/rozowe/5os-3d-diamonds-blue-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/rozowe/5os-3d-diamonds-brown-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/rozowe/5os-3d-diamonds-darkblue-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/rozowe/5os-3d-diamonds-darkgreen-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/rozowe/5os-3d-diamonds-darkgrey-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/rozowe/5os-3d-diamonds-ivory-pink.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zielony/5os-3d-diamonds-black-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zielony/5os-3d-diamonds-blue-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zielony/5os-3d-diamonds-brown-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zielony/5os-3d-diamonds-darkblue-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zielony/5os-3d-diamonds-darkgreen-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zielony/5os-3d-diamonds-darkgrey-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zielony/5os-3d-diamonds-ivory-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zielony/5os-3d-diamonds-lightbeige-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zielony/5os-3d-diamonds-maroon-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zielony/5os-3d-diamonds-red-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zielony/5os-3d-diamonds-black-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zielony/5os-3d-diamonds-blue-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zielony/5os-3d-diamonds-brown-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zielony/5os-3d-diamonds-darkblue-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zielony/5os-3d-diamonds-darkgreen-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zielony/5os-3d-diamonds-darkgrey-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zielony/5os-3d-diamonds-ivory-green.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zolte/5os-3d-diamonds-black-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zolte/5os-3d-diamonds-blue-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zolte/5os-3d-diamonds-brown-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zolte/5os-3d-diamonds-darkblue-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zolte/5os-3d-diamonds-darkgreen-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zolte/5os-3d-diamonds-darkgrey-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zolte/5os-3d-diamonds-ivory-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zolte/5os-3d-diamonds-lightbeige-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zolte/5os-3d-diamonds-maroon-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zolte/5os-3d-diamonds-red-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zolte/5os-3d-diamonds-black-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zolte/5os-3d-diamonds-blue-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zolte/5os-3d-diamonds-brown-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zolte/5os-3d-diamonds-darkblue-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zolte/5os-3d-diamonds-darkgreen-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zolte/5os-3d-diamonds-darkgrey-yellow.webp"
+  },
+  {
+    "matType": "3d-with-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/3d/romby/zolte/5os-3d-diamonds-ivory-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bezowy obszycie/5os-classic-honey-black-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bezowy obszycie/5os-classic-honey-blue-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bezowy obszycie/5os-classic-honey-brown-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bezowy obszycie/5os-classic-honey-darkblue-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bezowy obszycie/5os-classic-honey-darkgreen-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bezowy obszycie/5os-classic-honey-darkgrey-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bezowy obszycie/5os-classic-honey-ivory-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bezowy obszycie/5os-classic-honey-lightbeige-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bezowy obszycie/5os-classic-honey-maroon-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bezowy obszycie/5os-classic-honey-red-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bordowe obszycie/5os-classic-honey-black-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bordowe obszycie/5os-classic-honey-blue-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bordowe obszycie/5os-classic-honey-brown-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bordowe obszycie/5os-classic-honey-darkblue-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bordowe obszycie/5os-classic-honey-darkgreen-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bordowe obszycie/5os-classic-honey-darkgrey-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bordowe obszycie/5os-classic-honey-ivory-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bordowe obszycie/5os-classic-honey-lightbeige-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bordowe obszycie/5os-classic-honey-maroon-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster bordowe obszycie/5os-classic-honey-red-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster brazowy obszycie/5os-classic-honey-black-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster brazowy obszycie/5os-classic-honey-blue-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster brazowy obszycie/5os-classic-honey-brown-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster brazowy obszycie/5os-classic-honey-darkblue-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster brazowy obszycie/5os-classic-honey-darkgreen-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster brazowy obszycie/5os-classic-honey-darkgrey-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster brazowy obszycie/5os-classic-honey-ivory-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster brazowy obszycie/5os-classic-honey-lightbeige-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster brazowy obszycie/5os-classic-honey-maroon-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster brazowy obszycie/5os-classic-honey-red-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster ciemnoszary obszycie/5os-classic-honey-black-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster ciemnoszary obszycie/5os-classic-honey-blue-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster ciemnoszary obszycie/5os-classic-honey-brown-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster ciemnoszary obszycie/5os-classic-honey-darkblue-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster ciemnoszary obszycie/5os-classic-honey-darkgreen-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster ciemnoszary obszycie/5os-classic-honey-darkgrey-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster ciemnoszary obszycie/5os-classic-honey-ivory-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster ciemnoszary obszycie/5os-classic-honey-lightbeige-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster ciemnoszary obszycie/5os-classic-honey-maroon-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster ciemnoszary obszycie/5os-classic-honey-red-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne obszycie/5os-classic-honey-black-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne obszycie/5os-classic-honey-blue-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne obszycie/5os-classic-honey-brown-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne obszycie/5os-classic-honey-darkblue-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne obszycie/5os-classic-honey-darkgreen-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne obszycie/5os-classic-honey-darkgrey-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne obszycie/5os-classic-honey-ivory-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne obszycie/5os-classic-honey-lightbeige-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne obszycie/5os-classic-honey-maroon-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czarne obszycie/5os-classic-honey-red-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czerwone obszycie/5os-classic-honey-black-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czerwone obszycie/5os-classic-honey-blue-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czerwone obszycie/5os-classic-honey-brown-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czerwone obszycie/5os-classic-honey-darkblue-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czerwone obszycie/5os-classic-honey-darkgreen-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czerwone obszycie/5os-classic-honey-darkgrey-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czerwone obszycie/5os-classic-honey-ivory-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czerwone obszycie/5os-classic-honey-lightbeige-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czerwone obszycie/5os-classic-honey-maroon-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster czerwone obszycie/5os-classic-honey-red-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster fioletowe obszycie/5os-classic-honey-black-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster fioletowe obszycie/5os-classic-honey-blue-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster fioletowe obszycie/5os-classic-honey-brown-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster fioletowe obszycie/5os-classic-honey-darkblue-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster fioletowe obszycie/5os-classic-honey-darkgreen-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster fioletowe obszycie/5os-classic-honey-darkgrey-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster fioletowe obszycie/5os-classic-honey-ivory-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster fioletowe obszycie/5os-classic-honey-lightbeige-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster fioletowe obszycie/5os-classic-honey-maroon-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster fioletowe obszycie/5os-classic-honey-red-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster granatowy obszycie/5os-classic-honey-black-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster granatowy obszycie/5os-classic-honey-blue-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster granatowy obszycie/5os-classic-honey-brown-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster granatowy obszycie/5os-classic-honey-darkblue-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster granatowy obszycie/5os-classic-honey-darkgreen-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster granatowy obszycie/5os-classic-honey-darkgrey-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster granatowy obszycie/5os-classic-honey-ivory-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster granatowy obszycie/5os-classic-honey-lightbeige-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster granatowy obszycie/5os-classic-honey-maroon-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster granatowy obszycie/5os-classic-honey-red-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster jasnoszary obszycie/5os-classic-honey-black-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster jasnoszary obszycie/5os-classic-honey-blue-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster jasnoszary obszycie/5os-classic-honey-brown-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster jasnoszary obszycie/5os-classic-honey-darkblue-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster jasnoszary obszycie/5os-classic-honey-darkgreen-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster jasnoszary obszycie/5os-classic-honey-darkgrey-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster jasnoszary obszycie/5os-classic-honey-ivory-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster jasnoszary obszycie/5os-classic-honey-lightbeige-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster jasnoszary obszycie/5os-classic-honey-maroon-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster jasnoszary obszycie/5os-classic-honey-red-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster niebieski obszycie/5os-classic-honey-black-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster niebieski obszycie/5os-classic-honey-blue-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster niebieski obszycie/5os-classic-honey-brown-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster niebieski obszycie/5os-classic-honey-darkblue-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster niebieski obszycie/5os-classic-honey-darkgreen-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster niebieski obszycie/5os-classic-honey-darkgrey-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster niebieski obszycie/5os-classic-honey-ivory-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster niebieski obszycie/5os-classic-honey-lightbeige-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster niebieski obszycie/5os-classic-honey-maroon-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster niebieski obszycie/5os-classic-honey-red-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster pomaranczowe obszycie/5os-classic-honey-black-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster pomaranczowe obszycie/5os-classic-honey-blue-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster pomaranczowe obszycie/5os-classic-honey-brown-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster pomaranczowe obszycie/5os-classic-honey-darkblue-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster pomaranczowe obszycie/5os-classic-honey-darkgreen-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster pomaranczowe obszycie/5os-classic-honey-darkgrey-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster pomaranczowe obszycie/5os-classic-honey-ivory-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster pomaranczowe obszycie/5os-classic-honey-lightbeige-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster pomaranczowe obszycie/5os-classic-honey-maroon-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster pomaranczowe obszycie/5os-classic-honey-red-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster rozowe obszycie/5os-classic-honey-black-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster rozowe obszycie/5os-classic-honey-blue-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster rozowe obszycie/5os-classic-honey-brown-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster rozowe obszycie/5os-classic-honey-darkblue-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster rozowe obszycie/5os-classic-honey-darkgreen-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster rozowe obszycie/5os-classic-honey-darkgrey-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster rozowe obszycie/5os-classic-honey-ivory-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster rozowe obszycie/5os-classic-honey-lightbeige-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster rozowe obszycie/5os-classic-honey-maroon-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster rozowe obszycie/5os-classic-honey-red-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zielony obszycie/5os-classic-honey-black-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zielony obszycie/5os-classic-honey-blue-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zielony obszycie/5os-classic-honey-brown-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zielony obszycie/5os-classic-honey-darkblue-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zielony obszycie/5os-classic-honey-darkgreen-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zielony obszycie/5os-classic-honey-darkgrey-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zielony obszycie/5os-classic-honey-ivory-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zielony obszycie/5os-classic-honey-lightbeige-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zielony obszycie/5os-classic-honey-maroon-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zielony obszycie/5os-classic-honey-red-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "black",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zolte obszycie/5os-classic-honey-black-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "blue",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zolte obszycie/5os-classic-honey-blue-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "brown",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zolte obszycie/5os-classic-honey-brown-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkblue",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zolte obszycie/5os-classic-honey-darkblue-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgreen",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zolte obszycie/5os-classic-honey-darkgreen-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "darkgrey",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zolte obszycie/5os-classic-honey-darkgrey-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "ivory",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zolte obszycie/5os-classic-honey-ivory-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "lightbeige",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zolte obszycie/5os-classic-honey-lightbeige-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "maroon",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zolte obszycie/5os-classic-honey-maroon-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "honeycomb",
+    "materialColor": "red",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/plaster miodu/plaster zolte obszycie/5os-classic-honey-red-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bezowy/5os-classic-diamonds-black-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bezowy/5os-classic-diamonds-blue-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bezowy/5os-classic-diamonds-brown-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bezowy/5os-classic-diamonds-darkblue-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bezowy/5os-classic-diamonds-darkgreen-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bezowy/5os-classic-diamonds-darkgrey-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bezowy/5os-classic-diamonds-ivory-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bezowy/5os-classic-diamonds-lightbeige-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bezowy/5os-classic-diamonds-maroon-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bezowy/5os-classic-diamonds-red-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bezowy/5os-classic-diamonds-black-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bezowy/5os-classic-diamonds-blue-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bezowy/5os-classic-diamonds-brown-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bezowy/5os-classic-diamonds-darkblue-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bezowy/5os-classic-diamonds-darkgreen-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bezowy/5os-classic-diamonds-darkgrey-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "bezowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bezowy/5os-classic-diamonds-ivory-beige.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bordowe/5os-classic-diamonds-black-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bordowe/5os-classic-diamonds-blue-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bordowe/5os-classic-diamonds-brown-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bordowe/5os-classic-diamonds-darkblue-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bordowe/5os-classic-diamonds-darkgreen-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bordowe/5os-classic-diamonds-darkgrey-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bordowe/5os-classic-diamonds-ivory-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bordowe/5os-classic-diamonds-lightbeige-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bordowe/5os-classic-diamonds-maroon-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bordowe/5os-classic-diamonds-red-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bordowe/5os-classic-diamonds-black-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bordowe/5os-classic-diamonds-blue-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bordowe/5os-classic-diamonds-brown-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bordowe/5os-classic-diamonds-darkblue-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bordowe/5os-classic-diamonds-darkgreen-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bordowe/5os-classic-diamonds-darkgrey-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "bordowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby bordowe/5os-classic-diamonds-ivory-maroon.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby brazowy/5os-classic-diamonds-black-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby brazowy/5os-classic-diamonds-blue-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby brazowy/5os-classic-diamonds-brown-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby brazowy/5os-classic-diamonds-darkblue-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby brazowy/5os-classic-diamonds-darkgreen-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby brazowy/5os-classic-diamonds-darkgrey-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby brazowy/5os-classic-diamonds-ivory-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby brazowy/5os-classic-diamonds-lightbeige-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby brazowy/5os-classic-diamonds-maroon-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby brazowy/5os-classic-diamonds-red-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby brazowy/5os-classic-diamonds-black-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby brazowy/5os-classic-diamonds-blue-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby brazowy/5os-classic-diamonds-brown-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby brazowy/5os-classic-diamonds-darkblue-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby brazowy/5os-classic-diamonds-darkgreen-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby brazowy/5os-classic-diamonds-darkgrey-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "brazowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby brazowy/5os-classic-diamonds-ivory-brown.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby ciemnoszary/5os-classic-diamonds-black-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby ciemnoszary/5os-classic-diamonds-blue-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby ciemnoszary/5os-classic-diamonds-brown-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby ciemnoszary/5os-classic-diamonds-darkblue-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby ciemnoszary/5os-classic-diamonds-darkgreen-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby ciemnoszary/5os-classic-diamonds-darkgrey-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby ciemnoszary/5os-classic-diamonds-ivory-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby ciemnoszary/5os-classic-diamonds-lightbeige-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby ciemnoszary/5os-classic-diamonds-maroon-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby ciemnoszary/5os-classic-diamonds-red-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby ciemnoszary/5os-classic-diamonds-black-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby ciemnoszary/5os-classic-diamonds-blue-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby ciemnoszary/5os-classic-diamonds-brown-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby ciemnoszary/5os-classic-diamonds-darkblue-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "ciemnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby ciemnoszary/5os-classic-diamonds-darkgreen-darkgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czarne/5os-classic-diamonds-black-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czarne/5os-classic-diamonds-blue-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czarne/5os-classic-diamonds-brown-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czarne/5os-classic-diamonds-darkblue-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czarne/5os-classic-diamonds-darkgreen-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czarne/5os-classic-diamonds-darkgrey-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czarne/5os-classic-diamonds-ivory-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czarne/5os-classic-diamonds-lightbeige-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czarne/5os-classic-diamonds-maroon-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czarne/5os-classic-diamonds-red-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czarne/5os-classic-diamonds-black-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czarne/5os-classic-diamonds-blue-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czarne/5os-classic-diamonds-brown-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czarne/5os-classic-diamonds-darkblue-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czarne/5os-classic-diamonds-darkgreen-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czarne/5os-classic-diamonds-darkgrey-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "czarne",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czarne/5os-classic-diamonds-ivory-black.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czerwone/5os-classic-diamonds-black-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czerwone/5os-classic-diamonds-blue-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czerwone/5os-classic-diamonds-brown-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czerwone/5os-classic-diamonds-darkblue-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czerwone/5os-classic-diamonds-darkgreen-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czerwone/5os-classic-diamonds-darkgrey-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czerwone/5os-classic-diamonds-ivory-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czerwone/5os-classic-diamonds-lightbeige-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czerwone/5os-classic-diamonds-maroon-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czerwone/5os-classic-diamonds-red-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czerwone/5os-classic-diamonds-black-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czerwone/5os-classic-diamonds-blue-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czerwone/5os-classic-diamonds-brown-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czerwone/5os-classic-diamonds-darkblue-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czerwone/5os-classic-diamonds-darkgreen-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czerwone/5os-classic-diamonds-darkgrey-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "czerwone",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby czerwone/5os-classic-diamonds-ivory-red.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby fioletowe/5os-classic-diamonds-black-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby fioletowe/5os-classic-diamonds-blue-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby fioletowe/5os-classic-diamonds-brown-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby fioletowe/5os-classic-diamonds-darkblue-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby fioletowe/5os-classic-diamonds-darkgreen-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby fioletowe/5os-classic-diamonds-darkgrey-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby fioletowe/5os-classic-diamonds-ivory-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby fioletowe/5os-classic-diamonds-lightbeige-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby fioletowe/5os-classic-diamonds-maroon-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby fioletowe/5os-classic-diamonds-red-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby fioletowe/5os-classic-diamonds-black-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby fioletowe/5os-classic-diamonds-blue-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby fioletowe/5os-classic-diamonds-brown-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby fioletowe/5os-classic-diamonds-darkblue-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby fioletowe/5os-classic-diamonds-darkgreen-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby fioletowe/5os-classic-diamonds-darkgrey-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "fioletowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby fioletowe/5os-classic-diamonds-ivory-purple.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby granatowy/5os-classic-diamonds-black-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby granatowy/5os-classic-diamonds-blue-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby granatowy/5os-classic-diamonds-brown-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby granatowy/5os-classic-diamonds-darkblue-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby granatowy/5os-classic-diamonds-darkgreen-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby granatowy/5os-classic-diamonds-darkgrey-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby granatowy/5os-classic-diamonds-ivory-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby granatowy/5os-classic-diamonds-lightbeige-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby granatowy/5os-classic-diamonds-maroon-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby granatowy/5os-classic-diamonds-red-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby granatowy/5os-classic-diamonds-black-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby granatowy/5os-classic-diamonds-blue-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby granatowy/5os-classic-diamonds-brown-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby granatowy/5os-classic-diamonds-darkblue-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby granatowy/5os-classic-diamonds-darkgreen-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby granatowy/5os-classic-diamonds-darkgrey-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "granatowy",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby granatowy/5os-classic-diamonds-ivory-darkblue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby jasnoszary/5os-classic-diamonds-black-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby jasnoszary/5os-classic-diamonds-blue-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby jasnoszary/5os-classic-diamonds-brown-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby jasnoszary/5os-classic-diamonds-darkblue-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby jasnoszary/5os-classic-diamonds-darkgreen-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby jasnoszary/5os-classic-diamonds-darkgrey-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby jasnoszary/5os-classic-diamonds-ivory-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby jasnoszary/5os-classic-diamonds-lightbeige-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby jasnoszary/5os-classic-diamonds-maroon-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby jasnoszary/5os-classic-diamonds-red-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby jasnoszary/5os-classic-diamonds-black-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby jasnoszary/5os-classic-diamonds-blue-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby jasnoszary/5os-classic-diamonds-brown-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby jasnoszary/5os-classic-diamonds-darkblue-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby jasnoszary/5os-classic-diamonds-darkgreen-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby jasnoszary/5os-classic-diamonds-darkgrey-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "jasnoszary",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby jasnoszary/5os-classic-diamonds-ivory-lightgrey.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby niebieski/5os-classic-diamonds-black-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby niebieski/5os-classic-diamonds-blue-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby niebieski/5os-classic-diamonds-brown-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby niebieski/5os-classic-diamonds-darkblue-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby niebieski/5os-classic-diamonds-darkgreen-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby niebieski/5os-classic-diamonds-darkgrey-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby niebieski/5os-classic-diamonds-ivory-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby niebieski/5os-classic-diamonds-lightbeige-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby niebieski/5os-classic-diamonds-maroon-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby niebieski/5os-classic-diamonds-red-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby niebieski/5os-classic-diamonds-black-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby niebieski/5os-classic-diamonds-blue-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby niebieski/5os-classic-diamonds-brown-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby niebieski/5os-classic-diamonds-darkblue-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby niebieski/5os-classic-diamonds-darkgreen-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby niebieski/5os-classic-diamonds-darkgrey-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "niebieski",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby niebieski/5os-classic-diamonds-ivory-blue.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby pomaranczowe/5os-classic-diamonds-black-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby pomaranczowe/5os-classic-diamonds-blue-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby pomaranczowe/5os-classic-diamonds-brown-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby pomaranczowe/5os-classic-diamonds-darkblue-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby pomaranczowe/5os-classic-diamonds-darkgreen-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby pomaranczowe/5os-classic-diamonds-darkgrey-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby pomaranczowe/5os-classic-diamonds-ivory-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby pomaranczowe/5os-classic-diamonds-lightbeige-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby pomaranczowe/5os-classic-diamonds-maroon-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby pomaranczowe/5os-classic-diamonds-red-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby pomaranczowe/5os-classic-diamonds-black-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby pomaranczowe/5os-classic-diamonds-blue-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby pomaranczowe/5os-classic-diamonds-brown-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby pomaranczowe/5os-classic-diamonds-darkblue-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby pomaranczowe/5os-classic-diamonds-darkgreen-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby pomaranczowe/5os-classic-diamonds-darkgrey-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "pomaranczowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby pomaranczowe/5os-classic-diamonds-ivory-orange.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby rozowe/5os-classic-diamonds-black-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby rozowe/5os-classic-diamonds-blue-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby rozowe/5os-classic-diamonds-brown-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby rozowe/5os-classic-diamonds-darkblue-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby rozowe/5os-classic-diamonds-darkgreen-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby rozowe/5os-classic-diamonds-darkgrey-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby rozowe/5os-classic-diamonds-ivory-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby rozowe/5os-classic-diamonds-lightbeige-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby rozowe/5os-classic-diamonds-maroon-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby rozowe/5os-classic-diamonds-red-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby rozowe/5os-classic-diamonds-black-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby rozowe/5os-classic-diamonds-blue-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby rozowe/5os-classic-diamonds-brown-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby rozowe/5os-classic-diamonds-darkblue-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby rozowe/5os-classic-diamonds-darkgreen-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby rozowe/5os-classic-diamonds-darkgrey-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "rozowe",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby rozowe/5os-classic-diamonds-ivory-pink.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zielony/5os-classic-diamonds-black-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zielony/5os-classic-diamonds-blue-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zielony/5os-classic-diamonds-brown-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zielony/5os-classic-diamonds-darkblue-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zielony/5os-classic-diamonds-darkgreen-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zielony/5os-classic-diamonds-darkgrey-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zielony/5os-classic-diamonds-ivory-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zielony/5os-classic-diamonds-lightbeige-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zielony/5os-classic-diamonds-maroon-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zielony/5os-classic-diamonds-red-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zielony/5os-classic-diamonds-black-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zielony/5os-classic-diamonds-blue-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zielony/5os-classic-diamonds-brown-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zielony/5os-classic-diamonds-darkblue-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zielony/5os-classic-diamonds-darkgreen-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zielony/5os-classic-diamonds-darkgrey-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "zielony",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zielony/5os-classic-diamonds-ivory-green.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zolte/5os-classic-diamonds-black-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zolte/5os-classic-diamonds-blue-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zolte/5os-classic-diamonds-brown-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zolte/5os-classic-diamonds-darkblue-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zolte/5os-classic-diamonds-darkgreen-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zolte/5os-classic-diamonds-darkgrey-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zolte/5os-classic-diamonds-ivory-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "lightbeige",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zolte/5os-classic-diamonds-lightbeige-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "maroon",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zolte/5os-classic-diamonds-maroon-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "red",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zolte/5os-classic-diamonds-red-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "black",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zolte/5os-classic-diamonds-black-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "blue",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zolte/5os-classic-diamonds-blue-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "brown",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zolte/5os-classic-diamonds-brown-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkblue",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zolte/5os-classic-diamonds-darkblue-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgreen",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zolte/5os-classic-diamonds-darkgreen-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "darkgrey",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zolte/5os-classic-diamonds-darkgrey-yellow.webp"
+  },
+  {
+    "matType": "3d-without-rims",
+    "cellStructure": "rhombus",
+    "materialColor": "ivory",
+    "borderColor": "zolte",
+    "imagePath": "/konfigurator/dywaniki/klasyczne/romby/romby zolte/5os-classic-diamonds-ivory-yellow.webp"
+  }
+]
