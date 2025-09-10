@@ -128,3 +128,25 @@ export async function OPTIONS() {
     },
   });
 }
+
+// DELETE - usuń wszystkie rekordy z tabeli CarMat
+export async function DELETE() {
+  try {
+    const result = await CarMatService.clearAllCarMats();
+
+    if (!result.success) {
+      return NextResponse.json(
+        { success: false, error: result.error },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ success: true, message: result.message });
+  } catch (error) {
+    console.error('❌ Błąd w API /api/carmat DELETE:', error);
+    return NextResponse.json(
+      { success: false, error: 'Wewnętrzny błąd serwera' },
+      { status: 500 }
+    );
+  }
+}
