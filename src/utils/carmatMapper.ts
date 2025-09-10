@@ -311,19 +311,7 @@ export function generateImagePath(carMatData: Omit<CarMatData, 'imagePath'>): st
     };
     
     const borderFolder = borderFolderMapping[borderColor] || 'czarne';
-
-    // Specjalny przypadek: dla 3D plaster miodu nazwa pliku końcowa dla
-    // niebieskiego/granatowego jest odwrócona względem tokenów folderów.
-    // - folder "niebieski" ⇒ sufiks pliku "-darkblue.webp"
-    // - folder "granatowy" ⇒ sufiks pliku "-blue.webp"
-    let fileBorderToken = borderColorKey;
-    if (borderColor === 'niebieski') {
-      fileBorderToken = 'darkblue';
-    } else if (borderColor === 'granatowy') {
-      fileBorderToken = 'blue';
-    }
-
-    return `/konfigurator/dywaniki/3d/plaster/${borderFolder}/5os-3d-honey-${materialColorKey}-${fileBorderToken}.webp`;
+    return `/konfigurator/dywaniki/3d/plaster/${borderFolder}/5os-3d-honey-${materialColorKey}-${borderColorKey}.webp`;
   }
   
   if (matType === '3d-without-rims' && cellStructure === 'honeycomb') {
