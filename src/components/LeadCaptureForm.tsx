@@ -284,13 +284,13 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
   useEffect(() => {
     switch (currentStep) {
       case 1:
-        trackStep1View();
+        trackStep3View(); // Krok 1: Konfiguracja produktu → "Product Configuration Step"
         break;
       case 2:
-        trackStep2View();
+        trackStep1View(); // Krok 2: Dane auta → "Vehicle Information Step"
         break;
       case 3:
-        trackStep3View();
+        trackStep2View(); // Krok 3: Dane kontaktowe → "Contact Information Step"
         break;
     }
   }, [currentStep]);
@@ -401,6 +401,12 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
       }
       if (!formData.structure.trim()) {
         newErrors.structure = 'Wybierz strukturę komórek';
+      }
+      if (!formData.materialColor.trim()) {
+        newErrors.materialColor = 'Wybierz kolor materiału';
+      }
+      if (!formData.borderColor.trim()) {
+        newErrors.borderColor = 'Wybierz kolor obszycia';
       }
     }
 
@@ -534,6 +540,14 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
       console.log('🔄 Aktualizuję formData z kolorem obszycia:', updatedFormData);
       onFormDataChange(updatedFormData);
     }
+    
+    // Clear error if exists
+    if (errors.borderColor) {
+      setErrors(prev => ({
+        ...prev,
+        borderColor: undefined
+      }));
+    }
   };
 
   const handleMaterialColorSelect = (colorValue: string) => {
@@ -545,6 +559,14 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
       };
       console.log('🔄 Aktualizuję formData z kolorem materiału:', updatedFormData);
       onFormDataChange(updatedFormData);
+    }
+    
+    // Clear error if exists
+    if (errors.materialColor) {
+      setErrors(prev => ({
+        ...prev,
+        materialColor: undefined
+      }));
     }
   };
 
@@ -585,7 +607,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
             includeHooks: formData.includeHooks
           });
         }
-        // Śledź ukończenie kroku 2 (dane auta) - bez wysyłania danych
+        // Śledź ukończenie kroku 2 (dane auta)
         if (currentStep === 2) {
           trackStep1Complete({
             brand: formData.company?.split(' ')[0],
@@ -1019,6 +1041,12 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                               />
                             ))}
                           </div>
+                          {errors.materialColor && (
+                            <div className="flex items-center gap-2 text-red-400 text-sm mt-2">
+                              <AlertCircle className="w-4 h-4" />
+                              {errors.materialColor}
+                            </div>
+                          )}
                         </div>
 
                         {/* Kolor Obszycia */}
@@ -1041,6 +1069,12 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                               />
                             ))}
                           </div>
+                          {errors.borderColor && (
+                            <div className="flex items-center gap-2 text-red-400 text-sm mt-2">
+                              <AlertCircle className="w-4 h-4" />
+                              {errors.borderColor}
+                            </div>
+                          )}
                         </div>
                       </div>
 

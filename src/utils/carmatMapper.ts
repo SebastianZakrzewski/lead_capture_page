@@ -58,7 +58,9 @@ export function generateImagePath(options: {
     if (cellStructure === 'romb') {
       return `/konfigurator/dywaniki/classic/diamonds/diamonds ${borderEn}/5os-classic-diamonds-${materialEn}-${borderEn}.webp`;
     } else if (cellStructure === 'plaster-miodu') {
-      return `/konfigurator/dywaniki/classic/honeycomb/honey ${borderEn} trim/5os-classic-honey-${materialEn}-${borderEn}.webp`;
+      // Specjalne mapowanie dla plaster miodu: black ma folder "honey black", inne kolory mają "honey {kolor} trim"
+      const folderName = borderEn === 'black' ? `honey ${borderEn}` : `honey ${borderEn} trim`;
+      return `/konfigurator/dywaniki/classic/honeycomb/${folderName}/5os-classic-honey-${materialEn}-${borderEn}.webp`;
     }
   }
   
