@@ -363,6 +363,13 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     
     const availableColors = getAvailableMaterialColors(matType, cellStructure);
     
+    console.log('🎨 Filtrowanie kolorów:', {
+      matType,
+      cellStructure,
+      availableColors,
+      allOptions: MATERIAL_COLOR_OPTIONS.length
+    });
+    
     return MATERIAL_COLOR_OPTIONS.filter(option => 
       availableColors.includes(option.value)
     );

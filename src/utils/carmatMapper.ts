@@ -19,14 +19,14 @@ const FORM_TO_ENGLISH: Record<string, string> = {
   'maroon': 'maroon',
   'pink': 'pink',
   'darkblue': 'darkblue',
+  'darkgreen': 'darkgreen', // darkgreen material -> darkgreen in filename
   'darkgrey': 'darkgrey',
   'beige': 'beige',
   'lightbeige': 'lightbeige',
   'white': 'white',
   'ivory': 'ivory',
   // Border colors (form -> file) - specjalne mapowania
-  'lightgrey': 'lightgrey',
-  'darkgreen': 'green' // darkgreen border -> green folder
+  'lightgrey': 'lightgrey'
 };
 
 /**
@@ -42,7 +42,8 @@ export function generateImagePath(options: {
   
   // Map form values to English file names
   const materialEn = FORM_TO_ENGLISH[materialColor] || materialColor;
-  const borderEn = FORM_TO_ENGLISH[borderColor] || borderColor;
+  // Special mapping for darkgreen border -> green folder
+  const borderEn = borderColor === 'darkgreen' ? 'green' : (FORM_TO_ENGLISH[borderColor] || borderColor);
   
   // Map form types to file structure
   if (matType === '3d-evapremium-z-rantami') {
@@ -71,12 +72,16 @@ export function generateImagePath(options: {
 export function generateAllCarMatCombinations(): CarMatData[] {
   const combinations: CarMatData[] = [];
 
-  // Available colors from form options
-  const materialColors = ['red', 'black', 'blue', 'yellow', 'lime', 'orange', 'purple', 'brown', 'maroon', 'pink', 'darkblue', 'darkgreen', 'darkgrey', 'beige', 'lightbeige', 'white', 'ivory'];
-  const borderColors = ['red', 'black', 'blue', 'yellow', 'orange', 'purple', 'brown', 'maroon', 'pink', 'darkblue', 'darkgreen', 'darkgrey', 'lightgrey', 'beige', 'lightbeige', 'white', 'ivory'];
+  // Available colors based on actual database analysis
+  const allMaterialColors = ['red', 'black', 'blue', 'yellow', 'lime', 'orange', 'purple', 'brown', 'maroon', 'pink', 'darkblue', 'darkgreen', 'darkgrey', 'beige', 'white'];
+  const borderColors = ['red', 'black', 'blue', 'yellow', 'orange', 'purple', 'brown', 'maroon', 'pink', 'darkblue', 'darkgreen', 'darkgrey', 'lightgrey', 'beige'];
   
-  // 3D with rims - diamonds
-  materialColors.forEach(materialColor => {
+  // Get available colors for each structure
+  const rhombusColors = getAvailableMaterialColors('3d-with-rims', 'rhombus');
+  const honeycombColors = getAvailableMaterialColors('3d-with-rims', 'honeycomb');
+
+  // 3D with rims - diamonds (romb)
+  rhombusColors.forEach(materialColor => {
     borderColors.forEach(borderColor => {
       combinations.push({
         matType: '3d-with-rims',
@@ -93,8 +98,8 @@ export function generateAllCarMatCombinations(): CarMatData[] {
     });
   });
 
-  // 3D with rims - honeycomb
-  materialColors.forEach(materialColor => {
+  // 3D with rims - honeycomb (plaster miodu)
+  honeycombColors.forEach(materialColor => {
     borderColors.forEach(borderColor => {
       combinations.push({
         matType: '3d-with-rims',
@@ -111,8 +116,8 @@ export function generateAllCarMatCombinations(): CarMatData[] {
     });
   });
 
-  // Classic without rims - diamonds
-  materialColors.forEach(materialColor => {
+  // Classic without rims - diamonds (romb)
+  rhombusColors.forEach(materialColor => {
     borderColors.forEach(borderColor => {
       combinations.push({
         matType: '3d-without-rims',
@@ -129,8 +134,8 @@ export function generateAllCarMatCombinations(): CarMatData[] {
     });
   });
 
-  // Classic without rims - honeycomb
-  materialColors.forEach(materialColor => {
+  // Classic without rims - honeycomb (plaster miodu)
+  honeycombColors.forEach(materialColor => {
     borderColors.forEach(borderColor => {
       combinations.push({
         matType: '3d-without-rims',
@@ -152,9 +157,33 @@ export function generateAllCarMatCombinations(): CarMatData[] {
 
 /**
  * Get available material colors for given mat type and structure
+ * Based on actual data from database analysis
  */
 export function getAvailableMaterialColors(matType: string, cellStructure: string): string[] {
-  return ['red', 'black', 'blue', 'yellow', 'lime', 'orange', 'purple', 'brown', 'maroon', 'pink', 'darkblue', 'darkgreen', 'darkgrey', 'beige', 'lightbeige', 'white', 'ivory'];
+  // Kolory dostępne dla plaster miodu (honeycomb)
+  const honeycombColors = [
+    'black', 'blue', 'brown', 'darkblue', 'darkgreen', 
+    'darkgrey', 'ivory', 'lightbeige', 'maroon', 'red'
+  ];
+  
+  // Kolory dostępne dla rombów (rhombus)
+  const rhombusColors = [
+    'beige', 'black', 'blue', 'brown', 'darkblue', 'darkgreen', 
+    'darkgrey', 'ivory', 'lightbeige', 'lime', 'maroon', 'orange', 
+    'pink', 'purple', 'red', 'white', 'yellow'
+  ];
+
+  // Mapowanie struktur komórek
+  if (cellStructure === 'honeycomb' || cellStructure === 'plaster-miodu') {
+    return honeycombColors;
+  }
+  
+  if (cellStructure === 'rhombus' || cellStructure === 'romb') {
+    return rhombusColors;
+  }
+
+  // Domyślnie zwróć wszystkie kolory (fallback)
+  return [...honeycombColors, ...rhombusColors].filter((color, index, array) => array.indexOf(color) === index);
 }
 
 /**

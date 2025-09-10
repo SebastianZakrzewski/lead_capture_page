@@ -34,10 +34,7 @@ export type BorderColorOption =
   | 'darkgreen'
   | 'darkgrey'
   | 'lightgrey'
-  | 'beige'
-  | 'lightbeige'
-  | 'white'
-  | 'ivory';
+  | 'beige';
 
 // Kolory materiału dostępne w konfiguratorze
 export type MaterialColorOption = 
@@ -74,10 +71,7 @@ export const BORDER_COLOR_OPTIONS: { value: BorderColorOption; label: string }[]
   { value: 'darkgreen', label: 'Zielone' },
   { value: 'darkgrey', label: 'Ciemnoszare' },
   { value: 'lightgrey', label: 'Jasnoszare' },
-  { value: 'beige', label: 'Beżowe' },
-  { value: 'lightbeige', label: 'Jasnobeżowe' },
-  { value: 'white', label: 'Białe' },
-  { value: 'ivory', label: 'Kość słoniowa' }
+  { value: 'beige', label: 'Beżowe' }
 ];
 
 // Opcje kolorów materiału z polskimi nazwami
