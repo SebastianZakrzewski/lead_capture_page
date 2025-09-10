@@ -201,6 +201,14 @@ export function getCarMatStats() {
     byCellStructure: combinations.reduce((acc, combo) => {
       acc[combo.cellStructure] = (acc[combo.cellStructure] || 0) + 1;
       return acc;
+    }, {} as Record<string, number>),
+    byMaterialColor: combinations.reduce((acc, combo) => {
+      acc[combo.materialColor] = (acc[combo.materialColor] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>),
+    byBorderColor: combinations.reduce((acc, combo) => {
+      acc[combo.borderColor] = (acc[combo.borderColor] || 0) + 1;
+      return acc;
     }, {} as Record<string, number>)
   };
 }
