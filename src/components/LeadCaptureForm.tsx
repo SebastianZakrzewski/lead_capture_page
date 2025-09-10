@@ -17,7 +17,6 @@ import {
   trackStep1View,
   trackStep1Complete,
   trackStep2View,
-  trackStep2PartialLead,
   trackStep2Complete,
   trackStep3View,
   trackStep3Configuration,
@@ -238,37 +237,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     }
   }, [leadId]);
 
-  // Częściowy zapis gdy użytkownik opuszcza stronę (tylko jeśli wypełnił kroki 1-2)
-  useEffect(() => {
-    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
-      // Zapisz częściowo tylko jeśli użytkownik wypełnił kroki 1-2 ale nie 3
-      if (currentStep >= 2 && !isSubmitted && formData.firstName.trim() && formData.phone.trim()) {
-        console.log('🔄 Użytkownik opuszcza stronę - wykonuję częściowy zapis...');
-        
-        const partialData = {
-          firstName: formData.firstName,
-          phone: formData.phone,
-          company: formData.company || undefined,
-          jobTitle: formData.jobTitle || undefined,
-          status: 'partial',
-          step: currentStep,
-          timestamp: new Date().toISOString()
-        };
-
-        try {
-          const leadPayload = prepareLeadSubmissionData(partialData);
-          const beaconData = JSON.stringify(leadPayload);
-          navigator.sendBeacon('/api/leads', beaconData);
-          console.log('✅ Częściowy lead wysłany przed opuszczeniem strony');
-        } catch (error) {
-          console.error('❌ Błąd częściowego zapisu przed opuszczeniem:', error);
-        }
-      }
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
-    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
-  }, [currentStep, isSubmitted, formData.firstName, formData.phone, formData.company, formData.jobTitle]);
+  // Usunięto częściowy zapis - dane wysyłane tylko po wypełnieniu etapu 3
 
   // Śledzenie zmian isSubmitted
   useEffect(() => {
@@ -424,6 +393,18 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     const newErrors: Partial<LeadFormData> = {};
 
     if (currentStep === 1) {
+      if (!formData.industry.trim()) {
+        newErrors.industry = 'Wybierz typ dywaników';
+      }
+      if (!formData.completeness.trim()) {
+        newErrors.completeness = 'Wybierz rodzaj kompletu';
+      }
+      if (!formData.structure.trim()) {
+        newErrors.structure = 'Wybierz strukturę komórek';
+      }
+    }
+
+    if (currentStep === 2) {
       if (!formData.company.trim()) {
         newErrors.company = 'Marka i model auta są wymagane';
       }
@@ -432,7 +413,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
       }
     }
 
-    if (currentStep === 2) {
+    if (currentStep === 3) {
       if (!formData.firstName.trim()) {
         newErrors.firstName = 'Imię jest wymagane';
       }
@@ -443,18 +424,6 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
         if (cleanedPhone.length < 9) {
           newErrors.phone = 'Wprowadź poprawny numer telefonu (min. 9 cyfr)';
         }
-      }
-    }
-
-    if (currentStep === 3) {
-      if (!formData.industry.trim()) {
-        newErrors.industry = 'Wybierz typ dywaników';
-      }
-      if (!formData.completeness.trim()) {
-        newErrors.completeness = 'Wybierz rodzaj kompletu';
-      }
-      if (!formData.structure.trim()) {
-        newErrors.structure = 'Wybierz strukturę komórek';
       }
     }
 
@@ -480,8 +449,8 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
       }));
     }
 
-    // Śledź konfigurację produktu w kroku 3
-    if (currentStep === 3 && ['industry', 'completeness', 'structure', 'materialColor', 'borderColor', 'includeHooks'].includes(name)) {
+    // Śledź konfigurację produktu w kroku 1
+    if (currentStep === 1 && ['industry', 'completeness', 'structure', 'materialColor', 'borderColor', 'includeHooks'].includes(name)) {
       trackStep3Configuration({
         industry: name === 'industry' ? value : formData.industry,
         completeness: name === 'completeness' ? value : formData.completeness,
@@ -598,79 +567,31 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
     }
   };
 
-  const handlePartialSave = useCallback(async () => {
-    console.log('🔄 Rozpoczynam częściowy zapis danych...');
-    
-    // Dodatkowe zabezpieczenie - sprawdź czy dane są wystarczające
-    if (!formData.firstName.trim() || !formData.phone.trim()) {
-      console.log('⚠️ Brak wymaganych danych do częściowego zapisu - pomijam!');
-      return;
-    }
-    
-    const partialData = {
-      firstName: formData.firstName,
-      phone: formData.phone,
-      company: formData.company || undefined,
-      jobTitle: formData.jobTitle || undefined,
-      status: 'partial',
-      step: 2,
-      timestamp: new Date().toISOString()
-    };
-
-    try {
-      console.log('📋 Dane do częściowego zapisu:', partialData);
-      
-      const leadPayload = prepareLeadSubmissionData(partialData);
-      console.log('🔍 Próba utworzenia częściowego leada:', leadPayload);
-      
-      // Wyślij dane przez Beacon API
-      const beaconData = JSON.stringify(leadPayload);
-      console.log('📤 Wysyłam częściowe dane przez Beacon API:', beaconData);
-      const beaconSent = navigator.sendBeacon('/api/leads', beaconData);
-      
-      if (beaconSent) {
-        console.log('✅ Częściowy lead wysłany przez Beacon API i zsynchronizowany z Bitrix24');
-        
-        // Śledź częściowy lead
-        trackStep2PartialLead({
-          firstName: formData.firstName,
-          phone: formData.phone
-        });
-        
-        // Generuj tymczasowe ID leada dla UI
-        const tempLeadId = `partial_${Date.now()}`;
-        console.log('🔧 Ustawiam tymczasowe leadId na:', tempLeadId);
-        setLeadId(tempLeadId);
-        localStorage.setItem('currentLeadId', tempLeadId);
-        
-        // Śledź częściowe wysłanie formularza
-        trackLeadSubmissionWithData(leadPayload as unknown as Record<string, unknown>);
-        
-        console.log('🎉 Częściowy zapis zakończony pomyślnie - lead trafił do Bitrix24');
-      } else {
-        throw new Error('Beacon API failed to send partial data');
-      }
-    } catch (error) {
-      console.error('❌ Błąd częściowego zapisu:', error);
-    }
-  }, [formData]);
+  // Usunięto funkcję częściowego zapisu - dane wysyłane tylko po wypełnieniu etapu 3
 
   const nextStep = useCallback(async () => {
     console.log('🔄 nextStep wywołany, currentStep:', currentStep);
     
     if (validateCurrentStep()) {
       if (currentStep < totalSteps) {
-        // Śledź ukończenie kroku 1
+        // Śledź ukończenie kroku 1 (konfiguracja produktu)
         if (currentStep === 1) {
+          trackStep3Configuration({
+            industry: formData.industry,
+            completeness: formData.completeness,
+            structure: formData.structure,
+            materialColor: formData.materialColor,
+            borderColor: formData.borderColor,
+            includeHooks: formData.includeHooks
+          });
+        }
+        // Śledź ukończenie kroku 2 (dane auta) - bez wysyłania danych
+        if (currentStep === 2) {
           trackStep1Complete({
             brand: formData.company?.split(' ')[0],
             model: formData.company?.split(' ').slice(1).join(' '),
             year: formData.jobTitle
           });
-        }
-        // Śledź ukończenie kroku 2 (bez częściowego zapisu)
-        if (currentStep === 2) {
-          trackStep2Complete();
         }
         console.log('🔄 Przechodzę z kroku', currentStep, 'do', currentStep + 1);
         setCurrentStep(currentStep + 1);
@@ -716,10 +637,6 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
         borderColor: formData.borderColor
       });
       
-      // Sprawdź czy istnieje częściowy lead w localStorage
-      const savedLeadId = localStorage.getItem('currentLeadId');
-      const hasPartialLead = savedLeadId && savedLeadId.startsWith('partial_');
-      
       const fullData = {
         firstName: formData.firstName,
         phone: formData.phone,
@@ -734,9 +651,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
         includeHooks: formData.includeHooks || false,
         status: 'complete',
         step: 3,
-        timestamp: new Date().toISOString(),
-        leadId: savedLeadId || undefined, // Przekaż ID z localStorage
-        isUpdate: hasPartialLead || false // Oznacz jako aktualizację jeśli istnieje częściowy lead
+        timestamp: new Date().toISOString()
       };
 
       const leadPayload = prepareLeadSubmissionData(fullData);
@@ -750,14 +665,10 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
       if (beaconSent) {
         console.log('✅ Pełny lead wysłany przez Beacon API');
         
-        // Jeśli to był częściowy zapis, nie zmieniaj leadId
-        if (!hasPartialLead || !savedLeadId) {
-          const tempLeadId = `complete_${Date.now()}`;
-          console.log('🔧 Ustawiam nowe leadId na:', tempLeadId);
-          setLeadId(tempLeadId);
-        } else {
-          console.log('🔄 Zachowuję istniejący leadId:', savedLeadId);
-        }
+        // Generuj nowe ID leada
+        const tempLeadId = `complete_${Date.now()}`;
+        console.log('🔧 Ustawiam nowe leadId na:', tempLeadId);
+        setLeadId(tempLeadId);
         
         // Śledź pomyślne wysłanie formularza z danymi trackingowymi
         trackLeadSubmissionWithData(leadPayload as unknown as Record<string, unknown>);
@@ -851,67 +762,6 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
   const renderStep = () => {
     switch (currentStep) {
       case 1:
-        return (
-           <div className="space-y-6">
-            <div className="text-center mb-6">
-              <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Building className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">O Twoim aucie</h3>
-              <p className="text-gray-300">Pomóż nam dopasować idealne dywaniki</p>
-            </div>
-
-             <InputField
-               label="Marka i Model Auta"
-               name="company"
-               icon={Building}
-               placeholder="np. BMW X5, Audi A4"
-              error={errors.company}
-               value={formData.company}
-               onChange={handleInputChange}
-             />
-
-             <InputField
-               label="Rok Produkcji"
-               name="jobTitle"
-               placeholder="np. 2020"
-              error={errors.jobTitle}
-               value={formData.jobTitle}
-               onChange={handleInputChange}
-             />
-           </div>
-        );
-
-      case 2:
-        return (
-          <div className="space-y-6">
-            <div className="text-center mb-6">
-              <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <User className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Dane kontaktowe</h3>
-              <p className="text-gray-300">Podaj imię i numer telefonu</p>
-            </div>
-
-            <InputField
-              label="Imię"
-              name="firstName"
-              icon={User}
-              placeholder="Wprowadź swoje imię"
-              error={errors.firstName}
-              value={formData.firstName}
-              onChange={handleInputChange}
-            />
-
-            <PhoneInput
-              value={formData.phone}
-              onChange={handlePhoneChange}
-              error={errors.phone}
-            />
-          </div>
-        );
-
-      case 3:
         return (
           <div className="space-y-6">
             <div className="text-center mb-6">
@@ -1203,6 +1053,67 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
           </div>
         );
 
+      case 2:
+        return (
+           <div className="space-y-6">
+            <div className="text-center mb-6">
+              <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Building className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">O Twoim aucie</h3>
+              <p className="text-gray-300">Pomóż nam dopasować idealne dywaniki</p>
+            </div>
+
+             <InputField
+               label="Marka i Model Auta"
+               name="company"
+               icon={Building}
+               placeholder="np. BMW X5, Audi A4"
+              error={errors.company}
+               value={formData.company}
+               onChange={handleInputChange}
+             />
+
+             <InputField
+               label="Rok Produkcji"
+               name="jobTitle"
+               placeholder="np. 2020"
+              error={errors.jobTitle}
+               value={formData.jobTitle}
+               onChange={handleInputChange}
+             />
+           </div>
+        );
+
+      case 3:
+        return (
+          <div className="space-y-6">
+            <div className="text-center mb-6">
+              <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <User className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Dane kontaktowe</h3>
+              <p className="text-gray-300">Podaj imię i numer telefonu</p>
+            </div>
+
+            <InputField
+              label="Imię"
+              name="firstName"
+              icon={User}
+              placeholder="Wprowadź swoje imię"
+              error={errors.firstName}
+              value={formData.firstName}
+              onChange={handleInputChange}
+            />
+
+            <PhoneInput
+              value={formData.phone}
+              onChange={handlePhoneChange}
+              error={errors.phone}
+            />
+          </div>
+        );
+
 
       default:
         return null;
@@ -1242,7 +1153,7 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
                   onClick={nextStep}
                   className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl transition-all duration-200"
                 >
-                  {currentStep === 2 ? 'Skonfiguruj i pobierz wycenę' : 'Dalej'}
+                  {currentStep === 1 ? 'Dalej - podaj dane auta' : currentStep === 2 ? 'Dalej - dane kontaktowe' : 'Dalej'}
                   <ArrowRight className="w-4 h-4" />
                 </button>
               ) : (
