@@ -704,6 +704,11 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
         if (onFormSubmission) {
           onFormSubmission(true);
         }
+
+        // Pokaż komunikat, a następnie przekieruj na stronę główną
+        setTimeout(() => {
+          window.location.assign('https://www.evapremium.pl');
+        }, 1000);
       } else {
         throw new Error('Beacon API failed to send data');
       }

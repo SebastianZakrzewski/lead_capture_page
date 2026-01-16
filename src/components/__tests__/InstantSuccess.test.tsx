@@ -2,15 +2,6 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import LeadCaptureForm from '../LeadCaptureForm';
-import { LeadService } from '../../backend/services/LeadService';
-
-// Mock LeadService
-jest.mock('../../backend/services/LeadService', () => ({
-  LeadService: {
-    createLead: jest.fn(),
-  },
-}));
-
 // Mock Beacon API
 Object.defineProperty(navigator, 'sendBeacon', {
   writable: true,
@@ -34,11 +25,16 @@ jest.mock('../../utils/tracking', () => ({
 describe('Natychmiastowe przejście na stronę sukcesu', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    Object.defineProperty(window, 'location', {
+      writable: true,
+      value: { assign: jest.fn() },
+    });
   });
 
   it('powinien natychmiast pokazać stronę sukcesu po kliknięciu submit', async () => {
     // Symuluj Beacon API
     (navigator.sendBeacon as jest.Mock).mockReturnValue(true);
+    jest.useFakeTimers();
 
     render(<LeadCaptureForm />);
 
@@ -65,14 +61,18 @@ describe('Natychmiastowe przejście na stronę sukcesu', () => {
       '/api/leads',
       expect.stringContaining('Jan')
     );
+
+    // Sprawdź czy nastąpiło przekierowanie
+    jest.advanceTimersByTime(1000);
+    expect(window.location.assign).toHaveBeenCalledWith('https://www.evapremium.pl');
+    jest.useRealTimers();
     
-    // Sprawdź czy LeadService NIE został wywołany (Beacon API działa)
-    expect(LeadService.createLead).not.toHaveBeenCalled();
   });
 
   it('powinien wywołać Beacon API w tle', async () => {
     // Symuluj Beacon API
     (navigator.sendBeacon as jest.Mock).mockReturnValue(true);
+    jest.useFakeTimers();
 
     render(<LeadCaptureForm />);
 
@@ -96,18 +96,18 @@ describe('Natychmiastowe przejście na stronę sukcesu', () => {
       '/api/leads',
       expect.stringContaining('Anna')
     );
+
+    // Sprawdź czy nastąpiło przekierowanie
+    jest.advanceTimersByTime(1000);
+    expect(window.location.assign).toHaveBeenCalledWith('https://www.evapremium.pl');
+    jest.useRealTimers();
   });
 
-  it('powinien obsłużyć fallback do LeadService gdy Beacon API nie działa', async () => {
+  it('nie powinien przekierować gdy Beacon API nie działa', async () => {
     // Symuluj Beacon API failure
     (navigator.sendBeacon as jest.Mock).mockReturnValue(false);
+    jest.useFakeTimers();
     
-    // Symuluj LeadService
-    (LeadService.createLead as jest.Mock).mockResolvedValue({
-      success: true,
-      data: { id: 'fallback-id' }
-    });
-
     render(<LeadCaptureForm />);
 
     // Wypełnij wymagane pola
@@ -121,28 +121,19 @@ describe('Natychmiastowe przejście na stronę sukcesu', () => {
     // Kliknij submit
     fireEvent.click(submitButton);
 
-    // Sprawdź czy natychmiast pokazuje się strona sukcesu
-    expect(screen.getByText(/dziękujemy!/i)).toBeInTheDocument();
-
     // Sprawdź czy Beacon API został wywołany
     expect(navigator.sendBeacon).toHaveBeenCalledTimes(1);
-    
-    // Sprawdź czy LeadService został wywołany jako fallback
-    expect(LeadService.createLead).toHaveBeenCalledTimes(1);
-    expect(LeadService.createLead).toHaveBeenCalledWith({
-      firstName: 'Piotr',
-      phone: '+48765432198',
-      email: undefined,
-      company: undefined,
-      jobTitle: undefined,
-      industry: undefined,
-      completeness: undefined,
-    });
+
+    // Sprawdź czy nie nastąpiło przekierowanie
+    jest.advanceTimersByTime(1000);
+    expect(window.location.assign).not.toHaveBeenCalled();
+    jest.useRealTimers();
   });
 
   it('powinien wysłać dane z trackingiem przez Beacon API', async () => {
     // Symuluj Beacon API
     (navigator.sendBeacon as jest.Mock).mockReturnValue(true);
+    jest.useFakeTimers();
 
     render(<LeadCaptureForm />);
 
@@ -165,6 +156,11 @@ describe('Natychmiastowe przejście na stronę sukcesu', () => {
       '/api/leads',
       expect.stringContaining('Maria')
     );
+
+    // Sprawdź czy nastąpiło przekierowanie
+    jest.advanceTimersByTime(1000);
+    expect(window.location.assign).toHaveBeenCalledWith('https://www.evapremium.pl');
+    jest.useRealTimers();
     
     // Sprawdź czy payload zawiera tracking data
     const beaconCall = (navigator.sendBeacon as jest.Mock).mock.calls[0];
@@ -179,12 +175,10 @@ describe('Natychmiastowe przejście na stronę sukcesu', () => {
     expect(payload).toHaveProperty('utmCampaign');
   });
 
-  it('powinien zresetować formularz po 3 sekundach', async () => {
-    // Użyj fake timers
-    jest.useFakeTimers();
-    
+  it('powinien przekierować po wysłaniu formularza', async () => {
     // Symuluj Beacon API
     (navigator.sendBeacon as jest.Mock).mockReturnValue(true);
+    jest.useFakeTimers();
 
     render(<LeadCaptureForm />);
 
@@ -199,18 +193,9 @@ describe('Natychmiastowe przejście na stronę sukcesu', () => {
     // Kliknij submit
     fireEvent.click(submitButton);
 
-    // Sprawdź czy pokazuje się strona sukcesu
-    expect(screen.getByText(/dziękujemy!/i)).toBeInTheDocument();
-
-    // Przewiń czas o 3 sekundy
-    jest.advanceTimersByTime(3000);
-
-    // Sprawdź czy formularz został zresetowany
-    expect(screen.getByText(/wypełnij formularz/i)).toBeInTheDocument();
-    expect(firstNameInput).toHaveValue('');
-    expect(phoneInput).toHaveValue('');
-    
-    // Przywróć prawdziwe timery
+    // Sprawdź czy nastąpiło przekierowanie
+    jest.advanceTimersByTime(1000);
+    expect(window.location.assign).toHaveBeenCalledWith('https://www.evapremium.pl');
     jest.useRealTimers();
   });
 });
