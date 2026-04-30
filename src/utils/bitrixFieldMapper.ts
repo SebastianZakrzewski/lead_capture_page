@@ -63,8 +63,8 @@ const STRUCTURE_MAP: Record<string, string> = {
 
 // Mapowanie rodzaju kompletu z formularza na ID Bitrix24
 const MAT_TYPE_MAP: Record<string, string> = {
-  '3d-evapremium-z-rantami': '264', // 3D EVAPREMIUM
-  '3d-evapremium-bez-rantow': '266', // Klasyczne EVAPREMIUM
+  '3d-evapremium-z-rantami': '264', // 3D EVAPREMIUM Z RANTAMI
+  '3d-evapremium-bez-rantow': '266', // 3D EVAPREMIUM BEZ RANTÓW
   'klasyczne-evapremium': '266', // Klasyczne EVAPREMIUM
   'niestandardowy': '268' // Niestandardowy
 };
@@ -119,7 +119,9 @@ export function mapFormDataToBitrix24Fields(leadData: LeadSubmissionData): Bitri
 
   // Pola produktu
   if (leadData.industry) {
-    fields.UF_CRM_1757024835301 = MAT_TYPE_MAP[leadData.industry] || '268'; // Rodzaj kompletu
+    const mappedIndustry = MAT_TYPE_MAP[leadData.industry] || '268';
+    fields.UF_CRM_1757024835301 = mappedIndustry; // Rodzaj kompletu
+    console.log('🏷️ Mapowanie rodzaju kompletu:', leadData.industry, '->', mappedIndustry);
   }
 
   if (leadData.completeness) {
@@ -196,6 +198,16 @@ export function mapToBitrix24Contact(leadData: LeadSubmissionData) {
  */
 export function mapToBitrix24Deal(leadData: LeadSubmissionData) {
   const leadFields = mapFormDataToBitrix24Fields(leadData);
+  
+  console.log('🔍 mapToBitrix24Deal - dane wejściowe:', {
+    industry: leadData.industry,
+    completeness: leadData.completeness,
+    structure: leadData.structure,
+    materialColor: leadData.materialColor,
+    borderColor: leadData.borderColor
+  });
+  
+  console.log('🔍 mapToBitrix24Deal - zmapowane pola:', leadFields);
   
   return {
     TITLE: `Dywaniki EVAPREMIUM - ${leadData.company || 'Nowy Lead'}`,

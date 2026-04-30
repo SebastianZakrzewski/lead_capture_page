@@ -78,10 +78,21 @@ export async function POST(request: NextRequest) {
         const dealsResult = await Bitrix24Service.getDeals(5);
         return NextResponse.json(dealsResult);
 
+      case 'get-deal':
+        const { dealId } = await request.json();
+        if (!dealId) {
+          return NextResponse.json({
+            success: false,
+            error: 'Brak dealId'
+          }, { status: 400 });
+        }
+        const dealResult = await Bitrix24Service.getDealById(parseInt(dealId));
+        return NextResponse.json(dealResult);
+
       default:
         return NextResponse.json({
           success: false,
-          error: 'Nieznana akcja. Dostępne: test-connection, create-empty-deal, create-empty-lead, get-deals'
+          error: 'Nieznana akcja. Dostępne: test-connection, create-empty-deal, create-empty-lead, get-deals, get-deal'
         }, { status: 400 });
     }
 

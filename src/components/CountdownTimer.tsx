@@ -74,7 +74,7 @@ export default function CountdownTimer() {
       </div>
       
       <p className="text-gray-300 text-sm">
-        Rabat -30% ważny tylko do końca dnia!
+        Rabat -35% ważny tylko do końca dnia!
       </p>
     </div>
   );

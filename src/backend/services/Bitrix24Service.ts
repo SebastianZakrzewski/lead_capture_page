@@ -52,7 +52,7 @@ export interface Bitrix24ContactData {
 }
 
 export class Bitrix24Service {
-  private static readonly BITRIX24_URL = "https://b24-v7jz9p.bitrix24.pl/rest/1/se41mx3ts2o2nikj/";
+  private static readonly BITRIX24_URL = "https://evapremium.bitrix24.pl/rest/1/se41mx3ts2o2nikj/";
   private static readonly BITRIX24_USER_ID = "1";
   private static readonly BITRIX24_DEAL_CATEGORY_ID = 2; // "Leady z Reklam"
 
@@ -266,6 +266,13 @@ export class Bitrix24Service {
       };
 
       console.log('📋 Dane deala:', dealDataWithCategory);
+      console.log('🔍 Szczegóły pól deala:', {
+        'UF_CRM_1757024835301 (Rodzaj kompletu)': dealDataWithCategory.UF_CRM_1757024835301,
+        'UF_CRM_1757024931236 (Wariant kompletu)': dealDataWithCategory.UF_CRM_1757024931236,
+        'UF_CRM_1757025126670 (Kolor materiału)': dealDataWithCategory.UF_CRM_1757025126670,
+        'UF_CRM_1757177134448 (Kształt komórek)': dealDataWithCategory.UF_CRM_1757177134448,
+        'UF_CRM_1757177281489 (Kolor obszycia)': dealDataWithCategory.UF_CRM_1757177281489
+      });
 
       const response = await fetch(`${this.BITRIX24_URL}crm.deal.add`, {
         method: 'POST',
@@ -436,7 +443,7 @@ export class Bitrix24Service {
       }
 
       const deal = result.result;
-      console.log('✅ Pobrano deal:', deal);
+      console.log('✅ Pobrano deal:', JSON.stringify(deal, null, 2));
 
       return { 
         success: true, 

@@ -22,7 +22,7 @@ describe('Bitrix24Service', () => {
 
       expect(result).toBe(true);
       expect(fetch).toHaveBeenCalledWith(
-        'https://b24-v7jz9p.bitrix24.pl/rest/1/se41mx3ts2o2nikj/crm.deal.list',
+        'https://evapremium.bitrix24.pl/rest/1/se41mx3ts2o2nikj/crm.deal.list',
         expect.objectContaining({
           method: 'POST',
           headers: {
@@ -74,7 +74,7 @@ describe('Bitrix24Service', () => {
       expect(result.success).toBe(true);
       expect(result.dealId).toBe(12345);
       expect(fetch).toHaveBeenCalledWith(
-        'https://b24-v7jz9p.bitrix24.pl/rest/1/se41mx3ts2o2nikj/crm.deal.add',
+        'https://evapremium.bitrix24.pl/rest/1/se41mx3ts2o2nikj/crm.deal.add',
         expect.objectContaining({
           method: 'POST',
           body: JSON.stringify({
@@ -133,7 +133,7 @@ describe('Bitrix24Service', () => {
       expect(result.success).toBe(true);
       expect(result.contactId).toBe(67890);
       expect(fetch).toHaveBeenCalledWith(
-        'https://b24-v7jz9p.bitrix24.pl/rest/1/se41mx3ts2o2nikj/crm.contact.add',
+        'https://evapremium.bitrix24.pl/rest/1/se41mx3ts2o2nikj/crm.contact.add',
         expect.objectContaining({
           method: 'POST',
           body: JSON.stringify({
@@ -285,7 +285,7 @@ describe('Bitrix24Service', () => {
       expect(result.success).toBe(true);
       expect(result.deals).toHaveLength(2);
       expect(fetch).toHaveBeenCalledWith(
-        'https://b24-v7jz9p.bitrix24.pl/rest/1/se41mx3ts2o2nikj/crm.deal.list',
+        'https://evapremium.bitrix24.pl/rest/1/se41mx3ts2o2nikj/crm.deal.list',
         expect.objectContaining({
           method: 'POST',
           body: JSON.stringify({
@@ -338,7 +338,7 @@ describe('Bitrix24Service', () => {
       expect(result.success).toBe(true);
       expect(result.deal).toEqual(mockResponse.result);
       expect(fetch).toHaveBeenCalledWith(
-        'https://b24-v7jz9p.bitrix24.pl/rest/1/se41mx3ts2o2nikj/crm.deal.get',
+        'https://evapremium.bitrix24.pl/rest/1/se41mx3ts2o2nikj/crm.deal.get',
         expect.objectContaining({
           method: 'POST',
           body: JSON.stringify({
@@ -364,6 +364,35 @@ describe('Bitrix24Service', () => {
 
       expect(result.success).toBe(false);
       expect(result.error).toContain('Bitrix24 deal fetch failed');
+    });
+  });
+
+  describe('Real Bitrix24 Integration', () => {
+    // Skip these tests in CI/CD or when mocking is enabled
+    const isRealTest = process.env.NODE_ENV === 'test' && process.env.REAL_BITRIX24 === 'true';
+    
+    it.skipIf(!isRealTest)('should fetch real deal by ID', async () => {
+      // This test will only run when REAL_BITRIX24=true is set
+      const result = await Bitrix24Service.getDealById(278);
+      
+      console.log('Real deal result:', JSON.stringify(result, null, 2));
+      
+      expect(result.success).toBe(true);
+      expect(result.deal).toBeDefined();
+    });
+
+    it('should test real Bitrix24 connection', async () => {
+      // This test will run without mocking
+      const result = await Bitrix24Service.getDealById(278);
+      
+      console.log('Real deal result:', JSON.stringify(result, null, 2));
+      
+      if (result.success && result.deal) {
+        console.log('📋 Pola deala:');
+        Object.keys(result.deal).forEach(key => {
+          console.log(`  ${key}: ${result.deal[key]}`);
+        });
+      }
     });
   });
 });

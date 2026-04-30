@@ -67,7 +67,7 @@ export default function Home() {
               
               {/* Tytuł */}
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Dobierz dywaniki <span className="text-red-500">EVAPREMIUM</span> do swojego auta i odbierz do 30% rabatu
+                Dobierz dywaniki <span className="text-red-500">EVAPREMIUM</span> do swojego auta i odbierz do 35% rabatu
               </h1>
               
               <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-6">
@@ -104,12 +104,12 @@ export default function Home() {
                 <div className="text-center">
                   <Shield className="w-8 h-8 text-red-400 mx-auto mb-2" />
                   <h3 className="text-white font-semibold mb-1">Gwarancja jakości</h3>
-                  <p className="text-gray-300 text-sm">2 lata gwarancji na wszystkie produkty</p>
+                  <p className="text-gray-300 text-sm">1 rok gwarancji na wszystkie produkty</p>
                 </div>
                 <div className="text-center">
                   <Truck className="w-8 h-8 text-red-400 mx-auto mb-2" />
                   <h3 className="text-white font-semibold mb-1">Darmowa dostawa</h3>
-                  <p className="text-gray-300 text-sm">Bezpłatna wysyłka przy zamówieniach powyżej 200 zł</p>
+                  <p className="text-gray-300 text-sm">Przy zamówieniach powyżej 600 zł</p>
                 </div>
                 <div className="text-center">
                   <CheckCircle className="w-8 h-8 text-red-400 mx-auto mb-2" />
