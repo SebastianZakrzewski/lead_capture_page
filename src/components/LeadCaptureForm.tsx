@@ -19,8 +19,7 @@ import {
   trackStep2View,
   trackStep2Complete,
   trackStep3View,
-  trackStep3Configuration,
-  trackStep3CompleteLead
+  trackStep3Configuration
 } from './FacebookPixel';
 
 interface LeadCaptureFormProps {
@@ -687,16 +686,15 @@ export default function LeadCaptureForm({ formData, onFormDataChange, onFormSubm
       if (beaconSent) {
         console.log('✅ Pełny lead wysłany przez Beacon API');
         
-        // Generuj nowe ID leada
+        // Jedno ID na udane wysłanie: lokalny leadId i Meta eventID dla obu zdarzeń konwersji.
         const tempLeadId = `complete_${Date.now()}`;
         console.log('🔧 Ustawiam nowe leadId na:', tempLeadId);
         setLeadId(tempLeadId);
         
-        // Śledź pomyślne wysłanie formularza z danymi trackingowymi
-        trackLeadSubmissionWithData(leadPayload as unknown as Record<string, unknown>);
-        
-        // Śledź pełny lead w kroku 3
-        trackStep3CompleteLead(leadPayload as unknown as Record<string, unknown>);
+        trackLeadSubmissionWithData(
+          leadPayload as unknown as Record<string, unknown>,
+          tempLeadId
+        );
         
         console.log('🎉 Ustawiam isSubmitted na true');
         setIsSubmitted(true);
