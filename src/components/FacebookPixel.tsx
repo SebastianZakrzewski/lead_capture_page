@@ -177,10 +177,22 @@ const calculateLeadValue = (leadData: Record<string, unknown>): number => {
   return Math.round(baseValue);
 };
 
-// Śledź wysłanie formularza z danymi trackingowymi
-export const trackLeadSubmissionWithData = (leadData: Record<string, unknown>) => {
+const createConversionEventId = (): string => {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return crypto.randomUUID();
+  }
+  return `complete_${Date.now()}`;
+};
+
+// Śledź wysłanie formularza z danymi trackingowymi.
+// Lead i CompleteRegistration dzielą jedno eventID (Meta event_id) na jedną konwersję.
+export const trackLeadSubmissionWithData = (
+  leadData: Record<string, unknown>,
+  eventID?: string
+) => {
   if (typeof window !== 'undefined' && window.fbq) {
     try {
+      const conversionEventId = eventID || createConversionEventId();
       // Oblicz wartość leada na podstawie wyboru
       const leadValue = calculateLeadValue(leadData);
       
@@ -219,7 +231,7 @@ export const trackLeadSubmissionWithData = (leadData: Record<string, unknown>) =
           car_model: leadData.company,
           car_year: leadData.jobTitle
         }
-      });
+      }, { eventID: conversionEventId });
       
       // Dodatkowe zdarzenie - CompleteRegistration
       window.fbq('track', 'CompleteRegistration', {
@@ -228,7 +240,7 @@ export const trackLeadSubmissionWithData = (leadData: Record<string, unknown>) =
         content_name: 'Lead Registration Complete',
         content_category: 'Car Mats',
         registration_method: 'form_submission'
-      });
+      }, { eventID: conversionEventId });
       
       console.log('📊 Pixel: Wysłano dane trackingowe do Facebook:', {
         utm_source: leadData.utmSource,
@@ -422,57 +434,6 @@ export const trackStep3Configuration = (configData: {
       console.log('📊 Pixel: Step 3 Configuration event sent', configData);
     } catch (error) {
       console.error('❌ Pixel: Error sending Step 3 Configuration event:', error);
-    }
-  }
-};
-
-export const trackStep3CompleteLead = (fullLeadData: Record<string, unknown>) => {
-  if (typeof window !== 'undefined' && window.fbq) {
-    try {
-      const leadValue = calculateStep3LeadValue(fullLeadData);
-      
-      // Główny event Lead (bez PII)
-      window.fbq('track', 'Lead', {
-        value: leadValue,
-        currency: 'PLN',
-        product_type: fullLeadData.industry,
-        completeness: fullLeadData.completeness,
-        structure: fullLeadData.structure,
-        material_color: fullLeadData.materialColor,
-        border_color: fullLeadData.borderColor,
-        include_hooks: fullLeadData.includeHooks,
-        custom_data: {
-          lead_type: 'complete',
-          utm_source: fullLeadData.utmSource,
-          utm_medium: fullLeadData.utmMedium,
-          utm_campaign: fullLeadData.utmCampaign,
-          utm_term: fullLeadData.utmTerm,
-          utm_content: fullLeadData.utmContent,
-          gclid: fullLeadData.gclid,
-          fbclid: fullLeadData.fbclid,
-          session_id: fullLeadData.sessionId,
-          first_visit: fullLeadData.firstVisit,
-          current_url: fullLeadData.currentUrl,
-          referrer: fullLeadData.referrer,
-          user_agent: fullLeadData.userAgent,
-          car_model: fullLeadData.company,
-          car_year: fullLeadData.jobTitle
-        }
-      });
-      
-      // Event CompleteRegistration
-      window.fbq('track', 'CompleteRegistration', {
-        value: leadValue,
-        currency: 'PLN'
-      });
-      
-      console.log('📊 Pixel: Step 3 Complete Lead event sent', {
-        lead_value: leadValue,
-        utm_source: fullLeadData.utmSource,
-        utm_campaign: fullLeadData.utmCampaign
-      });
-    } catch (error) {
-      console.error('❌ Pixel: Error sending Step 3 Complete Lead event:', error);
     }
   }
 };
